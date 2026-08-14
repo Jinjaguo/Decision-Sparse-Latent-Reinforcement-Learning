@@ -1,6 +1,8 @@
+from types import SimpleNamespace
+
+import mujoco
 import numpy as np
 import pytest
-import mujoco
 
 from decision_sparse_rl.metrics.exp8 import (
     assert_demo_isolation,
@@ -15,7 +17,8 @@ from decision_sparse_rl.metrics.exp8 import (
     top1_projector_similarity,
     upper_tail,
 )
-from scripts.exp8.contact_frame import _surface_pair
+from decision_sparse_rl.logging.run_directory import create_run_directory
+from scripts.exp8.contact_frame import _key, _surface_pair
 from scripts.exp8.analyze_formal import float_array, float_stack, ridge as formal_ridge
 
 
@@ -122,3 +125,45 @@ def test_formal_ridge_is_stable_with_exactly_collinear_features():
     prediction = formal_ridge(x, y, np.array([[3.0, 3.0]]), 1e-6)
     assert np.isfinite(prediction).all()
     assert prediction[0, 0] == pytest.approx(7.0, rel=1e-5)
+
+
+def test_physical_contact_identity_is_order_invariant():
+    model = mujoco.MjModel.from_xml_string(
+        "<mujoco><worldbody><body><geom name='left' type='sphere' size='.1'/></body>"
+        "<body><geom name='right' type='sphere' size='.1'/></body></worldbody></mujoco>"
+    )
+    assert _key(model, 0, 1) == _key(model, 1, 0)
+    assert _key(model, 0, 1) == "0:left|1:right"
+
+
+def test_active_contact_force_and_relative_velocity_use_contact_frame(monkeypatch):
+    contact = SimpleNamespace(
+        geom=np.array([0, 1]),
+        frame=np.eye(3).reshape(-1),
+        dist=0.0,
+        pos=np.zeros(3),
+    )
+    model = SimpleNamespace(nv=2)
+    data = SimpleNamespace(qvel=np.array([1.0, 2.0]))
+    spec = {
+        "geom1_id": 0, "geom2_id": 1, "pair": "0:left|1:right",
+        "geom1_name": "left", "geom2_name": "right", "physical_group": "synthetic",
+    }
+
+    def point_jacobian(_model, _data, _point, geom_id):
+        return np.zeros((3, 2)) if geom_id == 0 else np.array([[1.0, 0.0], [0.0, 2.0], [0.0, 0.0]])
+
+    def contact_force(_model, _data, _index, output):
+        output[:] = [3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
+
+    monkeypatch.setattr("scripts.exp8.contact_frame._point_jacobian", point_jacobian)
+    monkeypatch.setattr(mujoco, "mj_contactForce", contact_force)
+    row = _surface_pair(model, data, spec, {spec["pair"]: (0, contact)}, 0.05)
+    assert row["relative_velocity_contact"] == pytest.approx([1.0, 4.0, 0.0])
+    assert row["contact_force_torque_contact"] == pytest.approx([3.0, 4.0, 5.0, 6.0, 7.0, 8.0])
+
+
+def test_run_directory_refuses_overwrite(tmp_path):
+    create_run_directory(tmp_path, "immutable")
+    with pytest.raises(FileExistsError):
+        create_run_directory(tmp_path, "immutable")
