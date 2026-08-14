@@ -26,6 +26,16 @@ def exact_active_pairs(env: Any) -> set[str]:
     return result
 
 
+def _active_contact_map(model: Any, data: Any) -> dict[str, tuple[float, int, int, np.ndarray]]:
+    result = {}
+    for index in range(int(data.ncon)):
+        contact = data.contact[index]; left, right = int(contact.geom[0]), int(contact.geom[1])
+        pair = "|".join(sorted((f"{left}:{geom_name(model, left)}", f"{right}:{geom_name(model, right)}")))
+        value = (float(contact.dist), left, right, np.asarray(contact.frame[:3], dtype=np.float64).copy())
+        if pair not in result or value[0] < result[pair][0]: result[pair] = value
+    return result
+
+
 def _distance(model: Any, data: Any, left: int, right: int, distmax: float) -> tuple[float, np.ndarray]:
     segment = np.zeros(6, dtype=np.float64)
     value = float(mujoco.mj_geomDistance(model, data, int(left), int(right), float(distmax), segment))
@@ -46,6 +56,12 @@ def _normal_velocity(model: Any, data: Any, left: int, right: int, segment: np.n
     return float(normal @ ((jac_right - jac_left) @ np.asarray(data.qvel)))
 
 
+def _axis_velocity(model: Any, data: Any, left: int, right: int, normal: np.ndarray) -> float:
+    jac_left = np.zeros((3, int(model.nv)), dtype=np.float64); jac_right = np.zeros_like(jac_left); jac_rot = np.zeros_like(jac_left)
+    mujoco.mj_jacGeom(model, data, jac_left, jac_rot, int(left)); mujoco.mj_jacGeom(model, data, jac_right, jac_rot, int(right))
+    return float(np.asarray(normal) @ ((jac_right - jac_left) @ np.asarray(data.qvel)))
+
+
 def identify_task(model: Any, schema: dict[str, Any]) -> str:
     names = {geom_name(model, i) for i in range(int(model.ngeom))}
     matches = [task for task, spec in schema["tasks"].items() if set(spec["required_geom_names"]).issubset(names)]
@@ -59,13 +75,18 @@ def measure(env: Any, schema: dict[str, Any], task: str | None = None) -> dict[s
     task = identify_task(model, schema) if task is None else task
     if task not in schema["tasks"]:
         raise RuntimeError(f"unknown contact-schema task: {task}")
-    active = exact_active_pairs(env)
+    active_map = _active_contact_map(model, data); active = set(active_map)
     pair_rows, group_gaps, group_velocities = [], {}, {}
     for group, pairs in schema["tasks"][task]["pair_groups"].items():
         values = []
-        for pair in pairs:
-            gap, segment = _distance(model, data, pair["geom1_id"], pair["geom2_id"], schema["distance_max_m"])
-            velocity = _normal_velocity(model, data, pair["geom1_id"], pair["geom2_id"], segment)
+        active_pairs = [pair for pair in pairs if pair["pair"] in active_map]
+        probes = active_pairs if active_pairs else pairs
+        for pair in probes:
+            if pair["pair"] in active_map:
+                gap, left, right, normal = active_map[pair["pair"]]; velocity = _axis_velocity(model, data, left, right, normal)
+            else:
+                gap, segment = _distance(model, data, pair["geom1_id"], pair["geom2_id"], schema["distance_max_m"])
+                velocity = _normal_velocity(model, data, pair["geom1_id"], pair["geom2_id"], segment)
             values.append((gap, velocity, pair))
             pair_rows.append({"group": group, "pair": pair["pair"], "signed_gap_m": gap, "normal_relative_velocity_mps": velocity})
         if values:

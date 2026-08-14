@@ -1,0 +1,12 @@
+{
+  "experiment": "EXP7",
+  "signs": [-1, 1],
+  "directions_per_branch": 24,
+  "expected_branches": 120,
+  "non_arm_integration_linf_max": 1e-12,
+  "q_injection_atol": 1e-15,
+  "zero_integration_l2_max": 1e-12,
+  "meaningful_effect_threshold": 0.01,
+  "radii": [0.0003125, 0.000625, 0.00125],
+  "formal_sharding": "three contiguous 10-demonstration task-coherent shards; starts 0,10,20; no overlap"
+}
