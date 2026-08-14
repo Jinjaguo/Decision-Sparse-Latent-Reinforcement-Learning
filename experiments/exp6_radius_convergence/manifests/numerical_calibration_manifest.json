@@ -1,0 +1,193 @@
+{
+  "calibration_branches": [
+    {
+      "branch_time": 11,
+      "episode": "demo_16",
+      "normalized_time": 0.059782608695652176,
+      "reference_contact_state": false,
+      "selection_rule": "earliest no-contact plus latest contact when both exist; otherwise earliest plus latest",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 175,
+      "episode": "demo_16",
+      "normalized_time": 0.9510869565217391,
+      "reference_contact_state": true,
+      "selection_rule": "earliest no-contact plus latest contact when both exist; otherwise earliest plus latest",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 5,
+      "episode": "demo_14",
+      "normalized_time": 0.05813953488372093,
+      "reference_contact_state": false,
+      "selection_rule": "earliest no-contact plus latest contact when both exist; otherwise earliest plus latest",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 92,
+      "episode": "demo_13",
+      "normalized_time": 0.9484536082474226,
+      "reference_contact_state": true,
+      "selection_rule": "earliest no-contact plus latest contact when both exist; otherwise earliest plus latest",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 5,
+      "episode": "demo_11",
+      "normalized_time": 0.05747126436781609,
+      "reference_contact_state": false,
+      "selection_rule": "earliest no-contact plus latest contact when both exist; otherwise earliest plus latest",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 98,
+      "episode": "demo_15",
+      "normalized_time": 1.0,
+      "reference_contact_state": true,
+      "selection_rule": "earliest no-contact plus latest contact when both exist; otherwise earliest plus latest",
+      "task": "turn_on_the_stove"
+    }
+  ],
+  "formal_calibration_decision": {
+    "formal_action": "freeze formal manifests with optional radius",
+    "optional_radius_admitted": true,
+    "primary_smallest_resolvable": true,
+    "radius_gates": {
+      "r0003125": {
+        "criteria": {
+          "all_finite": true,
+          "non_arm_preserved": true,
+          "operator_repeatability": true,
+          "q_injection_precision": true,
+          "rank_repeatability": true,
+          "scalar_repeatability": true,
+          "signal_to_floor": true,
+          "two_repeats_complete": true,
+          "vector_repeatability": true
+        },
+        "maximum_operator_repeat_error": 0.0,
+        "maximum_q_injection_error": 2.208824757213984e-16,
+        "maximum_scalar_repeat_error": 0.0,
+        "maximum_vector_repeat_error": 0.0,
+        "minimum_signal_to_floor": 1593099614.3750365,
+        "passed": true
+      },
+      "r000625": {
+        "criteria": {
+          "all_finite": true,
+          "non_arm_preserved": true,
+          "operator_repeatability": true,
+          "q_injection_precision": true,
+          "rank_repeatability": true,
+          "scalar_repeatability": true,
+          "signal_to_floor": true,
+          "two_repeats_complete": true,
+          "vector_repeatability": true
+        },
+        "maximum_operator_repeat_error": 0.0,
+        "maximum_q_injection_error": 2.203098814490545e-16,
+        "maximum_scalar_repeat_error": 0.0,
+        "maximum_vector_repeat_error": 0.0,
+        "minimum_signal_to_floor": 1885696161.032846,
+        "passed": true
+      },
+      "r00125": {
+        "criteria": {
+          "all_finite": true,
+          "non_arm_preserved": true,
+          "operator_repeatability": true,
+          "q_injection_precision": true,
+          "rank_repeatability": true,
+          "scalar_repeatability": true,
+          "signal_to_floor": true,
+          "two_repeats_complete": true,
+          "vector_repeatability": true
+        },
+        "maximum_operator_repeat_error": 0.0,
+        "maximum_q_injection_error": 2.1803305688683494e-16,
+        "maximum_scalar_repeat_error": 0.0,
+        "maximum_vector_repeat_error": 0.0,
+        "minimum_signal_to_floor": 4642819949.704646,
+        "passed": true
+      },
+      "r0025": {
+        "criteria": {
+          "all_finite": true,
+          "non_arm_preserved": true,
+          "operator_repeatability": true,
+          "q_injection_precision": true,
+          "rank_repeatability": true,
+          "scalar_repeatability": true,
+          "signal_to_floor": true,
+          "two_repeats_complete": true,
+          "vector_repeatability": true
+        },
+        "maximum_operator_repeat_error": 0.0,
+        "maximum_q_injection_error": 2.209604027525458e-16,
+        "maximum_scalar_repeat_error": 0.0,
+        "maximum_vector_repeat_error": 0.0,
+        "minimum_signal_to_floor": 7052833832.983918,
+        "passed": true
+      },
+      "r005": {
+        "criteria": {
+          "all_finite": true,
+          "non_arm_preserved": true,
+          "operator_repeatability": true,
+          "q_injection_precision": true,
+          "rank_repeatability": true,
+          "scalar_repeatability": true,
+          "signal_to_floor": true,
+          "two_repeats_complete": true,
+          "vector_repeatability": true
+        },
+        "maximum_operator_repeat_error": 0.0,
+        "maximum_q_injection_error": 2.1510571102112408e-16,
+        "maximum_scalar_repeat_error": 0.0,
+        "maximum_vector_repeat_error": 0.0,
+        "minimum_signal_to_floor": 11295905817.410713,
+        "passed": true
+      }
+    },
+    "schema_version": 1,
+    "zero_floor": {
+      "integration_state": 0.0,
+      "operator_spectral": 0.0,
+      "ratio_resolution_constant": 1e-12,
+      "scalar_effect": 0.0,
+      "signed_physical_output": 0.0
+    }
+  },
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T19:30:00.966936+00:00",
+  "gates": {
+    "all_finite": true,
+    "direction_sign_rank_deterministic": true,
+    "non_arm_integration_linf_max": 1e-12,
+    "q_injection_atol": 1e-15,
+    "repeat_operator_atol": 1e-12,
+    "repeat_scalar_atol": 1e-14,
+    "repeat_vector_atol": 1e-14,
+    "signal_to_floor_min": 100.0
+  },
+  "manifest_type": "numerical_calibration_manifest",
+  "outcome_blind": true,
+  "project_sha": "097d1c2d11b301afb948c6be62fea2d4f3379535",
+  "schema_version": 1,
+  "signed_intervention_repetitions": 2,
+  "sources": {
+    "hashes": {
+      "branch_candidates": "89a0ca9e179d06adf187127d45f5a73022b6c6cac909c54bd93f5a5ae1c5a5d1",
+      "calibration_candidates": "360c4287f65a97cad58c1ce47a8496f09bae696ba1d196fb0c51ca27cf29ce17",
+      "config": "81f697b0bd9f3bda47a5f615c427b2d5668c817a6508c18b5ea526c5889409fb",
+      "reference_manifest": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56"
+    },
+    "runs": {
+      "branch_subset": "exp6_s1_branch_subset_20260814",
+      "calibration_audit": "exp6_s5_resolution_audit_20260814",
+      "reference": "exp5_s4_confirmatory_refs_amended_20260814"
+    }
+  },
+  "zero_repetitions": 4
+}

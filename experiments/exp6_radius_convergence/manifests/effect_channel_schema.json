@@ -1,0 +1,133 @@
+{
+  "channels": [
+    {
+      "name": "arm_q_l2",
+      "role": "EXP3_primary_component"
+    },
+    {
+      "name": "arm_qvel_l2",
+      "role": "EXP3_primary_component"
+    },
+    {
+      "name": "eef_position_l2",
+      "role": "EXP3_primary_component"
+    },
+    {
+      "name": "eef_orientation_geodesic",
+      "role": "EXP3_primary_component"
+    },
+    {
+      "name": "task_object_position_l2",
+      "role": "EXP3_primary_component"
+    },
+    {
+      "name": "task_object_orientation_geodesic_mean",
+      "role": "EXP3_primary_component"
+    },
+    {
+      "name": "contact_pair_symmetric_difference_count",
+      "role": "secondary_discrete"
+    },
+    {
+      "name": "raw_contact_count_difference",
+      "role": "secondary_discrete"
+    },
+    {
+      "name": "task_predicate_divergence",
+      "role": "secondary_discrete"
+    },
+    {
+      "name": "terminal_success_flip",
+      "role": "secondary_discrete"
+    },
+    {
+      "name": "integration_state_l2",
+      "role": "diagnostic_only"
+    },
+    {
+      "name": "signed_normalized_physical_output_vector",
+      "role": "finite_difference_operator"
+    }
+  ],
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T19:30:00.966936+00:00",
+  "manifest_name": "effect_channel_schema",
+  "manifest_type": "effect_channel_schema",
+  "outcome_blind": true,
+  "outcome_blind_declaration": "No EXP4 q-intervention outcome existed or was read when this manifest was frozen.",
+  "project_git_sha": "33e7075c14ebc29de04ae13e301c7aa5dd0fd8cd",
+  "project_sha": "097d1c2d11b301afb948c6be62fea2d4f3379535",
+  "schema_version": 1,
+  "signed_vector_order": [
+    "arm_q[7]",
+    "arm_qvel[7]",
+    "eef_position[3]",
+    "eef_orientation_rotvec[3]",
+    "task_object_position[3*body_count]",
+    "task_object_orientation_rotvec[3*body_count]"
+  ],
+  "source_file_sha256": {
+    "branch_candidates": "f5daf76f0a5e5540ef93bb94399f4e43974d4c733a3fbbf0d05729ced6f6969b",
+    "condition_d_gate": "6ca9e8fc827aac1aca4b4476829afb00015771585012b4f639b0e914513351da",
+    "exp3_normalization": "906ca20e409a2878e1bbe0b39a6d46c00009d35b7d7a2e6b64a36ea222cdaa12",
+    "exp4_config": "02eb4da555a8d25241fb8ba4c75adef774ae22cfd84696c1e85e66fd25b7ba47",
+    "joint_limits": "591f94f4b356ac186701b1dc4beff6ee6d7fc1329975e3a14c78b9d001e8f92f",
+    "progress_runtime_audit": "a0c46f5bd6e4a1f7a3b5185cc57a85b22ed66243e207698214bf186fdd1b01c2",
+    "reference_manifest": "10bdfd3aca8c1ef0b741c9f4ce64d8ed4351a48196446983001d8633a3fec183"
+  },
+  "source_runs": {
+    "branch_candidates": "exp4_e4_2_branch_candidates_20260814",
+    "condition_d_gate": "exp4_e4_2_condition_d_reconciled_20260814",
+    "joint_limit_audit": "exp2_r5_q_smoke_20260814T012633",
+    "legacy_exp3": "exp3_t6_full_20260814T022200",
+    "progress_audit": "exp4_e4_0_1_runtime_audit_geom_20260814",
+    "reference": "exp4_e4_3_heldout_refs_20260814"
+  },
+  "sources": {
+    "hashes": {
+      "branch_candidates": "89a0ca9e179d06adf187127d45f5a73022b6c6cac909c54bd93f5a5ae1c5a5d1",
+      "calibration_candidates": "360c4287f65a97cad58c1ce47a8496f09bae696ba1d196fb0c51ca27cf29ce17",
+      "config": "81f697b0bd9f3bda47a5f615c427b2d5668c817a6508c18b5ea526c5889409fb",
+      "reference_manifest": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56"
+    },
+    "runs": {
+      "branch_subset": "exp6_s1_branch_subset_20260814",
+      "calibration_audit": "exp6_s5_resolution_audit_20260814",
+      "reference": "exp5_s4_confirmatory_refs_amended_20260814"
+    }
+  },
+  "task_object_audit": {
+    "open_the_middle_drawer_of_the_cabinet": {
+      "bddl_goal": [
+        "open",
+        "wooden_cabinet_1_middle_region"
+      ],
+      "bodies": [
+        "wooden_cabinet_1_cabinet_middle"
+      ],
+      "predicate_source": "Open -> SiteObjectState.is_open -> WoodenCabinet.is_open"
+    },
+    "put_the_bowl_on_the_plate": {
+      "bddl_goal": [
+        "on",
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "bodies": [
+        "akita_black_bowl_1_main",
+        "plate_1_main"
+      ],
+      "predicate_source": "On -> plate ObjectState.check_ontop(bowl)"
+    },
+    "turn_on_the_stove": {
+      "bddl_goal": [
+        "turnon",
+        "flat_stove_1"
+      ],
+      "bodies": [
+        "flat_stove_1_button"
+      ],
+      "predicate_source": "TurnOn -> ObjectState.turn_on -> FlatStove.turn_on"
+    }
+  }
+}

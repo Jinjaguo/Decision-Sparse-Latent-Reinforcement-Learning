@@ -1,0 +1,43 @@
+{
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T19:30:00.966936+00:00",
+  "manifest_type": "manifest_hashes",
+  "manifests": {
+    "asymmetry_metric_spec.json": "60c1e0fedea51758aade28dc90f0284e0439ed01005c6939b173794ec17a9b0e",
+    "branch_manifest.json": "09990023adb6690dbe9c108a44e9db5d6a5607ca4d7b76aa1bd51368af6ae458",
+    "contact_divergence_spec.json": "9968d7768788bc14de7594e7df65cf314274c86e722db3776c3b4e08df9cf883",
+    "contact_mode_schema.json": "33d9fcfe6c5a46711846f7f5d3739ea236a3dd25472ded7b219d488c55f97b0a",
+    "direction_basis_manifest.json": "1199ac92e74ff5862487c4c77034b96f30bd4fd1a183c39c0e875869939110f0",
+    "effect_channel_schema.json": "4f436c75de95614255213d150de2cdc5d6d5723e9bf81294d9e6e2867743d1ca",
+    "effect_normalization.json": "aae1c3601f8d2a4e0b34e9f042c42b49bda54f287866609b4c066e06799a8833",
+    "exp6_branch_manifest.json": "6078638608eb102e62faf4261f04cf15957f39f5e26aa13ceacb337701506d1e",
+    "exp6_cohort_manifest.json": "7eabf1b5724eea8bcffe45ed3dc9b2360d9b75288e6d59e5d23ff620ab149757",
+    "gpu_analysis_spec.json": "0b193862aa8fafcdaa45e644606aa1f911064076ae01fd470a88c352b86f45d5",
+    "heldout_direction_manifest.json": "9d2bae0bc2ef0bb700d03d18c11386e59e49b7d5405c6e88319872da7caad745",
+    "numerical_calibration_manifest.json": "7fa169e070cb0da4c45ae6ebbdceee8732dd81cf92c749643b4204acf714077b",
+    "operator_metric_spec.json": "7c2322cc389637f6a20ed0d8318418764b6822a417f8e58214d8476c5dab84fc",
+    "primary_metric_spec.json": "dde343f0a7edd6b543f4d5ed544296d86f667fc4c811364ea0675325bead2bcb",
+    "radius_manifest.json": "68cb570f37fa8ef9758c8fea14a20eaa2146aebb45a9310dc63cdd38d152bb56",
+    "scientific_decision_rule.json": "e94e68aa35410d0e2224e6e22559d690fa5cfad4c8cbd2950bd163aa7878950e",
+    "signed_output_vector_spec.json": "ab58814a35b52bb6e661d99150cef649070e0cffe34e573b7d0cc26d25f040ac",
+    "statistical_analysis_plan.json": "ce17861409ac687d9b016d10cacbeaec8e84cfb4bf7653e43f720e38b6214d72",
+    "trust_region_spec.json": "fcab3001b93901e509bff03b9defc162afd771af038ad725c0200d1dfe577d86",
+    "zero_floor_spec.json": "43e2020fdf361a0911d1e18f26967f16f45c884421082fbec20ddc74af15c399"
+  },
+  "outcome_blind": true,
+  "project_sha": "097d1c2d11b301afb948c6be62fea2d4f3379535",
+  "schema_version": 1,
+  "sources": {
+    "hashes": {
+      "branch_candidates": "89a0ca9e179d06adf187127d45f5a73022b6c6cac909c54bd93f5a5ae1c5a5d1",
+      "calibration_candidates": "360c4287f65a97cad58c1ce47a8496f09bae696ba1d196fb0c51ca27cf29ce17",
+      "config": "81f697b0bd9f3bda47a5f615c427b2d5668c817a6508c18b5ea526c5889409fb",
+      "reference_manifest": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56"
+    },
+    "runs": {
+      "branch_subset": "exp6_s1_branch_subset_20260814",
+      "calibration_audit": "exp6_s5_resolution_audit_20260814",
+      "reference": "exp5_s4_confirmatory_refs_amended_20260814"
+    }
+  }
+}

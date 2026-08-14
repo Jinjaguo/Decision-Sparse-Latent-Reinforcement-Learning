@@ -19,10 +19,11 @@ sys.path.insert(0, str(ROOT)); sys.path.insert(0, str(ROOT / "src"))
 
 from decision_sparse_rl.logging.run_directory import create_run_directory, write_json, write_run_record  # noqa: E402
 from decision_sparse_rl.utils.environment_audit import git_record  # noqa: E402
-from scripts.exp4.freeze_protocol import canonical_basis  # noqa: E402
+from scripts.exp4.freeze_protocol import articulation_progress, bowl_progress, canonical_basis  # noqa: E402
 
 TASKS = ["open_the_middle_drawer_of_the_cabinet", "put_the_bowl_on_the_plate", "turn_on_the_stove"]
 LABELS = {0.0003125: "r0003125", 0.000625: "r000625", 0.00125: "r00125", 0.0025: "r0025", 0.005: "r005"}
+CONTACT_TOKEN = {TASKS[0]: "wooden_cabinet_1", TASKS[1]: "akita_black_bowl_1", TASKS[2]: "flat_stove_1"}
 
 
 def sha(path: Path) -> str:
@@ -41,6 +42,18 @@ def calibration_trajectories(full: list[dict], calibration: list[dict]) -> list[
         if branches:
             result.append({**trajectory, "branches": branches})
     return result
+
+
+def exact_pairs(boundary: dict) -> list[str]:
+    return sorted({"|".join(sorted((str(x["geom1_name"]), str(x["geom2_name"])))) for x in boundary["contact_pairs"]})
+
+
+def replacement_metadata(boundaries: list[dict], task: str, index: int, original: dict) -> dict:
+    boundary = boundaries[index]; command = float(boundary["progress_channels"]["gripper_command"])
+    grip = "negative" if command < -0.5 else "positive" if command > 0.5 else "neutral"; token = CONTACT_TOKEN[task]
+    contact = any(((token in pair.split("|", 1)[0] and "gripper0_" in pair.split("|", 1)[1]) or (token in pair.split("|", 1)[1] and "gripper0_" in pair.split("|", 1)[0])) for pair in exact_pairs(boundary))
+    predicate = bool(boundary["progress_channels"]["exact_task_predicate"]); progress = bowl_progress(boundaries)["clipped"] if task == TASKS[1] else articulation_progress(boundaries)["clipped"]
+    return {**original, "action_index": index, "branch_time": index, "normalized_time": index / max(len(boundaries) - 1, 1), "physical_progress_raw": float(progress[index]), "physical_progress_clipped": float(progress[index]), "reference_contact_state": contact, "reference_gripper_state": grip, "reference_predicate_state": predicate, "reference_contact_pairs": exact_pairs(boundary), "reference_stratum": f"contact={int(contact)}|gripper={grip}|predicate={int(predicate)}", "selection_distance": abs(index - int(original["action_index"])) / max(len(boundaries) - 1, 1), "deterministic_replacement_reason": f"nearest unused reference boundary satisfying all frozen EXP6 joint-limit checks; replaced action {original['action_index']}"}
 
 
 def main() -> int:
@@ -83,13 +96,26 @@ def main() -> int:
     directions, heldout = [], []
     for trajectory_index, trajectory in enumerate(trajectories):
         boundaries = json.loads((reference / refs[(trajectory["task"], trajectory["episode"])]["relative_directory"] / "boundaries.json").read_text()); limit = limits[trajectory["task"]]; span = np.asarray(limit["upper"]) - np.asarray(limit["lower"])
+        used = {int(branch["action_index"]) for branch in trajectory["branches"]}
         for branch_index, branch in enumerate(trajectory["branches"]):
             basis, _, rng = canonical_basis(np.random.SeedSequence(master_seed, spawn_key=(trajectory_index, branch_index))); random = rng.standard_normal(7); random /= np.linalg.norm(random); q = np.asarray(boundaries[branch["action_index"]]["panda_arm_q"])
+            vectors = [basis[:, i] for i in range(7)] + [random]
+            def admissible(candidate_q: np.ndarray) -> bool:
+                return all(np.all(candidate_q + sign * float(radius) * span * vector >= limit["lower"]) and np.all(candidate_q + sign * float(radius) * span * vector <= limit["upper"]) for radius in radii for vector in vectors for sign in (-1, 1))
+            if not admissible(q):
+                original_index = int(branch["action_index"]); replacement = None
+                for candidate_index in sorted((index for index in range(len(boundaries)) if index not in used), key=lambda index: (abs(index - original_index), index)):
+                    candidate_q = np.asarray(boundaries[candidate_index]["panda_arm_q"])
+                    if admissible(candidate_q):
+                        replacement = replacement_metadata(boundaries, trajectory["task"], candidate_index, branch); q = candidate_q; break
+                if replacement is None:
+                    raise RuntimeError(f"no joint-limit-valid replacement at {trajectory['task']}/{trajectory['episode']}/{original_index}")
+                used.remove(original_index); used.add(int(replacement["action_index"])); trajectory["branches"][branch_index] = replacement; branch = replacement
             for radius_index, radius in enumerate(radii):
                 for direction_index, vector, role in [(i, basis[:, i], "basis") for i in range(7)] + [(7, random, "heldout_random")]:
                     delta = float(radius) * span * vector
                     if not all(np.all(q + sign * delta >= limit["lower"]) and np.all(q + sign * delta <= limit["upper"]) for sign in (-1, 1)):
-                        raise RuntimeError(f"joint-limit violation at {trajectory['task']}/{trajectory['episode']}/{branch['action_index']}")
+                        raise RuntimeError(f"joint-limit reconciliation bug at {trajectory['task']}/{trajectory['episode']}/{branch['action_index']}")
                     row = {"task": trajectory["task"], "episode": trajectory["episode"], "branch_time": branch["action_index"], "radius_fraction": radius, "radius_label": LABELS[float(radius)], "direction_index": direction_index, "direction_role": role, "execution_position": radius_index * 8 + direction_index, "unit_direction_scaled_coordinates": vector.tolist(), "unsigned_delta_q": delta.tolist(), "both_signs_within_joint_limits": True}
                     directions.append(row)
                     if role == "heldout_random": heldout.append(row)

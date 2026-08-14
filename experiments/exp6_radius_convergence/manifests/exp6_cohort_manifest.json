@@ -1,0 +1,145 @@
+{
+  "cohort": [
+    {
+      "episode": "demo_10",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_11",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_12",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_13",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_14",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_15",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_16",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_18",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_19",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_20",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_10",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_11",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_12",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_13",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_14",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_15",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_16",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_17",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_18",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_19",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_10",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_11",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_12",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_13",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_14",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_15",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_16",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_17",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_18",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_19",
+      "task": "turn_on_the_stove"
+    }
+  ],
+  "drawer_demo17_preserved_as_failed_qualification": true,
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T19:30:00.966936+00:00",
+  "manifest_type": "exp6_cohort_manifest",
+  "outcome_blind": true,
+  "project_sha": "097d1c2d11b301afb948c6be62fea2d4f3379535",
+  "schema_version": 1,
+  "sources": {
+    "hashes": {
+      "branch_candidates": "89a0ca9e179d06adf187127d45f5a73022b6c6cac909c54bd93f5a5ae1c5a5d1",
+      "calibration_candidates": "360c4287f65a97cad58c1ce47a8496f09bae696ba1d196fb0c51ca27cf29ce17",
+      "config": "81f697b0bd9f3bda47a5f615c427b2d5668c817a6508c18b5ea526c5889409fb",
+      "reference_manifest": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56"
+    },
+    "runs": {
+      "branch_subset": "exp6_s1_branch_subset_20260814",
+      "calibration_audit": "exp6_s5_resolution_audit_20260814",
+      "reference": "exp5_s4_confirmatory_refs_amended_20260814"
+    }
+  },
+  "trajectory_count": 30
+}
