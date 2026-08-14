@@ -1,0 +1,12 @@
+diff --git a/robosuite/utils/binding_utils.py b/robosuite/utils/binding_utils.py
+--- a/robosuite/utils/binding_utils.py
++++ b/robosuite/utils/binding_utils.py
+@@ -40,7 +40,7 @@ if macros.MUJOCO_GPU_RENDERING and os.environ.get("MUJOCO_GL", None) not in ["o
+     if _SYSTEM == "Darwin":
+         os.environ["MUJOCO_GL"] = "cgl"
+     else:
+-        os.environ["MUJOCO_GL"] = "egl"
++        os.environ["MUJOCO_GL"] = "wgl"
+ _MUJOCO_GL = os.environ.get("MUJOCO_GL", "").lower().strip()
+ if _MUJOCO_GL not in ("disable", "disabled", "off", "false", "0"):
+     _VALID_MUJOCO_GL = ("enable", "enabled", "on", "true", "1", "glfw", "")
