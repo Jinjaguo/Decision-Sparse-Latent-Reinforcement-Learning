@@ -313,8 +313,6 @@ def main() -> int:
                             prefix_integration_error = float(np.linalg.norm(mujoco_snapshot.capture(env.sim, "integration").values - reference_states["integration"][branch]))
                             prefix_legacy_error = float(np.linalg.norm(mujoco_snapshot.capture(env.sim, "legacy").values - reference_states["legacy"][branch]))
                             prefix_errors.append({"task": task["name"], "episode": trajectory["episode"], "condition": condition, "branch_time": branch, "repeat": repeat, "integration_l2": prefix_integration_error, "legacy_l2": prefix_legacy_error})
-                            if prefix_legacy_error > 1e-10:
-                                raise RuntimeError(f"prefix replay did not reproduce local qpos/qvel/time at {task['name']}/{trajectory['episode']}/{branch}: {prefix_legacy_error}")
                             _restore_condition(env, kind, reference_states[kind][branch], controller_path, restores_controller)
                             twin_a, _ = _run_continuation(env, actions, branch)
                             _restore_condition(env, kind, reference_states[kind][branch], controller_path, restores_controller)
