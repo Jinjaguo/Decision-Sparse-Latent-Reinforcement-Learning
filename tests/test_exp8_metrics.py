@@ -16,6 +16,7 @@ from decision_sparse_rl.metrics.exp8 import (
     upper_tail,
 )
 from scripts.exp8.contact_frame import _surface_pair
+from scripts.exp8.analyze_formal import float_stack
 
 
 def test_tangent_gauge_is_deterministic_and_right_handed():
@@ -97,3 +98,10 @@ def test_nearest_surface_points_gap_and_normal_known_answer():
     assert row["nearest_point_a"] == pytest.approx([0.1, 0.0, 0.0])
     assert row["nearest_point_b"] == pytest.approx([0.2, 0.0, 0.0])
     assert row["normal"] == pytest.approx([1.0, 0.0, 0.0])
+
+
+def test_float_stack_converts_nested_arrow_style_objects():
+    nested = np.array([np.array([1, 2], dtype=object), np.array([3, 4], dtype=object)], dtype=object)
+    result = float_stack(nested)
+    assert result.dtype == np.float64
+    assert np.array_equal(result, [[1.0, 2.0], [3.0, 4.0]])

@@ -29,6 +29,11 @@ def write(rows, path):
     pq.write_table(pa.Table.from_pylist(rows), path, compression="zstd")
 
 
+def float_stack(values):
+    """Materialize Arrow/Pandas nested values as a dense float64 matrix."""
+    return np.stack([np.asarray(value, dtype=np.float64) for value in values])
+
+
 def features(row, groups):
     values = json.loads(row.feature_groups_json)
     return np.concatenate([np.asarray(values[group], dtype=np.float64) for group in groups])
@@ -113,9 +118,9 @@ def choose_parameters(train, groups, alpha_grid, bandwidth_grid, model):
         for fold in sorted(train.fold.unique()):
             inner_train, inner_test = train[train.fold != fold], train[train.fold == fold]
             if inner_train.empty or inner_test.empty: continue
-            xtrain = np.vstack([features(row, groups) if model == "krr" else row.baseline_b_features for row in inner_train.itertuples()])
-            xtest = np.vstack([features(row, groups) if model == "krr" else row.baseline_b_features for row in inner_test.itertuples()])
-            ytrain = np.vstack(inner_train.operator_flat)
+            xtrain = float_stack(features(row, groups) if model == "krr" else row.baseline_b_features for row in inner_train.itertuples())
+            xtest = float_stack(features(row, groups) if model == "krr" else row.baseline_b_features for row in inner_test.itertuples())
+            ytrain = float_stack(inner_train.operator_flat)
             predicted = krr(xtrain, ytrain, xtest, alpha, bandwidth) if model == "krr" else ridge(xtrain, ytrain, xtest, alpha)
             for prediction, actual in zip(predicted, inner_test.operator_matrix):
                 scores.append(operator_similarity(prediction.reshape(np.asarray(actual).shape), actual))
@@ -137,13 +142,13 @@ def crossfit_operators(data, groups, grids, fixed_parameters=None, conditional=T
             else:
                 primary_alpha, bandwidth, baseline_alpha = fixed_parameters[key]
             parameters[key] = (primary_alpha, bandwidth, baseline_alpha)
-            primary_train = np.vstack([features(row, groups) for row in train.itertuples()]); primary_test = np.vstack([features(row, groups) for row in test.itertuples()])
-            baseline_train = np.vstack(train.baseline_b_features); baseline_test = np.vstack(test.baseline_b_features)
-            targets = np.vstack(train.operator_flat)
+            primary_train = float_stack(features(row, groups) for row in train.itertuples()); primary_test = float_stack(features(row, groups) for row in test.itertuples())
+            baseline_train = float_stack(train.baseline_b_features); baseline_test = float_stack(test.baseline_b_features)
+            targets = float_stack(train.operator_flat)
             primary_prediction = krr(primary_train, targets, primary_test, primary_alpha, bandwidth)
             baseline_prediction = ridge(baseline_train, targets, baseline_test, baseline_alpha)
             for index, row in enumerate(test.itertuples()):
-                actual = np.asarray(row.operator_matrix); shape = actual.shape
+                actual = np.asarray(row.operator_matrix, dtype=np.float64); shape = actual.shape
                 primary_operator = primary_prediction[index].reshape(shape); baseline_operator = baseline_prediction[index].reshape(shape)
                 pool = train
                 time_row = pool.iloc[np.argmin(np.abs(pool.normalized_time.to_numpy() - row.normalized_time))]
@@ -175,7 +180,7 @@ def logistic_crossfit(frame, alpha_grid):
     for task, task_data in frame.groupby("task"):
         for fold in range(5):
             train, test = task_data[task_data.fold != fold].copy(), task_data[task_data.fold == fold].copy()
-            xtrain = np.vstack(train.risk_features); xtest = np.vstack(test.risk_features); mean, std = xtrain.mean(0), xtrain.std(0); std[std < 1e-12] = 1
+            xtrain = float_stack(train.risk_features); xtest = float_stack(test.risk_features); mean, std = xtrain.mean(0), xtrain.std(0); std[std < 1e-12] = 1
             xtrain = np.column_stack((np.ones(len(train)), (xtrain - mean) / std)); xtest = np.column_stack((np.ones(len(test)), (xtest - mean) / std)); ytrain = train.target.to_numpy(float)
             candidate_rows = []
             for alpha in alpha_grid:
@@ -207,7 +212,7 @@ def main() -> int:
     folds = pd.DataFrame(json.loads((args.manifest_dir / "crossfit_manifest.json").read_text(encoding="utf-8"))["assignments"])
     grids = json.loads((args.manifest_dir / "hyperparameter_grid.json").read_text(encoding="utf-8"))
     data = matrices.merge(operators, on=["task", "episode", "branch_time", "radius_fraction", "radius_label", "horizon"]).merge(branch_features, on=["task", "episode", "branch_time"]).merge(folds, on=["task", "episode"])
-    data["operator_flat"] = data.operator_matrix.map(lambda value: np.asarray(value).reshape(-1))
+    data["operator_flat"] = data.operator_matrix.map(lambda value: np.asarray(value, dtype=np.float64).reshape(-1))
     groups = ["physical_group", "nearest_points", "normal_tangent_frame", "signed_gap", "relative_velocity", "contact_age", "force", "action_projection", "eef_object_relative_pose", "physical_state"]
     smallest = min(data.radius_fraction)
     primary_data = data[(data.horizon == "1") & (data.radius_fraction == smallest)].copy()
@@ -220,7 +225,7 @@ def main() -> int:
     for row in cross.itertuples():
         key = (row.task, row.episode, row.branch_time)
         if key not in held_map: continue
-        actual_row = held_map[key]; predicted = np.asarray(row.predicted_operator) @ np.asarray(actual_row.unit_direction); actual = np.asarray(actual_row.actual_vector)
+        actual_row = held_map[key]; predicted = np.asarray(row.predicted_operator, dtype=np.float64) @ np.asarray(actual_row.unit_direction, dtype=np.float64); actual = np.asarray(actual_row.actual_vector, dtype=np.float64)
         error = float(np.linalg.norm(predicted - actual) / (np.linalg.norm(actual) + 1e-12))
         held_rows.append({"task": row.task, "episode": row.episode, "branch_time": row.branch_time, "predicted_vector": predicted.tolist(), "actual_vector": actual.tolist(), "predicted_norm": float(np.linalg.norm(predicted)), "actual_norm": float(np.linalg.norm(actual)), "vector_relative_error": error})
     held_frame = pd.DataFrame(held_rows); demo_held = held_frame.groupby(["task", "episode"]).apply(lambda group: pd.Series({"rho": float(spearmanr(group.predicted_norm, group.actual_norm).statistic) if len(group) > 1 else 0.0, "median_error": float(group.vector_relative_error.median())})).reset_index(); tails = upper_tail(held_frame.vector_relative_error); heldout_by_task = {task: {"demo_median_rho": float(group.rho.median()), "demo_median_vector_error": float(group.median_error.median()), **upper_tail(held_frame.loc[held_frame.task == task, "vector_relative_error"])} for task, group in demo_held.groupby("task")}
@@ -281,7 +286,7 @@ def main() -> int:
         for pair in json.loads(row["pair_features_json"]):
             if pair["geometry_valid"]: gaps.append(pair["signed_gap_m"]); ages.append(pair["contact_age_boundaries"])
     plt.figure(); plt.scatter(gaps, ages, s=2, alpha=.1); plt.tight_layout(); plt.savefig(plots / "signed_gap_vs_contact_age.png", dpi=160); plt.close()
-    projection = np.vstack(action_features.action_projection_features); plt.figure(); plt.hist(projection.reshape(-1), bins=80); plt.tight_layout(); plt.savefig(plots / "action_projection_distribution.png", dpi=160); plt.close()
+    projection = float_stack(action_features.action_projection_features); plt.figure(); plt.hist(projection.reshape(-1), bins=80); plt.tight_layout(); plt.savefig(plots / "action_projection_distribution.png", dpi=160); plt.close()
     cross[["best_baseline_top1", "primary_top1"]].boxplot(); plt.tight_layout(); plt.savefig(plots / "baseline_vs_contactframe_top1.png", dpi=160); plt.close()
     cross.boxplot(column="primary_top1", by="task", rot=20); plt.tight_layout(); plt.savefig(plots / "crossdemo_top1_by_task.png", dpi=160); plt.close()
     plt.figure(); plt.hist(held_frame.vector_relative_error, bins=50); plt.tight_layout(); plt.savefig(plots / "heldout_vector_error_distribution.png", dpi=160); plt.close()
