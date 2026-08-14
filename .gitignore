@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# External repositories and local datasets are provenance-recorded, not vendored.
+third_party/*
+!third_party/.gitkeep
+data/
+
+# Run outputs are immutable local artifacts and can be large.
+runs/*
+!runs/.gitkeep
+results/*
+!results/.gitkeep
+
+# Local machine configuration.
+.env
+*.local.yaml
