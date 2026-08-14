@@ -118,7 +118,6 @@ def _write_episode_reference(
     public_states = episode["states"]
     state_rows: Dict[str, List[np.ndarray]] = {kind: [] for kind in ("legacy", "fullphysics", "integration")}
     boundaries: List[Dict[str, Any]] = []
-    validations: List[Dict[str, Any]] = []
     public_errors: List[float] = []
     rewards: List[float] = []
     for action_index, action in enumerate(actions):
@@ -131,11 +130,6 @@ def _write_episode_reference(
         controller_path = output_directory / f"controller_{action_index:04d}.npz"
         controller_snapshot.serialize(controller_path, runtime)
         boundaries.append(_boundary_observation(env, action_index, action))
-        validation = {"action_index": action_index, "conditions": {}}
-        for kind in ("legacy", "fullphysics", "integration"):
-            validation["conditions"][kind] = _validate_boundary(env, action, kind, master, runtime)
-        validations.append(validation)
-        _restore_master(env, master, runtime)
         _, reward, _, _ = env.step(action)
         rewards.append(float(reward))
         if action_index < len(actions) - 1:
@@ -148,6 +142,20 @@ def _write_episode_reference(
         "body_positions": np.asarray(env.sim.data.body_xpos).copy(),
         "body_quaternions": np.asarray(env.sim.data.body_xquat).copy(),
     }
+    # Validate only after the clean reference is complete. Diagnostic transitions
+    # must never be interleaved with the evidence-producing local rollout.
+    validations: List[Dict[str, Any]] = []
+    for action_index, action in enumerate(actions):
+        master = mujoco_snapshot.MujocoSnapshot(
+            kind="integration",
+            state_spec=mujoco_snapshot.state_spec("integration"),
+            values=state_rows["integration"][action_index],
+        )
+        runtime = controller_snapshot.deserialize(output_directory / f"controller_{action_index:04d}.npz")
+        validation = {"action_index": action_index, "conditions": {}}
+        for kind in ("legacy", "fullphysics", "integration"):
+            validation["conditions"][kind] = _validate_boundary(env, action, kind, master, runtime)
+        validations.append(validation)
     arrays_path = output_directory / "trajectory_states.npz"
     np.savez_compressed(
         arrays_path,
