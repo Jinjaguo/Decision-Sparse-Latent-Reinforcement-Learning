@@ -1,0 +1,4711 @@
+{
+  "audit_run_id": "exp2_r1_roundtrip_20260814T000341",
+  "boundary_name": "outer_env_step_return_or_initialized_pre-policy boundary",
+  "definition": "Snapshot t=0 is taken after reset_from_xml_string, sim.reset, set_init_state, post_process, and forced observable update. Snapshot t>0 is taken immediately after ControlEnv.step(actions[t-1]) returns and before ControlEnv.step(actions[t]) is called.",
+  "inner_simulation_steps_observed": 25,
+  "next_action_semantics": "At a stored boundary t, continuation begins by calling outer ControlEnv.step(actions[t]). No controller.set_goal or robot.control for actions[t] has yet executed.",
+  "observed_first_action_call_trace": [
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\base.py",
+      "function": "step",
+      "line": 361,
+      "sequence": 0
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 1
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 2
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "set_goal",
+      "line": 202,
+      "sequence": 3
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 4
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 5
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 6
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 7
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 8
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 9
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 10
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 11
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 12
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 13
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 14
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 15
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 16
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 17
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 18
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 19
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 20
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 21
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 22
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 23
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 24
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 25
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 26
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 27
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 28
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 29
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 30
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 31
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 32
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 33
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 34
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 35
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 36
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 37
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 38
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 39
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 40
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 41
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 42
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 43
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 44
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 45
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 46
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 47
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 48
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 49
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 50
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 51
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 52
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 53
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 54
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 55
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 56
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 57
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 58
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 59
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 60
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 61
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 62
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 63
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 64
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 65
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 66
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 67
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 68
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 69
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 70
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 71
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 72
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 73
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 74
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 75
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 76
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 77
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 78
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 79
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 80
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 81
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 82
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 83
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 84
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 85
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 86
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 87
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 88
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 89
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 90
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 91
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 92
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 93
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 94
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 95
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 96
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 97
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 98
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 99
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 100
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 101
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 102
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 103
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 104
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 105
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 106
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 107
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 108
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 109
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 110
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 111
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 112
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 113
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 114
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 115
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 116
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 117
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 118
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 119
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 120
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 121
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 122
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 123
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 124
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 125
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 126
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 127
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 128
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 129
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 130
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 131
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 132
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 133
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 134
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 135
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 136
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 137
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 138
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 139
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 140
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 141
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 142
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 143
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 144
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 145
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 146
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 147
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 148
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 149
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 150
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 151
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 152
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 153
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 154
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 155
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 156
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 157
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 158
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 159
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 160
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 161
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 162
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 163
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 164
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 165
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 166
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 167
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 168
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 169
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 170
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 171
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 172
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 173
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 174
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 175
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 176
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 177
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 178
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 179
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 180
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 181
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 182
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 183
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 184
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 185
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 186
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 187
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 188
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 189
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 190
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 191
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 192
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 193
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 194
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 195
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 196
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 197
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 198
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 199
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 200
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 201
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 202
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 203
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 204
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 205
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 206
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 207
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 208
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 209
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 210
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 211
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 212
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 213
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 214
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 215
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 216
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 217
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 218
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 219
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 220
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 221
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 222
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 223
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 224
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 225
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 226
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 227
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 228
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 229
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 230
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 231
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 232
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 233
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 234
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 235
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 236
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 237
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 238
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 239
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 240
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 241
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 242
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 243
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 244
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 245
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 246
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 247
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 248
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 249
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 250
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 251
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 252
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 253
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 254
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 255
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 256
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 257
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 258
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 259
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 260
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 261
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 262
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 263
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 264
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 265
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 266
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 267
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 268
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 269
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 270
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 271
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 272
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 273
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 274
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 275
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 276
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 277
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 278
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 279
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 280
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 281
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 282
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 283
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 284
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 285
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 286
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 287
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 288
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 289
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 290
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 291
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 292
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 293
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 294
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 295
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 296
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 297
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 298
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 299
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 300
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 301
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 302
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 303
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 304
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 305
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 306
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 307
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 308
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 309
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 310
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 311
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 312
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 313
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 314
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 315
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 316
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 317
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 318
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 319
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 320
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 321
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 322
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 323
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 324
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 325
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 326
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 327
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 328
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 329
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 330
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 331
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 332
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 333
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 334
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 335
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 336
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 337
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 338
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 339
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 340
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 341
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 342
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 343
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 344
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 345
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 346
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 347
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 348
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 349
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 350
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 351
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 352
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 353
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 354
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 355
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 356
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 357
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 358
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 359
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 360
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 361
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 362
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 363
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 364
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 365
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 366
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 367
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 368
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 369
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 370
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 371
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 372
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 373
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 374
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 375
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 376
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 377
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 378
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 379
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 380
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 381
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 382
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 383
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 384
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 385
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 386
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 387
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 388
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 389
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 390
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 391
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 392
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 393
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 394
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 395
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 396
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 397
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 398
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 399
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 400
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 401
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 402
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 403
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 404
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 405
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 406
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 407
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 408
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 409
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 410
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 411
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 412
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 413
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 414
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 415
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 416
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 417
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 418
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 419
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 420
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 421
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 422
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 423
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 424
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 425
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 426
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 427
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 428
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 429
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 430
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 431
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 432
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 433
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 434
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 435
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 436
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 437
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 438
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 439
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 440
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 441
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 442
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 443
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 444
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 445
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 446
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 447
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 448
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 449
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 450
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 451
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 452
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 453
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 454
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 455
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 456
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 457
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 458
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 459
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 460
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 461
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 462
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 463
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 464
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 465
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 466
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 467
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 468
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 469
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 470
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 471
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 472
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 473
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 474
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 475
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 476
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 477
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 478
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 479
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 480
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 481
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 482
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 483
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 484
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 485
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 486
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 487
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 488
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 489
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 490
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 491
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 492
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 493
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 494
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 495
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 496
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 497
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 498
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 499
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 500
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 501
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 502
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 503
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 504
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 505
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 506
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 507
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 508
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 509
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 510
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 511
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 512
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 513
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 514
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 515
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 516
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 517
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 518
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 519
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 520
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 521
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 522
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 523
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 524
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 525
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 526
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 527
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 528
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 529
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 530
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 531
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 532
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 533
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 534
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 535
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 536
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 537
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 538
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 539
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 540
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 541
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 542
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 543
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 544
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 545
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 546
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 547
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 548
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 549
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 550
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 551
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 552
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 553
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 554
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 555
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 556
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 557
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 558
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 559
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 560
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 561
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 562
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 563
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 564
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 565
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 566
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 567
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 568
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 569
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 570
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 571
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 572
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 573
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 574
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 575
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 576
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 577
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 578
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 579
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 580
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 581
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 582
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 583
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 584
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 585
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 586
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 587
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 588
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 589
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 590
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 591
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 592
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 593
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 594
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 595
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 596
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 597
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 598
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 599
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 600
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 601
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 602
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 603
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 604
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 605
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 606
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 607
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 608
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 609
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 610
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 611
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 612
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 613
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 614
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 615
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 616
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 617
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 618
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 619
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 620
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 621
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 622
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 623
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 624
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 625
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 626
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 627
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 628
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 629
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 630
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 631
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 632
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 633
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 634
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 635
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 636
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 637
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 638
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 639
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 640
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 641
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 642
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 643
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 644
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 645
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 646
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 647
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 648
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 649
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 650
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 651
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 652
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 653
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 654
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 655
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 656
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 657
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 658
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 659
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 660
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 661
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 662
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 663
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 664
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 665
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 666
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 667
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 668
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 669
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 670
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 671
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 672
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 673
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 674
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 675
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 676
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 677
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 678
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 679
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 680
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 681
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 682
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 683
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 684
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 685
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 686
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 687
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 688
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 689
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 690
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 691
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 692
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 693
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 694
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 695
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 696
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 697
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 698
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 699
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 700
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 701
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 702
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 703
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 704
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 705
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 706
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 707
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 708
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 709
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 710
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 711
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 712
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 713
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 714
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 715
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 716
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 717
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 718
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 719
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 720
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 721
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 722
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 723
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 724
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 725
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 726
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 727
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 728
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 729
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 730
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 731
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 732
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 733
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 734
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 735
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 736
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 737
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 738
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 739
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 740
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 741
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 742
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 743
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 744
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 745
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 746
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\environments\\robot_env.py",
+      "function": "_pre_action",
+      "line": 558,
+      "sequence": 747
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "function": "control",
+      "line": 216,
+      "sequence": 748
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "function": "run_controller",
+      "line": 278,
+      "sequence": 749
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "update",
+      "line": 125,
+      "sequence": 750
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "function": "run_controller",
+      "line": 95,
+      "sequence": 751
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\binding_utils.py",
+      "function": "step",
+      "line": 1090,
+      "sequence": 752
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 753
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 754
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 755
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 756
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 757
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 758
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 759
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 760
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 761
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 762
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 763
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 764
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 765
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 766
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 767
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 768
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 769
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 770
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 771
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 772
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 773
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 774
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 775
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 776
+    },
+    {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\utils\\observables.py",
+      "function": "update",
+      "line": 214,
+      "sequence": 777
+    }
+  ],
+  "schema_version": 1,
+  "verified_call_chain": [
+    {
+      "order": 1,
+      "source": "third_party/robosuite-src/robosuite/environments/base.py:361",
+      "symbol": "MujocoEnv.step"
+    },
+    {
+      "order": 2,
+      "source": "third_party/robosuite-src/robosuite/environments/robot_env.py:558",
+      "symbol": "RobotEnv._pre_action"
+    },
+    {
+      "order": 3,
+      "source": "third_party/robosuite-src/robosuite/robots/single_arm.py:216",
+      "symbol": "SingleArm.control"
+    },
+    {
+      "only_first_inner_step": true,
+      "order": 4,
+      "source": "third_party/robosuite-src/robosuite/controllers/osc.py:202",
+      "symbol": "OperationalSpaceController.set_goal"
+    },
+    {
+      "order": 5,
+      "source": "third_party/robosuite-src/robosuite/controllers/osc.py:278",
+      "symbol": "OperationalSpaceController.run_controller"
+    },
+    {
+      "order": 6,
+      "source": "third_party/robosuite-src/robosuite/environments/base.py:391",
+      "symbol": "MjSim.step"
+    }
+  ]
+}
