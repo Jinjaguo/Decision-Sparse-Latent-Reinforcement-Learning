@@ -22,6 +22,12 @@ def sigmoid(value):
     return 1.0 / (1.0 + np.exp(-value))
 
 
+def torch_median(value):
+    ordered, _ = torch.sort(value, dim=0)
+    count = ordered.shape[0]
+    return ordered[count // 2] if count % 2 else (ordered[count // 2 - 1] + ordered[count // 2]) / 2
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-dir", type=Path, required=True)
@@ -34,10 +40,11 @@ def main() -> int:
     rng = np.random.default_rng(980010)
     records = []
     x = rng.normal(size=(80, 24))
-    mean, scale = x.mean(0), np.maximum(x.std(0), 1e-12)
-    cpu_normalized = (x - mean) / scale
+    center = np.median(x, axis=0); scale = 1.4826 * np.median(np.abs(x - center), axis=0); fallback = x.std(0); scale[scale < 1e-12] = fallback[scale < 1e-12]; scale[scale < 1e-12] = 1.0
+    cpu_normalized = (x - center) / scale
     tx = torch.tensor(x, dtype=torch.float64, device="cuda")
-    gpu_normalized = ((tx - torch.tensor(mean, dtype=torch.float64, device="cuda")) / torch.tensor(scale, dtype=torch.float64, device="cuda")).cpu().numpy()
+    tcenter = torch_median(tx); tscale = 1.4826 * torch_median(torch.abs(tx - tcenter)); tfallback = torch.std(tx, dim=0, unbiased=False); tscale = torch.where(tscale < 1e-12, tfallback, tscale); tscale = torch.where(tscale < 1e-12, torch.ones_like(tscale), tscale)
+    gpu_normalized = ((tx - tcenter) / tscale).cpu().numpy()
     records.append(compare("contact_frame_coordinates_and_normalization", cpu_normalized, gpu_normalized))
     squared = np.sum((cpu_normalized[:, None, :] - cpu_normalized[None, :, :]) ** 2, axis=2)
     kernel = np.exp(-squared / 2.0)

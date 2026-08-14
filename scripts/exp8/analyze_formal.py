@@ -35,9 +35,12 @@ def features(row, groups):
 
 
 def scale(train, test):
-    mean, std = train.mean(0), train.std(0)
-    std[std < 1e-12] = 1.0
-    return (train - mean) / std, (test - mean) / std
+    center = np.median(train, axis=0)
+    robust = 1.4826 * np.median(np.abs(train - center), axis=0)
+    fallback = train.std(0)
+    robust[robust < 1e-12] = fallback[robust < 1e-12]
+    robust[robust < 1e-12] = 1.0
+    return (train - center) / robust, (test - center) / robust
 
 
 def rbf(left, right, bandwidth):
