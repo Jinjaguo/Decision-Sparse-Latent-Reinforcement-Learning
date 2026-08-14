@@ -138,6 +138,7 @@ def main() -> int:
         "executable": sys.executable,
         "numpy": np.__version__,
         "h5py": h5py.__version__,
+        "mujoco": importlib.metadata.version("mujoco"),
         "robosuite": importlib.metadata.version("robosuite"),
     }
     git_state = {
