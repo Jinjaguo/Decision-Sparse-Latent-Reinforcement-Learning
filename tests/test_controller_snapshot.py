@@ -31,7 +31,7 @@ def _environment():
     controller = SimpleNamespace()
     for index, name in enumerate(CONTROLLER_FIELDS):
         setattr(controller, name, None if name == "ori_ref" else (True if name == "new_update" else np.asarray([float(index)])))
-    robot = SimpleNamespace(controller=controller, torques=np.asarray([1.0]))
+    robot = SimpleNamespace(controller=controller, torques=np.asarray([1.0]), gripper=SimpleNamespace(current_action=np.asarray([0.25, -0.25])))
     for name in ROBOT_BUFFER_FIELDS:
         setattr(robot, name, _Ring(2) if name == "recent_ee_vel_buffer" else _Delta(2))
     return SimpleNamespace(robots=[robot], env=SimpleNamespace(timestep=3, cur_time=0.15, done=False))
@@ -43,6 +43,7 @@ class ControllerSnapshotTest(unittest.TestCase):
         original = capture(env)
         env.robots[0].controller.goal_pos[:] = 99
         env.robots[0].recent_actions.current[:] = 88
+        env.robots[0].gripper.current_action[:] = 77
         env.env.timestep = 99
         restore(env, original)
         self.assertTrue(all(value == 0.0 for value in field_errors(original, capture(env)).values()))

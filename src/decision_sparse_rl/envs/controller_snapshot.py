@@ -22,6 +22,7 @@ ROBOT_BUFFER_FIELDS = (
     "recent_ee_pose", "recent_ee_vel", "recent_ee_vel_buffer", "recent_ee_acc",
 )
 ENVIRONMENT_FIELDS = ("timestep", "cur_time", "done")
+GRIPPER_FIELDS = ("current_action",)
 
 
 def _copy_value(value: Any) -> Any:
@@ -50,6 +51,7 @@ def capture(env: Any) -> Dict[str, Any]:
         "controller": {name: _copy_value(getattr(controller, name)) for name in CONTROLLER_FIELDS},
         "robot": {name: _copy_value(getattr(robot, name)) for name in ROBOT_SCALAR_FIELDS},
         "buffers": {name: _capture_buffer(getattr(robot, name)) for name in ROBOT_BUFFER_FIELDS},
+        "gripper": {name: _copy_value(getattr(robot.gripper, name)) for name in GRIPPER_FIELDS},
         "environment": {name: _copy_value(getattr(env.env, name)) for name in ENVIRONMENT_FIELDS},
     }
 
@@ -76,6 +78,8 @@ def restore(env: Any, snapshot: Dict[str, Any]) -> None:
         setattr(robot, name, _copy_value(value))
     for name, state in snapshot["buffers"].items():
         _restore_buffer(getattr(robot, name), state)
+    for name, value in snapshot["gripper"].items():
+        setattr(robot.gripper, name, _copy_value(value))
     for name, value in snapshot["environment"].items():
         setattr(env.env, name, _copy_value(value))
 
@@ -89,6 +93,8 @@ def validate(snapshot: Dict[str, Any]) -> Dict[str, Any]:
         raise ValueError("robot fields do not match the audited schema")
     if set(snapshot["buffers"]) != set(ROBOT_BUFFER_FIELDS):
         raise ValueError("robot buffers do not match the audited schema")
+    if set(snapshot["gripper"]) != set(GRIPPER_FIELDS):
+        raise ValueError("gripper fields do not match the audited schema")
     for value in _numeric_arrays(snapshot):
         if not np.all(np.isfinite(value)):
             raise ValueError("controller/robot snapshot contains non-finite values")
@@ -96,7 +102,7 @@ def validate(snapshot: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def _numeric_arrays(snapshot: Dict[str, Any]) -> Iterable[np.ndarray]:
-    for section in ("controller", "robot", "environment"):
+    for section in ("controller", "robot", "gripper", "environment"):
         for value in snapshot[section].values():
             if isinstance(value, (np.ndarray, int, float, bool, np.generic)):
                 yield np.asarray(value)
@@ -110,7 +116,7 @@ def field_errors(left: Dict[str, Any], right: Dict[str, Any]) -> Dict[str, float
     validate(left)
     validate(right)
     result: Dict[str, float] = {}
-    for section in ("controller", "robot", "environment"):
+    for section in ("controller", "robot", "gripper", "environment"):
         for name in left[section]:
             a, b = left[section][name], right[section][name]
             key = f"{section}.{name}"
@@ -131,7 +137,7 @@ def serialize(path: Path, snapshot: Dict[str, Any]) -> None:
     validate(snapshot)
     arrays: Dict[str, np.ndarray] = {}
     metadata: Dict[str, Any] = {"schema_version": 1, "values": {}}
-    for section in ("controller", "robot", "environment"):
+    for section in ("controller", "robot", "gripper", "environment"):
         metadata["values"][section] = {}
         for name, value in snapshot[section].items():
             key = f"{section}__{name}"
@@ -158,7 +164,7 @@ def deserialize(path: Path) -> Dict[str, Any]:
     with np.load(Path(path), allow_pickle=False) as archive:
         metadata = json.loads(str(archive["__metadata__"].item()))
         result: Dict[str, Any] = {"schema_version": metadata["schema_version"]}
-        for section in ("controller", "robot", "environment"):
+        for section in ("controller", "robot", "gripper", "environment"):
             result[section] = {}
             for name, entry in metadata["values"][section].items():
                 result[section][name] = np.asarray(archive[entry["key"]]).copy() if entry["storage"] == "array" else entry["value"]

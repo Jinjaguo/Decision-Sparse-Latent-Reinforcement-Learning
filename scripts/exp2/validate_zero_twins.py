@@ -56,6 +56,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--gate-config", type=Path, default=REPOSITORY_ROOT / "experiments/exp2_simulator_reconciliation/configs/zero_twin_gate.json")
     parser.add_argument("--repeats", type=int, default=3)
     parser.add_argument("--condition-e-only", action="store_true")
+    parser.add_argument("--condition-d-only", action="store_true")
     return parser.parse_args()
 
 
@@ -244,6 +245,8 @@ def _summarize(step_rows: List[Dict[str, Any]], pair_rows: List[Dict[str, Any]],
         summaries[condition] = {"passed": all(criteria.values()), "criteria": criteria, "comparison_count": len(condition_pairs), "step_count": len(condition_steps), "metrics": metric_summary, "integration_by_task": by_task, "strata": strata}
     if conditions == (E_CONDITION,):
         selected = E_CONDITION[0] if summaries[E_CONDITION[0]]["passed"] else None
+    elif conditions == (FORMAL_CONDITIONS[3],):
+        selected = FORMAL_CONDITIONS[3][0] if summaries[FORMAL_CONDITIONS[3][0]]["passed"] else None
     else:
         selected = "C_INTEGRATION" if summaries["C_INTEGRATION"]["passed"] else ("D_INTEGRATION_CONTROLLER_ROBOT" if summaries["D_INTEGRATION_CONTROLLER_ROBOT"]["passed"] else None)
     return {"conditions": summaries, "selected_condition": selected, "passed": selected is not None}
@@ -280,14 +283,17 @@ def main() -> int:
     args = parse_args()
     if args.repeats < 3:
         raise ValueError("formal gate requires at least three repeats")
-    active_conditions = (E_CONDITION,) if args.condition_e_only else FORMAL_CONDITIONS
+    if args.condition_e_only and args.condition_d_only:
+        raise ValueError("condition D and condition E diagnostic modes are mutually exclusive")
+    active_conditions = (E_CONDITION,) if args.condition_e_only else ((FORMAL_CONDITIONS[3],) if args.condition_d_only else FORMAL_CONDITIONS)
     run_dir = create_run_directory(args.run_root, args.run_id)
     command = shlex.join([sys.executable, *sys.argv])
     captured_stdout, captured_stderr = io.StringIO(), io.StringIO()
     reference_run = args.reference_run.resolve()
     branch_manifest = json.loads(args.branches.read_text(encoding="utf-8"))
     gate_config = json.loads(args.gate_config.read_text(encoding="utf-8"))
-    config = {"run_id": args.run_id, "stage": "R4_condition_E_diagnostic" if args.condition_e_only else "R4_zero_twins", "reference_run": str(reference_run), "branches": str(args.branches.resolve()), "gate_config": str(args.gate_config.resolve()), "repeats": args.repeats, "conditions": [item[0] for item in active_conditions], "condition_e_mechanism": "copy.deepcopy(mujoco.MjData) plus explicit controller/robot state" if args.condition_e_only else None}
+    stage = "R4_condition_E_diagnostic" if args.condition_e_only else ("R4_condition_D_gripper_revalidation" if args.condition_d_only else "R4_zero_twins")
+    config = {"run_id": args.run_id, "stage": stage, "reference_run": str(reference_run), "branches": str(args.branches.resolve()), "gate_config": str(args.gate_config.resolve()), "repeats": args.repeats, "conditions": [item[0] for item in active_conditions], "condition_e_mechanism": "copy.deepcopy(mujoco.MjData) plus explicit controller/robot state" if args.condition_e_only else None}
     environment = {"python": sys.version, "executable": sys.executable, "numpy": np.__version__, "mujoco": importlib.metadata.version("mujoco"), "robosuite": importlib.metadata.version("robosuite"), "pyarrow": pa.__version__}
     git_state = {"project": git_record(REPOSITORY_ROOT), "libero": git_record(args.libero_root), "robosuite_source": git_record(REPOSITORY_ROOT / "third_party/robosuite-src")}
     env = None

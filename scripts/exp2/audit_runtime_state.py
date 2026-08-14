@@ -67,6 +67,10 @@ ROBOT_FIELDS = {
     "recent_ee_acc": ("robot_buffer", True),
 }
 
+GRIPPER_FIELDS = {
+    "current_action": ("gripper_action_integrator", True),
+}
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -220,9 +224,11 @@ def main() -> int:
             controller = robot.controller
             before_controller = _capture_fields(controller, CONTROLLER_FIELDS)
             before_robot = _capture_fields(robot, ROBOT_FIELDS)
+            before_gripper = _capture_fields(robot.gripper, GRIPPER_FIELDS)
             env.step(actions[0])
             after_controller = _capture_fields(controller, CONTROLLER_FIELDS)
             after_robot = _capture_fields(robot, ROBOT_FIELDS)
+            after_gripper = _capture_fields(robot.gripper, GRIPPER_FIELDS)
             env.reset_from_xml_string(xml)
             env.sim.reset()
             env.set_init_state(states[0])
@@ -230,6 +236,7 @@ def main() -> int:
             controller_reset = robot_reset.controller
             reset_controller = _capture_fields(controller_reset, CONTROLLER_FIELDS)
             reset_robot = _capture_fields(robot_reset, ROBOT_FIELDS)
+            reset_gripper = _capture_fields(robot_reset.gripper, GRIPPER_FIELDS)
             native_model = env.sim.model._model
             flags = _state_flags(native_model)
             dims = {name: int(getattr(env.sim.model, name)) for name in ("nq", "nv", "na", "nu", "nbody", "nmocap", "nuserdata")}
@@ -265,6 +272,7 @@ def main() -> int:
                 },
                 "controller_fields": _field_schema("env.robots[0].controller", before_controller, after_controller, reset_controller, CONTROLLER_FIELDS, _source_reference(type(controller_reset))),
                 "robot_fields": _field_schema("env.robots[0]", before_robot, after_robot, reset_robot, ROBOT_FIELDS, _source_reference(type(robot_reset))),
+                "gripper_fields": _field_schema("env.robots[0].gripper", before_gripper, after_gripper, reset_gripper, GRIPPER_FIELDS, _source_reference(type(robot_reset.gripper))),
                 "environment_timing_fields": [
                     {"object_path": "env.env.timestep", "included_in_condition_d_snapshot": True, "reason": "used by step horizon/done bookkeeping"},
                     {"object_path": "env.env.cur_time", "included_in_condition_d_snapshot": True, "reason": "advanced by each policy step"},
