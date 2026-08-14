@@ -43,6 +43,10 @@ class Exp3CriticalityTest(unittest.TestCase):
         self.assertEqual(0.0, rotation_geodesic(identity, identity))
         self.assertAlmostEqual(np.pi, rotation_geodesic(identity, half_turn))
         self.assertEqual(0.0, quaternion_geodesic([1, 0, 0, 0], [-1, 0, 0, 0]))
+        drifted = identity.copy()
+        drifted[0, 0] = np.nextafter(1.0, 0.0)
+        self.assertEqual(0.0, rotation_geodesic(drifted, drifted.copy()))
+        self.assertEqual(0.0, quaternion_geodesic([0.999999999999, 0, 0, 0], [0.999999999999, 0, 0, 0]))
 
     def test_eight_way_aggregation(self):
         result = aggregate_interventions(range(8))

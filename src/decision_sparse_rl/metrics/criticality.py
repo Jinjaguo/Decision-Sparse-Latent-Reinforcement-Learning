@@ -11,6 +11,10 @@ def rotation_geodesic(left: np.ndarray, right: np.ndarray) -> float:
     """Return the SO(3) geodesic angle in radians."""
     a = np.asarray(left, dtype=np.float64).reshape(3, 3)
     b = np.asarray(right, dtype=np.float64).reshape(3, 3)
+    # Simulator matrices can share identical floating-point orthogonality drift.
+    # Exact equality must remain the exact zero required by the matched-twin gate.
+    if np.array_equal(a, b):
+        return 0.0
     cosine = np.clip((np.trace(a.T @ b) - 1.0) / 2.0, -1.0, 1.0)
     return float(np.arccos(cosine))
 
@@ -19,6 +23,8 @@ def quaternion_geodesic(left: np.ndarray, right: np.ndarray) -> float:
     """Return sign-invariant quaternion angular distance in radians."""
     a = np.asarray(left, dtype=np.float64).reshape(4)
     b = np.asarray(right, dtype=np.float64).reshape(4)
+    if np.array_equal(a, b) or np.array_equal(a, -b):
+        return 0.0
     a = a / np.linalg.norm(a)
     b = b / np.linalg.norm(b)
     return float(2.0 * np.arccos(np.clip(abs(float(a @ b)), 0.0, 1.0)))
@@ -62,4 +68,3 @@ def aggregate_interventions(values: Sequence[float]) -> Dict[str, float]:
         "p25": float(np.percentile(x, 25)), "p75": float(np.percentile(x, 75)),
         "minimum": float(np.min(x)), "maximum": float(np.max(x)),
     }
-
