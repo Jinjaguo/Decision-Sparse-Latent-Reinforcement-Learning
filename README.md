@@ -11,6 +11,11 @@ q-perturbation sweep are blocked pending simulator/data reconciliation. See
 [experiments/exp1_decision_sparsity/EXP1.md](experiments/exp1_decision_sparsity/EXP1.md)
 and the append-only [research log](research_log/README.md).
 
+Detailed completed-experiment report: [exp1_report.md](exp1_report.md).
+
+Each completed experiment must produce a detailed root-level `exp{id}_report.md`
+before it is considered handed off.
+
 ## Safety gates
 
 1. Audit the exact environment, repositories, task API, and dataset schema.
