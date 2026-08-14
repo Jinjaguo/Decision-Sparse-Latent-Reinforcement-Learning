@@ -12,8 +12,8 @@
 | 停止原因 | 无扰动回放无法充分复现记录的 MuJoCo 状态轨迹 |
 | 最终结果提交前代码版本 | `11854ffd31a8669f8b1e9e9062bbcf6f8515dfde` |
 | 报告前最新提交 | `7c61f71` |
-| 原始执行规范 | [`experiments/exp1_decision_sparsity/EXP1.md`](experiments/exp1_decision_sparsity/EXP1.md) |
-| 项目总纲 | [`PROJECT.md`](PROJECT.md) |
+| 原始执行规范 | [`experiments/exp1_decision_sparsity/EXP1.md`](../experiments/exp1_decision_sparsity/EXP1.md) |
+| 项目总纲 | [`PROJECT.md`](../PROJECT.md) |
 
 ## 2. 执行摘要
 
@@ -113,7 +113,7 @@ LIBERO 直接从检出的源码目录导入，没有使用来源不明的已安�
 robosuite 1.4.0 的渲染后端选择逻辑在 Windows 上需要 WGL 兼容修补。修补只应用于
 Conda 环境中的已安装包，未修改 `third_party/robosuite-src`。补丁保存在：
 
-[`patches/robosuite-1.4.0-windows-wgl.patch`](patches/robosuite-1.4.0-windows-wgl.patch)
+[`patches/robosuite-1.4.0-windows-wgl.patch`](../patches/robosuite-1.4.0-windows-wgl.patch)
 
 同时完成了 robosuite 所需 MuJoCo DLL 的校验复制，并建立 `C:\tmp`。最终 E3 使用
 `ControlEnv` 且关闭 renderer 和 camera observations，避免把图像渲染误差引入状态回放。
@@ -167,7 +167,7 @@ E0 结论：环境与源码审计通过，可以进入任务和数据审计。E0
 
 三项来自同一 suite，可减少初始下载量，同时覆盖不同物理交互结构。冻结清单：
 
-[`experiments/exp1_decision_sparsity/manifests/selected_tasks_pilot.json`](experiments/exp1_decision_sparsity/manifests/selected_tasks_pilot.json)
+[`experiments/exp1_decision_sparsity/manifests/selected_tasks_pilot.json`](../experiments/exp1_decision_sparsity/manifests/selected_tasks_pilot.json)
 
 源任务清单 SHA-256：
 `B19F2BA127D0BE11FC6EC8A35BBEF1C22959583DA950B7C252685BE3E2913352`。
@@ -217,7 +217,7 @@ Schema 审计运行：`exp1_e2_schema_pilot_20260813T2320`
 
 完整 schema manifests 位于：
 
-[`experiments/exp1_decision_sparsity/manifests`](experiments/exp1_decision_sparsity/manifests)
+[`experiments/exp1_decision_sparsity/manifests`](../experiments/exp1_decision_sparsity/manifests)
 
 ### 5.4 Stage E3：确定性回放硬门禁
 
@@ -408,16 +408,16 @@ simulator/data reconciliation。
 
 ### 9.2 代码与清单
 
-- 回放脚本：[`scripts/exp1/replay_demo.py`](scripts/exp1/replay_demo.py)
-- 回放工具：[`src/decision_sparse_rl/envs/libero_replay.py`](src/decision_sparse_rl/envs/libero_replay.py)
-- 环境审计：[`scripts/exp1/audit_environment.py`](scripts/exp1/audit_environment.py)
-- 任务枚举：[`scripts/exp1/enumerate_tasks.py`](scripts/exp1/enumerate_tasks.py)
-- 数据下载：[`scripts/exp1/download_selected_dataset.py`](scripts/exp1/download_selected_dataset.py)
-- HDF5 审计：[`scripts/exp1/audit_dataset.py`](scripts/exp1/audit_dataset.py)
-- 任务清单：[`experiments/exp1_decision_sparsity/manifests/tasks.json`](experiments/exp1_decision_sparsity/manifests/tasks.json)
-- 选定任务：[`experiments/exp1_decision_sparsity/manifests/selected_tasks_pilot.json`](experiments/exp1_decision_sparsity/manifests/selected_tasks_pilot.json)
-- 研究日志：[`research_log/2026-08-13.md`](research_log/2026-08-13.md)
-- 证据表：[`paper/evidence_table.md`](paper/evidence_table.md)
+- 回放脚本：[`scripts/exp1/replay_demo.py`](../scripts/exp1/replay_demo.py)
+- 回放工具：[`src/decision_sparse_rl/envs/libero_replay.py`](../src/decision_sparse_rl/envs/libero_replay.py)
+- 环境审计：[`scripts/exp1/audit_environment.py`](../scripts/exp1/audit_environment.py)
+- 任务枚举：[`scripts/exp1/enumerate_tasks.py`](../scripts/exp1/enumerate_tasks.py)
+- 数据下载：[`scripts/exp1/download_selected_dataset.py`](../scripts/exp1/download_selected_dataset.py)
+- HDF5 审计：[`scripts/exp1/audit_dataset.py`](../scripts/exp1/audit_dataset.py)
+- 任务清单：[`experiments/exp1_decision_sparsity/manifests/tasks.json`](../experiments/exp1_decision_sparsity/manifests/tasks.json)
+- 选定任务：[`experiments/exp1_decision_sparsity/manifests/selected_tasks_pilot.json`](../experiments/exp1_decision_sparsity/manifests/selected_tasks_pilot.json)
+- 研究日志：[`research_log/2026-08-13.md`](../research_log/2026-08-13.md)
+- 证据表：[`paper/evidence_table.md`](../paper/evidence_table.md)
 
 ## 10. 复现命令
 
