@@ -32,6 +32,21 @@ def first_gripper_sign_change(actions: np.ndarray) -> int:
     raise ValueError("trajectory has no verified nonzero gripper-command sign change")
 
 
+def gripper_event_or_fallback(actions: np.ndarray) -> Dict[str, Any]:
+    try:
+        return {"kind": "first_gripper_command_sign_change", "target": first_gripper_sign_change(actions), "event_valid": True, "invalid_reason": None, "fallback_rule": None}
+    except ValueError:
+        commands = np.asarray(actions, dtype=np.float64)[:, -1]
+        changes = np.abs(np.diff(commands))
+        if changes.size and float(np.max(changes)) > 0:
+            target = int(np.argmax(changes) + 1)
+            fallback = "first maximum absolute adjacent gripper-command change"
+        else:
+            target = int(round(0.5 * (len(commands) - 1)))
+            fallback = "50% temporal point because the gripper command is constant"
+        return {"kind": "gripper_event_fallback", "target": target, "event_valid": False, "invalid_reason": "no adjacent nonzero gripper-command sign change exists", "fallback_rule": fallback}
+
+
 def first_max_contact_change(contact_counts: Sequence[int]) -> int:
     values = np.asarray(contact_counts, dtype=np.int64)
     if values.size < 2:
@@ -50,15 +65,16 @@ def select_branch_times(actions: np.ndarray, contact_counts: Sequence[int]) -> L
         index = nearest_unused(target, used, length)
         selected.append({"kind": "temporal_quantile", "quantile": quantile, "target": target, "action_index": index, "replacement_offset": index - target})
         used.append(index)
+    gripper = gripper_event_or_fallback(actions)
     event_targets = (
-        ("first_gripper_command_sign_change", first_gripper_sign_change(actions)),
-        ("first_maximum_contact_count_change", first_max_contact_change(contact_counts)),
+        gripper,
+        {"kind": "first_maximum_contact_count_change", "target": first_max_contact_change(contact_counts), "event_valid": True, "invalid_reason": None, "fallback_rule": None},
     )
-    for kind, target in event_targets:
+    for event in event_targets:
+        kind, target = event["kind"], int(event["target"])
         index = nearest_unused(target, used, length)
-        selected.append({"kind": kind, "target": target, "action_index": index, "replacement_offset": index - target})
+        selected.append({**event, "kind": kind, "target": target, "action_index": index, "replacement_offset": index - target})
         used.append(index)
     if len(selected) != 12 or len(set(used)) != 12:
         raise AssertionError("branch selection did not produce 12 unique times")
     return selected
-

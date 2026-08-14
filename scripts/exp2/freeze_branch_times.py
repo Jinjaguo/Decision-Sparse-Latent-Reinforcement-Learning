@@ -55,6 +55,7 @@ def main() -> int:
         "rounding": "Python round(q * (T - 1)) converted to int",
         "duplicate_rule": "nearest unused valid action index; at equal distance choose the lower index first",
         "gripper_event_rule": "first adjacent pair of nonzero last-action-component signs that differ",
+        "invalid_gripper_event_fallback": "first maximum absolute adjacent gripper-command change; if the command is constant, the 50% temporal point; then apply the common nearest-unused rule",
         "contact_event_rule": "first argmax of absolute adjacent raw contact-count change; event boundary is the later index",
         "trajectory_count": len(trajectories),
         "branch_count": sum(len(item["branches"]) for item in trajectories),
@@ -69,4 +70,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

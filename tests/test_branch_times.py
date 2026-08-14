@@ -22,6 +22,15 @@ class BranchTimeTest(unittest.TestCase):
         self.assertEqual(12, len({item["action_index"] for item in first}))
         self.assertTrue(all(0 <= item["action_index"] < 20 for item in first))
 
+    def test_constant_gripper_uses_documented_fallback(self):
+        actions = np.zeros((20, 7), dtype=float)
+        actions[:, -1] = -1
+        contacts = [3] * 8 + [7] * 12
+        selected = select_branch_times(actions, contacts)
+        gripper = next(item for item in selected if item["kind"] == "gripper_event_fallback")
+        self.assertFalse(gripper["event_valid"])
+        self.assertIn("constant", gripper["fallback_rule"])
+
 
 if __name__ == "__main__":
     unittest.main()
