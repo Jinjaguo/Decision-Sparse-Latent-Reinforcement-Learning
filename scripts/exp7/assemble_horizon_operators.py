@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-import argparse, hashlib, json, sys
+import argparse, hashlib, json, shutil, sys
 from pathlib import Path
 
 import matplotlib; matplotlib.use("Agg")
@@ -13,14 +13,11 @@ import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
 from scipy.stats import spearmanr
-from sklearn.compose import ColumnTransformer
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import average_precision_score, brier_score_loss, roc_auc_score, roc_curve, precision_recall_curve
-from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from scipy.optimize import minimize
+from scipy.stats import rankdata
 
 ROOT=Path(__file__).resolve().parents[2]; sys.path.insert(0,str(ROOT/"src"))
-from decision_sparse_rl.metrics.exp6 import projector_similarity, relative_discrepancy
+from decision_sparse_rl.metrics.exp6 import projector, projector_similarity, relative_discrepancy
 from decision_sparse_rl.metrics.exp7 import antithetic_asymmetry, relative_error, transition_category
 
 HORIZONS=(1,3,5,"remaining")
@@ -33,17 +30,26 @@ def ci(values,rng,n=4000):
     means=np.mean(rng.choice(a,(n,len(a)),replace=True),axis=1); return [float(np.quantile(means,.025)),float(np.quantile(means,.975))]
 def mode(raw): return tuple(json.loads(raw))
 def pca_sim(a,b,k):
-    _,_,va=np.linalg.svd(a,full_matrices=False); _,_,vb=np.linalg.svd(b,full_matrices=False); return projector_similarity(va.T,vb.T,min(k,a.shape[1],b.shape[1]))
+    ua,_,_=np.linalg.svd(a,full_matrices=False); ub,_,_=np.linalg.svd(b,full_matrices=False); rank=min(k,a.shape[1],b.shape[1]); return projector_similarity(projector(ua,rank),projector(ub,rank),rank)
 def bh(ps):
     p=np.asarray(ps); order=np.argsort(p); q=np.empty_like(p); running=1.
     for rank,idx in reversed(list(enumerate(order,1))): running=min(running,p[idx]*len(p)/rank); q[idx]=running
     return q.tolist()
 def plot_box(frame,col,group,path,title):
     labels=sorted(frame[group].dropna().unique()); values=[frame.loc[frame[group]==x,col].dropna() for x in labels]; plt.figure(figsize=(8,4)); plt.boxplot(values,labels=labels); plt.title(title); plt.xticks(rotation=20,ha="right"); plt.tight_layout(); plt.savefig(path,dpi=160); plt.close()
+def fit_predict_logistic(x_train,y_train,x_test):
+    mean=x_train.mean(axis=0); scale=x_train.std(axis=0); scale[scale<1e-12]=1.; a=(x_train-mean)/scale; b=(x_test-mean)/scale; a=np.column_stack([np.ones(len(a)),a]); b=np.column_stack([np.ones(len(b)),b])
+    def objective(w):
+        z=np.clip(a@w,-40,40); return float(np.sum(np.logaddexp(0,z)-y_train*z)+.5*np.sum(w[1:]**2))
+    result=minimize(objective,np.zeros(a.shape[1]),method="L-BFGS-B"); return 1/(1+np.exp(-np.clip(b@result.x,-40,40)))
+def binary_metrics(y,prob):
+    pos=y==1; neg=~pos; auc=float((rankdata(prob)[pos].sum()-np.sum(np.arange(1,pos.sum()+1)))/(pos.sum()*neg.sum())) if pos.any() and neg.any() else None
+    order=np.argsort(-prob); ys=y[order]; tp=np.cumsum(ys); fp=np.cumsum(1-ys); precision=tp/np.maximum(tp+fp,1); recall=tp/max(pos.sum(),1); auprc=float(np.sum(precision*(recall-np.r_[0,recall[:-1]])))
+    fpr=np.r_[0,fp/max(neg.sum(),1),1]; tpr=np.r_[0,tp/max(pos.sum(),1),1]; return auc,auprc,fpr,tpr,recall,precision
 
 def main()->int:
     p=argparse.ArgumentParser(); p.add_argument("--raw-run",type=Path,required=True); p.add_argument("--zero-run",type=Path,required=True); p.add_argument("--reference-run",type=Path,required=True); p.add_argument("--geometry",type=Path,required=True); p.add_argument("--gpu-run",type=Path,required=True); p.add_argument("--output-run",type=Path,required=True); args=p.parse_args(); raw=args.raw_run.resolve(); out=args.output_run.resolve(); art=out/"artifacts"; plots=out/"plots"; art.mkdir(parents=True,exist_ok=False); plots.mkdir()
-    interventions=pq.read_table(raw/"artifacts/interventions.parquet").to_pandas(); steps=pq.read_table(raw/"artifacts/per_step_effects.parquet").to_pandas(); geometry=pq.read_table(args.geometry).to_pandas(); branch=json.loads((ROOT/"experiments/exp7_contact_mode_response/manifests/branch_manifest.json").read_text()); directions=json.loads((ROOT/"experiments/exp7_contact_mode_response/manifests/direction_basis_manifest.json").read_text())["directions"]
+    interventions=pq.read_table(raw/"artifacts/interventions.parquet").to_pandas(); steps=pq.read_table(raw/"artifacts/per_step_effects.parquet").to_pandas(); geometry=pq.read_table(args.geometry).to_pandas(); branch=json.loads((ROOT/"experiments/exp7_contact_mode_conditioned/manifests/branch_manifest.json").read_text()); directions=json.loads((ROOT/"experiments/exp7_contact_mode_conditioned/manifests/direction_basis_manifest.json").read_text())["directions"]
     direction={(x["task"],x["episode"],x["branch_time"],x["radius_fraction"],x["direction_index"]):x for x in directions}; vectors={key:group.sort_values("continuation_offset") for key,group in steps.groupby("intervention_id")}; horizon_rows=[]; outcome_rows=[]
     for row in interventions.to_dict("records"):
         group=vectors[row["intervention_id"]]
@@ -74,10 +80,11 @@ def main()->int:
         minus=hdf[(hdf.task==row.task)&(hdf.episode==row.episode)&(hdf.branch_time==row.branch_time)&(hdf.radius_fraction==row.radius_fraction)&(hdf.horizon==row.horizon)&(hdf.direction_index==7)&(hdf.sign==-1)].iloc[0]; actual=(np.asarray(row.signed_output_vector)-np.asarray(minus.signed_output_vector))/(2*row.radius_fraction); J=matrix_lookup[(row.task,row.episode,row.branch_time,row.radius_fraction,row.horizon)]; d=direction[(row.task,row.episode,row.branch_time,row.radius_fraction,7)]; basis_vectors=np.column_stack([direction[(row.task,row.episode,row.branch_time,row.radius_fraction,i)]["unit_direction_scaled_coordinates"] for i in range(7)]); coeff=basis_vectors.T@np.asarray(d["unit_direction_scaled_coordinates"]); pred=J@coeff
         held.append({"task":row.task,"episode":row.episode,"branch_time":row.branch_time,"radius_fraction":row.radius_fraction,"horizon":row.horizon,"both_signs_preserved":bool(row.mode_preserved_through_horizon and minus.mode_preserved_through_horizon),"predicted_norm":float(np.linalg.norm(pred)),"actual_norm":float(np.linalg.norm(actual)),"vector_relative_error":relative_error(pred,actual)})
     held_df=pd.DataFrame(held)
-    smallest=cdf[(cdf.horizon=="1")&(cdf.radius_small==min(cdf.radius_small))]; demo=smallest.groupby(["task","episode"]).agg(top1=("top1_similarity","median"),top2=("top2_similarity","median"),spec=("relative_spectral_discrepancy","median"),asym=("sign_asymmetry","median")).reset_index(); demo["passes_all"]=((demo.top1>=.8)&(demo.top2>=.75)&(demo.spec<=.2)&(demo.asym<=.25)); rng=np.random.default_rng(970031); h1_fraction=float(demo.passes_all.mean()); h1_ci=ci(demo.top1,rng)
+    smallest_all=cdf[(cdf.horizon=="1")&(cdf.radius_small==min(cdf.radius_small))]; smallest=smallest_all[smallest_all.conditional_preserved]
+    demo=smallest.groupby(["task","episode"]).agg(top1=("top1_similarity","median"),top2=("top2_similarity","median"),spec=("relative_spectral_discrepancy","median"),asym=("sign_asymmetry","median")).reset_index(); cohort=pd.DataFrame([(x["task"],x["episode"]) for x in branch["trajectories"]],columns=["task","episode"]); demo=cohort.merge(demo,on=["task","episode"],how="left"); demo["has_preserved_support"]=demo.top1.notna(); demo[["top1","top2"]]=demo[["top1","top2"]].fillna(0.); demo[["spec","asym"]]=demo[["spec","asym"]].fillna(np.inf); demo["passes_all"]=demo.has_preserved_support&((demo.top1>=.8)&(demo.top2>=.75)&(demo.spec<=.2)&(demo.asym<=.25)); rng=np.random.default_rng(970031); h1_fraction=float(demo.passes_all.mean()); h1_ci=ci(demo.top1,rng)
     interior=smallest.groupby(["task","episode","boundary_margin_class"]).top1_similarity.median().reset_index(); piv=interior.pivot_table(index=["task","episode"],columns="boundary_margin_class",values="top1_similarity"); diffs=[]
     for _,r in piv.iterrows():
-        near=np.nanmax([r.get("near_boundary",np.nan),r.get("ambiguous",np.nan)])
+        candidates=np.asarray([r.get("near_boundary",np.nan),r.get("ambiguous",np.nan)],float); near=float(np.nanmax(candidates)) if np.any(np.isfinite(candidates)) else np.nan
         if np.isfinite(r.get("interior",np.nan)) and np.isfinite(near): diffs.append(r["interior"]-near)
     h2_ci=ci(diffs,rng); h2_p=float((np.sum(np.asarray(diffs)<=0)+1)/(len(diffs)+1)) if diffs else 1.; h2_q=bh([h2_p])[0]
     h3_rows=[]
@@ -85,7 +92,7 @@ def main()->int:
     for key,g in hsmall.groupby(["task","episode"]): h3_rows.append({"task":key[0],"episode":key[1],"rho":float(spearmanr(g.predicted_norm,g.actual_norm).statistic) if len(g)>1 else 0.,"median_vector_error":float(g.vector_relative_error.median())})
     h3=pd.DataFrame(h3_rows); h3_rho=float(h3.rho.median()) if len(h3) else 0.; h3_err=float(h3.median_vector_error.median()) if len(h3) else float("inf")
     # Cross-demo matching: compare same task+mode+margin nearest neighbor against independently nearest time/progress baselines.
-    cross=[]; base_ops=opdf[(opdf.horizon=="1")&(opdf.radius_fraction==min(opdf.radius_fraction))].merge(meta,on=["task","episode","branch_time"])
+    cross=[]; base_ops=opdf[(opdf.horizon=="1")&(opdf.radius_fraction==min(opdf.radius_fraction))&(opdf.all_basis_both_signs_preserved)].merge(meta,on=["task","episode","branch_time"])
     for _,r in base_ops.iterrows():
         pool=base_ops[(base_ops.task==r.task)&(base_ops.episode!=r.episode)]
         same=pool[(pool.contact_mode_json==r.contact_mode_json)&(pool.boundary_margin_class==r.boundary_margin_class)]
@@ -99,17 +106,24 @@ def main()->int:
     for fold in range(5):
         train=pred.fold!=fold; test=~train
         if pred.loc[train,"target"].nunique()<2: preds[test]=pred.loc[train,"target"].mean(); continue
-        model_lr=make_pipeline(StandardScaler(),LogisticRegression(max_iter=1000,class_weight="balanced",random_state=970040)); model_lr.fit(pred.loc[train,features],pred.loc[train,"target"]); preds[test]=model_lr.predict_proba(pred.loc[test,features])[:,1]
-    pred["probability"]=preds; y=pred.target.to_numpy(); auroc=float(roc_auc_score(y,preds)) if len(np.unique(y))==2 else None; auprc=float(average_precision_score(y,preds)); brier=float(brier_score_loss(y,preds)); bins=np.minimum((preds*10).astype(int),9); ece=float(sum(np.mean(bins==b)*abs(np.mean(y[bins==b])-np.mean(preds[bins==b])) for b in np.unique(bins))); threshold=.5; sensitivity=float(np.mean(preds[y==1]>=threshold)) if np.any(y==1) else None; specificity=float(np.mean(preds[y==0]<threshold)) if np.any(y==0) else None
-    predictor_metrics={"AUROC":auroc,"AUPRC":auprc,"Brier":brier,"ECE":ece,"threshold":threshold,"sensitivity":sensitivity,"specificity":specificity,"positive_rate":float(y.mean()),"crossfit_unit":"demonstration","features_used":features}
-    h1=bool(h1_fraction>=.7 and h1_ci[0] is not None and h1_ci[0]>.65); h2=bool(diffs and h2_ci[0]>0 and h2_q<.05); h3pass=bool(h3_rho>=.65 and h3_err<=.35); h4pass=bool(h4>=.15 and h4_ci[0] is not None and h4_ci[0]>0); predictor_ready=bool(auroc is not None and auroc>=.7 and ece<=.1)
+        preds[test]=fit_predict_logistic(pred.loc[train,features].to_numpy(float),pred.loc[train,"target"].to_numpy(float),pred.loc[test,features].to_numpy(float))
+    pred["probability"]=preds; y=pred.target.to_numpy(); auroc,auprc,fpr,tpr,rc,pr=binary_metrics(y,preds); brier=float(np.mean((y-preds)**2)); bins=np.minimum((preds*10).astype(int),9); ece=float(sum(np.mean(bins==b)*abs(np.mean(y[bins==b])-np.mean(preds[bins==b])) for b in np.unique(bins))); threshold=.5; sensitivity=float(np.mean(preds[y==1]>=threshold)) if np.any(y==1) else None; specificity=float(np.mean(preds[y==0]<threshold)) if np.any(y==0) else None
+    demo_keys=pred[["task","episode"]].drop_duplicates().to_records(index=False); auc_boot=[]
+    for _ in range(1000):
+        selected=[demo_keys[i] for i in rng.integers(0,len(demo_keys),len(demo_keys))]; indexes=np.concatenate([np.flatnonzero((pred.task==t)&(pred.episode==e)) for t,e in selected]); sample_y=y[indexes]; sample_p=preds[indexes]
+        if len(np.unique(sample_y))==2: auc_boot.append(binary_metrics(sample_y,sample_p)[0])
+    auc_ci=[float(np.quantile(auc_boot,.025)),float(np.quantile(auc_boot,.975))]
+    predictor_metrics={"AUROC":auroc,"AUROC_demo_cluster_CI":auc_ci,"AUPRC":auprc,"Brier":brier,"ECE":ece,"threshold":threshold,"sensitivity":sensitivity,"specificity":specificity,"positive_rate":float(y.mean()),"crossfit_unit":"demonstration","features_used":features}
+    h1=bool(h1_fraction>=.7 and h1_ci[0] is not None and h1_ci[0]>.65); h2=bool(diffs and h2_ci[0]>0 and h2_q<.05); h3pass=bool(h3_rho>=.65 and h3_err<=.35); h4pass=bool(h4>=.15 and h4_ci[0] is not None and h4_ci[0]>0); predictor_ready=bool(auroc is not None and auc_ci[0]>=.7 and ece<=.1)
     if h1 and h3pass and h4pass: classification="within_mode_short_horizon_operator_converges"
     elif h2: classification="boundary_margin_explains_hybrid_nonsmoothness"
     elif not predictor_ready: classification="contact_modes_explanatory_but_not_predictable"
     else: classification="within_mode_nonsmoothness_persists"
     decision={"classification":classification,"H1":{"passed":h1,"demo_fraction":h1_fraction,"top1_hierarchical_ci":h1_ci},"H2":{"passed":h2,"demo_differences":len(diffs),"mean_difference":float(np.mean(diffs)) if diffs else None,"ci":h2_ci,"p":h2_p,"bh_q":h2_q},"H3":{"passed":h3pass,"demo_median_rho":h3_rho,"demo_median_vector_error":h3_err},"H4":{"passed":h4pass,"mean_improvement":h4,"ci":h4_ci},"H5":{"scheduler_ready":predictor_ready,**predictor_metrics},"analysis_unit":"demonstration","intent_to_perturb_primary":True,"conditional_preserved_reported":True}
-    dump(horizon_rows,art/"horizon_operator_summary.parquet"); dump(outcomes,art/"mode_outcomes.parquet"); dump(operators,art/"operator_summary.parquet"); dump(matrices,art/"operator_matrices.parquet"); dump(cdf.to_dict("records"),art/"within_mode_convergence.parquet"); dump(interior.to_dict("records"),art/"boundary_margin_analysis.parquet"); dump(cdf.groupby(["horizon","radius_small","radius_large"],as_index=False).agg(top1_similarity=("top1_similarity","median"),top2_similarity=("top2_similarity","median"),spectral_discrepancy=("relative_spectral_discrepancy","median"),sign_asymmetry=("sign_asymmetry","median")).to_dict("records"),art/"horizon_comparison.parquet"); dump(held,art/"heldout_vector_errors.parquet"); dump(cross,art/"mode_conditioned_crossdemo.parquet"); dump(pred[["task","episode","branch_time","radius_fraction","direction_index","sign","target","fold","probability"]].to_dict("records"),art/"mode_preservation_predictor_predictions.parquet"); (art/"mode_preservation_predictor_metrics.json").write_text(json.dumps(predictor_metrics,indent=2)+"\n"); (art/"scientific_decision.json").write_text(json.dumps(decision,indent=2)+"\n")
-    raw_hashes={name:hashlib.sha256((raw/"artifacts"/name).read_bytes()).hexdigest() for name in ("interventions.parquet","per_step_effects.parquet","zero_controls.parquet")}; (art/"raw_data_lock_manifest.json").write_text(json.dumps({"raw_run":raw.name,"hashes":raw_hashes},indent=2)+"\n"); (art/"failure_examples.json").write_text((raw/"artifacts/failure_examples.json").read_text());
+    dump(horizon_rows,art/"horizon_operator_summary.parquet"); dump(outcomes,art/"mode_outcomes.parquet"); dump(operators,art/"operator_summary.parquet"); dump(matrices,art/"operator_matrices.parquet"); dump(cdf.to_dict("records"),art/"within_mode_convergence.parquet"); dump(interior.to_dict("records"),art/"boundary_margin_analysis.parquet"); dump(cdf.groupby(["horizon","radius_small","radius_large"],as_index=False).agg(top1_similarity=("top1_similarity","median"),top2_similarity=("top2_similarity","median"),spectral_discrepancy=("relative_spectral_discrepancy","median"),sign_asymmetry=("sign_asymmetry","median")).to_dict("records"),art/"horizon_comparison.parquet"); dump(held,art/"heldout_direction_prediction.parquet"); dump(cross,art/"mode_conditioned_crossdemo.parquet"); dump(pred[["task","episode","branch_time","radius_fraction","direction_index","sign","target","fold","probability"]].to_dict("records"),art/"mode_predictor_predictions.parquet"); (art/"mode_predictor_metrics.json").write_text(json.dumps(predictor_metrics,indent=2)+"\n"); (art/"scientific_decision.json").write_text(json.dumps(decision,indent=2)+"\n")
+    raw_hashes={name:hashlib.sha256((raw/"artifacts"/name).read_bytes()).hexdigest() for name in ("interventions.parquet","per_step_effects.parquet","zero_controls.parquet")}; (art/"raw_hash_manifest.json").write_text(json.dumps({"raw_run":raw.name,"hashes":raw_hashes},indent=2)+"\n"); (art/"failure_examples.json").write_text((raw/"artifacts/failure_examples.json").read_text());
+    for name in ("interventions.parquet","per_step_effects.parquet","zero_controls.parquet","zero_reference_steps.parquet"): shutil.copy2(raw/"artifacts"/name,art/name)
+    shutil.copy2(args.geometry,art/"reference_contact_geometry.parquet"); shutil.copy2(args.geometry.parent/"boundary_margin_calibration.parquet",art/"boundary_margin_calibration.parquet")
     for name in ("gpu_audit.json","gpu_cpu_equivalence.json"): (art/name).write_bytes((args.gpu_run/"artifacts"/name).read_bytes())
     # Required compact figures.
     repeat=pq.read_table(args.geometry.parent/"boundary_margin_calibration.parquet").to_pandas(); plot_box(repeat,"signed_gap_range_m","task",plots/"signed_gap_repeatability.png","Signed-gap repeatability")
@@ -125,7 +139,7 @@ def main()->int:
     plt.figure(); freq.plot.bar(); plt.tight_layout(); plt.savefig(plots/"mode_transition_categories.png",dpi=160); plt.close()
     plot_box(held_df,"vector_relative_error","radius_fraction",plots/"heldout_vector_error_within_mode.png","Heldout vector error")
     if len(crossdf): crossdf[["same_mode_margin_top1","time_top1","progress_top1"]].boxplot(); plt.tight_layout(); plt.savefig(plots/"crossdemo_subspace_time_vs_progress_vs_mode.png",dpi=160); plt.close()
-    fpr,tpr,_=roc_curve(y,preds); pr,rc,_=precision_recall_curve(y,preds); plt.figure(); plt.plot(fpr,tpr,label="ROC"); plt.plot(rc,pr,label="PR"); plt.legend(); plt.tight_layout(); plt.savefig(plots/"mode_predictor_roc_pr.png",dpi=160); plt.close()
+    plt.figure(); plt.plot(fpr,tpr,label="ROC"); plt.plot(rc,pr,label="PR"); plt.legend(); plt.tight_layout(); plt.savefig(plots/"mode_predictor_roc_pr.png",dpi=160); plt.close()
     plt.figure(); plt.scatter(preds,y,alpha=.05); plt.xlabel("probability"); plt.ylabel("preserved"); plt.tight_layout(); plt.savefig(plots/"mode_predictor_calibration.png",dpi=160); plt.close()
     plot_box(cdf,"top1_similarity","task",plots/"task_specific_hybrid_summary.png","Task summary")
     gpu=json.loads((art/"gpu_cpu_equivalence.json").read_text()); plt.figure(); plt.semilogy([max(x["operator_rel"],1e-20) for x in gpu["records"]],label="operator rel"); plt.semilogy([max(x["gram_rel"],1e-20) for x in gpu["records"]],label="gram rel"); plt.legend(); plt.tight_layout(); plt.savefig(plots/"gpu_cpu_equivalence.png",dpi=160); plt.close()

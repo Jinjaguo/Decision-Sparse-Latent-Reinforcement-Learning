@@ -73,7 +73,7 @@ def effect_row(base, offset, zero, perturbed, normalization):
 
 def main() -> int:
     global SCHEMA
-    manifest = ROOT / "experiments/exp7_contact_mode_response/manifests/contact_mode_schema.json"
+    manifest = ROOT / "experiments/exp7_contact_mode_conditioned/manifests/contact_mode_schema.json"
     SCHEMA = load_schema(manifest)
     exp3.observe = observe
     exp3.rollout.__globals__["observe"] = observe

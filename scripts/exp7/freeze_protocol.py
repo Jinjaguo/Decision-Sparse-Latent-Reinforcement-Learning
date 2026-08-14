@@ -51,7 +51,7 @@ def main()->int:
                     if di==7: heldout.append(row)
     base=lambda kind:common(kind,now,project,sources); manifests={}
     manifests["exp7_cohort_manifest.json"]={**base("exp7_cohort_manifest"),"independent":True,"trajectory_count":30,"cohort":[{"task":x["task"],"episode":x["episode"]} for x in refs["episodes"]],"selection_rule":refs["selection_rule"]}
-    contact=json.loads((ROOT/"experiments/exp7_contact_mode_response/manifests/contact_mode_schema.json").read_text()); contact.update(base("contact_mode_schema")); manifests["contact_mode_schema.json"]=contact
+    contact=json.loads((ROOT/"experiments/exp7_contact_mode_conditioned/manifests/contact_mode_schema.json").read_text()); contact.update(base("contact_mode_schema")); manifests["contact_mode_schema.json"]=contact
     manifests["contact_pair_group_manifest.json"]={**base("contact_pair_group_manifest"),"groups":["target_gripper","target_environment","gripper_environment","task_object_environment"],"exact_runtime_pairs_by_task":{t:contact["tasks"][t]["pair_groups"] for t in TASKS}}
     manifests["signed_gap_spec.json"]={**base("signed_gap_spec"),"api":"mujoco.mj_geomDistance","distance_max_m":contact["distance_max_m"],"aggregation":"minimum signed surface distance over each frozen group; global value is minimum group gap","normal_velocity":"nearest-point normal projected exact geom Jacobian relative velocity","no_body_center_substitution":True}
     manifests["boundary_margin_spec.json"]={**base("boundary_margin_spec"),**margin}
