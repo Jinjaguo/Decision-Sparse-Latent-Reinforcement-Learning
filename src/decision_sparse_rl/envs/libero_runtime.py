@@ -70,8 +70,8 @@ def load_episode(
     # already-constructed robosuite controller caches. Establish one explicit,
     # reproducible pre-policy controller boundary from the verified physical state.
     for robot in env.robots:
-        robot.controller.update(force=True)
-        robot.controller.reset_goal()
+        recorded_arm_q = np.asarray(env.sim.data.qpos[robot._ref_joint_pos_indexes]).copy()
+        robot.controller.update_initial_joints(recorded_arm_q)
         robot.controller.new_update = True
     return {"episode": name, "states": states, "actions": actions, "xml": xml, "path_rewrites": rewrites}
 

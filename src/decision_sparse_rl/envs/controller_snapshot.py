@@ -11,6 +11,7 @@ import numpy as np
 
 
 CONTROLLER_FIELDS = (
+    "initial_joint", "initial_ee_pos", "initial_ee_ori_mat",
     "goal_pos", "goal_ori", "relative_ori", "ori_ref", "new_update", "torques",
     "ee_pos", "ee_ori_mat", "ee_pos_vel", "ee_ori_vel", "joint_pos", "joint_vel",
     "J_pos", "J_ori", "J_full", "mass_matrix",
@@ -168,4 +169,3 @@ def deserialize(path: Path) -> Dict[str, Any]:
                 result["buffers"][name][field] = np.asarray(archive[entry["key"]]).copy() if entry["storage"] == "array" else entry["value"]
     validate(result)
     return result
-

@@ -34,6 +34,9 @@ from decision_sparse_rl.utils.environment_audit import git_record  # noqa: E402
 
 
 CONTROLLER_FIELDS = {
+    "initial_joint": ("nullspace_reference", True),
+    "initial_ee_pos": ("controller_initial_reference", True),
+    "initial_ee_ori_mat": ("controller_initial_reference", True),
     "goal_pos": ("causal_policy_goal", True),
     "goal_ori": ("causal_policy_goal", True),
     "relative_ori": ("interpolator_history", True),
