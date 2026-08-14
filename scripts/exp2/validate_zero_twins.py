@@ -310,10 +310,11 @@ def main() -> int:
                             episode = load_episode(env, dataset_path=args.dataset_root / task["demonstration_relative_path"], episode_index=episode_index, robosuite_package_root=robosuite_root, libero_assets_root=assets_root)
                             for prefix_action in actions[:branch]:
                                 env.step(prefix_action)
-                            prefix_error = float(np.linalg.norm(mujoco_snapshot.capture(env.sim, "integration").values - reference_states["integration"][branch]))
-                            prefix_errors.append({"task": task["name"], "episode": trajectory["episode"], "condition": condition, "branch_time": branch, "repeat": repeat, "integration_l2": prefix_error})
-                            if prefix_error > 1e-10:
-                                raise RuntimeError(f"prefix replay did not reproduce local reference at {task['name']}/{trajectory['episode']}/{branch}: {prefix_error}")
+                            prefix_integration_error = float(np.linalg.norm(mujoco_snapshot.capture(env.sim, "integration").values - reference_states["integration"][branch]))
+                            prefix_legacy_error = float(np.linalg.norm(mujoco_snapshot.capture(env.sim, "legacy").values - reference_states["legacy"][branch]))
+                            prefix_errors.append({"task": task["name"], "episode": trajectory["episode"], "condition": condition, "branch_time": branch, "repeat": repeat, "integration_l2": prefix_integration_error, "legacy_l2": prefix_legacy_error})
+                            if prefix_legacy_error > 1e-10:
+                                raise RuntimeError(f"prefix replay did not reproduce local qpos/qvel/time at {task['name']}/{trajectory['episode']}/{branch}: {prefix_legacy_error}")
                             _restore_condition(env, kind, reference_states[kind][branch], controller_path, restores_controller)
                             twin_a, _ = _run_continuation(env, actions, branch)
                             _restore_condition(env, kind, reference_states[kind][branch], controller_path, restores_controller)
@@ -333,7 +334,7 @@ def main() -> int:
             failures = sorted((row for row in pair_rows if row["maximum_integration_l2"] > 0 or not row["final_success_agreement"]), key=lambda row: row["maximum_integration_l2"], reverse=True)[:100]
             write_json(artifacts / "failure_examples.json", failures)
             _plots(step_rows, artifacts / "plots")
-            metrics = {"run_id": args.run_id, "status": "completed", "gate": summary, "pair_count": len(pair_rows), "step_count": len(step_rows), "component_row_count": len(component_rows), "maximum_prefix_replay_l2": max(row["integration_l2"] for row in prefix_errors), "r5_legally_reached": bool(summary["passed"])}
+            metrics = {"run_id": args.run_id, "status": "completed", "gate": summary, "pair_count": len(pair_rows), "step_count": len(step_rows), "component_row_count": len(component_rows), "maximum_prefix_replay_integration_l2": max(row["integration_l2"] for row in prefix_errors), "maximum_prefix_replay_legacy_l2": max(row["legacy_l2"] for row in prefix_errors), "r5_legally_reached": bool(summary["passed"])}
             print(json.dumps({"gate": summary, "pair_count": len(pair_rows)}, sort_keys=True))
         write_run_record(run_dir, config=config, command=command, environment=environment, git_state=git_state, stdout=captured_stdout.getvalue(), stderr=captured_stderr.getvalue(), metrics=metrics)
         return 0 if metrics["gate"]["passed"] else 2
@@ -349,4 +350,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
