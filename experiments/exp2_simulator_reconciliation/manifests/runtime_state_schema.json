@@ -1,0 +1,143 @@
+{
+  "api_availability": {
+    "mj_copyData": false,
+    "mj_forward": true,
+    "mj_getState": true,
+    "mj_setState": true,
+    "mj_stateSize": true
+  },
+  "classes": {
+    "controller": "robosuite.controllers.osc.OperationalSpaceController",
+    "environment": "libero.libero.envs.problems.libero_tabletop_manipulation.Libero_Tabletop_Manipulation",
+    "gripper": "robosuite.models.grippers.panda_gripper.PandaGripper",
+    "interpolator_ori": null,
+    "interpolator_pos": null,
+    "robot": "robosuite.robots.single_arm.SingleArm"
+  },
+  "fullphysics_state_dimension": 79,
+  "integration_components": [
+    "mjSTATE_ACT",
+    "mjSTATE_CTRL",
+    "mjSTATE_EQ_ACTIVE",
+    "mjSTATE_MOCAP_POS",
+    "mjSTATE_MOCAP_QUAT",
+    "mjSTATE_PLUGIN",
+    "mjSTATE_QFRC_APPLIED",
+    "mjSTATE_QPOS",
+    "mjSTATE_QVEL",
+    "mjSTATE_TIME",
+    "mjSTATE_USERDATA",
+    "mjSTATE_WARMSTART",
+    "mjSTATE_XFRC_APPLIED"
+  ],
+  "integration_state_dimension": 390,
+  "legacy_flattened_state_dimension": 79,
+  "model_dimensions": {
+    "na": 0,
+    "nbody": 38,
+    "nmocap": 0,
+    "nq": 41,
+    "nu": 9,
+    "nuserdata": 0,
+    "nv": 37
+  },
+  "native_bindings": {
+    "data_type": "mujoco._structs.MjData",
+    "model_type": "mujoco._structs.MjModel"
+  },
+  "runtime": {
+    "executable": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\python.exe",
+    "mujoco": "3.2.3",
+    "numpy": "1.22.4",
+    "python": "3.8.20 (default, Oct  3 2024, 15:19:54) [MSC v.1929 64 bit (AMD64)]",
+    "robosuite": "1.4.0"
+  },
+  "schema_version": 1,
+  "state_flags": {
+    "mjSTATE_ACT": {
+      "error": null,
+      "state_size": 0,
+      "value": 8
+    },
+    "mjSTATE_CTRL": {
+      "error": null,
+      "state_size": 9,
+      "value": 32
+    },
+    "mjSTATE_EQ_ACTIVE": {
+      "error": null,
+      "state_size": 0,
+      "value": 256
+    },
+    "mjSTATE_FULLPHYSICS": {
+      "error": null,
+      "state_size": 79,
+      "value": 4111
+    },
+    "mjSTATE_INTEGRATION": {
+      "error": null,
+      "state_size": 390,
+      "value": 8191
+    },
+    "mjSTATE_MOCAP_POS": {
+      "error": null,
+      "state_size": 0,
+      "value": 512
+    },
+    "mjSTATE_MOCAP_QUAT": {
+      "error": null,
+      "state_size": 0,
+      "value": 1024
+    },
+    "mjSTATE_PHYSICS": {
+      "error": null,
+      "state_size": 78,
+      "value": 14
+    },
+    "mjSTATE_PLUGIN": {
+      "error": null,
+      "state_size": 0,
+      "value": 4096
+    },
+    "mjSTATE_QFRC_APPLIED": {
+      "error": null,
+      "state_size": 37,
+      "value": 64
+    },
+    "mjSTATE_QPOS": {
+      "error": null,
+      "state_size": 41,
+      "value": 2
+    },
+    "mjSTATE_QVEL": {
+      "error": null,
+      "state_size": 37,
+      "value": 4
+    },
+    "mjSTATE_TIME": {
+      "error": null,
+      "state_size": 1,
+      "value": 1
+    },
+    "mjSTATE_USER": {
+      "error": null,
+      "state_size": 274,
+      "value": 4064
+    },
+    "mjSTATE_USERDATA": {
+      "error": null,
+      "state_size": 0,
+      "value": 2048
+    },
+    "mjSTATE_WARMSTART": {
+      "error": null,
+      "state_size": 37,
+      "value": 16
+    },
+    "mjSTATE_XFRC_APPLIED": {
+      "error": null,
+      "state_size": 228,
+      "value": 128
+    }
+  }
+}

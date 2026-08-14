@@ -1,0 +1,632 @@
+{
+  "classification_complete": true,
+  "classification_note": "All mutable fields read or written by the fixed OSC_POSE control chain and robot policy-step buffers were classified. Static configuration/index fields and recomputable observation caches are intentionally excluded.",
+  "controller_fields": [
+    {
+      "category": "causal_policy_goal",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.goal_pos",
+      "shape": [
+        3
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 1.1916552533653533,
+        "maximum": 1.1732794757296405,
+        "minimum": -0.2084646605658239
+      },
+      "type": "numpy.ndarray"
+    },
+    {
+      "category": "causal_policy_goal",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.goal_ori",
+      "shape": [
+        3,
+        3
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 1.7320508075688748,
+        "maximum": 0.9999998785532221,
+        "minimum": -0.9983868662149059
+      },
+      "type": "numpy.ndarray"
+    },
+    {
+      "category": "interpolator_history",
+      "changes_after_one_action": false,
+      "changes_after_reset": false,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.relative_ori",
+      "shape": [
+        3
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 0.0,
+        "maximum": 0.0,
+        "minimum": 0.0
+      },
+      "type": "numpy.ndarray"
+    },
+    {
+      "category": "interpolator_history",
+      "changes_after_one_action": false,
+      "changes_after_reset": false,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": null,
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.ori_ref",
+      "shape": null,
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": null,
+      "type": "NoneType"
+    },
+    {
+      "category": "controller_cache_validity",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": null,
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.new_update",
+      "shape": [],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": false,
+      "type": "bool"
+    },
+    {
+      "category": "last_output_diagnostic",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": null,
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.torques",
+      "shape": null,
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": null,
+      "type": "NoneType"
+    },
+    {
+      "category": "derived_cache",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.ee_pos",
+      "shape": [
+        3
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 1.1916552533653533,
+        "maximum": 1.1732794757296405,
+        "minimum": -0.2084646605658239
+      },
+      "type": "numpy.ndarray"
+    },
+    {
+      "category": "derived_cache",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.ee_ori_mat",
+      "shape": [
+        3,
+        3
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 1.7320508075688748,
+        "maximum": 0.9999998785532221,
+        "minimum": -0.9983868662149059
+      },
+      "type": "numpy.ndarray"
+    },
+    {
+      "category": "derived_cache",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.ee_pos_vel",
+      "shape": [
+        3
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 0.0,
+        "maximum": 0.0,
+        "minimum": 0.0
+      },
+      "type": "numpy.ndarray"
+    },
+    {
+      "category": "derived_cache",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.ee_ori_vel",
+      "shape": [
+        3
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 0.0,
+        "maximum": 0.0,
+        "minimum": 0.0
+      },
+      "type": "numpy.ndarray"
+    },
+    {
+      "category": "derived_cache",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.joint_pos",
+      "shape": [
+        7
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 3.4025380918160586,
+        "maximum": 2.2267522,
+        "minimum": -2.44459747
+      },
+      "type": "numpy.ndarray"
+    },
+    {
+      "category": "derived_cache",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.joint_vel",
+      "shape": [
+        7
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 0.0,
+        "maximum": 0.0,
+        "minimum": 0.0
+      },
+      "type": "numpy.ndarray"
+    },
+    {
+      "category": "derived_cache",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.J_pos",
+      "shape": [
+        3,
+        7
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 0.9983560893729273,
+        "maximum": 0.4515353394341761,
+        "minimum": -0.451535339434176
+      },
+      "type": "numpy.ndarray"
+    },
+    {
+      "category": "derived_cache",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.J_ori",
+      "shape": [
+        3,
+        7
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 2.645751311064589,
+        "maximum": 1.0,
+        "minimum": -0.9999999999999997
+      },
+      "type": "numpy.ndarray"
+    },
+    {
+      "category": "derived_cache",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.J_full",
+      "shape": [
+        6,
+        7
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 2.8278463326687318,
+        "maximum": 1.0,
+        "minimum": -0.9999999999999997
+      },
+      "type": "numpy.ndarray"
+    },
+    {
+      "category": "derived_cache",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.mass_matrix",
+      "shape": [
+        7,
+        7
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 10.625928184562598,
+        "maximum": 7.254164500619237,
+        "minimum": -1.3541526596672078
+      },
+      "type": "numpy.ndarray"
+    }
+  ],
+  "environment_timing_fields": [
+    {
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.env.timestep",
+      "reason": "used by step horizon/done bookkeeping"
+    },
+    {
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.env.cur_time",
+      "reason": "advanced by each policy step"
+    },
+    {
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.env.done",
+      "reason": "episode termination bookkeeping"
+    }
+  ],
+  "robot_fields": [
+    {
+      "category": "last_output_diagnostic",
+      "changes_after_one_action": true,
+      "changes_after_reset": false,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": null,
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].torques",
+      "shape": null,
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+        "line": 15,
+        "symbol": "SingleArm"
+      },
+      "summary": null,
+      "type": "NoneType"
+    },
+    {
+      "category": "robot_buffer",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].recent_qpos",
+      "shape": [
+        7
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+        "line": 15,
+        "symbol": "SingleArm"
+      },
+      "summary": {
+        "current_l2": 0.0,
+        "last_l2": 0.0
+      },
+      "type": "robosuite.utils.buffers.DeltaBuffer"
+    },
+    {
+      "category": "robot_buffer",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].recent_actions",
+      "shape": [
+        7
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+        "line": 15,
+        "symbol": "SingleArm"
+      },
+      "summary": {
+        "current_l2": 0.0,
+        "last_l2": 0.0
+      },
+      "type": "robosuite.utils.buffers.DeltaBuffer"
+    },
+    {
+      "category": "robot_buffer",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].recent_torques",
+      "shape": [
+        7
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+        "line": 15,
+        "symbol": "SingleArm"
+      },
+      "summary": {
+        "current_l2": 0.0,
+        "last_l2": 0.0
+      },
+      "type": "robosuite.utils.buffers.DeltaBuffer"
+    },
+    {
+      "category": "robot_buffer",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].recent_ee_forcetorques",
+      "shape": [
+        6
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+        "line": 15,
+        "symbol": "SingleArm"
+      },
+      "summary": {
+        "current_l2": 0.0,
+        "last_l2": 0.0
+      },
+      "type": "robosuite.utils.buffers.DeltaBuffer"
+    },
+    {
+      "category": "robot_buffer",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].recent_ee_pose",
+      "shape": [
+        7
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+        "line": 15,
+        "symbol": "SingleArm"
+      },
+      "summary": {
+        "current_l2": 0.0,
+        "last_l2": 0.0
+      },
+      "type": "robosuite.utils.buffers.DeltaBuffer"
+    },
+    {
+      "category": "robot_buffer",
+      "changes_after_one_action": false,
+      "changes_after_reset": false,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].recent_ee_vel",
+      "shape": [
+        6
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+        "line": 15,
+        "symbol": "SingleArm"
+      },
+      "summary": {
+        "current_l2": 0.0,
+        "last_l2": 0.0
+      },
+      "type": "robosuite.utils.buffers.DeltaBuffer"
+    },
+    {
+      "category": "robot_buffer",
+      "changes_after_one_action": true,
+      "changes_after_reset": true,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].recent_ee_vel_buffer",
+      "ptr": 9,
+      "shape": [
+        10,
+        6
+      ],
+      "size": 0,
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+        "line": 15,
+        "symbol": "SingleArm"
+      },
+      "summary": {
+        "l2": 0.0,
+        "maximum": 0.0,
+        "minimum": 0.0
+      },
+      "type": "robosuite.utils.buffers.RingBuffer"
+    },
+    {
+      "category": "robot_buffer",
+      "changes_after_one_action": false,
+      "changes_after_reset": false,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].recent_ee_acc",
+      "shape": [
+        6
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+        "line": 15,
+        "symbol": "SingleArm"
+      },
+      "summary": {
+        "current_l2": 0.0,
+        "last_l2": 0.0
+      },
+      "type": "robosuite.utils.buffers.DeltaBuffer"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Panda SingleArm with fixed-impedance OSC_POSE and no interpolators",
+  "source_audit": {
+    "controller_run": {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "line": 278,
+      "symbol": "OperationalSpaceController.run_controller"
+    },
+    "controller_set_goal": {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+      "line": 202,
+      "symbol": "OperationalSpaceController.set_goal"
+    },
+    "controller_update": {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\base_controller.py",
+      "line": 125,
+      "symbol": "Controller.update"
+    },
+    "environment_step": {
+      "file": "C:\\Users\\Guoji\\Documents\\ChatGPT\\Decision-Sparse Latent Reinforcement Learning\\third_party\\LIBERO\\libero\\libero\\envs\\bddl_base_domain.py",
+      "line": 800,
+      "symbol": "BDDLBaseDomain.step"
+    },
+    "robot_control": {
+      "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\robots\\single_arm.py",
+      "line": 216,
+      "symbol": "SingleArm.control"
+    }
+  }
+}
