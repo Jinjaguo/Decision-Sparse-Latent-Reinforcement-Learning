@@ -1,0 +1,276 @@
+{
+  "branch_count": 6,
+  "branches_per_demo": null,
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T19:17:18.580186+00:00",
+  "manifest_type": "exp6_branch_manifest",
+  "outcome_blind": true,
+  "phase": "calibration",
+  "project_sha": "29600515171b1bbc3eafcc7fcc10172730da9ac4",
+  "schema_version": 1,
+  "selection_rule": "eight fixed octile targets with frozen reference-only time/progress/stratum diversity cost",
+  "sources": {
+    "hashes": {
+      "branch_candidates": "89a0ca9e179d06adf187127d45f5a73022b6c6cac909c54bd93f5a5ae1c5a5d1",
+      "calibration_candidates": "360c4287f65a97cad58c1ce47a8496f09bae696ba1d196fb0c51ca27cf29ce17",
+      "config": "81f697b0bd9f3bda47a5f615c427b2d5668c817a6508c18b5ea526c5889409fb",
+      "reference_manifest": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56"
+    },
+    "runs": {
+      "branch_subset": "exp6_s1_branch_subset_20260814",
+      "calibration_audit": null,
+      "reference": "exp5_s4_confirmatory_refs_amended_20260814"
+    }
+  },
+  "trajectories": [
+    {
+      "branches": [
+        {
+          "action_index": 11,
+          "branch_index": 0,
+          "branch_time": 11,
+          "deterministic_replacement_reason": "minimum frozen reference-only time/progress/diversity cost among unused boundaries",
+          "kind": "exp6_reference_stratified",
+          "normalized_time": 0.059782608695652176,
+          "physical_progress_clipped": 0.0,
+          "physical_progress_raw": 0.0,
+          "reference_contact_pairs": [
+            "akita_black_bowl_1_g36|table_collision",
+            "akita_black_bowl_1_g37|table_collision",
+            "akita_black_bowl_1_g38|table_collision",
+            "akita_black_bowl_1_g39|table_collision",
+            "akita_black_bowl_1_g40|table_collision",
+            "cream_cheese_1_g1|table_collision",
+            "plate_1_g10|table_collision",
+            "plate_1_g2|table_collision",
+            "plate_1_g3|table_collision",
+            "plate_1_g4|table_collision",
+            "plate_1_g5|table_collision",
+            "plate_1_g6|table_collision",
+            "plate_1_g7|table_collision",
+            "plate_1_g8|table_collision",
+            "plate_1_g9|table_collision",
+            "table_collision|wine_bottle_1_g3"
+          ],
+          "reference_contact_state": false,
+          "reference_gripper_state": "negative",
+          "reference_predicate_state": false,
+          "reference_stratum": "contact=0|gripper=negative|predicate=0",
+          "selection_distance": 0.017119565217391303,
+          "target_octile": 0.0625
+        },
+        {
+          "action_index": 175,
+          "branch_index": 6,
+          "branch_time": 175,
+          "deterministic_replacement_reason": "minimum frozen reference-only time/progress/diversity cost among unused boundaries",
+          "kind": "exp6_reference_stratified",
+          "normalized_time": 0.9510869565217391,
+          "physical_progress_clipped": 0.9658725896669385,
+          "physical_progress_raw": 0.9658725896669385,
+          "reference_contact_pairs": [
+            "akita_black_bowl_1_g36|table_collision",
+            "akita_black_bowl_1_g37|table_collision",
+            "akita_black_bowl_1_g38|table_collision",
+            "akita_black_bowl_1_g39|table_collision",
+            "akita_black_bowl_1_g40|table_collision",
+            "cream_cheese_1_g1|table_collision",
+            "gripper0_finger2_collision|wooden_cabinet_1_g22",
+            "plate_1_g10|table_collision",
+            "plate_1_g2|table_collision",
+            "plate_1_g3|table_collision",
+            "plate_1_g4|table_collision",
+            "plate_1_g5|table_collision",
+            "plate_1_g6|table_collision",
+            "plate_1_g7|table_collision",
+            "plate_1_g8|table_collision",
+            "plate_1_g9|table_collision",
+            "table_collision|wine_bottle_1_g3"
+          ],
+          "reference_contact_state": true,
+          "reference_gripper_state": "negative",
+          "reference_predicate_state": true,
+          "reference_stratum": "contact=1|gripper=negative|predicate=1",
+          "selection_distance": 0.5945659735036911,
+          "target_octile": 0.8125
+        }
+      ],
+      "episode": "demo_16",
+      "suite": "libero_goal",
+      "task": "open_the_middle_drawer_of_the_cabinet",
+      "task_id": 0,
+      "trajectory_length": 185
+    },
+    {
+      "branches": [
+        {
+          "action_index": 92,
+          "branch_index": 4,
+          "branch_time": 92,
+          "deterministic_replacement_reason": "minimum frozen reference-only time/progress/diversity cost among unused boundaries",
+          "kind": "exp6_reference_stratified",
+          "normalized_time": 0.9484536082474226,
+          "physical_progress_clipped": 1.0,
+          "physical_progress_raw": 1.0,
+          "reference_contact_pairs": [
+            "akita_black_bowl_1_g13|gripper0_finger1_collision",
+            "akita_black_bowl_1_g23|gripper0_hand_collision",
+            "akita_black_bowl_1_g29|gripper0_hand_collision",
+            "akita_black_bowl_1_g30|gripper0_finger2_collision",
+            "akita_black_bowl_1_g31|gripper0_finger2_collision",
+            "akita_black_bowl_1_g32|gripper0_finger1_collision",
+            "akita_black_bowl_1_g37|plate_1_g8",
+            "cream_cheese_1_g1|table_collision",
+            "plate_1_g10|table_collision",
+            "plate_1_g7|table_collision",
+            "plate_1_g8|table_collision",
+            "plate_1_g9|table_collision",
+            "table_collision|wine_bottle_1_g3"
+          ],
+          "reference_contact_state": true,
+          "reference_gripper_state": "negative",
+          "reference_predicate_state": true,
+          "reference_stratum": "contact=1|gripper=negative|predicate=1",
+          "selection_distance": 0.44164948453608244,
+          "target_octile": 0.5625
+        }
+      ],
+      "episode": "demo_13",
+      "suite": "libero_goal",
+      "task": "put_the_bowl_on_the_plate",
+      "task_id": 8,
+      "trajectory_length": 98
+    },
+    {
+      "branches": [
+        {
+          "action_index": 5,
+          "branch_index": 0,
+          "branch_time": 5,
+          "deterministic_replacement_reason": "minimum frozen reference-only time/progress/diversity cost among unused boundaries",
+          "kind": "exp6_reference_stratified",
+          "normalized_time": 0.05813953488372093,
+          "physical_progress_clipped": 0.009270264577422468,
+          "physical_progress_raw": 0.009270264577422468,
+          "reference_contact_pairs": [
+            "akita_black_bowl_1_g36|table_collision",
+            "akita_black_bowl_1_g37|table_collision",
+            "akita_black_bowl_1_g38|table_collision",
+            "akita_black_bowl_1_g39|table_collision",
+            "akita_black_bowl_1_g40|table_collision",
+            "cream_cheese_1_g1|table_collision",
+            "plate_1_g10|table_collision",
+            "plate_1_g2|table_collision",
+            "plate_1_g3|table_collision",
+            "plate_1_g4|table_collision",
+            "plate_1_g5|table_collision",
+            "plate_1_g6|table_collision",
+            "plate_1_g7|table_collision",
+            "plate_1_g8|table_collision",
+            "plate_1_g9|table_collision",
+            "table_collision|wine_bottle_1_g3"
+          ],
+          "reference_contact_state": false,
+          "reference_gripper_state": "negative",
+          "reference_predicate_state": false,
+          "reference_stratum": "contact=0|gripper=negative|predicate=0",
+          "selection_distance": 0.015705689669597872,
+          "target_octile": 0.0625
+        }
+      ],
+      "episode": "demo_14",
+      "suite": "libero_goal",
+      "task": "put_the_bowl_on_the_plate",
+      "task_id": 8,
+      "trajectory_length": 87
+    },
+    {
+      "branches": [
+        {
+          "action_index": 5,
+          "branch_index": 0,
+          "branch_time": 5,
+          "deterministic_replacement_reason": "minimum frozen reference-only time/progress/diversity cost among unused boundaries",
+          "kind": "exp6_reference_stratified",
+          "normalized_time": 0.05747126436781609,
+          "physical_progress_clipped": 0.0,
+          "physical_progress_raw": 0.0,
+          "reference_contact_pairs": [
+            "akita_black_bowl_1_g36|table_collision",
+            "akita_black_bowl_1_g37|table_collision",
+            "akita_black_bowl_1_g38|table_collision",
+            "akita_black_bowl_1_g39|table_collision",
+            "akita_black_bowl_1_g40|table_collision",
+            "cream_cheese_1_g1|table_collision",
+            "plate_1_g10|table_collision",
+            "plate_1_g2|table_collision",
+            "plate_1_g3|table_collision",
+            "plate_1_g4|table_collision",
+            "plate_1_g5|table_collision",
+            "plate_1_g6|table_collision",
+            "plate_1_g7|table_collision",
+            "plate_1_g8|table_collision",
+            "plate_1_g9|table_collision",
+            "table_collision|wine_bottle_1_g3"
+          ],
+          "reference_contact_state": false,
+          "reference_gripper_state": "negative",
+          "reference_predicate_state": false,
+          "reference_stratum": "contact=0|gripper=negative|predicate=0",
+          "selection_distance": 0.01839080459770115,
+          "target_octile": 0.0625
+        }
+      ],
+      "episode": "demo_11",
+      "suite": "libero_goal",
+      "task": "turn_on_the_stove",
+      "task_id": 7,
+      "trajectory_length": 88
+    },
+    {
+      "branches": [
+        {
+          "action_index": 98,
+          "branch_index": 7,
+          "branch_time": 98,
+          "deterministic_replacement_reason": "minimum frozen reference-only time/progress/diversity cost among unused boundaries",
+          "kind": "exp6_reference_stratified",
+          "normalized_time": 1.0,
+          "physical_progress_clipped": 1.0,
+          "physical_progress_raw": 1.0,
+          "reference_contact_pairs": [
+            "akita_black_bowl_1_g40|table_collision",
+            "akita_black_bowl_1_g8|plate_1_g4",
+            "cream_cheese_1_g1|table_collision",
+            "flat_stove_1_g19|gripper0_finger1_pad_collision",
+            "flat_stove_1_g20|gripper0_finger1_pad_collision",
+            "flat_stove_1_g21|gripper0_finger1_pad_collision",
+            "flat_stove_1_g5|gripper0_finger2_collision",
+            "plate_1_g10|table_collision",
+            "plate_1_g2|table_collision",
+            "plate_1_g3|table_collision",
+            "plate_1_g4|table_collision",
+            "plate_1_g5|table_collision",
+            "plate_1_g6|table_collision",
+            "plate_1_g7|table_collision",
+            "plate_1_g8|table_collision",
+            "plate_1_g9|table_collision",
+            "table_collision|wine_bottle_1_g3"
+          ],
+          "reference_contact_state": true,
+          "reference_gripper_state": "negative",
+          "reference_predicate_state": true,
+          "reference_stratum": "contact=1|gripper=negative|predicate=1",
+          "selection_distance": 0.53,
+          "target_octile": 0.9375
+        }
+      ],
+      "episode": "demo_15",
+      "suite": "libero_goal",
+      "task": "turn_on_the_stove",
+      "task_id": 7,
+      "trajectory_length": 99
+    }
+  ],
+  "trajectory_count": 5
+}

@@ -1,0 +1,30 @@
+{
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T19:17:18.580186+00:00",
+  "largest_adjacent_interval_all_required": {
+    "antithetic_sign_asymmetry_max": 0.25,
+    "heldout_vector_relative_error_max": 0.35,
+    "relative_spectral_discrepancy_max": 0.2,
+    "signal_to_floor_min": 100.0,
+    "top1_similarity_min": 0.8,
+    "top2_similarity_min": 0.75
+  },
+  "manifest_type": "trust_region_spec",
+  "outcome_blind": true,
+  "project_sha": "29600515171b1bbc3eafcc7fcc10172730da9ac4",
+  "schema_version": 1,
+  "sources": {
+    "hashes": {
+      "branch_candidates": "89a0ca9e179d06adf187127d45f5a73022b6c6cac909c54bd93f5a5ae1c5a5d1",
+      "calibration_candidates": "360c4287f65a97cad58c1ce47a8496f09bae696ba1d196fb0c51ca27cf29ce17",
+      "config": "81f697b0bd9f3bda47a5f615c427b2d5668c817a6508c18b5ea526c5889409fb",
+      "reference_manifest": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56"
+    },
+    "runs": {
+      "branch_subset": "exp6_s1_branch_subset_20260814",
+      "calibration_audit": null,
+      "reference": "exp5_s4_confirmatory_refs_amended_20260814"
+    }
+  },
+  "unresolved_rule": "no adjacent pair passes"
+}

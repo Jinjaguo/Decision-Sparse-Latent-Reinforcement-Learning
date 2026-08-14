@@ -1,0 +1,82 @@
+{
+  "continuous_denominators": {
+    "arm_q_l2": {
+      "derivation": "L2 norm of audited Panda joint ranges",
+      "value": 13.037036319654863
+    },
+    "arm_qvel_l2": {
+      "derivation": "P95 reference finite-difference q speed at 20 Hz; 1 rad/s stability floor",
+      "value": 1.2249549461461373
+    },
+    "eef_orientation_geodesic": {
+      "derivation": "physical SO(3) maximum",
+      "value": 3.141592653589793
+    },
+    "eef_position_l2": {
+      "derivation": "reference EEF workspace bounding-box diagonal; 5 cm stability floor",
+      "value": 0.6928091503897607
+    },
+    "task_object_orientation_geodesic_mean": {
+      "derivation": "physical quaternion maximum",
+      "value": 3.141592653589793
+    },
+    "task_object_position_l2": {
+      "derivation": "reference target-body bounding-box diagonal; 1 cm stability floor",
+      "value_by_task": {
+        "open_the_middle_drawer_of_the_cabinet": 0.16955249822687665,
+        "put_the_bowl_on_the_plate": 0.21082983988875573,
+        "turn_on_the_stove": 0.016546450737242712
+      }
+    }
+  },
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T19:17:18.580186+00:00",
+  "inheritance": "numerical denominator values copied exactly from frozen EXP3 for direct comparability",
+  "manifest_name": "effect_normalization",
+  "manifest_type": "effect_normalization",
+  "operator_signed_vector": {
+    "arm_q": "elementwise divide by audited joint ranges",
+    "arm_qvel": "divide by EXP3 arm_qvel_l2 scalar",
+    "eef_orientation_rotvec": "divide by pi",
+    "eef_position": "divide by EXP3 eef_position scalar",
+    "task_object_orientation_rotvec": "divide by pi",
+    "task_object_position": "divide by EXP3 task-specific object-position scalar"
+  },
+  "outcome_blind": true,
+  "outcome_blind_declaration": "No EXP4 q-intervention outcome existed or was read when this manifest was frozen.",
+  "project_git_sha": "33e7075c14ebc29de04ae13e301c7aa5dd0fd8cd",
+  "project_sha": "29600515171b1bbc3eafcc7fcc10172730da9ac4",
+  "reference_only": true,
+  "schema_version": 1,
+  "source_exp3_manifest_sha256": "906ca20e409a2878e1bbe0b39a6d46c00009d35b7d7a2e6b64a36ea222cdaa12",
+  "source_file_sha256": {
+    "branch_candidates": "f5daf76f0a5e5540ef93bb94399f4e43974d4c733a3fbbf0d05729ced6f6969b",
+    "condition_d_gate": "6ca9e8fc827aac1aca4b4476829afb00015771585012b4f639b0e914513351da",
+    "exp3_normalization": "906ca20e409a2878e1bbe0b39a6d46c00009d35b7d7a2e6b64a36ea222cdaa12",
+    "exp4_config": "02eb4da555a8d25241fb8ba4c75adef774ae22cfd84696c1e85e66fd25b7ba47",
+    "joint_limits": "591f94f4b356ac186701b1dc4beff6ee6d7fc1329975e3a14c78b9d001e8f92f",
+    "progress_runtime_audit": "a0c46f5bd6e4a1f7a3b5185cc57a85b22ed66243e207698214bf186fdd1b01c2",
+    "reference_manifest": "10bdfd3aca8c1ef0b741c9f4ce64d8ed4351a48196446983001d8633a3fec183"
+  },
+  "source_runs": {
+    "branch_candidates": "exp4_e4_2_branch_candidates_20260814",
+    "condition_d_gate": "exp4_e4_2_condition_d_reconciled_20260814",
+    "joint_limit_audit": "exp2_r5_q_smoke_20260814T012633",
+    "legacy_exp3": "exp3_t6_full_20260814T022200",
+    "progress_audit": "exp4_e4_0_1_runtime_audit_geom_20260814",
+    "reference": "exp4_e4_3_heldout_refs_20260814"
+  },
+  "sources": {
+    "hashes": {
+      "branch_candidates": "89a0ca9e179d06adf187127d45f5a73022b6c6cac909c54bd93f5a5ae1c5a5d1",
+      "calibration_candidates": "360c4287f65a97cad58c1ce47a8496f09bae696ba1d196fb0c51ca27cf29ce17",
+      "config": "81f697b0bd9f3bda47a5f615c427b2d5668c817a6508c18b5ea526c5889409fb",
+      "reference_manifest": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56"
+    },
+    "runs": {
+      "branch_subset": "exp6_s1_branch_subset_20260814",
+      "calibration_audit": null,
+      "reference": "exp5_s4_confirmatory_refs_amended_20260814"
+    }
+  }
+}

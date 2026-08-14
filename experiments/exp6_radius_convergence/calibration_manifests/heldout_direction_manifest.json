@@ -1,0 +1,894 @@
+{
+  "directions": [
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 11,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_16",
+      "execution_position": 7,
+      "radius_fraction": 0.0003125,
+      "radius_label": "r0003125",
+      "task": "open_the_middle_drawer_of_the_cabinet",
+      "unit_direction_scaled_coordinates": [
+        -0.550070080601444,
+        -0.05380355083273623,
+        0.05161260330951548,
+        -0.24293498423971105,
+        -0.7547306688196963,
+        -0.19692677656917237,
+        -0.15635945500680584
+      ],
+      "unsigned_delta_q": [
+        -0.0009960737778291022,
+        -5.927806212996715e-05,
+        9.3460747230412e-05,
+        -0.00022790338208987895,
+        -0.0013666757292320664,
+        -0.00023200435864555624,
+        -0.00028313765561951157
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 11,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_16",
+      "execution_position": 15,
+      "radius_fraction": 0.000625,
+      "radius_label": "r000625",
+      "task": "open_the_middle_drawer_of_the_cabinet",
+      "unit_direction_scaled_coordinates": [
+        -0.550070080601444,
+        -0.05380355083273623,
+        0.05161260330951548,
+        -0.24293498423971105,
+        -0.7547306688196963,
+        -0.19692677656917237,
+        -0.15635945500680584
+      ],
+      "unsigned_delta_q": [
+        -0.0019921475556582044,
+        -0.0001185561242599343,
+        0.000186921494460824,
+        -0.0004558067641797579,
+        -0.0027333514584641327,
+        -0.0004640087172911125,
+        -0.0005662753112390231
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 11,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_16",
+      "execution_position": 23,
+      "radius_fraction": 0.00125,
+      "radius_label": "r00125",
+      "task": "open_the_middle_drawer_of_the_cabinet",
+      "unit_direction_scaled_coordinates": [
+        -0.550070080601444,
+        -0.05380355083273623,
+        0.05161260330951548,
+        -0.24293498423971105,
+        -0.7547306688196963,
+        -0.19692677656917237,
+        -0.15635945500680584
+      ],
+      "unsigned_delta_q": [
+        -0.003984295111316409,
+        -0.0002371122485198686,
+        0.000373842988921648,
+        -0.0009116135283595158,
+        -0.0054667029169282655,
+        -0.000928017434582225,
+        -0.0011325506224780463
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 11,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_16",
+      "execution_position": 31,
+      "radius_fraction": 0.0025,
+      "radius_label": "r0025",
+      "task": "open_the_middle_drawer_of_the_cabinet",
+      "unit_direction_scaled_coordinates": [
+        -0.550070080601444,
+        -0.05380355083273623,
+        0.05161260330951548,
+        -0.24293498423971105,
+        -0.7547306688196963,
+        -0.19692677656917237,
+        -0.15635945500680584
+      ],
+      "unsigned_delta_q": [
+        -0.007968590222632818,
+        -0.0004742244970397372,
+        0.000747685977843296,
+        -0.0018232270567190316,
+        -0.010933405833856531,
+        -0.00185603486916445,
+        -0.0022651012449560926
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 11,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_16",
+      "execution_position": 39,
+      "radius_fraction": 0.005,
+      "radius_label": "r005",
+      "task": "open_the_middle_drawer_of_the_cabinet",
+      "unit_direction_scaled_coordinates": [
+        -0.550070080601444,
+        -0.05380355083273623,
+        0.05161260330951548,
+        -0.24293498423971105,
+        -0.7547306688196963,
+        -0.19692677656917237,
+        -0.15635945500680584
+      ],
+      "unsigned_delta_q": [
+        -0.015937180445265636,
+        -0.0009484489940794744,
+        0.001495371955686592,
+        -0.003646454113438063,
+        -0.021866811667713062,
+        -0.0037120697383289,
+        -0.004530202489912185
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 175,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_16",
+      "execution_position": 7,
+      "radius_fraction": 0.0003125,
+      "radius_label": "r0003125",
+      "task": "open_the_middle_drawer_of_the_cabinet",
+      "unit_direction_scaled_coordinates": [
+        0.2169917255051513,
+        -0.3287801543909764,
+        0.5056302667888906,
+        0.34023158179456603,
+        0.19758291463621833,
+        0.6582271162400044,
+        -0.03311737440876386
+      ],
+      "unsigned_delta_q": [
+        0.0003929313289412968,
+        -0.00036223353510025826,
+        0.0009156016074796579,
+        0.0003191797526710273,
+        0.0003577856116096971,
+        0.0007754738213202552,
+        -5.9969355546569706e-05
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 175,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_16",
+      "execution_position": 15,
+      "radius_fraction": 0.000625,
+      "radius_label": "r000625",
+      "task": "open_the_middle_drawer_of_the_cabinet",
+      "unit_direction_scaled_coordinates": [
+        0.2169917255051513,
+        -0.3287801543909764,
+        0.5056302667888906,
+        0.34023158179456603,
+        0.19758291463621833,
+        0.6582271162400044,
+        -0.03311737440876386
+      ],
+      "unsigned_delta_q": [
+        0.0007858626578825936,
+        -0.0007244670702005165,
+        0.0018312032149593158,
+        0.0006383595053420546,
+        0.0007155712232193942,
+        0.0015509476426405105,
+        -0.00011993871109313941
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 175,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_16",
+      "execution_position": 23,
+      "radius_fraction": 0.00125,
+      "radius_label": "r00125",
+      "task": "open_the_middle_drawer_of_the_cabinet",
+      "unit_direction_scaled_coordinates": [
+        0.2169917255051513,
+        -0.3287801543909764,
+        0.5056302667888906,
+        0.34023158179456603,
+        0.19758291463621833,
+        0.6582271162400044,
+        -0.03311737440876386
+      ],
+      "unsigned_delta_q": [
+        0.0015717253157651872,
+        -0.001448934140401033,
+        0.0036624064299186315,
+        0.0012767190106841091,
+        0.0014311424464387883,
+        0.003101895285281021,
+        -0.00023987742218627882
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 175,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_16",
+      "execution_position": 31,
+      "radius_fraction": 0.0025,
+      "radius_label": "r0025",
+      "task": "open_the_middle_drawer_of_the_cabinet",
+      "unit_direction_scaled_coordinates": [
+        0.2169917255051513,
+        -0.3287801543909764,
+        0.5056302667888906,
+        0.34023158179456603,
+        0.19758291463621833,
+        0.6582271162400044,
+        -0.03311737440876386
+      ],
+      "unsigned_delta_q": [
+        0.0031434506315303743,
+        -0.002897868280802066,
+        0.007324812859837263,
+        0.0025534380213682183,
+        0.0028622848928775767,
+        0.006203790570562042,
+        -0.00047975484437255765
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 175,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_16",
+      "execution_position": 39,
+      "radius_fraction": 0.005,
+      "radius_label": "r005",
+      "task": "open_the_middle_drawer_of_the_cabinet",
+      "unit_direction_scaled_coordinates": [
+        0.2169917255051513,
+        -0.3287801543909764,
+        0.5056302667888906,
+        0.34023158179456603,
+        0.19758291463621833,
+        0.6582271162400044,
+        -0.03311737440876386
+      ],
+      "unsigned_delta_q": [
+        0.006286901263060749,
+        -0.005795736561604132,
+        0.014649625719674526,
+        0.0051068760427364366,
+        0.005724569785755153,
+        0.012407581141124084,
+        -0.0009595096887451153
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 92,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_13",
+      "execution_position": 7,
+      "radius_fraction": 0.0003125,
+      "radius_label": "r0003125",
+      "task": "put_the_bowl_on_the_plate",
+      "unit_direction_scaled_coordinates": [
+        0.1435302630466618,
+        -0.12434595528684629,
+        0.4466968329230808,
+        -0.28705119139348095,
+        0.8017689118921993,
+        -0.14654234892301568,
+        -0.13301372810711587
+      ],
+      "unsigned_delta_q": [
+        0.0002599063944531833,
+        -0.00013699815623728292,
+        0.0008088842087675262,
+        -0.00026928989892600934,
+        0.0014518531677657931,
+        -0.00017264520482492788,
+        -0.00024086292152796675
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 92,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_13",
+      "execution_position": 15,
+      "radius_fraction": 0.000625,
+      "radius_label": "r000625",
+      "task": "put_the_bowl_on_the_plate",
+      "unit_direction_scaled_coordinates": [
+        0.1435302630466618,
+        -0.12434595528684629,
+        0.4466968329230808,
+        -0.28705119139348095,
+        0.8017689118921993,
+        -0.14654234892301568,
+        -0.13301372810711587
+      ],
+      "unsigned_delta_q": [
+        0.0005198127889063666,
+        -0.00027399631247456585,
+        0.0016177684175350524,
+        -0.0005385797978520187,
+        0.0029037063355315863,
+        -0.00034529040964985575,
+        -0.0004817258430559335
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 92,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_13",
+      "execution_position": 23,
+      "radius_fraction": 0.00125,
+      "radius_label": "r00125",
+      "task": "put_the_bowl_on_the_plate",
+      "unit_direction_scaled_coordinates": [
+        0.1435302630466618,
+        -0.12434595528684629,
+        0.4466968329230808,
+        -0.28705119139348095,
+        0.8017689118921993,
+        -0.14654234892301568,
+        -0.13301372810711587
+      ],
+      "unsigned_delta_q": [
+        0.0010396255778127332,
+        -0.0005479926249491317,
+        0.003235536835070105,
+        -0.0010771595957040374,
+        0.0058074126710631726,
+        -0.0006905808192997115,
+        -0.000963451686111867
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 92,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_13",
+      "execution_position": 31,
+      "radius_fraction": 0.0025,
+      "radius_label": "r0025",
+      "task": "put_the_bowl_on_the_plate",
+      "unit_direction_scaled_coordinates": [
+        0.1435302630466618,
+        -0.12434595528684629,
+        0.4466968329230808,
+        -0.28705119139348095,
+        0.8017689118921993,
+        -0.14654234892301568,
+        -0.13301372810711587
+      ],
+      "unsigned_delta_q": [
+        0.0020792511556254663,
+        -0.0010959852498982634,
+        0.00647107367014021,
+        -0.0021543191914080747,
+        0.011614825342126345,
+        -0.001381161638599423,
+        -0.001926903372223734
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 92,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_13",
+      "execution_position": 39,
+      "radius_fraction": 0.005,
+      "radius_label": "r005",
+      "task": "put_the_bowl_on_the_plate",
+      "unit_direction_scaled_coordinates": [
+        0.1435302630466618,
+        -0.12434595528684629,
+        0.4466968329230808,
+        -0.28705119139348095,
+        0.8017689118921993,
+        -0.14654234892301568,
+        -0.13301372810711587
+      ],
+      "unsigned_delta_q": [
+        0.004158502311250933,
+        -0.0021919704997965268,
+        0.01294214734028042,
+        -0.0043086383828161495,
+        0.02322965068425269,
+        -0.002762323277198846,
+        -0.003853806744447468
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 5,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_14",
+      "execution_position": 7,
+      "radius_fraction": 0.0003125,
+      "radius_label": "r0003125",
+      "task": "put_the_bowl_on_the_plate",
+      "unit_direction_scaled_coordinates": [
+        0.2612694265660754,
+        -0.1103891060986147,
+        0.03416574592600876,
+        -0.8016715531770935,
+        -0.36586221174412287,
+        -0.10641659442597559,
+        0.3612870120513676
+      ],
+      "unsigned_delta_q": [
+        0.00047310994349368133,
+        -0.00012162119764414876,
+        6.186775979464073e-05,
+        -0.0007520681258242609,
+        -0.0006625078663039045,
+        -0.0001253720503081025,
+        0.000654223037510267
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 5,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_14",
+      "execution_position": 15,
+      "radius_fraction": 0.000625,
+      "radius_label": "r000625",
+      "task": "put_the_bowl_on_the_plate",
+      "unit_direction_scaled_coordinates": [
+        0.2612694265660754,
+        -0.1103891060986147,
+        0.03416574592600876,
+        -0.8016715531770935,
+        -0.36586221174412287,
+        -0.10641659442597559,
+        0.3612870120513676
+      ],
+      "unsigned_delta_q": [
+        0.0009462198869873627,
+        -0.00024324239528829752,
+        0.00012373551958928147,
+        -0.0015041362516485218,
+        -0.001325015732607809,
+        -0.000250744100616205,
+        0.001308446075020534
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 5,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_14",
+      "execution_position": 23,
+      "radius_fraction": 0.00125,
+      "radius_label": "r00125",
+      "task": "put_the_bowl_on_the_plate",
+      "unit_direction_scaled_coordinates": [
+        0.2612694265660754,
+        -0.1103891060986147,
+        0.03416574592600876,
+        -0.8016715531770935,
+        -0.36586221174412287,
+        -0.10641659442597559,
+        0.3612870120513676
+      ],
+      "unsigned_delta_q": [
+        0.0018924397739747253,
+        -0.00048648479057659505,
+        0.00024747103917856293,
+        -0.0030082725032970436,
+        -0.002650031465215618,
+        -0.00050148820123241,
+        0.002616892150041068
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 5,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_14",
+      "execution_position": 31,
+      "radius_fraction": 0.0025,
+      "radius_label": "r0025",
+      "task": "put_the_bowl_on_the_plate",
+      "unit_direction_scaled_coordinates": [
+        0.2612694265660754,
+        -0.1103891060986147,
+        0.03416574592600876,
+        -0.8016715531770935,
+        -0.36586221174412287,
+        -0.10641659442597559,
+        0.3612870120513676
+      ],
+      "unsigned_delta_q": [
+        0.0037848795479494507,
+        -0.0009729695811531901,
+        0.0004949420783571259,
+        -0.006016545006594087,
+        -0.005300062930431236,
+        -0.00100297640246482,
+        0.005233784300082136
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 5,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_14",
+      "execution_position": 39,
+      "radius_fraction": 0.005,
+      "radius_label": "r005",
+      "task": "put_the_bowl_on_the_plate",
+      "unit_direction_scaled_coordinates": [
+        0.2612694265660754,
+        -0.1103891060986147,
+        0.03416574592600876,
+        -0.8016715531770935,
+        -0.36586221174412287,
+        -0.10641659442597559,
+        0.3612870120513676
+      ],
+      "unsigned_delta_q": [
+        0.007569759095898901,
+        -0.0019459391623063802,
+        0.0009898841567142517,
+        -0.012033090013188174,
+        -0.010600125860862472,
+        -0.00200595280492964,
+        0.010467568600164272
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 5,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_11",
+      "execution_position": 7,
+      "radius_fraction": 0.0003125,
+      "radius_label": "r0003125",
+      "task": "turn_on_the_stove",
+      "unit_direction_scaled_coordinates": [
+        -0.3618864549068744,
+        0.5274477273732607,
+        -0.06567701712100658,
+        0.11039148026172407,
+        -0.381879939528789,
+        -0.23126749510677216,
+        0.6123890892593998
+      ],
+      "unsigned_delta_q": [
+        -0.0006553085161260544,
+        0.00058111553363349,
+        -0.00011892876356543274,
+        0.0001035610074205299,
+        -0.0006915129679979752,
+        -0.00027246201767266596,
+        0.001108921817694537
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 5,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_11",
+      "execution_position": 15,
+      "radius_fraction": 0.000625,
+      "radius_label": "r000625",
+      "task": "turn_on_the_stove",
+      "unit_direction_scaled_coordinates": [
+        -0.3618864549068744,
+        0.5274477273732607,
+        -0.06567701712100658,
+        0.11039148026172407,
+        -0.381879939528789,
+        -0.23126749510677216,
+        0.6123890892593998
+      ],
+      "unsigned_delta_q": [
+        -0.0013106170322521088,
+        0.00116223106726698,
+        -0.00023785752713086547,
+        0.0002071220148410598,
+        -0.0013830259359959504,
+        -0.0005449240353453319,
+        0.002217843635389074
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 5,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_11",
+      "execution_position": 23,
+      "radius_fraction": 0.00125,
+      "radius_label": "r00125",
+      "task": "turn_on_the_stove",
+      "unit_direction_scaled_coordinates": [
+        -0.3618864549068744,
+        0.5274477273732607,
+        -0.06567701712100658,
+        0.11039148026172407,
+        -0.381879939528789,
+        -0.23126749510677216,
+        0.6123890892593998
+      ],
+      "unsigned_delta_q": [
+        -0.0026212340645042176,
+        0.00232446213453396,
+        -0.00047571505426173094,
+        0.0004142440296821196,
+        -0.002766051871991901,
+        -0.0010898480706906639,
+        0.004435687270778148
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 5,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_11",
+      "execution_position": 31,
+      "radius_fraction": 0.0025,
+      "radius_label": "r0025",
+      "task": "turn_on_the_stove",
+      "unit_direction_scaled_coordinates": [
+        -0.3618864549068744,
+        0.5274477273732607,
+        -0.06567701712100658,
+        0.11039148026172407,
+        -0.381879939528789,
+        -0.23126749510677216,
+        0.6123890892593998
+      ],
+      "unsigned_delta_q": [
+        -0.005242468129008435,
+        0.00464892426906792,
+        -0.0009514301085234619,
+        0.0008284880593642392,
+        -0.005532103743983802,
+        -0.0021796961413813277,
+        0.008871374541556296
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 5,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_11",
+      "execution_position": 39,
+      "radius_fraction": 0.005,
+      "radius_label": "r005",
+      "task": "turn_on_the_stove",
+      "unit_direction_scaled_coordinates": [
+        -0.3618864549068744,
+        0.5274477273732607,
+        -0.06567701712100658,
+        0.11039148026172407,
+        -0.381879939528789,
+        -0.23126749510677216,
+        0.6123890892593998
+      ],
+      "unsigned_delta_q": [
+        -0.01048493625801687,
+        0.00929784853813584,
+        -0.0019028602170469238,
+        0.0016569761187284783,
+        -0.011064207487967603,
+        -0.004359392282762655,
+        0.017742749083112592
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 98,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_15",
+      "execution_position": 7,
+      "radius_fraction": 0.0003125,
+      "radius_label": "r0003125",
+      "task": "turn_on_the_stove",
+      "unit_direction_scaled_coordinates": [
+        -0.21590572853210616,
+        -0.021936604538298318,
+        -0.6563230722450508,
+        0.154625275159002,
+        0.5729291831392037,
+        -0.39494890185830067,
+        0.11833032966039841
+      ],
+      "unsigned_delta_q": [
+        -0.00039096479204754446,
+        -2.4168654050070173e-05,
+        -0.0011884780232597411,
+        0.00014505783625853877,
+        0.0010374673264432592,
+        -0.00046529917500181053,
+        0.0002142740400781702
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 98,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_15",
+      "execution_position": 15,
+      "radius_fraction": 0.000625,
+      "radius_label": "r000625",
+      "task": "turn_on_the_stove",
+      "unit_direction_scaled_coordinates": [
+        -0.21590572853210616,
+        -0.021936604538298318,
+        -0.6563230722450508,
+        0.154625275159002,
+        0.5729291831392037,
+        -0.39494890185830067,
+        0.11833032966039841
+      ],
+      "unsigned_delta_q": [
+        -0.0007819295840950889,
+        -4.8337308100140346e-05,
+        -0.0023769560465194822,
+        0.00029011567251707753,
+        0.0020749346528865184,
+        -0.0009305983500036211,
+        0.0004285480801563404
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 98,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_15",
+      "execution_position": 23,
+      "radius_fraction": 0.00125,
+      "radius_label": "r00125",
+      "task": "turn_on_the_stove",
+      "unit_direction_scaled_coordinates": [
+        -0.21590572853210616,
+        -0.021936604538298318,
+        -0.6563230722450508,
+        0.154625275159002,
+        0.5729291831392037,
+        -0.39494890185830067,
+        0.11833032966039841
+      ],
+      "unsigned_delta_q": [
+        -0.0015638591681901778,
+        -9.667461620028069e-05,
+        -0.0047539120930389644,
+        0.0005802313450341551,
+        0.004149869305773037,
+        -0.0018611967000072421,
+        0.0008570961603126808
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 98,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_15",
+      "execution_position": 31,
+      "radius_fraction": 0.0025,
+      "radius_label": "r0025",
+      "task": "turn_on_the_stove",
+      "unit_direction_scaled_coordinates": [
+        -0.21590572853210616,
+        -0.021936604538298318,
+        -0.6563230722450508,
+        0.154625275159002,
+        0.5729291831392037,
+        -0.39494890185830067,
+        0.11833032966039841
+      ],
+      "unsigned_delta_q": [
+        -0.0031277183363803557,
+        -0.00019334923240056138,
+        -0.009507824186077929,
+        0.0011604626900683101,
+        0.008299738611546073,
+        -0.0037223934000144843,
+        0.0017141923206253616
+      ]
+    },
+    {
+      "both_signs_within_joint_limits": true,
+      "branch_time": 98,
+      "direction_index": 7,
+      "direction_role": "heldout_random",
+      "episode": "demo_15",
+      "execution_position": 39,
+      "radius_fraction": 0.005,
+      "radius_label": "r005",
+      "task": "turn_on_the_stove",
+      "unit_direction_scaled_coordinates": [
+        -0.21590572853210616,
+        -0.021936604538298318,
+        -0.6563230722450508,
+        0.154625275159002,
+        0.5729291831392037,
+        -0.39494890185830067,
+        0.11833032966039841
+      ],
+      "unsigned_delta_q": [
+        -0.006255436672760711,
+        -0.00038669846480112276,
+        -0.019015648372155858,
+        0.0023209253801366203,
+        0.016599477223092147,
+        -0.0074447868000289685,
+        0.003428384641250723
+      ]
+    }
+  ],
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T19:17:18.580186+00:00",
+  "manifest_type": "heldout_direction_manifest",
+  "outcome_blind": true,
+  "project_sha": "29600515171b1bbc3eafcc7fcc10172730da9ac4",
+  "role": "eighth direction excluded from fitted seven-column operator",
+  "schema_version": 1,
+  "sources": {
+    "hashes": {
+      "branch_candidates": "89a0ca9e179d06adf187127d45f5a73022b6c6cac909c54bd93f5a5ae1c5a5d1",
+      "calibration_candidates": "360c4287f65a97cad58c1ce47a8496f09bae696ba1d196fb0c51ca27cf29ce17",
+      "config": "81f697b0bd9f3bda47a5f615c427b2d5668c817a6508c18b5ea526c5889409fb",
+      "reference_manifest": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56"
+    },
+    "runs": {
+      "branch_subset": "exp6_s1_branch_subset_20260814",
+      "calibration_audit": null,
+      "reference": "exp5_s4_confirmatory_refs_amended_20260814"
+    }
+  }
+}

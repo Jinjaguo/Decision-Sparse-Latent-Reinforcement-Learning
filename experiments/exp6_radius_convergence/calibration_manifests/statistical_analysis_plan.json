@@ -1,0 +1,37 @@
+{
+  "H1": "at least 70% demos median smallest-primary top1 >=0.80 and hierarchical CI lower >0.65",
+  "H2": "at least 70% branches smallest-primary spectral discrepancy <=0.20",
+  "H3": "smallest validated demo-median heldout rho >=0.65 and median vector error <=0.35",
+  "H4": "contact-divergent convergence-failure excess CI excludes zero and BH q<0.05",
+  "bootstrap": {
+    "hierarchy": "task then demonstration",
+    "resamples": 4000,
+    "seed": 960031
+  },
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T19:17:18.580186+00:00",
+  "independent_unit": "demonstration",
+  "manifest_type": "statistical_analysis_plan",
+  "multiple_comparisons": "BH FDR 0.05",
+  "outcome_blind": true,
+  "permutation": {
+    "resamples": 4000,
+    "seed": 960032,
+    "unit": "demonstration"
+  },
+  "project_sha": "29600515171b1bbc3eafcc7fcc10172730da9ac4",
+  "schema_version": 1,
+  "sources": {
+    "hashes": {
+      "branch_candidates": "89a0ca9e179d06adf187127d45f5a73022b6c6cac909c54bd93f5a5ae1c5a5d1",
+      "calibration_candidates": "360c4287f65a97cad58c1ce47a8496f09bae696ba1d196fb0c51ca27cf29ce17",
+      "config": "81f697b0bd9f3bda47a5f615c427b2d5668c817a6508c18b5ea526c5889409fb",
+      "reference_manifest": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56"
+    },
+    "runs": {
+      "branch_subset": "exp6_s1_branch_subset_20260814",
+      "calibration_audit": null,
+      "reference": "exp5_s4_confirmatory_refs_amended_20260814"
+    }
+  }
+}
