@@ -59,6 +59,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--dataset-root", type=Path, default=REPOSITORY_ROOT / "data")
     parser.add_argument("--selection", type=Path, default=REPOSITORY_ROOT / "experiments/exp1_decision_sparsity/manifests/selected_tasks_pilot.json")
     parser.add_argument("--task-manifest", type=Path, default=REPOSITORY_ROOT / "experiments/exp1_decision_sparsity/manifests/tasks.json")
+    parser.add_argument("--episodes", type=int, nargs="+", default=list(EPISODES))
     return parser.parse_args()
 
 
@@ -121,13 +122,16 @@ def enhanced_boundary(env: Any, action_index: int, action: np.ndarray, task_name
 
 def main() -> int:
     args = parse_args()
+    episodes = tuple(int(x) for x in args.episodes)
+    if not episodes or len(set(episodes)) != len(episodes) or min(episodes) < 0:
+        raise ValueError("--episodes must contain unique nonnegative indexes")
     run_dir = create_run_directory(args.run_root, args.run_id)
     stdout, stderr = io.StringIO(), io.StringIO()
     audit_run = args.progress_audit_run.resolve()
     audit_metrics = json.loads((audit_run / "metrics.json").read_text(encoding="utf-8"))
     config = {
         "stage": "E4-3_heldout_reference_generation",
-        "episodes": list(EPISODES),
+        "episodes": list(episodes),
         "progress_audit_run": audit_run.name,
         "policy_boundary": "pre-policy-step, identical to corrected EXP2",
         "roundtrip_maximum": 1e-12,
@@ -150,7 +154,7 @@ def main() -> int:
                 env = wrapper.ControlEnv(**environment_kwargs(Path(source["bddl_file_path"])))
                 task_name = task["name"]
                 exp2_reference._boundary_observation = lambda target_env, action_index, action, selected=task_name: enhanced_boundary(target_env, action_index, action, selected)
-                for episode_index in EPISODES:
+                for episode_index in episodes:
                     episode = load_episode(env, dataset_path=args.dataset_root / task["demonstration_relative_path"], episode_index=episode_index, robosuite_package_root=robosuite_root, libero_assets_root=assets_root)
                     record = exp2_reference._write_episode_reference(env, task=task, episode=episode, output_directory=references_root / task_name / episode["episode"])
                     records.append(record)
@@ -160,8 +164,9 @@ def main() -> int:
             all_finite = all(x["all_snapshots_finite"] for x in records)
             max_integration = max(x["maximum_roundtrip_state_l2"]["integration"] for x in records)
             max_controller = max(x["maximum_controller_roundtrip_error"] for x in records)
-            exact_episodes = sorted(int(x["episode"].split("_")[-1]) for x in records) == sorted(list(EPISODES) * 3)
-            criteria = {"exactly_21_references": len(records) == 21, "exact_demos_3_through_9_per_task": exact_episodes, "all_finish_successfully": all_success, "all_snapshot_arrays_finite": all_finite, "integration_roundtrips_at_most_1e-12": max_integration <= 1e-12, "controller_roundtrips_at_most_1e-12": max_controller <= 1e-12}
+            expected_count = 3 * len(episodes)
+            exact_episodes = sorted(int(x["episode"].split("_")[-1]) for x in records) == sorted(list(episodes) * 3)
+            criteria = {"expected_reference_count": len(records) == expected_count, "exact_requested_demos_per_task": exact_episodes, "all_finish_successfully": all_success, "all_snapshot_arrays_finite": all_finite, "integration_roundtrips_at_most_1e-12": max_integration <= 1e-12, "controller_roundtrips_at_most_1e-12": max_controller <= 1e-12}
             gate = {"passed": all(criteria.values()), "criteria": criteria}
             manifest = {"schema_version": 2, "run_id": args.run_id, "progress_audit_run": audit_run.name, "progress_audit_sha256": sha256(audit_run / "artifacts/progress_runtime_audit.json"), "episodes": records, "gate": gate}
             write_json(run_dir / "artifacts/reference_snapshots_manifest.json", manifest)
