@@ -1,0 +1,744 @@
+{
+  "confirmatory_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T09:39:29.994697+00:00",
+  "manifest_type": "state_descriptor_schema",
+  "outcome_blind": true,
+  "project_sha": "fd8295581083a1ce0aa68d7ce8eb3ac3e7254d48",
+  "runtime_identifiers": {
+    "contact_prefix": {
+      "open_the_middle_drawer_of_the_cabinet": "wooden_cabinet_1",
+      "put_the_bowl_on_the_plate": "akita_black_bowl_1",
+      "turn_on_the_stove": "flat_stove_1_button"
+    },
+    "target_body": {
+      "open_the_middle_drawer_of_the_cabinet": "wooden_cabinet_1_cabinet_middle",
+      "put_the_bowl_on_the_plate": "akita_black_bowl_1_main",
+      "turn_on_the_stove": "flat_stove_1_button"
+    }
+  },
+  "schema_version": 1,
+  "sources": {
+    "hashes": {
+      "config": "2379b5355d4af1096e0204d0950815f25ac5a3be5ea8193b100385d940611858",
+      "confirmatory_references": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56",
+      "development_references": "10bdfd3aca8c1ef0b741c9f4ce64d8ed4351a48196446983001d8633a3fec183"
+    },
+    "runs": {
+      "confirmatory_references": "exp5_s4_confirmatory_refs_amended_20260814",
+      "development_references": "exp4_e4_3_heldout_refs_20260814"
+    }
+  },
+  "tasks": {
+    "open_the_middle_drawer_of_the_cabinet": [
+      {
+        "index": 0,
+        "name": "q_norm_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 1,
+        "name": "q_norm_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 2,
+        "name": "q_norm_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 3,
+        "name": "q_norm_3",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 4,
+        "name": "q_norm_4",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 5,
+        "name": "q_norm_5",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 6,
+        "name": "q_norm_6",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 7,
+        "name": "qvel_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 8,
+        "name": "qvel_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 9,
+        "name": "qvel_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 10,
+        "name": "qvel_3",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 11,
+        "name": "qvel_4",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 12,
+        "name": "qvel_5",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 13,
+        "name": "qvel_6",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 14,
+        "name": "eef_pos_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 15,
+        "name": "eef_pos_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 16,
+        "name": "eef_pos_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 17,
+        "name": "eef_rot6d_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 18,
+        "name": "eef_rot6d_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 19,
+        "name": "eef_rot6d_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 20,
+        "name": "eef_rot6d_3",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 21,
+        "name": "eef_rot6d_4",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 22,
+        "name": "eef_rot6d_5",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 23,
+        "name": "eef_linvel_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 24,
+        "name": "eef_linvel_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 25,
+        "name": "eef_linvel_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 26,
+        "name": "eef_angvel_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 27,
+        "name": "eef_angvel_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 28,
+        "name": "eef_angvel_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 29,
+        "name": "gripper_opening_l1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 30,
+        "name": "gripper_current_action",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 31,
+        "name": "task_contact",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 32,
+        "name": "exact_predicate",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 33,
+        "name": "drawer_pos_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 34,
+        "name": "drawer_pos_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 35,
+        "name": "drawer_pos_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 36,
+        "name": "drawer_quat_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 37,
+        "name": "drawer_quat_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 38,
+        "name": "drawer_quat_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 39,
+        "name": "drawer_quat_3",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 40,
+        "name": "eef_minus_drawer_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 41,
+        "name": "eef_minus_drawer_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 42,
+        "name": "eef_minus_drawer_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 43,
+        "name": "drawer_joint_qpos",
+        "source": "audited reference boundary/controller snapshot"
+      }
+    ],
+    "put_the_bowl_on_the_plate": [
+      {
+        "index": 0,
+        "name": "q_norm_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 1,
+        "name": "q_norm_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 2,
+        "name": "q_norm_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 3,
+        "name": "q_norm_3",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 4,
+        "name": "q_norm_4",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 5,
+        "name": "q_norm_5",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 6,
+        "name": "q_norm_6",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 7,
+        "name": "qvel_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 8,
+        "name": "qvel_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 9,
+        "name": "qvel_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 10,
+        "name": "qvel_3",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 11,
+        "name": "qvel_4",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 12,
+        "name": "qvel_5",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 13,
+        "name": "qvel_6",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 14,
+        "name": "eef_pos_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 15,
+        "name": "eef_pos_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 16,
+        "name": "eef_pos_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 17,
+        "name": "eef_rot6d_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 18,
+        "name": "eef_rot6d_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 19,
+        "name": "eef_rot6d_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 20,
+        "name": "eef_rot6d_3",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 21,
+        "name": "eef_rot6d_4",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 22,
+        "name": "eef_rot6d_5",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 23,
+        "name": "eef_linvel_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 24,
+        "name": "eef_linvel_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 25,
+        "name": "eef_linvel_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 26,
+        "name": "eef_angvel_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 27,
+        "name": "eef_angvel_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 28,
+        "name": "eef_angvel_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 29,
+        "name": "gripper_opening_l1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 30,
+        "name": "gripper_current_action",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 31,
+        "name": "task_contact",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 32,
+        "name": "exact_predicate",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 33,
+        "name": "bowl_pos_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 34,
+        "name": "bowl_pos_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 35,
+        "name": "bowl_pos_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 36,
+        "name": "bowl_quat_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 37,
+        "name": "bowl_quat_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 38,
+        "name": "bowl_quat_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 39,
+        "name": "bowl_quat_3",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 40,
+        "name": "plate_pos_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 41,
+        "name": "plate_pos_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 42,
+        "name": "plate_pos_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 43,
+        "name": "plate_quat_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 44,
+        "name": "plate_quat_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 45,
+        "name": "plate_quat_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 46,
+        "name": "plate_quat_3",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 47,
+        "name": "bowl_minus_plate_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 48,
+        "name": "bowl_minus_plate_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 49,
+        "name": "bowl_minus_plate_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 50,
+        "name": "eef_minus_bowl_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 51,
+        "name": "eef_minus_bowl_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 52,
+        "name": "eef_minus_bowl_2",
+        "source": "audited reference boundary/controller snapshot"
+      }
+    ],
+    "turn_on_the_stove": [
+      {
+        "index": 0,
+        "name": "q_norm_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 1,
+        "name": "q_norm_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 2,
+        "name": "q_norm_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 3,
+        "name": "q_norm_3",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 4,
+        "name": "q_norm_4",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 5,
+        "name": "q_norm_5",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 6,
+        "name": "q_norm_6",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 7,
+        "name": "qvel_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 8,
+        "name": "qvel_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 9,
+        "name": "qvel_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 10,
+        "name": "qvel_3",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 11,
+        "name": "qvel_4",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 12,
+        "name": "qvel_5",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 13,
+        "name": "qvel_6",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 14,
+        "name": "eef_pos_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 15,
+        "name": "eef_pos_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 16,
+        "name": "eef_pos_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 17,
+        "name": "eef_rot6d_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 18,
+        "name": "eef_rot6d_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 19,
+        "name": "eef_rot6d_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 20,
+        "name": "eef_rot6d_3",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 21,
+        "name": "eef_rot6d_4",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 22,
+        "name": "eef_rot6d_5",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 23,
+        "name": "eef_linvel_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 24,
+        "name": "eef_linvel_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 25,
+        "name": "eef_linvel_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 26,
+        "name": "eef_angvel_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 27,
+        "name": "eef_angvel_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 28,
+        "name": "eef_angvel_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 29,
+        "name": "gripper_opening_l1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 30,
+        "name": "gripper_current_action",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 31,
+        "name": "task_contact",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 32,
+        "name": "exact_predicate",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 33,
+        "name": "stove_button_pos_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 34,
+        "name": "stove_button_pos_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 35,
+        "name": "stove_button_pos_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 36,
+        "name": "stove_button_quat_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 37,
+        "name": "stove_button_quat_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 38,
+        "name": "stove_button_quat_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 39,
+        "name": "stove_button_quat_3",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 40,
+        "name": "eef_minus_stove_button_0",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 41,
+        "name": "eef_minus_stove_button_1",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 42,
+        "name": "eef_minus_stove_button_2",
+        "source": "audited reference boundary/controller snapshot"
+      },
+      {
+        "index": 43,
+        "name": "stove_button_joint_qpos",
+        "source": "audited reference boundary/controller snapshot"
+      }
+    ]
+  }
+}

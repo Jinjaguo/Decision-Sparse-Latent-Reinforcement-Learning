@@ -1,0 +1,599 @@
+{
+  "branches": [
+    {
+      "branch_time": 70,
+      "episode": "demo_10",
+      "state_prototype_id": 0,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 1,
+      "episode": "demo_10",
+      "state_prototype_id": 5,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 105,
+      "episode": "demo_10",
+      "state_prototype_id": 10,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 20,
+      "episode": "demo_10",
+      "state_prototype_id": 15,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 1,
+      "episode": "demo_11",
+      "state_prototype_id": 4,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 114,
+      "episode": "demo_11",
+      "state_prototype_id": 9,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 90,
+      "episode": "demo_11",
+      "state_prototype_id": 14,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 131,
+      "episode": "demo_12",
+      "state_prototype_id": 3,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 29,
+      "episode": "demo_12",
+      "state_prototype_id": 8,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 40,
+      "episode": "demo_12",
+      "state_prototype_id": 13,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 10,
+      "episode": "demo_13",
+      "state_prototype_id": 2,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 108,
+      "episode": "demo_13",
+      "state_prototype_id": 7,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 110,
+      "episode": "demo_13",
+      "state_prototype_id": 12,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 0,
+      "episode": "demo_14",
+      "state_prototype_id": 1,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 1,
+      "episode": "demo_14",
+      "state_prototype_id": 6,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 112,
+      "episode": "demo_14",
+      "state_prototype_id": 11,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 75,
+      "episode": "demo_15",
+      "state_prototype_id": 0,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 2,
+      "episode": "demo_15",
+      "state_prototype_id": 5,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 117,
+      "episode": "demo_15",
+      "state_prototype_id": 10,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 18,
+      "episode": "demo_15",
+      "state_prototype_id": 15,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 4,
+      "episode": "demo_16",
+      "state_prototype_id": 4,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 170,
+      "episode": "demo_16",
+      "state_prototype_id": 9,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 99,
+      "episode": "demo_16",
+      "state_prototype_id": 14,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 120,
+      "episode": "demo_18",
+      "state_prototype_id": 3,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 24,
+      "episode": "demo_18",
+      "state_prototype_id": 8,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 35,
+      "episode": "demo_18",
+      "state_prototype_id": 13,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 6,
+      "episode": "demo_19",
+      "state_prototype_id": 2,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 108,
+      "episode": "demo_19",
+      "state_prototype_id": 7,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 109,
+      "episode": "demo_19",
+      "state_prototype_id": 12,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 0,
+      "episode": "demo_20",
+      "state_prototype_id": 1,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 1,
+      "episode": "demo_20",
+      "state_prototype_id": 6,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 99,
+      "episode": "demo_20",
+      "state_prototype_id": 11,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "branch_time": 48,
+      "episode": "demo_10",
+      "state_prototype_id": 0,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 64,
+      "episode": "demo_10",
+      "state_prototype_id": 5,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 65,
+      "episode": "demo_10",
+      "state_prototype_id": 10,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 66,
+      "episode": "demo_10",
+      "state_prototype_id": 15,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 51,
+      "episode": "demo_11",
+      "state_prototype_id": 4,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 39,
+      "episode": "demo_11",
+      "state_prototype_id": 9,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 50,
+      "episode": "demo_11",
+      "state_prototype_id": 14,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 67,
+      "episode": "demo_12",
+      "state_prototype_id": 3,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 76,
+      "episode": "demo_12",
+      "state_prototype_id": 8,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 58,
+      "episode": "demo_12",
+      "state_prototype_id": 13,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 81,
+      "episode": "demo_13",
+      "state_prototype_id": 2,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 85,
+      "episode": "demo_13",
+      "state_prototype_id": 7,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 61,
+      "episode": "demo_13",
+      "state_prototype_id": 12,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 65,
+      "episode": "demo_14",
+      "state_prototype_id": 1,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 49,
+      "episode": "demo_14",
+      "state_prototype_id": 6,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 73,
+      "episode": "demo_14",
+      "state_prototype_id": 11,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 39,
+      "episode": "demo_15",
+      "state_prototype_id": 0,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 51,
+      "episode": "demo_15",
+      "state_prototype_id": 5,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 52,
+      "episode": "demo_15",
+      "state_prototype_id": 10,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 68,
+      "episode": "demo_15",
+      "state_prototype_id": 15,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 51,
+      "episode": "demo_16",
+      "state_prototype_id": 4,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 94,
+      "episode": "demo_16",
+      "state_prototype_id": 9,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 50,
+      "episode": "demo_16",
+      "state_prototype_id": 14,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 56,
+      "episode": "demo_17",
+      "state_prototype_id": 3,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 81,
+      "episode": "demo_17",
+      "state_prototype_id": 8,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 54,
+      "episode": "demo_17",
+      "state_prototype_id": 13,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 70,
+      "episode": "demo_18",
+      "state_prototype_id": 2,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 76,
+      "episode": "demo_18",
+      "state_prototype_id": 7,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 71,
+      "episode": "demo_18",
+      "state_prototype_id": 12,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 70,
+      "episode": "demo_19",
+      "state_prototype_id": 1,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 59,
+      "episode": "demo_19",
+      "state_prototype_id": 6,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 82,
+      "episode": "demo_19",
+      "state_prototype_id": 11,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "branch_time": 64,
+      "episode": "demo_10",
+      "state_prototype_id": 0,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 95,
+      "episode": "demo_10",
+      "state_prototype_id": 5,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 90,
+      "episode": "demo_10",
+      "state_prototype_id": 10,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 56,
+      "episode": "demo_10",
+      "state_prototype_id": 15,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 69,
+      "episode": "demo_11",
+      "state_prototype_id": 4,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 84,
+      "episode": "demo_11",
+      "state_prototype_id": 9,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 35,
+      "episode": "demo_11",
+      "state_prototype_id": 14,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 97,
+      "episode": "demo_12",
+      "state_prototype_id": 3,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 87,
+      "episode": "demo_12",
+      "state_prototype_id": 8,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 55,
+      "episode": "demo_12",
+      "state_prototype_id": 13,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 77,
+      "episode": "demo_13",
+      "state_prototype_id": 2,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 74,
+      "episode": "demo_13",
+      "state_prototype_id": 7,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 88,
+      "episode": "demo_13",
+      "state_prototype_id": 12,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 88,
+      "episode": "demo_14",
+      "state_prototype_id": 1,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 66,
+      "episode": "demo_14",
+      "state_prototype_id": 6,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 81,
+      "episode": "demo_14",
+      "state_prototype_id": 11,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 63,
+      "episode": "demo_15",
+      "state_prototype_id": 0,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 95,
+      "episode": "demo_15",
+      "state_prototype_id": 5,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 90,
+      "episode": "demo_15",
+      "state_prototype_id": 10,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 55,
+      "episode": "demo_15",
+      "state_prototype_id": 15,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 71,
+      "episode": "demo_16",
+      "state_prototype_id": 4,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 88,
+      "episode": "demo_16",
+      "state_prototype_id": 9,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 33,
+      "episode": "demo_16",
+      "state_prototype_id": 14,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 80,
+      "episode": "demo_17",
+      "state_prototype_id": 3,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 70,
+      "episode": "demo_17",
+      "state_prototype_id": 8,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 45,
+      "episode": "demo_17",
+      "state_prototype_id": 13,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 65,
+      "episode": "demo_18",
+      "state_prototype_id": 2,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 62,
+      "episode": "demo_18",
+      "state_prototype_id": 7,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 74,
+      "episode": "demo_18",
+      "state_prototype_id": 12,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 80,
+      "episode": "demo_19",
+      "state_prototype_id": 1,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 59,
+      "episode": "demo_19",
+      "state_prototype_id": 6,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "branch_time": 73,
+      "episode": "demo_19",
+      "state_prototype_id": 11,
+      "task": "turn_on_the_stove"
+    }
+  ],
+  "confirmatory_q_outcomes_observed": false,
+  "count": 96,
+  "frozen_at_utc": "2026-08-14T09:39:29.994697+00:00",
+  "manifest_type": "large_radius_calibration_subset",
+  "outcome_blind": true,
+  "project_sha": "fd8295581083a1ce0aa68d7ce8eb3ac3e7254d48",
+  "schema_version": 1,
+  "selection": "every fifth branch in frozen task/demo/prototype order",
+  "sources": {
+    "hashes": {
+      "config": "2379b5355d4af1096e0204d0950815f25ac5a3be5ea8193b100385d940611858",
+      "confirmatory_references": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56",
+      "development_references": "10bdfd3aca8c1ef0b741c9f4ce64d8ed4351a48196446983001d8633a3fec183"
+    },
+    "runs": {
+      "confirmatory_references": "exp5_s4_confirmatory_refs_amended_20260814",
+      "development_references": "exp4_e4_3_heldout_refs_20260814"
+    }
+  }
+}

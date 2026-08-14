@@ -1,0 +1,34 @@
+{
+  "bootstrap": {
+    "hierarchy": "task then demo",
+    "resamples": 4000,
+    "seed": 950031
+  },
+  "confirmatory_q_outcomes_observed": false,
+  "crossfit": 5,
+  "frozen_at_utc": "2026-08-14T09:39:29.994697+00:00",
+  "independent_unit": "demonstration",
+  "lodo": true,
+  "loto": true,
+  "manifest_type": "statistical_analysis_plan",
+  "multiple_comparisons": "BH FDR 0.05",
+  "outcome_blind": true,
+  "permutation": {
+    "resamples": 4000,
+    "seed": 950032,
+    "unit": "demo within task"
+  },
+  "project_sha": "fd8295581083a1ce0aa68d7ce8eb3ac3e7254d48",
+  "schema_version": 1,
+  "sources": {
+    "hashes": {
+      "config": "2379b5355d4af1096e0204d0950815f25ac5a3be5ea8193b100385d940611858",
+      "confirmatory_references": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56",
+      "development_references": "10bdfd3aca8c1ef0b741c9f4ce64d8ed4351a48196446983001d8633a3fec183"
+    },
+    "runs": {
+      "confirmatory_references": "exp5_s4_confirmatory_refs_amended_20260814",
+      "development_references": "exp4_e4_3_heldout_refs_20260814"
+    }
+  }
+}

@@ -60,6 +60,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--selection", type=Path, default=REPOSITORY_ROOT / "experiments/exp1_decision_sparsity/manifests/selected_tasks_pilot.json")
     parser.add_argument("--task-manifest", type=Path, default=REPOSITORY_ROOT / "experiments/exp1_decision_sparsity/manifests/tasks.json")
     parser.add_argument("--episodes", type=int, nargs="+", default=list(EPISODES))
+    parser.add_argument("--task-names", nargs="+")
     return parser.parse_args()
 
 
@@ -144,12 +145,15 @@ def main() -> int:
             raise RuntimeError("progress runtime audit did not pass")
         with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
             selection, task_manifest = load_selection(args.selection, args.task_manifest)
+            selected_tasks = [task for task in selection["tasks"] if args.task_names is None or task["name"] in set(args.task_names)]
+            if not selected_tasks or (args.task_names is not None and len(selected_tasks) != len(set(args.task_names))):
+                raise RuntimeError("--task-names did not resolve exactly against the frozen selection")
             wrapper, robosuite_root, assets_root = bootstrap_runtime(args.libero_root, args.dataset_root, run_dir / "artifacts/libero_config")
             references_root = run_dir / "artifacts/references"
             records = []
             if not hasattr(exp2_reference, "_boundary_observation_original"):
                 exp2_reference._boundary_observation_original = exp2_reference._boundary_observation
-            for task in selection["tasks"]:
+            for task in selected_tasks:
                 source = task_source_record(task_manifest, task["suite"], task["task_id"])
                 env = wrapper.ControlEnv(**environment_kwargs(Path(source["bddl_file_path"])))
                 task_name = task["name"]
@@ -164,8 +168,8 @@ def main() -> int:
             all_finite = all(x["all_snapshots_finite"] for x in records)
             max_integration = max(x["maximum_roundtrip_state_l2"]["integration"] for x in records)
             max_controller = max(x["maximum_controller_roundtrip_error"] for x in records)
-            expected_count = 3 * len(episodes)
-            exact_episodes = sorted(int(x["episode"].split("_")[-1]) for x in records) == sorted(list(episodes) * 3)
+            expected_count = len(selected_tasks) * len(episodes)
+            exact_episodes = sorted(int(x["episode"].split("_")[-1]) for x in records) == sorted(list(episodes) * len(selected_tasks))
             criteria = {"expected_reference_count": len(records) == expected_count, "exact_requested_demos_per_task": exact_episodes, "all_finish_successfully": all_success, "all_snapshot_arrays_finite": all_finite, "integration_roundtrips_at_most_1e-12": max_integration <= 1e-12, "controller_roundtrips_at_most_1e-12": max_controller <= 1e-12}
             gate = {"passed": all(criteria.values()), "criteria": criteria}
             manifest = {"schema_version": 2, "run_id": args.run_id, "progress_audit_run": audit_run.name, "progress_audit_sha256": sha256(audit_run / "artifacts/progress_runtime_audit.json"), "episodes": records, "gate": gate}

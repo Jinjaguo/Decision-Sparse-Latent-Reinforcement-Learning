@@ -1,0 +1,38 @@
+{
+  "classification_priority": [
+    "state_conditioned_replicated_anisotropic_criticality",
+    "state_alignment_only_without_subspace_replication",
+    "subspace_replication_without_scalar_sparsity",
+    "finite_radius_nonlinearity_dominates",
+    "trajectory_specific_criticality",
+    "no_confirmatory_support"
+  ],
+  "confirmatory_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T09:39:29.994697+00:00",
+  "manifest_type": "scientific_decision_rule",
+  "outcome_blind": true,
+  "project_sha": "fd8295581083a1ce0aa68d7ce8eb3ac3e7254d48",
+  "schema_version": 1,
+  "sources": {
+    "hashes": {
+      "config": "2379b5355d4af1096e0204d0950815f25ac5a3be5ea8193b100385d940611858",
+      "confirmatory_references": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56",
+      "development_references": "10bdfd3aca8c1ef0b741c9f4ce64d8ed4351a48196446983001d8633a3fec183"
+    },
+    "runs": {
+      "confirmatory_references": "exp5_s4_confirmatory_refs_amended_20260814",
+      "development_references": "exp4_e4_3_heldout_refs_20260814"
+    }
+  },
+  "strong_all_required": [
+    "state scalar delta over better baseline median >=0.15",
+    "cluster bootstrap CI lower >0",
+    "at least 2/3 task state scalar rho >=0.60",
+    "at least 2/3 task median matched top1 >=0.70",
+    "at least 70% demos cross-radius top1 >=0.70",
+    "heldout prediction median rho >=0.60",
+    "LODO scalar improvement positive",
+    "LOTO qualitatively stable",
+    "confirmatory families BH-FDR <0.05"
+  ]
+}

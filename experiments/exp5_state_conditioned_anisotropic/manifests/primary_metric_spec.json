@@ -1,0 +1,22 @@
+{
+  "branch_metric": "S_RMS=sqrt(mean_j(((E+j+E-j)/2)^2)) over seven basis directions",
+  "confirmatory_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T09:39:29.994697+00:00",
+  "manifest_type": "primary_metric_spec",
+  "meaningful_effect_threshold": 0.01,
+  "outcome_blind": true,
+  "project_sha": "fd8295581083a1ce0aa68d7ce8eb3ac3e7254d48",
+  "radii_separate": true,
+  "schema_version": 1,
+  "sources": {
+    "hashes": {
+      "config": "2379b5355d4af1096e0204d0950815f25ac5a3be5ea8193b100385d940611858",
+      "confirmatory_references": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56",
+      "development_references": "10bdfd3aca8c1ef0b741c9f4ce64d8ed4351a48196446983001d8633a3fec183"
+    },
+    "runs": {
+      "confirmatory_references": "exp5_s4_confirmatory_refs_amended_20260814",
+      "development_references": "exp4_e4_3_heldout_refs_20260814"
+    }
+  }
+}

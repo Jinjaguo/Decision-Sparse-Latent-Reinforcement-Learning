@@ -1,0 +1,202 @@
+{
+  "confirmatory_q_outcomes_observed": false,
+  "folds": [
+    {
+      "episode": "demo_10",
+      "fold": 0,
+      "position_in_task": 0,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_11",
+      "fold": 1,
+      "position_in_task": 1,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_12",
+      "fold": 2,
+      "position_in_task": 2,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_13",
+      "fold": 3,
+      "position_in_task": 3,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_14",
+      "fold": 4,
+      "position_in_task": 4,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_15",
+      "fold": 0,
+      "position_in_task": 5,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_16",
+      "fold": 1,
+      "position_in_task": 6,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_18",
+      "fold": 2,
+      "position_in_task": 7,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_19",
+      "fold": 3,
+      "position_in_task": 8,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_20",
+      "fold": 4,
+      "position_in_task": 9,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_10",
+      "fold": 0,
+      "position_in_task": 0,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_11",
+      "fold": 1,
+      "position_in_task": 1,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_12",
+      "fold": 2,
+      "position_in_task": 2,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_13",
+      "fold": 3,
+      "position_in_task": 3,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_14",
+      "fold": 4,
+      "position_in_task": 4,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_15",
+      "fold": 0,
+      "position_in_task": 5,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_16",
+      "fold": 1,
+      "position_in_task": 6,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_17",
+      "fold": 2,
+      "position_in_task": 7,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_18",
+      "fold": 3,
+      "position_in_task": 8,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_19",
+      "fold": 4,
+      "position_in_task": 9,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_10",
+      "fold": 0,
+      "position_in_task": 0,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_11",
+      "fold": 1,
+      "position_in_task": 1,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_12",
+      "fold": 2,
+      "position_in_task": 2,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_13",
+      "fold": 3,
+      "position_in_task": 3,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_14",
+      "fold": 4,
+      "position_in_task": 4,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_15",
+      "fold": 0,
+      "position_in_task": 5,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_16",
+      "fold": 1,
+      "position_in_task": 6,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_17",
+      "fold": 2,
+      "position_in_task": 7,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_18",
+      "fold": 3,
+      "position_in_task": 8,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_19",
+      "fold": 4,
+      "position_in_task": 9,
+      "task": "turn_on_the_stove"
+    }
+  ],
+  "frozen_at_utc": "2026-08-14T09:39:29.994697+00:00",
+  "manifest_type": "crossfit_fold_manifest",
+  "outcome_blind": true,
+  "project_sha": "fd8295581083a1ce0aa68d7ce8eb3ac3e7254d48",
+  "rule": "sorted qualified episode index modulo five per task; each fold has two held-out demos",
+  "schema_version": 1,
+  "sources": {
+    "hashes": {
+      "config": "2379b5355d4af1096e0204d0950815f25ac5a3be5ea8193b100385d940611858",
+      "confirmatory_references": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56",
+      "development_references": "10bdfd3aca8c1ef0b741c9f4ce64d8ed4351a48196446983001d8633a3fec183"
+    },
+    "runs": {
+      "confirmatory_references": "exp5_s4_confirmatory_refs_amended_20260814",
+      "development_references": "exp4_e4_3_heldout_refs_20260814"
+    }
+  }
+}

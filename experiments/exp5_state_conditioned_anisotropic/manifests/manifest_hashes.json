@@ -1,0 +1,44 @@
+{
+  "confirmatory_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T09:39:29.994697+00:00",
+  "manifest_type": "manifest_hashes",
+  "manifests": {
+    "branch_manifest.json": "68cefff96566b5bb4b8c410bf64ac5f50112500221573805540f302984dd0eae",
+    "confirmatory_branch_manifest.json": "693419b72bdc1c8965325248355935d5cb549f6d8dd421cb647afc9210f282c1",
+    "crossfit_fold_manifest.json": "4186e808fd4a7cbf64dbde03b07c597c393f6e7f95b9898efd62076be3da97d2",
+    "direction_basis_manifest.json": "77daa91bbd4429e66c56d1c9062b1d12748b3ec80951577b6db604dd83e2dc1d",
+    "effect_channel_schema.json": "7f6667db3444fdad2cf28886b1e593730412870a79fae9f7ed046943cbeb49f3",
+    "effect_normalization.json": "818fcad86fabd9e53f309efc20964a72a281a7d8b99625b6f6412c148e62db7c",
+    "gpu_analysis_spec.json": "e59cb455a1cf38e2e84ad36b154d6c1dcbc0eabf862ea1d5c2f2a3abc4ae77af",
+    "heldout_direction_manifest.json": "2c16006289e8f34c3839814261ceacad92051ec790004a838eaea8a83984d261",
+    "large_radius_calibration_subset.json": "3bbde22f51adb67c7afb2619a1efeea6626f58a02b6f3178c7a064e0c3f13df6",
+    "linearity_gate.json": "8edd0841ca951c306222d3007cff972a861c022745749944cb7faabbce55fb5f",
+    "match_rejection_manifest.json": "69b9e7780cdc7f7e916409d17b721e8e8071d6100a72fb57f1eb66dc60991c06",
+    "matching_spec.json": "00f84f56af25c639a7605377456626b9307b7bb54fe16c4c6556e60b5435494b",
+    "operator_metric_spec.json": "4e82fc407555584b489e77767ec2b614c52c5eb4a7affadef15bf9fd8d24a76d",
+    "primary_metric_spec.json": "78e52bd8e9bae93e3e613a84f7d4a5bf344c26ef834311943568910ac04d028e",
+    "prototype_manifest.json": "3c3b841fa7d084282142653c401d10a010c75c87e111ae514a1b3e396a6e30ec",
+    "radius_manifest.json": "a8ed3c722a20c4c7d2db7c4cae912904424dd7b79e3a5bdf9ec4749f74ab1794",
+    "scalar_metric_spec.json": "488b4bd47313f5dc4c81d6a22bdf40551f6416232f9becee0bd35cae42b2072b",
+    "scientific_decision_rule.json": "f4d0d7e230b7a611d8ccfd5b6b8563132ca6d0df43330708933e5b7ff5d1fedd",
+    "signed_output_vector_spec.json": "c7a45cf7399c8f220eb502207095828bd16dacccabcdd1b0a5fd4db1c93a54af",
+    "state_descriptor_scaling.json": "ca2cb76d4f4935d68a918eb26f00080014a6ecc8297544c266ce5c44db30922f",
+    "state_descriptor_schema.json": "7c2bf8979dfce6f17ccb2f236af451123495a457305e630770a27df8071ee560",
+    "state_distance_spec.json": "82babd602031b9c9ee10f78f1312e3f260c3f7b24415c4053c65e3f014fbb6ed",
+    "statistical_analysis_plan.json": "b81c00e6d57510535994117c39a255d3bbe5063f712ec6da642a63c2ff76ddef"
+  },
+  "outcome_blind": true,
+  "project_sha": "fd8295581083a1ce0aa68d7ce8eb3ac3e7254d48",
+  "schema_version": 1,
+  "sources": {
+    "hashes": {
+      "config": "2379b5355d4af1096e0204d0950815f25ac5a3be5ea8193b100385d940611858",
+      "confirmatory_references": "4b323c47e0ac48664796348264db634e66e040721ac601fe9a915916a5546f56",
+      "development_references": "10bdfd3aca8c1ef0b741c9f4ce64d8ed4351a48196446983001d8633a3fec183"
+    },
+    "runs": {
+      "confirmatory_references": "exp5_s4_confirmatory_refs_amended_20260814",
+      "development_references": "exp4_e4_3_heldout_refs_20260814"
+    }
+  }
+}

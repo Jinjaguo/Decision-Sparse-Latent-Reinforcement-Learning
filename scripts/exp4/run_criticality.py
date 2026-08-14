@@ -49,6 +49,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--task-manifest", type=Path, default=REPOSITORY_ROOT / "experiments/exp1_decision_sparsity/manifests/tasks.json")
     parser.add_argument("--config", type=Path, default=REPOSITORY_ROOT / "experiments/exp4_replicated_progress_criticality/configs/exp4.json")
     parser.add_argument("--max-trajectories", type=int)
+    parser.add_argument("--trajectory-start", type=int, default=0)
     parser.add_argument("--max-branches", type=int)
     parser.add_argument("--max-directions", type=int)
     return parser.parse_args()
@@ -113,7 +114,7 @@ def main() -> int:
     branch_manifest = json.loads((manifest_dir / "branch_manifest.json").read_text()); directions = json.loads((manifest_dir / "direction_basis_manifest.json").read_text()); normalization = json.loads((manifest_dir / "effect_normalization.json").read_text()); channel_schema = json.loads((manifest_dir / "effect_channel_schema.json").read_text()); primary_spec = json.loads((manifest_dir / "primary_metric_spec.json").read_text())
     limits_path = REPOSITORY_ROOT / "runs/exp2_r5_q_smoke_20260814T012633/artifacts/joint_limit_manifest.json"; joint_limits = {x["task"]: x for x in json.loads(limits_path.read_text())}
     experiment_name = str(config.get("experiment", "EXP4"))
-    run_config = {"run_id": args.run_id, "stage": f"{experiment_name}_{args.mode}", "mode": args.mode, "reference_run": reference.name, "zero_run": None if args.zero_run is None else args.zero_run.resolve().name, "manifest_dir": str(manifest_dir), "max_trajectories": args.max_trajectories, "max_branches": args.max_branches, "max_directions": args.max_directions, "fixed_config": config, "sharding": "one immutable task/demo shard written before merge"}
+    run_config = {"run_id": args.run_id, "stage": f"{experiment_name}_{args.mode}", "mode": args.mode, "reference_run": reference.name, "zero_run": None if args.zero_run is None else args.zero_run.resolve().name, "manifest_dir": str(manifest_dir), "trajectory_start": args.trajectory_start, "max_trajectories": args.max_trajectories, "max_branches": args.max_branches, "max_directions": args.max_directions, "fixed_config": config, "sharding": "one immutable task/demo shard written before merge"}
     environment = {"python": sys.version, "executable": sys.executable, "numpy": np.__version__, "pyarrow": pa.__version__, "scipy": importlib.metadata.version("scipy"), "mujoco": importlib.metadata.version("mujoco"), "robosuite": importlib.metadata.version("robosuite"), "compute_note": "MuJoCo CPU; RTX 4090 reserved for post-processing after equivalence audit"}
     git_state = {"project": git_record(REPOSITORY_ROOT), "libero": git_record(args.libero_root), "robosuite_source": git_record(REPOSITORY_ROOT / "third_party/robosuite-src")}
     env = None
@@ -121,7 +122,8 @@ def main() -> int:
         with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
             ref_manifest = json.loads((reference / "artifacts/reference_snapshots_manifest.json").read_text());
             if not ref_manifest["gate"]["passed"]: raise RuntimeError("reference gate failed")
-            selection, task_manifest = load_selection(args.selection, args.task_manifest); selected = {x["name"]: x for x in selection["tasks"]}; refs = {(x["task"], x["episode"]): x for x in ref_manifest["episodes"]}; trajectories = branch_manifest["trajectories"][:args.max_trajectories]
+            selection, task_manifest = load_selection(args.selection, args.task_manifest); selected = {x["name"]: x for x in selection["tasks"]}; refs = {(x["task"], x["episode"]): x for x in ref_manifest["episodes"]}; trajectories = branch_manifest["trajectories"][args.trajectory_start:]
+            trajectories = trajectories[:args.max_trajectories]
             wrapper, robosuite_root, assets_root = bootstrap_runtime(args.libero_root, args.dataset_root, run_dir / "artifacts/libero_config")
             zero_lookup: Dict[Tuple[str, str, int, int], Dict[str, Any]] = {}
             if args.mode == "full":
