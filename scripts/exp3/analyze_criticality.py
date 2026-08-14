@@ -40,6 +40,37 @@ def save_table(rows: List[Dict[str, Any]], path: Path) -> None:
     pq.write_table(pa.Table.from_pylist(rows), path, compression="zstd")
 
 
+def bh_adjust(p_values: Sequence[float]) -> List[float]:
+    values = np.asarray(p_values, dtype=np.float64)
+    order = np.argsort(values); adjusted = np.empty_like(values); running = 1.0
+    for rank_index in range(len(values) - 1, -1, -1):
+        original = order[rank_index]; rank = rank_index + 1
+        running = min(running, float(values[original] * len(values) / rank)); adjusted[original] = running
+    return adjusted.tolist()
+
+
+def adjusted_event_test(payload: List[Tuple[str, str, np.ndarray, np.ndarray, np.ndarray]], rng: np.random.Generator, resamples: int = 4000) -> Tuple[float, float]:
+    """Event coefficient controlling horizon, phase, and demo (therefore task)."""
+    demo_names = [f"{task}|{episode}" for task, episode, _, _, _ in payload]
+    unique_demos = sorted(set(demo_names))
+    y_parts = []; base_parts = []; event_parts = []
+    for (task, episode, times, values, mask), demo in zip(payload, demo_names):
+        phase_middle = ((times >= 1/3) & (times < 2/3)).astype(float)
+        phase_late = (times >= 2/3).astype(float)
+        demo_fixed = np.asarray([[float(demo == name) for name in unique_demos[1:]] for _ in times])
+        base_parts.append(np.column_stack([np.ones(len(times)), 1.0 - times, phase_middle, phase_late, demo_fixed]))
+        y_parts.append(np.log(np.maximum(values, 1e-15))); event_parts.append(mask.astype(float))
+    y = np.concatenate(y_parts); base = np.vstack(base_parts); observed_event = np.concatenate(event_parts)
+    def coefficient(event: np.ndarray) -> float:
+        return float(np.linalg.lstsq(np.column_stack([base, event]), y, rcond=None)[0][-1])
+    observed = coefficient(observed_event); null = []
+    for _ in range(resamples):
+        permuted = np.concatenate([rng.permutation(mask.astype(float)) for _, _, _, _, mask in payload])
+        null.append(coefficient(permuted))
+    p = float((1 + sum(value >= observed for value in null)) / (1 + len(null)))
+    return observed, p
+
+
 def demo_label(task: str, episode: str) -> str:
     short = {"open_the_middle_drawer_of_the_cabinet": "drawer", "turn_on_the_stove": "stove", "put_the_bowl_on_the_plate": "bowl"}[task]
     return f"{short}/{episode}"
@@ -137,12 +168,13 @@ def main() -> int:
     # Frozen event windows, with demo-stratified enrichment and within-demo permutations.
     event_results = []; rng = np.random.default_rng(830032); radius = event_manifest["event_window_normalized_radius"]
     for event_type in sorted({x["event_type"] for x in event_manifest["events"]}):
-        ratios = []; demo_payload = []
+        ratios = []; demo_payload = []; adjusted_payload = []
         for event in [x for x in event_manifest["events"] if x["event_type"] == event_type and x["present"]]:
             rows = branch_demo[(event["task"], event["episode"])]
             values = np.asarray([x["primary_median"] for x in rows]); mask = np.asarray([abs(x["branch_normalized_time"] - event["normalized_time"]) <= radius for x in rows])
             if mask.any() and (~mask).any():
                 ratio_value = float(np.mean(values[mask]) / max(np.mean(values[~mask]), 1e-15)); ratios.append(ratio_value); demo_payload.append((values, mask))
+                adjusted_payload.append((event["task"], event["episode"], np.asarray([x["branch_normalized_time"] for x in rows]), values, mask))
         observed = float(np.median(ratios)) if ratios else float("nan")
         null = []
         for _ in range(int(sap["permutation"].split(";")[-1].strip().split()[2]) if False else 4000):
@@ -151,7 +183,13 @@ def main() -> int:
                 shuffled = rng.permutation(values); perm_ratios.append(float(np.mean(shuffled[mask]) / max(np.mean(shuffled[~mask]), 1e-15)))
             if perm_ratios: null.append(float(np.median(perm_ratios)))
         p = float((1 + sum(x >= observed for x in null)) / (1 + len(null))) if null else float("nan")
-        event_results.append({"event_type": event_type, "present_demo_count": len(ratios), "median_enrichment_ratio": observed, "permutation_p_one_sided": p})
+        adjusted_beta, adjusted_p = adjusted_event_test(adjusted_payload, rng) if adjusted_payload else (float("nan"), float("nan"))
+        event_results.append({"event_type": event_type, "present_demo_count": len(ratios), "median_enrichment_ratio": observed, "permutation_p_one_sided": p,
+                              "adjusted_log_effect_coefficient": adjusted_beta, "adjusted_permutation_p_one_sided": adjusted_p,
+                              "adjustment": "remaining-horizon linear term + early/middle/late phase + demo fixed effects (therefore task controlled); event labels permuted within demo"})
+    raw_q = bh_adjust([x["permutation_p_one_sided"] for x in event_results]); adjusted_q = bh_adjust([x["adjusted_permutation_p_one_sided"] for x in event_results])
+    for row, q_raw, q_adjusted in zip(event_results, raw_q, adjusted_q):
+        row["permutation_q_bh"] = q_raw; row["adjusted_permutation_q_bh"] = q_adjusted
     save_table(event_results, artifacts / "event_enrichment.parquet")
 
     # Cluster-aware primary CI, outcome relevance, LODO, and frozen decision rule.
@@ -183,6 +221,8 @@ def main() -> int:
     scientific = {"classification": classification, "boolean_checks": {"strong_support": strong, "partial_support": partial, "saturation_flag": saturation, "broad_sensitivity": broad, "no_support": classification == "no_support"},
                   "observed_statistics": statistics, "frozen_rule": decision_rule}
     write_json(artifacts / "statistical_results.json", statistics); write_json(artifacts / "scientific_decision.json", scientific)
+    for filename in ("direction_manifest.json", "event_manifest.json", "effect_normalization.json"):
+        (artifacts / filename).write_bytes((manifest_dir / filename).read_bytes())
 
     # Required plots.
     plot_dir = artifacts / "plots"; plot_dir.mkdir(exist_ok=True)

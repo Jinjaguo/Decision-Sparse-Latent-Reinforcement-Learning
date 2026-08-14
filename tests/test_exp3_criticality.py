@@ -12,6 +12,7 @@ from decision_sparse_rl.metrics.criticality import (  # noqa: E402
     aggregate_interventions, concentration_metrics, quaternion_geodesic,
     rotation_geodesic,
 )
+from scripts.exp3.analyze_criticality import bh_adjust  # noqa: E402
 
 
 class Exp3CriticalityTest(unittest.TestCase):
@@ -67,6 +68,9 @@ class Exp3CriticalityTest(unittest.TestCase):
             self.assertTrue(np.array_equal(unit, np.asarray(row["unit_direction"])))
             delta = np.asarray(row["unsigned_delta_q"])
             self.assertTrue(np.allclose(delta, 0.005 * np.asarray([5.7946, 3.5256, 5.7946, 3.002, 5.7946, 3.77, 5.7946]) * unit))
+
+    def test_benjamini_hochberg_known_values(self):
+        self.assertTrue(np.allclose(bh_adjust([0.01, 0.04, 0.03]), [0.03, 0.04, 0.04]))
 
 
 if __name__ == "__main__":
