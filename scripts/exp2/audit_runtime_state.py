@@ -238,7 +238,14 @@ def main() -> int:
                 "state_flags": flags,
                 "fullphysics_state_dimension": flags["mjSTATE_FULLPHYSICS"]["state_size"],
                 "integration_state_dimension": flags["mjSTATE_INTEGRATION"]["state_size"],
-                "integration_components": [name for name, item in flags.items() if int(item["value"]) != 0 and (int(item["value"]) & int(flags["mjSTATE_INTEGRATION"]["value"])) == int(item["value"])],
+                "integration_components": [
+                    name
+                    for name, item in flags.items()
+                    if int(item["value"]) > 0
+                    and (int(item["value"]) & (int(item["value"]) - 1)) == 0
+                    and (int(item["value"]) & int(flags["mjSTATE_INTEGRATION"]["value"]))
+                    == int(item["value"])
+                ],
                 "native_bindings": {"model_type": f"{type(native_model).__module__}.{type(native_model).__name__}", "data_type": f"{type(env.sim.data._data).__module__}.{type(env.sim.data._data).__name__}"},
                 "classes": {"environment": f"{type(env.env).__module__}.{type(env.env).__name__}", "robot": f"{type(robot_reset).__module__}.{type(robot_reset).__name__}", "controller": f"{type(controller_reset).__module__}.{type(controller_reset).__name__}", "gripper": f"{type(robot_reset.gripper).__module__}.{type(robot_reset.gripper).__name__}", "interpolator_pos": None if controller_reset.interpolator_pos is None else f"{type(controller_reset.interpolator_pos).__module__}.{type(controller_reset.interpolator_pos).__name__}", "interpolator_ori": None if controller_reset.interpolator_ori is None else f"{type(controller_reset.interpolator_ori).__module__}.{type(controller_reset.interpolator_ori).__name__}"},
                 "api_availability": {name: hasattr(mujoco, name) for name in ("mj_stateSize", "mj_getState", "mj_setState", "mj_copyData", "mj_forward")},
