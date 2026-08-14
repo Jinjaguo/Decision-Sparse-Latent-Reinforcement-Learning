@@ -16,7 +16,7 @@ from decision_sparse_rl.metrics.exp8 import (
     upper_tail,
 )
 from scripts.exp8.contact_frame import _surface_pair
-from scripts.exp8.analyze_formal import float_array, float_stack
+from scripts.exp8.analyze_formal import float_array, float_stack, ridge as formal_ridge
 
 
 def test_tangent_gauge_is_deterministic_and_right_handed():
@@ -114,3 +114,11 @@ def test_float_array_converts_object_rows_from_nested_parquet_cells():
     result = float_array(cell)
     assert result.dtype == np.float64
     assert result.shape == (2, 2)
+
+
+def test_formal_ridge_is_stable_with_exactly_collinear_features():
+    x = np.array([[0.0, 0.0], [1.0, 1.0], [2.0, 2.0]])
+    y = np.array([[1.0], [3.0], [5.0]])
+    prediction = formal_ridge(x, y, np.array([[3.0, 3.0]]), 1e-6)
+    assert np.isfinite(prediction).all()
+    assert prediction[0, 0] == pytest.approx(7.0, rel=1e-5)

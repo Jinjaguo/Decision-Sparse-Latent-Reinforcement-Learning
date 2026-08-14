@@ -70,8 +70,14 @@ def krr(train_x, train_y, test_x, alpha, bandwidth):
 def ridge(train_x, train_y, test_x, alpha):
     a, b = scale(train_x, test_x)
     a = np.column_stack((np.ones(len(a)), a)); b = np.column_stack((np.ones(len(b)), b))
-    penalty = np.eye(a.shape[1]); penalty[0, 0] = 0
-    return b @ np.linalg.solve(a.T @ a + alpha * penalty, a.T @ train_y)
+    # Solve the same unpenalized-intercept ridge objective as an augmented
+    # least-squares problem.  This avoids squaring the condition number in
+    # the normal equations when conditional folds contain collinear fields.
+    regularizer = np.sqrt(alpha) * np.eye(a.shape[1]); regularizer[0, 0] = 0
+    design = np.vstack((a, regularizer))
+    target = np.vstack((train_y, np.zeros((a.shape[1], train_y.shape[1]))))
+    weights = np.linalg.lstsq(design, target, rcond=None)[0]
+    return b @ weights
 
 
 def top1_from_operator(operator):
