@@ -3,6 +3,79 @@
   "classification_note": "All mutable fields read or written by the fixed OSC_POSE control chain and robot policy-step buffers were classified. Static configuration/index fields and recomputable observation caches are intentionally excluded.",
   "controller_fields": [
     {
+      "category": "nullspace_reference",
+      "changes_after_one_action": false,
+      "changes_after_reset": false,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.initial_joint",
+      "shape": [
+        7
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 3.4025380918160586,
+        "maximum": 2.2267522,
+        "minimum": -2.44459747
+      },
+      "type": "numpy.ndarray"
+    },
+    {
+      "category": "controller_initial_reference",
+      "changes_after_one_action": false,
+      "changes_after_reset": false,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.initial_ee_pos",
+      "shape": [
+        3
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 1.1916552533653533,
+        "maximum": 1.1732794757296405,
+        "minimum": -0.2084646605658239
+      },
+      "type": "numpy.ndarray"
+    },
+    {
+      "category": "controller_initial_reference",
+      "changes_after_one_action": false,
+      "changes_after_reset": false,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].controller.initial_ee_ori_mat",
+      "shape": [
+        3,
+        3
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\controllers\\osc.py",
+        "line": 15,
+        "symbol": "OperationalSpaceController"
+      },
+      "summary": {
+        "l2": 1.7320508075688748,
+        "maximum": 0.9999998785532221,
+        "minimum": -0.9983868662149059
+      },
+      "type": "numpy.ndarray"
+    },
+    {
       "category": "causal_policy_goal",
       "changes_after_one_action": true,
       "changes_after_reset": true,
