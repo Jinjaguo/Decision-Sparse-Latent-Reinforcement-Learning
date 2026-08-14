@@ -254,8 +254,10 @@ def main() -> int:
     horizon_rows = []
     for horizon in ("1", "3", "5", "remaining"):
         horizon_data = data[(data.horizon == horizon) & (data.radius_fraction == smallest)]
-        intent, _ = crossfit_operators(horizon_data, groups, grids, fixed_parameters=parameters, conditional=False)
-        conditional_model, _ = crossfit_operators(horizon_data, groups, grids, fixed_parameters=parameters, conditional=True)
+        # H4's two estimands are separately trained at each horizon.  In
+        # particular, intent folds must not depend on conditional-only support.
+        intent, _ = crossfit_operators(horizon_data, groups, grids, conditional=False)
+        conditional_model, _ = crossfit_operators(horizon_data, groups, grids, conditional=True)
         preservation = float(horizon_data.all_basis_both_signs_preserved.mean()); conditional_similarity = float(conditional_model.primary_top1.mean()) if len(conditional_model) else 0.0
         horizon_rows.append({"horizon": horizon, "intent_top1": float(intent.primary_top1.mean()), "mode_preservation_rate": preservation, "conditional_top1": conditional_similarity, "coverage_adjusted_similarity": preservation * conditional_similarity})
     risk_base = pq.read_table(assembly_artifacts / "horizon_response_rows.parquet").to_pandas(); risk_base = risk_base[risk_base.horizon == "1"].copy(); risk_base["target"] = risk_base.mode_preserved_through_horizon.astype(int)
