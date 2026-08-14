@@ -1,5 +1,5 @@
 {
-  "audit_run_id": "exp2_r1_canonical_init_20260814T001840",
+  "audit_run_id": "exp2_r1_nullspace_20260814T002202",
   "boundary_name": "outer_env_step_return_or_initialized_pre-policy boundary",
   "definition": "Snapshot t=0 is taken after reset_from_xml_string, sim.reset, set_init_state, post_process, forced observable update, controller.update_initial_joints(recorded_arm_q), and setting controller.new_update=True. update_initial_joints synchronizes the OSC null-space initial_joint plus initial EEF references and resets the goal. Snapshot t>0 is taken immediately after ControlEnv.step(actions[t-1]) returns and before ControlEnv.step(actions[t]) is called.",
   "inner_simulation_steps_observed": 25,
