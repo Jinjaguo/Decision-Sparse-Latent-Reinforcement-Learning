@@ -1,0 +1,34 @@
+{
+  "selection_name": "exp1_initial_cross_structure_pilot",
+  "source_manifest": "tasks.json",
+  "source_manifest_sha256": "B19F2BA127D0BE11FC6EC8A35BBEF1C22959583DA950B7C252685BE3E2913352",
+  "selection_frozen_before_perturbation_results": true,
+  "suite_download_scope": "libero_goal",
+  "rationale": "Use one suite to minimize the initial download while spanning grasp-dependent placement, articulated-object manipulation, and contact/switch interaction.",
+  "tasks": [
+    {
+      "category": "articulated_object",
+      "suite": "libero_goal",
+      "task_id": 0,
+      "name": "open_the_middle_drawer_of_the_cabinet",
+      "language": "open the middle drawer of the cabinet",
+      "demonstration_relative_path": "libero_goal/open_the_middle_drawer_of_the_cabinet_demo.hdf5"
+    },
+    {
+      "category": "contact_switch",
+      "suite": "libero_goal",
+      "task_id": 7,
+      "name": "turn_on_the_stove",
+      "language": "turn on the stove",
+      "demonstration_relative_path": "libero_goal/turn_on_the_stove_demo.hdf5"
+    },
+    {
+      "category": "pick_place",
+      "suite": "libero_goal",
+      "task_id": 8,
+      "name": "put_the_bowl_on_the_plate",
+      "language": "put the bowl on the plate",
+      "demonstration_relative_path": "libero_goal/put_the_bowl_on_the_plate_demo.hdf5"
+    }
+  ]
+}

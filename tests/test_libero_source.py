@@ -1,4 +1,5 @@
 from pathlib import Path
+import hashlib
 import json
 from collections import namedtuple
 import sys
@@ -65,6 +66,22 @@ class LiberoEnumerationTest(unittest.TestCase):
             config = json.loads(config_file.read_text(encoding="utf-8"))
             self.assertEqual(Path(config["benchmark_root"]), package_root.resolve())
             self.assertEqual(Path(config["datasets"]), (root / "data").resolve())
+
+    def test_frozen_selection_matches_generated_manifest(self) -> None:
+        manifests = REPOSITORY_ROOT / "experiments" / "exp1_decision_sparsity" / "manifests"
+        source_path = manifests / "tasks.json"
+        selection = json.loads(
+            (manifests / "selected_tasks_pilot.json").read_text(encoding="utf-8")
+        )
+        source = json.loads(source_path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            selection["source_manifest_sha256"],
+            hashlib.sha256(source_path.read_bytes()).hexdigest().upper(),
+        )
+        for selected in selection["tasks"]:
+            runtime_task = source["suites"][selected["suite"]]["tasks"][selected["task_id"]]
+            for field in ("suite", "task_id", "name", "language", "demonstration_relative_path"):
+                self.assertEqual(selected[field], runtime_task[field])
 
 
 if __name__ == "__main__":
