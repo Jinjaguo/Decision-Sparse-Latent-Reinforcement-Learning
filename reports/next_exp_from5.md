@@ -1,166 +1,227 @@
-# Next Experiment from EXP5: Confirmatory Reference Reconciliation
+# Next Experiment from EXP5: Radius-Convergence of Local q Response
 
 **Proposed experiment ID:** EXP6
 
+**Proposed title:** Multi-Radius Convergence and Trust-Region Identification of q Response
+
 **Status:** proposal only; do not execute automatically
 
-**Source result:** EXP5 stopped at the confirmatory-reference hard gate
+**Source classification:** `finite_radius_nonlinearity_dominates`
 
-## 1. Why EXP6 is necessary
+## 1. Why this is the next experiment
 
-EXP5 did not fail its state-conditioning hypothesis. It never reached that test.
-Drawer `demo_17` exists in the dataset and historically ends in success, but the
-current same-runtime replay ends with the middle drawer at `q=-0.021819` instead of
-the historical `q=-0.158130`; the exact success threshold is `q < -0.14`.
+EXP5 found anisotropic response operators, but almost no evidence that they were
+local linear objects over the tested radii:
 
-Substituting another demo, dropping the trajectory, or pooling EXP4 demos would turn
-an a priori 30-demo confirmation into a post-hoc selected cohort. EXP6 should resolve
-the substrate first.
+- 21/480 branches (4.375%) passed the four-part linearity gate;
+- small/main top-1 similarities were 0.174 Drawer, 0.139 Bowl, and 0.317 Stove;
+- only 1/30 demos had median cross-radius top-1 similarity >=0.70;
+- main/large top-1 similarity was 0.162;
+- main/large spectral discrepancy was 0.437;
+- held-out response rank prediction was encouraging (rho 0.626), but vector errors
+  remained near or above the actual response norm.
+
+State matching cannot solve an estimand that changes substantially with radius.
+Before changing the representation, training a scheduler, or starting latent RL,
+EXP6 should determine whether a stable local response emerges at smaller radii or
+whether contact-rich q response is intrinsically nonsmooth at the accessible scale.
 
 ## 2. Primary question
 
-Why does the historical drawer `demo_17` action sequence fail to produce a successful
-same-runtime local reference while the other 29 requested EXP5 trajectories pass?
+> As Panda arm-q perturbation radius approaches zero above the exact matched-zero
+> floor, do response magnitude and physical-q principal subspaces converge?
 
-EXP6 must distinguish:
+EXP6 separates:
 
-1. deterministic historical/current-runtime divergence;
-2. an omitted initialization, controller, robot, gripper, or timing field before
-   local reference capture;
-3. model/XML or asset reconstruction differences;
-4. contact-sensitive numerical bifurcation;
-5. a genuinely unusable public demonstration for same-runtime causal branching.
+1. finite-radius curvature;
+2. contact-mode discontinuity;
+3. numerical under-resolution at very small q offsets;
+4. genuinely trajectory-specific directional response.
 
-## 3. Scope
+## 3. Frozen cohort and branch design
 
-Primary diagnostic target:
+Reuse no EXP5 outcome to select “good-looking” branches. Construct a new
+outcome-blind subset from reference state strata:
 
-```text
-task: open_the_middle_drawer_of_the_cabinet
-episode: demo_17
-```
+- all three tasks;
+- ten qualified EXP5 demos per task, retaining the disclosed Drawer replacement;
+- eight reference-only prototypes per demo, 240 branches total;
+- stratify prototypes over normalized time, task progress, contact state, gripper
+  state, and predicate phase;
+- freeze the subset before any new-radius outcome.
 
-Controls:
+The reduction from 16 to eight branches per demo buys four or five radii without
+reducing demo coverage. Preserve the full 480-branch EXP5 data only as historical
+comparison; do not use its response outcomes to choose the EXP6 subset.
 
-- successful neighboring drawer demos 16 and 18;
-- one short/easy successful drawer demo from 10–19;
-- the already passing stove and bowl demo17 references as task controls.
+## 4. Radius ladder
 
-Do not run any q perturbation, state matching, operator estimation, or policy training.
-
-## 4. Repetition and determinism
-
-Run the exact drawer demo17 local-reference construction at least five times in
-isolated serial processes. Freeze process environment and seed handling. Compare:
-
-- full integration states;
-- qpos/qvel;
-- controller fields;
-- `PandaGripper.current_action`;
-- EEF pose/velocity;
-- drawer joint coordinate/velocity;
-- named contact pairs;
-- reward and exact Open predicate.
-
-If repetitions disagree, diagnose nondeterministic initialization or process-global
-state before considering a cohort redesign.
-
-## 5. First-divergence localization
-
-Compare the local reference with the historical HDF5 trajectory at every action:
-
-- total state L2 and component-wise qpos/qvel;
-- audited drawer joint error;
-- EEF-to-middle-drawer/handle geometry;
-- gripper command/opening/current action;
-- controller targets and robot buffers where historical evidence exists;
-- contact-pair symmetric differences;
-- action/state indexing and final action semantics.
-
-Save the first thresholds crossed at state L2 `1e-6`, `1e-4`, `1e-2`, and `1e-1`,
-plus the first contact-set and drawer-motion divergence. Do not report only the final
-error.
-
-## 6. Source and model audit
-
-Revalidate for demos 16–18:
-
-- exact dataset file SHA-256 and HDF5 attributes;
-- embedded `model_file` hashes before and after explicit path rewriting;
-- BDDL task source and runtime object IDs;
-- actuator, joint, geom, and body counts/names;
-- timestep, solver, integrator, contact parameters, and option fields;
-- robosuite/LIBERO/MuJoCo revisions and Windows compatibility patch;
-- initial state restoration under legacy, full-physics, and integration specs.
-
-Any discovered difference must be tested by a controlled A/B run and preserved as a
-new immutable run rather than patched into prior evidence.
-
-## 7. Repair decision tree
-
-### Outcome A: an omitted deterministic state field is found
-
-Add it to the explicit reference-construction schema, rerun demos 10–19, and require
-30/30 success plus exact round trips. Only then restart EXP5 from descriptor
-development with a new preregistration SHA.
-
-### Outcome B: current-runtime replay is deterministic but historically divergent
-
-Record exact demos 10–19 as unsuitable for the original confirmatory design. Define
-a new experiment—not a continuation of the failed EXP5 result—with an outcome-blind
-eligibility rule applied to all candidates before q outcomes.
-
-A defensible replacement rule is:
+Primary proposed ladder:
 
 ```text
-scan demos 10–49 in increasing index order;
-require same-runtime success and exact snapshot round trips;
-select the first 10 eligible demos per task;
-report eligibility rates and every rejection;
-freeze the resulting cohort before descriptors or q outcomes.
+0.000625 x joint range
+0.001250 x joint range
+0.002500 x joint range
+0.005000 x joint range
 ```
 
-This changes the target population toward replayable demonstrations and must be
-reported as selection conditioning. It must not be presented as the original EXP5
-cohort.
+Optional 0.0003125 may be added only if a pre-outcome numerical calibration shows
+its antithetic signal is resolvable above the exact zero floor.
 
-### Outcome C: failure is nondeterministic
+At every branch/radius, retain:
 
-Stop the q-criticality mainline and reconcile simulator determinism. Neither branch
-selection nor repeated-until-success reference construction is allowed.
+- seven orthonormal basis directions;
+- one held-out random direction;
+- both signs;
+- matched-zero continuations;
+- the exact EXP5 signed physical output vector.
 
-### Outcome D: exact cohort cannot be repaired and selection bias is unacceptable
+Planned primary budget:
 
-Re-collect new successful demonstrations in the current runtime with complete
-corrected-D snapshots captured online. This is scientifically cleaner than silently
-screening historical demonstrations, although more expensive.
+```text
+240 branches x 4 radii x 8 directions x 2 signs = 15,360 interventions
+```
 
-## 8. Hard gates
+This is slightly smaller than EXP5 while directly answering the failed gate.
 
-EXP6 passes only if one of these prospectively declared endpoints is reached:
+## 5. Trust-region estimand
 
-1. exact demo17 same-runtime success reproduced in all five isolated repeats, with a
-   documented deterministic repair that also preserves all 29 previous successes;
-2. the historical replay limitation is proven irreducible enough to justify a new
-   selection-conditioned or newly collected cohort protocol.
+Do not assume one global radius is valid. For each branch, estimate the largest
+radius interval satisfying all of:
 
-Do not call “demo17 happened to pass once” a repair. Do not change the drawer success
-predicate or use the historical final reward as a substitute for runtime success.
+- adjacent-radius top-1 similarity >=0.80;
+- adjacent-radius top-2 similarity >=0.75;
+- relative spectral discrepancy <=0.20;
+- antithetic sign asymmetry <=0.25;
+- held-out vector relative error <=0.35;
+- response norm at least 100 times the measured zero-floor upper bound.
 
-## 9. Required outputs
+Call this interval the **empirical local trust region**. If no adjacent pair passes,
+record trust-region radius as unresolved rather than forcing a Jacobian.
 
-- repeated-reference metrics and complete per-step divergence tables;
-- component/contact/controller first-divergence tables;
-- model/XML/source audit and hashes;
-- controlled repair A/B comparisons;
-- failure examples and plots;
-- cohort-bias analysis for any replacement rule;
-- a clear restart/no-restart decision for state-conditioned criticality;
+## 6. Contact-mode analysis
+
+EXP5 did not preregister radius convergence by contact transition. EXP6 should do so
+without turning contact into an outcome-selected event:
+
+- freeze contact/no-contact and gripper-state strata from the unperturbed reference;
+- measure whether plus/minus perturbations change named contact mode within the
+  first 1, 3, 5, and 10 future steps;
+- compare smooth operator convergence within unchanged contact mode against branches
+  with contact-mode divergence;
+- retain exact contact pairs and predicate trajectories separately from continuous
+  response vectors.
+
+This can distinguish classical curvature from hybrid-system mode switching.
+
+## 7. Numerical resolution calibration
+
+Before the full sweep, run a preregistered calibration on two branches per task and
+all proposed radii:
+
+- at least four repeated matched-zero continuations;
+- repeat each signed intervention twice;
+- verify q injection accuracy and non-arm preservation;
+- compare effect norm to zero-floor and repeated-intervention variance;
+- require deterministic direction/sign rankings at the chosen dtype and runtime.
+
+If 0.000625 is not reliably resolvable, stop and report a lower-bound limitation.
+Do not silently drop the radius after observing the formal cohort.
+
+## 8. Primary hypotheses and decision rule
+
+### H1: radius convergence
+
+At least 70% of demonstrations must have median adjacent-radius top-1 similarity
+>=0.80 between 0.000625 and 0.00125, with hierarchical 95% CI lower bound >0.65.
+
+### H2: scale convergence
+
+At least 70% of branches must have relative spectral discrepancy <=0.20 over the
+same radius pair.
+
+### H3: held-out prediction
+
+Demo-median held-out rank rho >=0.65 and median vector relative error <=0.35.
+
+### H4: contact explanation
+
+The convergence failure rate must be substantially higher when antithetic
+perturbations diverge in contact mode, with a demo-clustered confidence interval
+excluding zero and BH-FDR <0.05.
+
+Formal classifications, in priority order:
+
+1. `small_radius_local_operator_converges`;
+2. `contact_mode_conditioned_convergence`;
+3. `numerical_resolution_prevents_local_limit_test`;
+4. `nonsmooth_response_persists_below_exp5_radius`;
+5. `no_support`.
+
+## 9. Interpretation tree
+
+If `small_radius_local_operator_converges`:
+
+- revisit state matching using only branches/radii inside their empirical trust
+  region;
+- test an oracle trust-region-aware sensitivity predictor;
+- still do not train latent RL directly.
+
+If `contact_mode_conditioned_convergence`:
+
+- model a hybrid response field indexed by audited contact mode;
+- use mode-specific subspaces rather than a universal q subspace;
+- preregister contact-mode transition prediction before controller use.
+
+If numerical resolution prevents the test:
+
+- improve precision/runtime instrumentation or use a deterministic differentiable
+  simulator diagnostic;
+- do not infer nonsmoothness from an unresolved signal.
+
+If nonsmoothness persists below EXP5 radii:
+
+- close the q-Jacobian/subspace mainline for universal scheduling;
+- define a new action-chunk or latent-action causal estimand;
+- require a fresh experiment rather than relabeling finite-radius response as a
+  local derivative.
+
+## 10. Required controls and artifacts
+
+Required controls:
+
+- complete corrected-D regression on every EXP6 branch;
+- at least two zero twins per branch, four on calibration branches;
+- exact q injection and non-arm Linf <=1e-12;
+- CPU/GPU float64 equivalence;
+- immutable per-radius shards and raw lock before analysis;
+- no branch deletion after outcomes.
+
+Required primary artifacts:
+
+- radius-resolved interventions and signed responses;
+- repeatability and signal-to-floor tables;
+- adjacent-radius operator and projector comparisons;
+- branch trust-region estimates;
+- contact-mode transition tables;
+- held-out direction predictions;
+- hierarchical bootstrap/permutation outputs;
+- failure examples, raw hashes, GPU audit, decision JSON;
 - `reports/exp6_report.md` and `reports/next_exp_from6.md`.
 
-## 10. Claim boundary
+## 11. Claim boundary
 
-EXP6 is a simulator/data reconciliation experiment. Even a successful repair does
-not support state-conditioned criticality, sparse control, a sensitive q subspace,
-or latent RL. It only restores eligibility to run the causal confirmation that EXP5
-could not legally execute.
+EXP6 is a local-estimand validation experiment. Even a pass would establish only
+that a measurable, radius-convergent response operator exists in part of the tested
+state space. It would not by itself establish sparse decision times, policy benefit,
+sample-efficiency improvement, an adaptive scheduler, or latent RL.
+
+The research mainline should remain:
+
+```text
+validated simulator substrate
+-> radius-convergent causal response
+-> state/contact-conditioned replication
+-> oracle scheduler or subspace controller
+-> learned sparse/latent method only after oracle benefit
+```

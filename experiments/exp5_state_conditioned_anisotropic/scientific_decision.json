@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "source_run": "exp5_s14_s20_formal_analysis_frozen_matching_20260814",
+  "classification": "finite_radius_nonlinearity_dominates",
+  "strong_rule_passed": false,
+  "median_state_improvement": -0.03627450980392155,
+  "bootstrap_95_ci": [-0.2794662309368191, 0.03343236284412757],
+  "bh_q": 0.9950012496875781,
+  "cross_radius_demo_fraction_top1_ge_0_70": 0.03333333333333333,
+  "local_linearity_branch_fraction": 0.04375,
+  "heldout_prediction_median_rho": 0.6264705882352941,
+  "oracle_scheduler_eligible": false,
+  "latent_rl_eligible": false
+}
