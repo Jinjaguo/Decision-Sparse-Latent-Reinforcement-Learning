@@ -1,5 +1,6 @@
 import numpy as np
 import pytest
+import mujoco
 
 from decision_sparse_rl.metrics.exp8 import (
     assert_demo_isolation,
@@ -14,6 +15,7 @@ from decision_sparse_rl.metrics.exp8 import (
     top1_projector_similarity,
     upper_tail,
 )
+from scripts.exp8.contact_frame import _surface_pair
 
 
 def test_tangent_gauge_is_deterministic_and_right_handed():
@@ -79,3 +81,19 @@ def test_calibration_and_tail_metrics_known_answers():
     assert tail["median"] == 50.0
     assert tail["p90"] == 90.0
     assert tail["p95"] == 95.0
+
+
+def test_nearest_surface_points_gap_and_normal_known_answer():
+    model = mujoco.MjModel.from_xml_string(
+        "<mujoco><worldbody><body name='a'><geom name='ga' type='sphere' size='.1'/></body>"
+        "<body name='b' pos='.3 0 0'><geom name='gb' type='sphere' size='.1'/></body></worldbody></mujoco>"
+    )
+    data = mujoco.MjData(model)
+    mujoco.mj_forward(model, data)
+    spec = {"geom1_id": 0, "geom2_id": 1, "pair": "0:ga|1:gb", "geom1_name": "ga", "geom2_name": "gb", "physical_group": "synthetic"}
+    row = _surface_pair(model, data, spec, {}, 1.0)
+    assert row["geometry_valid"]
+    assert row["signed_gap_m"] == pytest.approx(0.1)
+    assert row["nearest_point_a"] == pytest.approx([0.1, 0.0, 0.0])
+    assert row["nearest_point_b"] == pytest.approx([0.2, 0.0, 0.0])
+    assert row["normal"] == pytest.approx([1.0, 0.0, 0.0])
