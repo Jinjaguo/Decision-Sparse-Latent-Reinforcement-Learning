@@ -65,7 +65,14 @@ def validate(sim: Any, snapshot: MujocoSnapshot) -> Dict[str, Any]:
     return {"kind": snapshot.kind, "dimension": expected, "all_finite": True}
 
 
-def restore(sim: Any, snapshot: MujocoSnapshot, *, forward: bool = True) -> None:
+def restore(sim: Any, snapshot: MujocoSnapshot, *, forward: bool = False) -> None:
+    """Restore captured integration inputs.
+
+    The audited robosuite policy-step path begins its next transition with
+    ``sim.forward()``. The default therefore does not insert an extra forward at
+    the stored pre-policy boundary. Callers that will consume derived fields before
+    the next normal environment step must request ``forward=True`` explicitly.
+    """
     validate(sim, snapshot)
     if snapshot.kind == "legacy":
         sim.set_state_from_flattened(snapshot.values)
@@ -119,4 +126,3 @@ def component_errors(before: Dict[str, np.ndarray], after: Dict[str, np.ndarray]
         }
         for name in before
     }
-

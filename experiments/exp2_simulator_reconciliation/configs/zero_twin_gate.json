@@ -1,6 +1,11 @@
 {
   "schema_version": 1,
   "frozen_before_zero_twin_run": true,
+  "restore_semantics": {
+    "call_mj_setState_at_pre_policy_boundary": true,
+    "call_mj_forward_during_restore": false,
+    "reason": "robosuite MujocoEnv.step calls sim.forward before robot control on every continuation step"
+  },
   "coverage": {
     "demonstrations": 9,
     "branch_times_per_demonstration": 12,
@@ -25,4 +30,3 @@
     "D_INTEGRATION_CONTROLLER_ROBOT"
   ]
 }
-
