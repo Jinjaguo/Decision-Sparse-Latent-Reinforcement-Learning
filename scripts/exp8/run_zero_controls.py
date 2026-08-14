@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+"""Documented matched-zero EXP8 entry point."""
+
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+
+from scripts.exp8.run_interventions import main
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+

@@ -113,7 +113,10 @@ def main() -> int:
     run_dir = create_run_directory(args.run_root, args.run_id); stdout, stderr = io.StringIO(), io.StringIO(); started = time.perf_counter()
     manifest_dir = args.manifest_dir.resolve(); reference = args.reference_run.resolve()
     config = json.loads(args.config.resolve().read_text())
-    branch_manifest = json.loads((manifest_dir / "branch_manifest.json").read_text()); directions = json.loads((manifest_dir / "direction_basis_manifest.json").read_text()); normalization = json.loads((manifest_dir / "effect_normalization.json").read_text()); channel_schema = json.loads((manifest_dir / "effect_channel_schema.json").read_text()); primary_spec = json.loads((manifest_dir / "primary_metric_spec.json").read_text())
+    branch_path = manifest_dir / "branch_manifest.json"
+    if not branch_path.exists():
+        branch_path = manifest_dir / "exp8_branch_manifest.json"
+    branch_manifest = json.loads(branch_path.read_text()); directions = json.loads((manifest_dir / "direction_basis_manifest.json").read_text()); normalization = json.loads((manifest_dir / "effect_normalization.json").read_text()); channel_schema = json.loads((manifest_dir / "effect_channel_schema.json").read_text()); primary_spec = json.loads((manifest_dir / "primary_metric_spec.json").read_text())
     limits_path = REPOSITORY_ROOT / "runs/exp2_r5_q_smoke_20260814T012633/artifacts/joint_limit_manifest.json"; joint_limits = {x["task"]: x for x in json.loads(limits_path.read_text())}
     experiment_name = str(config.get("experiment", "EXP4"))
     if args.zero_repeats < 2: raise ValueError("zero-repeats must be at least two")

@@ -1,0 +1,30 @@
+{
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T22:22:25.943937+00:00",
+  "manifest_type": "risk_threshold_rule",
+  "outcome_blind": true,
+  "project_sha": "82e428b922698d3a8f979bb1b22b90754bc606c1",
+  "requirements": {
+    "AUROC_CI_lower": 0.75,
+    "ECE_max": 0.05,
+    "sensitivity_min": 0.85,
+    "specificity_min": 0.7
+  },
+  "schema_version": 1,
+  "seeds": {
+    "master": 10602665483572930466
+  },
+  "selection": "maximize training-fold specificity subject to sensitivity >=0.85; tie by sensitivity then highest threshold",
+  "sources": {
+    "contact_frame_run": "exp8_s4_contact_frame_audit_r1_20260814",
+    "hashes": {
+      "branch_input": "3011952f33594b728f5c7638a13d52eeffb15b6c5d768e24f05c41577acab4ef",
+      "contact_audit": "1ea8682c048fac517f7944dddcc5fdfe21b635d86e3cdd7981a5a0b0671f946c",
+      "contact_frames": "34cbdb1410cac408dcda6d1da288942e51a8f4a4adcdbebf0bbc9bf547b1c26b",
+      "identity_schema": "630ecaf5408762e2c2320b42b3028cf34ed50e12ded22dbd9db9ed2231b12c59",
+      "reference_manifest": "9f206105f70bb7ad7450a1f0b7ebadcef50104c70486c7afba4ffe801ae02cdc"
+    },
+    "reference_run": "exp8_s2_independent_refs_20260814"
+  },
+  "test_fold_never_used": true
+}

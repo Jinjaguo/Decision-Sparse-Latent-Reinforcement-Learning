@@ -1,0 +1,800 @@
+{
+  "audit": {
+    "active_pair_range": [
+      0,
+      16
+    ],
+    "force_semantics": "mj_contactForce returns force:torque in native contact frame; transformed to deterministic gauge; force, not impulse",
+    "gate": {
+      "criteria": {
+        "all_boundaries_finite": true,
+        "all_boundaries_have_valid_pair": true,
+        "force_available": true,
+        "repeatability_atol": true,
+        "three_task_support": true
+      },
+      "passed": true
+    },
+    "maximum_repeat_feature_range": 0.0,
+    "mujoco_version": "3.2.3",
+    "official_sources": {
+      "contact_force": "https://mujoco.readthedocs.io/en/3.2.3/APIreference/APIfunctions.html#mj-contactforce",
+      "contact_frame": "https://mujoco.readthedocs.io/en/3.2.3/APIreference/APItypes.html#mjcontact",
+      "point_jacobian": "https://mujoco.readthedocs.io/en/3.2.3/APIreference/APIfunctions.html#mj-jac",
+      "surface_distance": "https://mujoco.readthedocs.io/en/3.2.3/APIreference/APIfunctions.html#mj-geomdistance"
+    },
+    "positive_force_boundary_count": 1758,
+    "reference_boundary_count": 3232,
+    "repeat_boundary_count": 120,
+    "runtime_audit": [
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_31",
+        "support_body": "wooden_cabinet_1_base",
+        "target_body": "wooden_cabinet_1_cabinet_middle",
+        "task": "open_the_middle_drawer_of_the_cabinet"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_32",
+        "support_body": "wooden_cabinet_1_base",
+        "target_body": "wooden_cabinet_1_cabinet_middle",
+        "task": "open_the_middle_drawer_of_the_cabinet"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_33",
+        "support_body": "wooden_cabinet_1_base",
+        "target_body": "wooden_cabinet_1_cabinet_middle",
+        "task": "open_the_middle_drawer_of_the_cabinet"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_34",
+        "support_body": "wooden_cabinet_1_base",
+        "target_body": "wooden_cabinet_1_cabinet_middle",
+        "task": "open_the_middle_drawer_of_the_cabinet"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_35",
+        "support_body": "wooden_cabinet_1_base",
+        "target_body": "wooden_cabinet_1_cabinet_middle",
+        "task": "open_the_middle_drawer_of_the_cabinet"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_36",
+        "support_body": "wooden_cabinet_1_base",
+        "target_body": "wooden_cabinet_1_cabinet_middle",
+        "task": "open_the_middle_drawer_of_the_cabinet"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_37",
+        "support_body": "wooden_cabinet_1_base",
+        "target_body": "wooden_cabinet_1_cabinet_middle",
+        "task": "open_the_middle_drawer_of_the_cabinet"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_38",
+        "support_body": "wooden_cabinet_1_base",
+        "target_body": "wooden_cabinet_1_cabinet_middle",
+        "task": "open_the_middle_drawer_of_the_cabinet"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_39",
+        "support_body": "wooden_cabinet_1_base",
+        "target_body": "wooden_cabinet_1_cabinet_middle",
+        "task": "open_the_middle_drawer_of_the_cabinet"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_40",
+        "support_body": "wooden_cabinet_1_base",
+        "target_body": "wooden_cabinet_1_cabinet_middle",
+        "task": "open_the_middle_drawer_of_the_cabinet"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_30",
+        "support_body": "plate_1_main",
+        "target_body": "akita_black_bowl_1_main",
+        "task": "put_the_bowl_on_the_plate"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_31",
+        "support_body": "plate_1_main",
+        "target_body": "akita_black_bowl_1_main",
+        "task": "put_the_bowl_on_the_plate"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_32",
+        "support_body": "plate_1_main",
+        "target_body": "akita_black_bowl_1_main",
+        "task": "put_the_bowl_on_the_plate"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_33",
+        "support_body": "plate_1_main",
+        "target_body": "akita_black_bowl_1_main",
+        "task": "put_the_bowl_on_the_plate"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_34",
+        "support_body": "plate_1_main",
+        "target_body": "akita_black_bowl_1_main",
+        "task": "put_the_bowl_on_the_plate"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_35",
+        "support_body": "plate_1_main",
+        "target_body": "akita_black_bowl_1_main",
+        "task": "put_the_bowl_on_the_plate"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_36",
+        "support_body": "plate_1_main",
+        "target_body": "akita_black_bowl_1_main",
+        "task": "put_the_bowl_on_the_plate"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_37",
+        "support_body": "plate_1_main",
+        "target_body": "akita_black_bowl_1_main",
+        "task": "put_the_bowl_on_the_plate"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_38",
+        "support_body": "plate_1_main",
+        "target_body": "akita_black_bowl_1_main",
+        "task": "put_the_bowl_on_the_plate"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_39",
+        "support_body": "plate_1_main",
+        "target_body": "akita_black_bowl_1_main",
+        "task": "put_the_bowl_on_the_plate"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_30",
+        "support_body": "flat_stove_1_base",
+        "target_body": "flat_stove_1_button",
+        "task": "turn_on_the_stove"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_31",
+        "support_body": "flat_stove_1_base",
+        "target_body": "flat_stove_1_button",
+        "task": "turn_on_the_stove"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_32",
+        "support_body": "flat_stove_1_base",
+        "target_body": "flat_stove_1_button",
+        "task": "turn_on_the_stove"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_33",
+        "support_body": "flat_stove_1_base",
+        "target_body": "flat_stove_1_button",
+        "task": "turn_on_the_stove"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_34",
+        "support_body": "flat_stove_1_base",
+        "target_body": "flat_stove_1_button",
+        "task": "turn_on_the_stove"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_35",
+        "support_body": "flat_stove_1_base",
+        "target_body": "flat_stove_1_button",
+        "task": "turn_on_the_stove"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_36",
+        "support_body": "flat_stove_1_base",
+        "target_body": "flat_stove_1_button",
+        "task": "turn_on_the_stove"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_37",
+        "support_body": "flat_stove_1_base",
+        "target_body": "flat_stove_1_button",
+        "task": "turn_on_the_stove"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_38",
+        "support_body": "flat_stove_1_base",
+        "target_body": "flat_stove_1_button",
+        "task": "turn_on_the_stove"
+      },
+      {
+        "arm_dof_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "arm_qpos_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "episode": "demo_39",
+        "support_body": "flat_stove_1_base",
+        "target_body": "flat_stove_1_button",
+        "task": "turn_on_the_stove"
+      }
+    ],
+    "schema_version": 1,
+    "valid_pair_range": [
+      12,
+      57
+    ]
+  },
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T22:22:25.943937+00:00",
+  "global_features": [
+    "EEF-to-target SE3/twist",
+    "target-to-support SE3/twist",
+    "Panda q/qvel",
+    "gripper opening/current_action",
+    "task progress"
+  ],
+  "manifest_type": "contact_frame_schema",
+  "no_arbitrary_geom_id_model_input": true,
+  "outcome_blind": true,
+  "pair_features": [
+    "physical_group",
+    "nearest_point_a",
+    "nearest_point_b",
+    "relative_displacement",
+    "signed_gap_m",
+    "normal",
+    "tangent1",
+    "tangent2",
+    "relative_velocity_contact",
+    "contact_age_boundaries",
+    "contact_force_torque_contact",
+    "relative_point_jacobian_arm"
+  ],
+  "project_sha": "82e428b922698d3a8f979bb1b22b90754bc606c1",
+  "schema_version": 1,
+  "seeds": {
+    "master": 10602665483572930466
+  },
+  "sources": {
+    "contact_frame_run": "exp8_s4_contact_frame_audit_r1_20260814",
+    "hashes": {
+      "branch_input": "3011952f33594b728f5c7638a13d52eeffb15b6c5d768e24f05c41577acab4ef",
+      "contact_audit": "1ea8682c048fac517f7944dddcc5fdfe21b635d86e3cdd7981a5a0b0671f946c",
+      "contact_frames": "34cbdb1410cac408dcda6d1da288942e51a8f4a4adcdbebf0bbc9bf547b1c26b",
+      "identity_schema": "630ecaf5408762e2c2320b42b3028cf34ed50e12ded22dbd9db9ed2231b12c59",
+      "reference_manifest": "9f206105f70bb7ad7450a1f0b7ebadcef50104c70486c7afba4ffe801ae02cdc"
+    },
+    "reference_run": "exp8_s2_independent_refs_20260814"
+  },
+  "variable_size_representation": "permutation-invariant mean/min/max/RMS pooling with physical-group one-hot"
+}

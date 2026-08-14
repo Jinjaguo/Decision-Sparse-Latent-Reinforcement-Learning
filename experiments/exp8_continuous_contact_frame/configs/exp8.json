@@ -1,0 +1,21 @@
+{
+  "directions_per_branch": 24,
+  "expected_branches": 360,
+  "experiment": "EXP8",
+  "meaningful_effect_threshold": 0.01,
+  "non_arm_integration_linf_max": 1e-12,
+  "q_injection_atol": 1e-15,
+  "radii": [
+    0.0003125,
+    0.000625,
+    0.00125
+  ],
+  "signs": [
+    -1,
+    1
+  ],
+  "zero_maximum_max": 1e-12,
+  "zero_median_max": 1e-12,
+  "zero_p95_max": 1e-12,
+  "zero_terminal_object_pose_p95_max": 1e-12
+}

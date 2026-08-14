@@ -1,0 +1,55 @@
+{
+  "crossfit_hash": "e5d7d1808f406a17df8b8134a2e23c3081f30a10f20819ae7454c53b82df41d3",
+  "direction_hash": "d8031917ddf67ab2048509f76748573db8a329e89521f284c598e3d3c6db4404",
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T22:22:25.943937+00:00",
+  "manifest_type": "manifest_hashes",
+  "manifests": {
+    "ablation_manifest.json": "5689d96ade85bbb9856f4909e87944e4d74376b0ce8f1ab3349bb24e0244957b",
+    "action_projection_spec.json": "4bca4e64159d0025c806bb31dd1583d316c4f5146f74aea54e1872fcea4c980f",
+    "baseline_model_specs.json": "bf3a419fc21e39a0ac3f8946b3da52c69000e6298cb244c2d541da1b386eda5c",
+    "contact_age_spec.json": "3b1dc38f0fead56ac2e14a1ac681e9b8b3265a8c8fef98f6cfaf75055acb1b9e",
+    "contact_force_schema.json": "05a421c608f59485d86d15e3157bef4abae20ac661c50e80a8aa9b85e270c2f6",
+    "contact_frame_schema.json": "27393ada344eaf36e1ce3fc7de1c02685578a21d8a1640c23a480fe7aa1f28a0",
+    "contact_identity_schema.json": "1986a79f569cc67df8e11f9791b9237a1d25b15634c55451012dc482ff7ef375",
+    "crossfit_manifest.json": "e5d7d1808f406a17df8b8134a2e23c3081f30a10f20819ae7454c53b82df41d3",
+    "direction_basis_manifest.json": "d8031917ddf67ab2048509f76748573db8a329e89521f284c598e3d3c6db4404",
+    "exp8_branch_manifest.json": "eb964f94560445597fe301e8f8190489326687d7171a0d08ba0e47058911662b",
+    "exp8_cohort_manifest.json": "f6dc015b528dca6e7f56b9d24334929336a935e8af8b03cc42fd197c0bb417a1",
+    "gpu_analysis_spec.json": "bd989edae03a950bec792c6d6d29159c1e0d43cdcf720fc55a7f350e3ed91af6",
+    "heldout_direction_manifest.json": "88ab047b3b19f138d11c67482869d644a76ae6609160e3f8cc7763321c933af1",
+    "horizon_spec.json": "d05aefbde9b52a60562df64bcc6cc30b7e5afb46e3198686cfe20bd76b6ada30",
+    "hyperparameter_grid.json": "d609fc203794b8038144253367471d2f50cd9a703806ac58a0673c1d34cd164a",
+    "primary_model_spec.json": "a7dfa078fe55de19d936f7699f2a82426636134d64b42a2f5fb8837bae79181d",
+    "radius_manifest.json": "f4fb78f595a7d93c117899e2263406011a67df2cd83971cba31f2776f78678b0",
+    "risk_crossfit_manifest.json": "ab6bc921eb4c71ecba89ba0c4a766e4e25d44e84e0a25cc09feabe8ed0995a5f",
+    "risk_feature_schema.json": "a7e1361d2fd6b9d8bf5768d0a58f3a3162ea4bb21cce2d51f4891b9007a7d9e1",
+    "risk_threshold_rule.json": "c2849d301aa2d32bd27e52da160045aed6b16c756845e51969cad406fc687667",
+    "scientific_decision_rule.json": "55449e43bd9260acd7b991a8b35390d47a40047eed55a94ad18228fbb41b280a",
+    "signed_gap_schema.json": "8e4c177e5789c1117a50764d60372163d65b79e923b0eca737858e0a23154ff5",
+    "signed_output_vector_spec.json": "7928b5625c2f3c975021924502f4e916f391610164e284ec26825d4cdc5e737c",
+    "statistical_analysis_plan.json": "8727973d6585afa57134e6c2eec9c6d409699db328b5ce878554fcbcbe018050",
+    "tangent_gauge_spec.json": "4b8287a302f69b98b8dd46f71600d3ec405a28979a529f7859e9cd71134ee15f"
+  },
+  "model_config_hash": "a7dfa078fe55de19d936f7699f2a82426636134d64b42a2f5fb8837bae79181d",
+  "outcome_blind": true,
+  "project_sha": "82e428b922698d3a8f979bb1b22b90754bc606c1",
+  "radius_hash": "f4fb78f595a7d93c117899e2263406011a67df2cd83971cba31f2776f78678b0",
+  "required_manifest_count": 25,
+  "risk_threshold_hash": "c2849d301aa2d32bd27e52da160045aed6b16c756845e51969cad406fc687667",
+  "schema_version": 1,
+  "seeds": {
+    "master": 10602665483572930466
+  },
+  "sources": {
+    "contact_frame_run": "exp8_s4_contact_frame_audit_r1_20260814",
+    "hashes": {
+      "branch_input": "3011952f33594b728f5c7638a13d52eeffb15b6c5d768e24f05c41577acab4ef",
+      "contact_audit": "1ea8682c048fac517f7944dddcc5fdfe21b635d86e3cdd7981a5a0b0671f946c",
+      "contact_frames": "34cbdb1410cac408dcda6d1da288942e51a8f4a4adcdbebf0bbc9bf547b1c26b",
+      "identity_schema": "630ecaf5408762e2c2320b42b3028cf34ed50e12ded22dbd9db9ed2231b12c59",
+      "reference_manifest": "9f206105f70bb7ad7450a1f0b7ebadcef50104c70486c7afba4ffe801ae02cdc"
+    },
+    "reference_run": "exp8_s2_independent_refs_20260814"
+  }
+}
