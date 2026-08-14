@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "frozen_before_zero_twin_run": true,
+  "coverage": {
+    "demonstrations": 9,
+    "branch_times_per_demonstration": 12,
+    "minimum_repeats_per_branch": 3,
+    "minimum_comparisons": 324
+  },
+  "thresholds": {
+    "final_success_agreement": 1.0,
+    "all_integration_states_finite": true,
+    "integration_state_l2_median_max": 1e-10,
+    "integration_state_l2_p95_max": 1e-8,
+    "integration_state_l2_maximum_max": 1e-6,
+    "terminal_object_pose_l2_p95_max": 1e-6
+  },
+  "systematic_spike_checks": [
+    "branch_time",
+    "contact_event",
+    "task_identity"
+  ],
+  "selection_priority": [
+    "C_INTEGRATION",
+    "D_INTEGRATION_CONTROLLER_ROBOT"
+  ]
+}
+
