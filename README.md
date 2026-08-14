@@ -6,7 +6,8 @@ decision-criticality mapping. Later latent-RL phases are intentionally out of sc
 
 ## Current stage
 
-Stage E0 (environment and repository audit). See
+Stage E3 completed with a failed deterministic-replay hard gate. E4, E5, and the
+q-perturbation sweep are blocked pending simulator/data reconciliation. See
 [experiments/exp1_decision_sparsity/EXP1.md](experiments/exp1_decision_sparsity/EXP1.md)
 and the append-only [research log](research_log/README.md).
 
