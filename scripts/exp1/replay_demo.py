@@ -70,7 +70,17 @@ def _task_source_record(task_manifest: Dict[str, Any], suite: str, task_id: int)
 
 
 def _write_rows(path: Path, rows: List[Dict[str, Any]]) -> None:
-    fieldnames = ["task", "episode", "action_index", "recorded_state_index", "normalized_time", "state_l2_error"]
+    fieldnames = [
+        "task",
+        "episode",
+        "action_index",
+        "recorded_state_index",
+        "normalized_time",
+        "state_l2_error",
+        "time_abs_error",
+        "qpos_l2_error",
+        "qvel_l2_error",
+    ]
     with path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames)
         writer.writeheader()
@@ -192,12 +202,20 @@ def main() -> int:
                         env.set_init_state(states[0])
                         repeat_restore = env.get_sim_state().copy()
                         repeat_restore_l2_error = float(np.linalg.norm(repeat_restore - first_restore))
+                        nq = int(env.sim.model.nq)
+                        nv = int(env.sim.model.nv)
+                        if states.shape[1] != 1 + nq + nv:
+                            raise ValueError(
+                                f"flattened state dimension {states.shape[1]} does not equal "
+                                f"1 + nq {nq} + nv {nv}"
+                            )
                         for action_index, action in enumerate(actions):
                             env.step(action)
                             if action_index >= len(actions) - 1:
                                 continue
                             runtime_state = env.get_sim_state()
-                            error = float(np.linalg.norm(states[action_index + 1] - runtime_state))
+                            difference = states[action_index + 1] - runtime_state
+                            error = float(np.linalg.norm(difference))
                             rows.append(
                                 {
                                     "task": task["name"],
@@ -206,6 +224,9 @@ def main() -> int:
                                     "recorded_state_index": action_index + 1,
                                     "normalized_time": action_index / max(len(actions) - 2, 1),
                                     "state_l2_error": error,
+                                    "time_abs_error": float(abs(difference[0])),
+                                    "qpos_l2_error": float(np.linalg.norm(difference[1 : 1 + nq])),
+                                    "qvel_l2_error": float(np.linalg.norm(difference[1 + nq :])),
                                 }
                             )
                         result = {
@@ -214,6 +235,8 @@ def main() -> int:
                             "trajectory_length": int(len(actions)),
                             "comparison_count": int(len(actions) - 1),
                             "state_dimension": int(states.shape[1]),
+                            "model_nq": nq,
+                            "model_nv": nv,
                             "action_dimension": int(actions.shape[1]),
                             "initial_state_l2_error": initial_state_l2_error,
                             "repeat_restore_l2_error": repeat_restore_l2_error,
@@ -225,6 +248,14 @@ def main() -> int:
                 env = None
 
         summary = summarize_replay_rows(rows)
+        component_summary = {}
+        for component in ("time_abs_error", "qpos_l2_error", "qvel_l2_error"):
+            values = np.asarray([row[component] for row in rows], dtype=np.float64)
+            component_summary[component] = {
+                "median": float(np.median(values)),
+                "p95": float(np.percentile(values, 95)),
+                "maximum": float(np.max(values)),
+            }
         gate = evaluate_replay_gate(
             summary=summary,
             episode_results=episode_results,
@@ -244,6 +275,7 @@ def main() -> int:
             "episode_count": len(episode_results),
             "task_count": len(tasks),
             "summary": summary,
+            "component_summary": component_summary,
             "gate": gate,
             "episode_results": episode_results,
         }
