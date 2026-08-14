@@ -465,6 +465,32 @@
       "reason": "episode termination bookkeeping"
     }
   ],
+  "gripper_fields": [
+    {
+      "category": "gripper_action_integrator",
+      "changes_after_one_action": true,
+      "changes_after_reset": false,
+      "control_relevance": "direct or conservative explicit restoration",
+      "dtype": "float64",
+      "finite": true,
+      "included_in_condition_d_snapshot": true,
+      "object_path": "env.robots[0].gripper.current_action",
+      "shape": [
+        1
+      ],
+      "source_reference": {
+        "file": "C:\\Users\\Guoji\\anaconda3\\envs\\libero-exp1\\Lib\\site-packages\\robosuite\\models\\grippers\\panda_gripper.py",
+        "line": 38,
+        "symbol": "PandaGripper"
+      },
+      "summary": {
+        "l2": 0.0,
+        "maximum": 0.0,
+        "minimum": 0.0
+      },
+      "type": "numpy.ndarray"
+    }
+  ],
   "robot_fields": [
     {
       "category": "last_output_diagnostic",
