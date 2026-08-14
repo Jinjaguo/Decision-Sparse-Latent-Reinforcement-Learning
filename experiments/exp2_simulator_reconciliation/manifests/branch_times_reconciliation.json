@@ -19,8 +19,8 @@
   "rounding": "Python round(q * (T - 1)) converted to int",
   "schema_version": 1,
   "selection_is_q_outcome_blind": true,
-  "source_reference_manifest": "C:\\Users\\Guoji\\Documents\\ChatGPT\\Decision-Sparse Latent Reinforcement Learning\\runs\\exp2_r2_nullspace_refs_20260814T002227\\artifacts\\reference_snapshots_manifest.json",
-  "source_reference_run_id": "exp2_r2_nullspace_refs_20260814T002227",
+  "source_reference_manifest": "C:\\Users\\Guoji\\Documents\\ChatGPT\\Decision-Sparse Latent Reinforcement Learning\\runs\\exp2_r2_gripper_refs_20260814T011336\\artifacts\\reference_snapshots_manifest.json",
+  "source_reference_run_id": "exp2_r2_gripper_refs_20260814T011336",
   "trajectories": [
     {
       "branches": [
@@ -1180,7 +1180,7 @@
         },
         {
           "action_index": 86,
-          "contact_count": 28,
+          "contact_count": 27,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.945054945054945,
