@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import importlib
 import importlib.metadata
 import json
 import os
@@ -47,6 +48,45 @@ def parse_pinned_requirement(requirements_file: Path, package: str) -> Optional[
         if match:
             return match.group(1)
     return None
+
+
+def parse_setup_version(setup_file: Path) -> Optional[str]:
+    """Read the literal package version declared by a checked-out ``setup.py``."""
+
+    pattern = re.compile(r"\bversion\s*=\s*['\"]([^'\"]+)['\"]")
+    match = pattern.search(setup_file.read_text(encoding="utf-8"))
+    return match.group(1) if match else None
+
+
+def torch_runtime_record() -> Dict[str, Any]:
+    """Inspect the active Torch CUDA runtime, if Torch can be imported."""
+
+    if not distribution_record("torch")["installed"]:
+        return {"available": False, "error": "torch distribution is not installed"}
+    try:
+        torch = importlib.import_module("torch")
+        cuda_available = bool(torch.cuda.is_available())
+        record: Dict[str, Any] = {
+            "available": True,
+            "torch_version": torch.__version__,
+            "cuda_runtime": torch.version.cuda,
+            "cuda_available": cuda_available,
+            "device_count": int(torch.cuda.device_count()) if cuda_available else 0,
+            "devices": [],
+            "error": None,
+        }
+        if cuda_available:
+            record["devices"] = [
+                {
+                    "index": index,
+                    "name": torch.cuda.get_device_name(index),
+                    "capability": list(torch.cuda.get_device_capability(index)),
+                }
+                for index in range(torch.cuda.device_count())
+            ]
+        return record
+    except Exception as exc:  # preserve import / driver failures in the audit
+        return {"available": False, "error": f"{type(exc).__name__}: {exc}"}
 
 
 def git_record(repository: Path) -> Dict[str, Any]:
@@ -148,6 +188,11 @@ def build_environment_audit(
     return {
         "project_git": git_record(project_root),
         "libero_git": git_record(libero_root),
+        "libero_source": {
+            "version": parse_setup_version(libero_root / "setup.py"),
+            "setup_file": str((libero_root / "setup.py").resolve()),
+            "python_import_root": str((libero_root / "libero").resolve()),
+        },
         "robosuite_source_git": git_record(robosuite_source_root),
         "runtime": {
             "python_version": platform.python_version(),
@@ -175,6 +220,7 @@ def build_environment_audit(
                 ]
             ),
             "nvcc": command_output(["nvcc", "--version"]),
+            "torch_runtime": torch_runtime_record(),
         },
         "dataset_root": resolve_dataset_root(dataset_root, project_root, libero_root),
     }
