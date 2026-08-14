@@ -39,6 +39,20 @@ class MujocoSnapshotTest(unittest.TestCase):
         self.assertEqual(original.kind, loaded.kind)
         self.assertTrue(np.array_equal(original.values, loaded.values))
 
+    def test_zero_twins_are_identical_in_simple_model(self):
+        sim = _RawSim()
+        sim.data.qpos[0] = 0.2
+        sim.data.qvel[0] = 0.1
+        sim.data.ctrl[0] = -0.3
+        mujoco.mj_forward(sim.model, sim.data)
+        initial = capture(sim, "integration")
+        outputs = []
+        for _ in range(2):
+            restore(sim, initial)
+            mujoco.mj_step(sim.model, sim.data)
+            outputs.append(capture(sim, "integration").values)
+        self.assertTrue(np.array_equal(outputs[0], outputs[1]))
+
 
 if __name__ == "__main__":
     unittest.main()
