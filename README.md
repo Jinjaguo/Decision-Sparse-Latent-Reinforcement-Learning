@@ -6,7 +6,7 @@ decision-criticality mapping. Later latent-RL phases are intentionally out of sc
 
 ## Current stage
 
-Stage A (repository scaffold). See
+Stage E0 (environment and repository audit). See
 [experiments/exp1_decision_sparsity/EXP1.md](experiments/exp1_decision_sparsity/EXP1.md)
 and the append-only [research log](research_log/README.md).
 
