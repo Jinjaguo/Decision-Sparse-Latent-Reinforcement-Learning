@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "locked_before_analysis": true,
+  "run_id": "exp5_s12_s13_q_full_locked_20260814",
+  "intervention_count": 16896,
+  "per_step_effect_count": 658288,
+  "sha256": {
+    "zero_controls.parquet": "1ed4254218f3906b53f1c48383d098e872f537b341c59a728cf7c53df2897256",
+    "zero_reference_steps.parquet": "afb75eb1b4ac0d301b5fd9942ab23c11ba39cd0beffd648d8ebab48d8784162d",
+    "interventions.parquet": "0a7101937ac22f30c9b8cda1e583734d5e1f2461539fe17546f1945b668d5129",
+    "per_step_effects.parquet": "8965264781dd098fa970093d7bed22b9301588c13af7a55ffb3528626d0539a0"
+  }
+}
