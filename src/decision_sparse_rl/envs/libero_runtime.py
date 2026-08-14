@@ -66,9 +66,15 @@ def load_episode(
     env.reset_from_xml_string(xml)
     env.sim.reset()
     env.set_init_state(states[0])
+    # set_init_state updates MuJoCo and observations but does not synchronize the
+    # already-constructed robosuite controller caches. Establish one explicit,
+    # reproducible pre-policy controller boundary from the verified physical state.
+    for robot in env.robots:
+        robot.controller.update(force=True)
+        robot.controller.reset_goal()
+        robot.controller.new_update = True
     return {"episode": name, "states": states, "actions": actions, "xml": xml, "path_rewrites": rewrites}
 
 
 def load_selection(selection: Path, task_manifest: Path) -> Tuple[Dict[str, Any], Dict[str, Any]]:
     return json.loads(selection.read_text(encoding="utf-8")), json.loads(task_manifest.read_text(encoding="utf-8"))
-
