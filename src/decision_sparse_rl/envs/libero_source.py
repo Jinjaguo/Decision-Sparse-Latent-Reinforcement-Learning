@@ -36,21 +36,31 @@ def write_libero_config(
     return config_file
 
 
-def import_benchmark_from_source(libero_root: Path, config_directory: Path) -> Any:
-    """Import the benchmark API from the exact checkout and assert its source path."""
+def import_module_from_source(
+    libero_root: Path, config_directory: Path, module_name: str
+) -> Any:
+    """Import a LIBERO module from the exact checkout and assert its source path."""
 
     # The checkout uses an implicit outer ``libero`` namespace directory. The
     # repository root, not that namespace directory, must therefore be on sys.path.
     import_root = libero_root.resolve()
     os.environ["LIBERO_CONFIG_PATH"] = str(config_directory.resolve())
     sys.path.insert(0, str(import_root))
-    benchmark = importlib.import_module("libero.libero.benchmark")
-    module_path = Path(benchmark.__file__).resolve()
+    module = importlib.import_module(module_name)
+    module_path = Path(module.__file__).resolve()
     if import_root not in module_path.parents:
         raise RuntimeError(
             f"LIBERO benchmark imported from {module_path}, expected under {import_root}"
         )
-    return benchmark
+    return module
+
+
+def import_benchmark_from_source(libero_root: Path, config_directory: Path) -> Any:
+    """Import the benchmark API from the exact checkout."""
+
+    return import_module_from_source(
+        libero_root, config_directory, "libero.libero.benchmark"
+    )
 
 
 def enumerate_registered_benchmarks(benchmark: Any) -> Tuple[Dict[str, Any], Dict[str, Any]]:
