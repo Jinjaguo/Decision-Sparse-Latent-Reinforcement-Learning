@@ -4,4 +4,6 @@ EXP6 tests whether the corrected-D, finite-radius Panda arm-q response converges
 
 The experiment estimates radius-resolved response operators, adjacent-radius projector and scale convergence, antithetic asymmetry, held-out prediction, empirical trust regions, and exact named contact-mode divergence. It does not train a scheduler or latent policy.
 
+EXP6 completed on 2026-08-14 with classification `contact_mode_conditioned_convergence`. H1–H3 failed; the exact-contact H4 mechanism test passed. Only 7/240 branches resolved a trust region, all in the Bowl task. See `reports/exp6_report.md`.
+
 The controlling protocol is `prompts/EXP6_CODEX_PROMPT_Multi_Radius_Convergence_Trust_Region.md`.
