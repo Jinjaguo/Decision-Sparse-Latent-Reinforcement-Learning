@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "experiment": "EXP4",
+  "run_id": "exp4_e4_12_full_20260814",
+  "status": "completed",
+  "locked_before_analysis": true,
+  "counts": {
+    "demos": 21,
+    "branches": 252,
+    "directions_per_branch": 8,
+    "signs_per_direction": 2,
+    "interventions": 4032,
+    "per_step_effects": 211808
+  },
+  "execution_gate": {
+    "passed": true,
+    "maximum_non_arm_linf": 0.0,
+    "joint_limits_valid": true,
+    "all_finite": true,
+    "no_branch_removed": true
+  },
+  "artifacts": {
+    "interventions.parquet": {
+      "relative_path": "runs/exp4_e4_12_full_20260814/artifacts/interventions.parquet",
+      "sha256": "21bf8fe958303236c0321078f8a41a89eb3776e0678c999728e2c961f1458eb3"
+    },
+    "per_step_effects.parquet": {
+      "relative_path": "runs/exp4_e4_12_full_20260814/artifacts/per_step_effects.parquet",
+      "sha256": "6016ae5bb73570948505a2f533f160e20955dd4985d2d057c81ceeff4cebd6c7"
+    },
+    "zero_controls.parquet": {
+      "relative_path": "runs/exp4_e4_12_full_20260814/artifacts/zero_controls.parquet",
+      "sha256": "8344175d2e2f96532087ce81958f922e24e69356120b3a374f6b82dcc9b59a3c"
+    }
+  },
+  "note": "Tracked record of immutable hashes emitted by the formal run before analysis; large run artifacts remain in the local run directory."
+}
