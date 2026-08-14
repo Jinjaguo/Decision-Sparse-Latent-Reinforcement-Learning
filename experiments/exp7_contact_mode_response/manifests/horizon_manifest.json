@@ -1,0 +1,26 @@
+{
+  "aggregation": "duration-normalized mean of first min(H, continuation length) signed output vectors",
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T20:38:24.264517+00:00",
+  "horizons": [
+    1,
+    3,
+    5,
+    "remaining"
+  ],
+  "manifest_type": "horizon_manifest",
+  "mode_preserved_through_H": "perturbed exact grouped mode equals matched-zero exact grouped mode at every offset 1..H",
+  "outcome_blind": true,
+  "primary": 1,
+  "project_sha": "f024e87c6b3cc64ab14e54bc0e430aa5f95f090e",
+  "schema_version": 1,
+  "sources": {
+    "hashes": {
+      "branch_input": "4b032b5c6ae45a4df83f52bedc99eb4850fa20851fea463fd71b3db3f1f620a3",
+      "margin_spec": "7d3c93512ae2b9a23a243e001c373c6246c4b828fa829bdce3d31f5c1273c2df",
+      "reference_geometry": "c51592c163d24f0931b463a6b71b7537014e1cf855254ba90130cad6b2436780",
+      "reference_manifest": "f125b613dfdc54ee708cf910a8a8114e003ea96a4ac2863051b89792edafec38"
+    },
+    "reference_run": "exp7_s2_independent_refs_20260814"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "calibration_boundary_count": 120,
+  "far_rule": "fixed physical 1 mm reference-only threshold",
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T20:38:24.264517+00:00",
+  "gate": {
+    "passed": true
+  },
+  "m_far_m": 0.001,
+  "m_near_m": 1e-12,
+  "manifest_type": "boundary_margin_spec",
+  "mode_all_exact": true,
+  "near_rule": "max(1e-12 m, 10 * maximum four-restore signed-gap range)",
+  "normal_velocity_repeatability_max_mps": 0.0,
+  "outcome_blind": true,
+  "project_sha": "f024e87c6b3cc64ab14e54bc0e430aa5f95f090e",
+  "reference_boundary_count": 3316,
+  "schema_version": 1,
+  "signed_gap_repeatability_max_m": 0.0,
+  "sources": {
+    "hashes": {
+      "branch_input": "4b032b5c6ae45a4df83f52bedc99eb4850fa20851fea463fd71b3db3f1f620a3",
+      "margin_spec": "7d3c93512ae2b9a23a243e001c373c6246c4b828fa829bdce3d31f5c1273c2df",
+      "reference_geometry": "c51592c163d24f0931b463a6b71b7537014e1cf855254ba90130cad6b2436780",
+      "reference_manifest": "f125b613dfdc54ee708cf910a8a8114e003ea96a4ac2863051b89792edafec38"
+    },
+    "reference_run": "exp7_s2_independent_refs_20260814"
+  }
+}

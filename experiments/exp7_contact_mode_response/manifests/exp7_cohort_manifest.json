@@ -1,0 +1,142 @@
+{
+  "cohort": [
+    {
+      "episode": "demo_21",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_22",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_23",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_24",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_25",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_26",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_27",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_28",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_29",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_30",
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "episode": "demo_20",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_21",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_22",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_23",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_24",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_25",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_26",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_27",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_28",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_29",
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "episode": "demo_20",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_21",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_22",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_23",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_24",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_25",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_26",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_27",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_28",
+      "task": "turn_on_the_stove"
+    },
+    {
+      "episode": "demo_29",
+      "task": "turn_on_the_stove"
+    }
+  ],
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T20:38:24.264517+00:00",
+  "independent": true,
+  "manifest_type": "exp7_cohort_manifest",
+  "outcome_blind": true,
+  "project_sha": "f024e87c6b3cc64ab14e54bc0e430aa5f95f090e",
+  "schema_version": 1,
+  "selection_rule": "first ten qualified unused demonstrations in ascending task-local episode order",
+  "sources": {
+    "hashes": {
+      "branch_input": "4b032b5c6ae45a4df83f52bedc99eb4850fa20851fea463fd71b3db3f1f620a3",
+      "margin_spec": "7d3c93512ae2b9a23a243e001c373c6246c4b828fa829bdce3d31f5c1273c2df",
+      "reference_geometry": "c51592c163d24f0931b463a6b71b7537014e1cf855254ba90130cad6b2436780",
+      "reference_manifest": "f125b613dfdc54ee708cf910a8a8114e003ea96a4ac2863051b89792edafec38"
+    },
+    "reference_run": "exp7_s2_independent_refs_20260814"
+  },
+  "trajectory_count": 30
+}

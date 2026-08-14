@@ -1,0 +1,875 @@
+{
+  "distance_api": "mujoco.mj_geomDistance smallest signed surface distance; negative means penetration",
+  "distance_max_m": 0.05,
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T20:38:24.264517+00:00",
+  "manifest_type": "contact_mode_schema",
+  "mujoco_version": "3.2.3",
+  "outcome_blind": true,
+  "project_sha": "f024e87c6b3cc64ab14e54bc0e430aa5f95f090e",
+  "schema_version": 1,
+  "sources": {
+    "hashes": {
+      "branch_input": "4b032b5c6ae45a4df83f52bedc99eb4850fa20851fea463fd71b3db3f1f620a3",
+      "margin_spec": "7d3c93512ae2b9a23a243e001c373c6246c4b828fa829bdce3d31f5c1273c2df",
+      "reference_geometry": "c51592c163d24f0931b463a6b71b7537014e1cf855254ba90130cad6b2436780",
+      "reference_manifest": "f125b613dfdc54ee708cf910a8a8114e003ea96a4ac2863051b89792edafec38"
+    },
+    "reference_run": "exp7_s2_independent_refs_20260814"
+  },
+  "tasks": {
+    "open_the_middle_drawer_of_the_cabinet": {
+      "ownership_source": {
+        "contacts": "reference mjData.contact geom IDs",
+        "gripper": "env.robots[0].gripper.contact_geoms",
+        "target": "env.env.obj_body_id plus model body ancestry"
+      },
+      "pair_groups": {
+        "target_environment": [
+          {
+            "geom1_id": 168,
+            "geom1_name": "wooden_cabinet_1_g6",
+            "geom2_id": 173,
+            "geom2_name": "wooden_cabinet_1_g11",
+            "pair": "168:wooden_cabinet_1_g6|173:wooden_cabinet_1_g11"
+          },
+          {
+            "geom1_id": 170,
+            "geom1_name": "wooden_cabinet_1_g8",
+            "geom2_id": 184,
+            "geom2_name": "wooden_cabinet_1_g22",
+            "pair": "170:wooden_cabinet_1_g8|184:wooden_cabinet_1_g22"
+          }
+        ],
+        "target_gripper": [
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 180,
+            "geom2_name": "wooden_cabinet_1_g18",
+            "pair": "180:wooden_cabinet_1_g18|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 184,
+            "geom2_name": "wooden_cabinet_1_g22",
+            "pair": "184:wooden_cabinet_1_g22|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 191,
+            "geom2_name": "wooden_cabinet_1_g29",
+            "pair": "191:wooden_cabinet_1_g29|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 75,
+            "geom1_name": "gripper0_finger1_pad_collision",
+            "geom2_id": 191,
+            "geom2_name": "wooden_cabinet_1_g29",
+            "pair": "191:wooden_cabinet_1_g29|75:gripper0_finger1_pad_collision"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 180,
+            "geom2_name": "wooden_cabinet_1_g18",
+            "pair": "180:wooden_cabinet_1_g18|77:gripper0_finger2_collision"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 184,
+            "geom2_name": "wooden_cabinet_1_g22",
+            "pair": "184:wooden_cabinet_1_g22|77:gripper0_finger2_collision"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 186,
+            "geom2_name": "wooden_cabinet_1_g24",
+            "pair": "186:wooden_cabinet_1_g24|77:gripper0_finger2_collision"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 191,
+            "geom2_name": "wooden_cabinet_1_g29",
+            "pair": "191:wooden_cabinet_1_g29|77:gripper0_finger2_collision"
+          },
+          {
+            "geom1_id": 78,
+            "geom1_name": "gripper0_finger2_pad_collision",
+            "geom2_id": 191,
+            "geom2_name": "wooden_cabinet_1_g29",
+            "pair": "191:wooden_cabinet_1_g29|78:gripper0_finger2_pad_collision"
+          }
+        ]
+      },
+      "relevant_pairs": [
+        "168:wooden_cabinet_1_g6|173:wooden_cabinet_1_g11",
+        "170:wooden_cabinet_1_g8|184:wooden_cabinet_1_g22",
+        "180:wooden_cabinet_1_g18|72:gripper0_hand_collision",
+        "180:wooden_cabinet_1_g18|77:gripper0_finger2_collision",
+        "184:wooden_cabinet_1_g22|74:gripper0_finger1_collision",
+        "184:wooden_cabinet_1_g22|77:gripper0_finger2_collision",
+        "186:wooden_cabinet_1_g24|77:gripper0_finger2_collision",
+        "191:wooden_cabinet_1_g29|74:gripper0_finger1_collision",
+        "191:wooden_cabinet_1_g29|75:gripper0_finger1_pad_collision",
+        "191:wooden_cabinet_1_g29|77:gripper0_finger2_collision",
+        "191:wooden_cabinet_1_g29|78:gripper0_finger2_pad_collision"
+      ],
+      "required_geom_names": [
+        "wooden_cabinet_1_g0"
+      ],
+      "target_body": "wooden_cabinet_1",
+      "task_object_body_names": [
+        "wooden_cabinet_1_cabinet_middle"
+      ]
+    },
+    "put_the_bowl_on_the_plate": {
+      "ownership_source": {
+        "contacts": "reference mjData.contact geom IDs",
+        "gripper": "env.robots[0].gripper.contact_geoms",
+        "target": "env.env.obj_body_id plus model body ancestry"
+      },
+      "pair_groups": {
+        "gripper_environment": [
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 126,
+            "geom2_name": "cream_cheese_1_g1",
+            "pair": "126:cream_cheese_1_g1|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 126,
+            "geom2_name": "cream_cheese_1_g1",
+            "pair": "126:cream_cheese_1_g1|77:gripper0_finger2_collision"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 156,
+            "geom2_name": "plate_1_g5",
+            "pair": "156:plate_1_g5|77:gripper0_finger2_collision"
+          }
+        ],
+        "target_environment": [
+          {
+            "geom1_id": 7,
+            "geom1_name": "table_collision",
+            "geom2_id": 85,
+            "geom2_name": "akita_black_bowl_1_g1",
+            "pair": "7:table_collision|85:akita_black_bowl_1_g1"
+          },
+          {
+            "geom1_id": 7,
+            "geom1_name": "table_collision",
+            "geom2_id": 86,
+            "geom2_name": "akita_black_bowl_1_g2",
+            "pair": "7:table_collision|86:akita_black_bowl_1_g2"
+          },
+          {
+            "geom1_id": 7,
+            "geom1_name": "table_collision",
+            "geom2_id": 97,
+            "geom2_name": "akita_black_bowl_1_g13",
+            "pair": "7:table_collision|97:akita_black_bowl_1_g13"
+          },
+          {
+            "geom1_id": 7,
+            "geom1_name": "table_collision",
+            "geom2_id": 98,
+            "geom2_name": "akita_black_bowl_1_g14",
+            "pair": "7:table_collision|98:akita_black_bowl_1_g14"
+          },
+          {
+            "geom1_id": 7,
+            "geom1_name": "table_collision",
+            "geom2_id": 99,
+            "geom2_name": "akita_black_bowl_1_g15",
+            "pair": "7:table_collision|99:akita_black_bowl_1_g15"
+          },
+          {
+            "geom1_id": 7,
+            "geom1_name": "table_collision",
+            "geom2_id": 100,
+            "geom2_name": "akita_black_bowl_1_g16",
+            "pair": "100:akita_black_bowl_1_g16|7:table_collision"
+          },
+          {
+            "geom1_id": 7,
+            "geom1_name": "table_collision",
+            "geom2_id": 120,
+            "geom2_name": "akita_black_bowl_1_g36",
+            "pair": "120:akita_black_bowl_1_g36|7:table_collision"
+          },
+          {
+            "geom1_id": 7,
+            "geom1_name": "table_collision",
+            "geom2_id": 121,
+            "geom2_name": "akita_black_bowl_1_g37",
+            "pair": "121:akita_black_bowl_1_g37|7:table_collision"
+          },
+          {
+            "geom1_id": 7,
+            "geom1_name": "table_collision",
+            "geom2_id": 122,
+            "geom2_name": "akita_black_bowl_1_g38",
+            "pair": "122:akita_black_bowl_1_g38|7:table_collision"
+          },
+          {
+            "geom1_id": 7,
+            "geom1_name": "table_collision",
+            "geom2_id": 123,
+            "geom2_name": "akita_black_bowl_1_g39",
+            "pair": "123:akita_black_bowl_1_g39|7:table_collision"
+          },
+          {
+            "geom1_id": 7,
+            "geom1_name": "table_collision",
+            "geom2_id": 124,
+            "geom2_name": "akita_black_bowl_1_g40",
+            "pair": "124:akita_black_bowl_1_g40|7:table_collision"
+          }
+        ],
+        "target_gripper": [
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 103,
+            "geom2_name": "akita_black_bowl_1_g19",
+            "pair": "103:akita_black_bowl_1_g19|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 104,
+            "geom2_name": "akita_black_bowl_1_g20",
+            "pair": "104:akita_black_bowl_1_g20|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 105,
+            "geom2_name": "akita_black_bowl_1_g21",
+            "pair": "105:akita_black_bowl_1_g21|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 106,
+            "geom2_name": "akita_black_bowl_1_g22",
+            "pair": "106:akita_black_bowl_1_g22|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 107,
+            "geom2_name": "akita_black_bowl_1_g23",
+            "pair": "107:akita_black_bowl_1_g23|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 108,
+            "geom2_name": "akita_black_bowl_1_g24",
+            "pair": "108:akita_black_bowl_1_g24|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 109,
+            "geom2_name": "akita_black_bowl_1_g25",
+            "pair": "109:akita_black_bowl_1_g25|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 113,
+            "geom2_name": "akita_black_bowl_1_g29",
+            "pair": "113:akita_black_bowl_1_g29|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 114,
+            "geom2_name": "akita_black_bowl_1_g30",
+            "pair": "114:akita_black_bowl_1_g30|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 115,
+            "geom2_name": "akita_black_bowl_1_g31",
+            "pair": "115:akita_black_bowl_1_g31|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 116,
+            "geom2_name": "akita_black_bowl_1_g32",
+            "pair": "116:akita_black_bowl_1_g32|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 117,
+            "geom2_name": "akita_black_bowl_1_g33",
+            "pair": "117:akita_black_bowl_1_g33|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 97,
+            "geom2_name": "akita_black_bowl_1_g13",
+            "pair": "74:gripper0_finger1_collision|97:akita_black_bowl_1_g13"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 98,
+            "geom2_name": "akita_black_bowl_1_g14",
+            "pair": "74:gripper0_finger1_collision|98:akita_black_bowl_1_g14"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 99,
+            "geom2_name": "akita_black_bowl_1_g15",
+            "pair": "74:gripper0_finger1_collision|99:akita_black_bowl_1_g15"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 112,
+            "geom2_name": "akita_black_bowl_1_g28",
+            "pair": "112:akita_black_bowl_1_g28|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 113,
+            "geom2_name": "akita_black_bowl_1_g29",
+            "pair": "113:akita_black_bowl_1_g29|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 114,
+            "geom2_name": "akita_black_bowl_1_g30",
+            "pair": "114:akita_black_bowl_1_g30|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 115,
+            "geom2_name": "akita_black_bowl_1_g31",
+            "pair": "115:akita_black_bowl_1_g31|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 116,
+            "geom2_name": "akita_black_bowl_1_g32",
+            "pair": "116:akita_black_bowl_1_g32|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 117,
+            "geom2_name": "akita_black_bowl_1_g33",
+            "pair": "117:akita_black_bowl_1_g33|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 118,
+            "geom2_name": "akita_black_bowl_1_g34",
+            "pair": "118:akita_black_bowl_1_g34|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 119,
+            "geom2_name": "akita_black_bowl_1_g35",
+            "pair": "119:akita_black_bowl_1_g35|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 75,
+            "geom1_name": "gripper0_finger1_pad_collision",
+            "geom2_id": 112,
+            "geom2_name": "akita_black_bowl_1_g28",
+            "pair": "112:akita_black_bowl_1_g28|75:gripper0_finger1_pad_collision"
+          },
+          {
+            "geom1_id": 75,
+            "geom1_name": "gripper0_finger1_pad_collision",
+            "geom2_id": 113,
+            "geom2_name": "akita_black_bowl_1_g29",
+            "pair": "113:akita_black_bowl_1_g29|75:gripper0_finger1_pad_collision"
+          },
+          {
+            "geom1_id": 75,
+            "geom1_name": "gripper0_finger1_pad_collision",
+            "geom2_id": 114,
+            "geom2_name": "akita_black_bowl_1_g30",
+            "pair": "114:akita_black_bowl_1_g30|75:gripper0_finger1_pad_collision"
+          },
+          {
+            "geom1_id": 75,
+            "geom1_name": "gripper0_finger1_pad_collision",
+            "geom2_id": 115,
+            "geom2_name": "akita_black_bowl_1_g31",
+            "pair": "115:akita_black_bowl_1_g31|75:gripper0_finger1_pad_collision"
+          },
+          {
+            "geom1_id": 75,
+            "geom1_name": "gripper0_finger1_pad_collision",
+            "geom2_id": 116,
+            "geom2_name": "akita_black_bowl_1_g32",
+            "pair": "116:akita_black_bowl_1_g32|75:gripper0_finger1_pad_collision"
+          },
+          {
+            "geom1_id": 75,
+            "geom1_name": "gripper0_finger1_pad_collision",
+            "geom2_id": 117,
+            "geom2_name": "akita_black_bowl_1_g33",
+            "pair": "117:akita_black_bowl_1_g33|75:gripper0_finger1_pad_collision"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 95,
+            "geom2_name": "akita_black_bowl_1_g11",
+            "pair": "77:gripper0_finger2_collision|95:akita_black_bowl_1_g11"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 96,
+            "geom2_name": "akita_black_bowl_1_g12",
+            "pair": "77:gripper0_finger2_collision|96:akita_black_bowl_1_g12"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 97,
+            "geom2_name": "akita_black_bowl_1_g13",
+            "pair": "77:gripper0_finger2_collision|97:akita_black_bowl_1_g13"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 113,
+            "geom2_name": "akita_black_bowl_1_g29",
+            "pair": "113:akita_black_bowl_1_g29|77:gripper0_finger2_collision"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 114,
+            "geom2_name": "akita_black_bowl_1_g30",
+            "pair": "114:akita_black_bowl_1_g30|77:gripper0_finger2_collision"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 115,
+            "geom2_name": "akita_black_bowl_1_g31",
+            "pair": "115:akita_black_bowl_1_g31|77:gripper0_finger2_collision"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 116,
+            "geom2_name": "akita_black_bowl_1_g32",
+            "pair": "116:akita_black_bowl_1_g32|77:gripper0_finger2_collision"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 117,
+            "geom2_name": "akita_black_bowl_1_g33",
+            "pair": "117:akita_black_bowl_1_g33|77:gripper0_finger2_collision"
+          },
+          {
+            "geom1_id": 78,
+            "geom1_name": "gripper0_finger2_pad_collision",
+            "geom2_id": 113,
+            "geom2_name": "akita_black_bowl_1_g29",
+            "pair": "113:akita_black_bowl_1_g29|78:gripper0_finger2_pad_collision"
+          },
+          {
+            "geom1_id": 78,
+            "geom1_name": "gripper0_finger2_pad_collision",
+            "geom2_id": 114,
+            "geom2_name": "akita_black_bowl_1_g30",
+            "pair": "114:akita_black_bowl_1_g30|78:gripper0_finger2_pad_collision"
+          },
+          {
+            "geom1_id": 78,
+            "geom1_name": "gripper0_finger2_pad_collision",
+            "geom2_id": 115,
+            "geom2_name": "akita_black_bowl_1_g31",
+            "pair": "115:akita_black_bowl_1_g31|78:gripper0_finger2_pad_collision"
+          },
+          {
+            "geom1_id": 78,
+            "geom1_name": "gripper0_finger2_pad_collision",
+            "geom2_id": 116,
+            "geom2_name": "akita_black_bowl_1_g32",
+            "pair": "116:akita_black_bowl_1_g32|78:gripper0_finger2_pad_collision"
+          },
+          {
+            "geom1_id": 78,
+            "geom1_name": "gripper0_finger2_pad_collision",
+            "geom2_id": 117,
+            "geom2_name": "akita_black_bowl_1_g33",
+            "pair": "117:akita_black_bowl_1_g33|78:gripper0_finger2_pad_collision"
+          }
+        ],
+        "task_object_environment": [
+          {
+            "geom1_id": 120,
+            "geom1_name": "akita_black_bowl_1_g36",
+            "geom2_id": 152,
+            "geom2_name": "plate_1_g1",
+            "pair": "120:akita_black_bowl_1_g36|152:plate_1_g1"
+          },
+          {
+            "geom1_id": 121,
+            "geom1_name": "akita_black_bowl_1_g37",
+            "geom2_id": 152,
+            "geom2_name": "plate_1_g1",
+            "pair": "121:akita_black_bowl_1_g37|152:plate_1_g1"
+          },
+          {
+            "geom1_id": 121,
+            "geom1_name": "akita_black_bowl_1_g37",
+            "geom2_id": 158,
+            "geom2_name": "plate_1_g7",
+            "pair": "121:akita_black_bowl_1_g37|158:plate_1_g7"
+          },
+          {
+            "geom1_id": 121,
+            "geom1_name": "akita_black_bowl_1_g37",
+            "geom2_id": 159,
+            "geom2_name": "plate_1_g8",
+            "pair": "121:akita_black_bowl_1_g37|159:plate_1_g8"
+          },
+          {
+            "geom1_id": 122,
+            "geom1_name": "akita_black_bowl_1_g38",
+            "geom2_id": 152,
+            "geom2_name": "plate_1_g1",
+            "pair": "122:akita_black_bowl_1_g38|152:plate_1_g1"
+          },
+          {
+            "geom1_id": 123,
+            "geom1_name": "akita_black_bowl_1_g39",
+            "geom2_id": 152,
+            "geom2_name": "plate_1_g1",
+            "pair": "123:akita_black_bowl_1_g39|152:plate_1_g1"
+          },
+          {
+            "geom1_id": 123,
+            "geom1_name": "akita_black_bowl_1_g39",
+            "geom2_id": 159,
+            "geom2_name": "plate_1_g8",
+            "pair": "123:akita_black_bowl_1_g39|159:plate_1_g8"
+          },
+          {
+            "geom1_id": 123,
+            "geom1_name": "akita_black_bowl_1_g39",
+            "geom2_id": 161,
+            "geom2_name": "plate_1_g10",
+            "pair": "123:akita_black_bowl_1_g39|161:plate_1_g10"
+          },
+          {
+            "geom1_id": 124,
+            "geom1_name": "akita_black_bowl_1_g40",
+            "geom2_id": 152,
+            "geom2_name": "plate_1_g1",
+            "pair": "124:akita_black_bowl_1_g40|152:plate_1_g1"
+          },
+          {
+            "geom1_id": 124,
+            "geom1_name": "akita_black_bowl_1_g40",
+            "geom2_id": 153,
+            "geom2_name": "plate_1_g2",
+            "pair": "124:akita_black_bowl_1_g40|153:plate_1_g2"
+          },
+          {
+            "geom1_id": 124,
+            "geom1_name": "akita_black_bowl_1_g40",
+            "geom2_id": 154,
+            "geom2_name": "plate_1_g3",
+            "pair": "124:akita_black_bowl_1_g40|154:plate_1_g3"
+          }
+        ]
+      },
+      "relevant_pairs": [
+        "100:akita_black_bowl_1_g16|7:table_collision",
+        "103:akita_black_bowl_1_g19|72:gripper0_hand_collision",
+        "104:akita_black_bowl_1_g20|72:gripper0_hand_collision",
+        "105:akita_black_bowl_1_g21|72:gripper0_hand_collision",
+        "106:akita_black_bowl_1_g22|72:gripper0_hand_collision",
+        "107:akita_black_bowl_1_g23|72:gripper0_hand_collision",
+        "108:akita_black_bowl_1_g24|72:gripper0_hand_collision",
+        "109:akita_black_bowl_1_g25|72:gripper0_hand_collision",
+        "112:akita_black_bowl_1_g28|74:gripper0_finger1_collision",
+        "112:akita_black_bowl_1_g28|75:gripper0_finger1_pad_collision",
+        "113:akita_black_bowl_1_g29|72:gripper0_hand_collision",
+        "113:akita_black_bowl_1_g29|74:gripper0_finger1_collision",
+        "113:akita_black_bowl_1_g29|75:gripper0_finger1_pad_collision",
+        "113:akita_black_bowl_1_g29|77:gripper0_finger2_collision",
+        "113:akita_black_bowl_1_g29|78:gripper0_finger2_pad_collision",
+        "114:akita_black_bowl_1_g30|72:gripper0_hand_collision",
+        "114:akita_black_bowl_1_g30|74:gripper0_finger1_collision",
+        "114:akita_black_bowl_1_g30|75:gripper0_finger1_pad_collision",
+        "114:akita_black_bowl_1_g30|77:gripper0_finger2_collision",
+        "114:akita_black_bowl_1_g30|78:gripper0_finger2_pad_collision",
+        "115:akita_black_bowl_1_g31|72:gripper0_hand_collision",
+        "115:akita_black_bowl_1_g31|74:gripper0_finger1_collision",
+        "115:akita_black_bowl_1_g31|75:gripper0_finger1_pad_collision",
+        "115:akita_black_bowl_1_g31|77:gripper0_finger2_collision",
+        "115:akita_black_bowl_1_g31|78:gripper0_finger2_pad_collision",
+        "116:akita_black_bowl_1_g32|72:gripper0_hand_collision",
+        "116:akita_black_bowl_1_g32|74:gripper0_finger1_collision",
+        "116:akita_black_bowl_1_g32|75:gripper0_finger1_pad_collision",
+        "116:akita_black_bowl_1_g32|77:gripper0_finger2_collision",
+        "116:akita_black_bowl_1_g32|78:gripper0_finger2_pad_collision",
+        "117:akita_black_bowl_1_g33|72:gripper0_hand_collision",
+        "117:akita_black_bowl_1_g33|74:gripper0_finger1_collision",
+        "117:akita_black_bowl_1_g33|75:gripper0_finger1_pad_collision",
+        "117:akita_black_bowl_1_g33|77:gripper0_finger2_collision",
+        "117:akita_black_bowl_1_g33|78:gripper0_finger2_pad_collision",
+        "118:akita_black_bowl_1_g34|74:gripper0_finger1_collision",
+        "119:akita_black_bowl_1_g35|74:gripper0_finger1_collision",
+        "120:akita_black_bowl_1_g36|152:plate_1_g1",
+        "120:akita_black_bowl_1_g36|7:table_collision",
+        "121:akita_black_bowl_1_g37|152:plate_1_g1",
+        "121:akita_black_bowl_1_g37|158:plate_1_g7",
+        "121:akita_black_bowl_1_g37|159:plate_1_g8",
+        "121:akita_black_bowl_1_g37|7:table_collision",
+        "122:akita_black_bowl_1_g38|152:plate_1_g1",
+        "122:akita_black_bowl_1_g38|7:table_collision",
+        "123:akita_black_bowl_1_g39|152:plate_1_g1",
+        "123:akita_black_bowl_1_g39|159:plate_1_g8",
+        "123:akita_black_bowl_1_g39|161:plate_1_g10",
+        "123:akita_black_bowl_1_g39|7:table_collision",
+        "124:akita_black_bowl_1_g40|152:plate_1_g1",
+        "124:akita_black_bowl_1_g40|153:plate_1_g2",
+        "124:akita_black_bowl_1_g40|154:plate_1_g3",
+        "124:akita_black_bowl_1_g40|7:table_collision",
+        "126:cream_cheese_1_g1|72:gripper0_hand_collision",
+        "126:cream_cheese_1_g1|77:gripper0_finger2_collision",
+        "156:plate_1_g5|77:gripper0_finger2_collision",
+        "74:gripper0_finger1_collision|97:akita_black_bowl_1_g13",
+        "74:gripper0_finger1_collision|98:akita_black_bowl_1_g14",
+        "74:gripper0_finger1_collision|99:akita_black_bowl_1_g15",
+        "77:gripper0_finger2_collision|95:akita_black_bowl_1_g11",
+        "77:gripper0_finger2_collision|96:akita_black_bowl_1_g12",
+        "77:gripper0_finger2_collision|97:akita_black_bowl_1_g13",
+        "7:table_collision|85:akita_black_bowl_1_g1",
+        "7:table_collision|86:akita_black_bowl_1_g2",
+        "7:table_collision|97:akita_black_bowl_1_g13",
+        "7:table_collision|98:akita_black_bowl_1_g14",
+        "7:table_collision|99:akita_black_bowl_1_g15"
+      ],
+      "required_geom_names": [
+        "akita_black_bowl_1_g0"
+      ],
+      "target_body": "akita_black_bowl_1",
+      "task_object_body_names": [
+        "akita_black_bowl_1_main",
+        "plate_1_main"
+      ]
+    },
+    "turn_on_the_stove": {
+      "ownership_source": {
+        "contacts": "reference mjData.contact geom IDs",
+        "gripper": "env.robots[0].gripper.contact_geoms",
+        "target": "env.env.obj_body_id plus model body ancestry"
+      },
+      "pair_groups": {
+        "target_gripper": [
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 224,
+            "geom2_name": "flat_stove_1_g19",
+            "pair": "224:flat_stove_1_g19|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 72,
+            "geom1_name": "gripper0_hand_collision",
+            "geom2_id": 226,
+            "geom2_name": "flat_stove_1_g21",
+            "pair": "226:flat_stove_1_g21|72:gripper0_hand_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 210,
+            "geom2_name": "flat_stove_1_g5",
+            "pair": "210:flat_stove_1_g5|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 211,
+            "geom2_name": "flat_stove_1_g6",
+            "pair": "211:flat_stove_1_g6|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 212,
+            "geom2_name": "flat_stove_1_g7",
+            "pair": "212:flat_stove_1_g7|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 217,
+            "geom2_name": "flat_stove_1_g12",
+            "pair": "217:flat_stove_1_g12|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 221,
+            "geom2_name": "flat_stove_1_g16",
+            "pair": "221:flat_stove_1_g16|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 222,
+            "geom2_name": "flat_stove_1_g17",
+            "pair": "222:flat_stove_1_g17|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 223,
+            "geom2_name": "flat_stove_1_g18",
+            "pair": "223:flat_stove_1_g18|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 74,
+            "geom1_name": "gripper0_finger1_collision",
+            "geom2_id": 224,
+            "geom2_name": "flat_stove_1_g19",
+            "pair": "224:flat_stove_1_g19|74:gripper0_finger1_collision"
+          },
+          {
+            "geom1_id": 75,
+            "geom1_name": "gripper0_finger1_pad_collision",
+            "geom2_id": 222,
+            "geom2_name": "flat_stove_1_g17",
+            "pair": "222:flat_stove_1_g17|75:gripper0_finger1_pad_collision"
+          },
+          {
+            "geom1_id": 75,
+            "geom1_name": "gripper0_finger1_pad_collision",
+            "geom2_id": 224,
+            "geom2_name": "flat_stove_1_g19",
+            "pair": "224:flat_stove_1_g19|75:gripper0_finger1_pad_collision"
+          },
+          {
+            "geom1_id": 75,
+            "geom1_name": "gripper0_finger1_pad_collision",
+            "geom2_id": 225,
+            "geom2_name": "flat_stove_1_g20",
+            "pair": "225:flat_stove_1_g20|75:gripper0_finger1_pad_collision"
+          },
+          {
+            "geom1_id": 75,
+            "geom1_name": "gripper0_finger1_pad_collision",
+            "geom2_id": 226,
+            "geom2_name": "flat_stove_1_g21",
+            "pair": "226:flat_stove_1_g21|75:gripper0_finger1_pad_collision"
+          },
+          {
+            "geom1_id": 75,
+            "geom1_name": "gripper0_finger1_pad_collision",
+            "geom2_id": 227,
+            "geom2_name": "flat_stove_1_g22",
+            "pair": "227:flat_stove_1_g22|75:gripper0_finger1_pad_collision"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 210,
+            "geom2_name": "flat_stove_1_g5",
+            "pair": "210:flat_stove_1_g5|77:gripper0_finger2_collision"
+          },
+          {
+            "geom1_id": 77,
+            "geom1_name": "gripper0_finger2_collision",
+            "geom2_id": 224,
+            "geom2_name": "flat_stove_1_g19",
+            "pair": "224:flat_stove_1_g19|77:gripper0_finger2_collision"
+          },
+          {
+            "geom1_id": 78,
+            "geom1_name": "gripper0_finger2_pad_collision",
+            "geom2_id": 224,
+            "geom2_name": "flat_stove_1_g19",
+            "pair": "224:flat_stove_1_g19|78:gripper0_finger2_pad_collision"
+          },
+          {
+            "geom1_id": 78,
+            "geom1_name": "gripper0_finger2_pad_collision",
+            "geom2_id": 225,
+            "geom2_name": "flat_stove_1_g20",
+            "pair": "225:flat_stove_1_g20|78:gripper0_finger2_pad_collision"
+          },
+          {
+            "geom1_id": 78,
+            "geom1_name": "gripper0_finger2_pad_collision",
+            "geom2_id": 226,
+            "geom2_name": "flat_stove_1_g21",
+            "pair": "226:flat_stove_1_g21|78:gripper0_finger2_pad_collision"
+          }
+        ]
+      },
+      "relevant_pairs": [
+        "210:flat_stove_1_g5|74:gripper0_finger1_collision",
+        "210:flat_stove_1_g5|77:gripper0_finger2_collision",
+        "211:flat_stove_1_g6|74:gripper0_finger1_collision",
+        "212:flat_stove_1_g7|74:gripper0_finger1_collision",
+        "217:flat_stove_1_g12|74:gripper0_finger1_collision",
+        "221:flat_stove_1_g16|74:gripper0_finger1_collision",
+        "222:flat_stove_1_g17|74:gripper0_finger1_collision",
+        "222:flat_stove_1_g17|75:gripper0_finger1_pad_collision",
+        "223:flat_stove_1_g18|74:gripper0_finger1_collision",
+        "224:flat_stove_1_g19|72:gripper0_hand_collision",
+        "224:flat_stove_1_g19|74:gripper0_finger1_collision",
+        "224:flat_stove_1_g19|75:gripper0_finger1_pad_collision",
+        "224:flat_stove_1_g19|77:gripper0_finger2_collision",
+        "224:flat_stove_1_g19|78:gripper0_finger2_pad_collision",
+        "225:flat_stove_1_g20|75:gripper0_finger1_pad_collision",
+        "225:flat_stove_1_g20|78:gripper0_finger2_pad_collision",
+        "226:flat_stove_1_g21|72:gripper0_hand_collision",
+        "226:flat_stove_1_g21|75:gripper0_finger1_pad_collision",
+        "226:flat_stove_1_g21|78:gripper0_finger2_pad_collision",
+        "227:flat_stove_1_g22|75:gripper0_finger1_pad_collision"
+      ],
+      "required_geom_names": [
+        "flat_stove_1_base_vis"
+      ],
+      "target_body": "flat_stove_1",
+      "task_object_body_names": [
+        "flat_stove_1_button"
+      ]
+    }
+  }
+}

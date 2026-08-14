@@ -1,0 +1,38 @@
+{
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T20:38:24.264517+00:00",
+  "manifest_type": "manifest_hashes",
+  "manifests": {
+    "boundary_margin_spec.json": "8e09cc3d06da009c0b872c81222a1cc6b9d695cee679cf885f788b40ab198ab7",
+    "branch_manifest.json": "6241978611c23dde15637a838dcd3bdfbc84087217bcfa360b5b851446062bb6",
+    "contact_mode_schema.json": "4977559a18fd58ae09353e07baab1602b54adb92b16dbfb4eda1bf3bfc381d8c",
+    "contact_pair_group_manifest.json": "ce59a5d0929f2095681d96c0170c83402e1073f006298839a6d279db46a0c628",
+    "direction_basis_manifest.json": "dcbd440a46dac92632ab2d9f6773355a7c2ff68444aa3793afca1c8ab8467efc",
+    "exp7_cohort_manifest.json": "fc213fefedbf7ad2ec85aff6c58ee5ac20d600161ccf98c96e05b8facc6c3e1d",
+    "gpu_analysis_spec.json": "6ba48c933a1d82ecab59d3878985457de21b74f214553cfcc23f6124417186d9",
+    "heldout_direction_manifest.json": "085fd5088e5fcffdb97a507107f7575b6d4bf6c93c20f19bf8d3467763930b9e",
+    "horizon_manifest.json": "b9e91e79bc4e98eac69530a5e1e82e7a7e8b92718e1d6874815f5d6482bcf556",
+    "mode_preservation_predictor_crossfit_manifest.json": "9520e158db6c6ec67f11cd1256ef318b567c01991639c62b6253f4f6acaeea18",
+    "mode_preservation_predictor_decision_rule.json": "828339db159fea8bd72fcf84aa3c17c788542b72bf5a838117bff1bd6de08c1f",
+    "mode_preservation_predictor_feature_spec.json": "52e8aef694e5e148fea66c8d66c24ab38fcb4ec601a78c92e687b16ff5fab397",
+    "operator_metric_spec.json": "be7e83bf77d959fd7ff0d26886a9717ad0ee5ba558e7c382905bf616f018328c",
+    "preserved_mode_inclusion_spec.json": "24b789ac74a27d4dc0ea459c1ea97de530908b890b920a6aa713ba3be4970db9",
+    "radius_manifest.json": "8b24ea1de66ab39450719d61152f5f27b22170d7f028dc8c27976ce16f57ac8c",
+    "scientific_decision_rule.json": "7fdab456c1163928fffbc46b75a2df4ec48d6a34397cbc906f23135aaed509ac",
+    "signed_gap_spec.json": "615a0be5267ccac72540beb818c094ecd5f4453a3dc25c4befe4585424083a46",
+    "signed_output_vector_spec.json": "f5cd0bf33576330bb00204f6b4271e9c2073b4a90951d2503b84dce449fb429e",
+    "statistical_analysis_plan.json": "31555ecf1dee49ad860faceaf60289c4c31fa76fa1538081a00ff054794074bd"
+  },
+  "outcome_blind": true,
+  "project_sha": "f024e87c6b3cc64ab14e54bc0e430aa5f95f090e",
+  "schema_version": 1,
+  "sources": {
+    "hashes": {
+      "branch_input": "4b032b5c6ae45a4df83f52bedc99eb4850fa20851fea463fd71b3db3f1f620a3",
+      "margin_spec": "7d3c93512ae2b9a23a243e001c373c6246c4b828fa829bdce3d31f5c1273c2df",
+      "reference_geometry": "c51592c163d24f0931b463a6b71b7537014e1cf855254ba90130cad6b2436780",
+      "reference_manifest": "f125b613dfdc54ee708cf910a8a8114e003ea96a4ac2863051b89792edafec38"
+    },
+    "reference_run": "exp7_s2_independent_refs_20260814"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "H1": "at least 70% demos meet all four H1 preserved-mode convergence cutoffs and hierarchical top1 CI lower >.65",
+  "H2": "interior minus near+ambiguous convergence positive with demo-cluster CI excluding zero and BH q<.05",
+  "H3": "smallest-radius H1 preserved demo-median rank rho>=.65 and vector error<=.35",
+  "H4": "same mode+margin cross-demo top1 improves >=.15 over better time/progress baseline with CI lower>0",
+  "H5": "reference-only mode preservation predictor",
+  "bootstrap": {
+    "hierarchy": "task then demonstration",
+    "resamples": 4000,
+    "seed": 970031
+  },
+  "formal_q_outcomes_observed": false,
+  "frozen_at_utc": "2026-08-14T20:38:24.264517+00:00",
+  "independent_unit": "demonstration",
+  "manifest_type": "statistical_analysis_plan",
+  "multiple_comparisons": "BH FDR .05",
+  "outcome_blind": true,
+  "project_sha": "f024e87c6b3cc64ab14e54bc0e430aa5f95f090e",
+  "schema_version": 1,
+  "sources": {
+    "hashes": {
+      "branch_input": "4b032b5c6ae45a4df83f52bedc99eb4850fa20851fea463fd71b3db3f1f620a3",
+      "margin_spec": "7d3c93512ae2b9a23a243e001c373c6246c4b828fa829bdce3d31f5c1273c2df",
+      "reference_geometry": "c51592c163d24f0931b463a6b71b7537014e1cf855254ba90130cad6b2436780",
+      "reference_manifest": "f125b613dfdc54ee708cf910a8a8114e003ea96a4ac2863051b89792edafec38"
+    },
+    "reference_run": "exp7_s2_independent_refs_20260814"
+  }
+}
