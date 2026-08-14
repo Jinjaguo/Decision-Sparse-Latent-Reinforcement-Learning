@@ -1,5 +1,5 @@
 {
-  "audit_run_id": "exp2_r1_roundtrip_20260814T000341",
+  "audit_run_id": "exp2_r1_roundtrip_noforward_20260814T000716",
   "boundary_name": "outer_env_step_return_or_initialized_pre-policy boundary",
   "definition": "Snapshot t=0 is taken after reset_from_xml_string, sim.reset, set_init_state, post_process, and forced observable update. Snapshot t>0 is taken immediately after ControlEnv.step(actions[t-1]) returns and before ControlEnv.step(actions[t]) is called.",
   "inner_simulation_steps_observed": 25,
