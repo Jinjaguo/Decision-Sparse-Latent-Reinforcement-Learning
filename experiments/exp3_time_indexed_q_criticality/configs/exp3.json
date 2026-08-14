@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "directions_per_branch": 4,
+  "signs": [-1, 1],
+  "joint_range_fraction": 0.005,
+  "non_arm_integration_linf_max": 1e-12,
+  "zero_integration_l2_max": 1e-12,
+  "zero_continuations_per_branch": 2,
+  "expected_tasks": 3,
+  "expected_demos_per_task": 3,
+  "expected_branches_per_demo": 12,
+  "expected_branches": 108,
+  "expected_interventions": 864,
+  "control_frequency_hz": 20,
+  "bootstrap_resamples": 4000,
+  "permutation_resamples": 4000
+}
