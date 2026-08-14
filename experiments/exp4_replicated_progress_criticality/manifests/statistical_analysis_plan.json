@@ -1,0 +1,65 @@
+{
+  "alignment_test": "paired demo-pair delta rho (progress minus time), task/demo cluster bootstrap and within-task sign permutation",
+  "all_zero_convention": {
+    "flag": true,
+    "gini": 0,
+    "normalized_entropy": 1,
+    "top_mass": 0
+  },
+  "bootstrap": {
+    "hierarchy": "task -> demo -> seven basis directions -> paired signs",
+    "resamples": 4000,
+    "seed": 940031
+  },
+  "frozen_at_utc": "2026-08-14T07:58:25.253383+00:00",
+  "inference_unit": "demonstration",
+  "leave_one_task_out": true,
+  "lodo": true,
+  "manifest_name": "statistical_analysis_plan",
+  "multiple_comparisons": "BH FDR 0.05 within alignment, event, component, and task-specific secondary families",
+  "outcome_blind": true,
+  "outcome_blind_declaration": "No EXP4 q-intervention outcome existed or was read when this manifest was frozen.",
+  "permutation": {
+    "resamples": 4000,
+    "seed": 940032
+  },
+  "primary_cohort": "held-out demos 3-9; EXP3 demos 0-2 are legacy comparison only",
+  "project_git_sha": "33e7075c14ebc29de04ae13e301c7aa5dd0fd8cd",
+  "replication": [
+    "Spearman",
+    "Kendall tau-b",
+    "ICC(2,1)",
+    "top-k Jaccard"
+  ],
+  "schema_version": 1,
+  "source_file_sha256": {
+    "branch_candidates": "f5daf76f0a5e5540ef93bb94399f4e43974d4c733a3fbbf0d05729ced6f6969b",
+    "condition_d_gate": "6ca9e8fc827aac1aca4b4476829afb00015771585012b4f639b0e914513351da",
+    "exp3_normalization": "906ca20e409a2878e1bbe0b39a6d46c00009d35b7d7a2e6b64a36ea222cdaa12",
+    "exp4_config": "02eb4da555a8d25241fb8ba4c75adef774ae22cfd84696c1e85e66fd25b7ba47",
+    "joint_limits": "591f94f4b356ac186701b1dc4beff6ee6d7fc1329975e3a14c78b9d001e8f92f",
+    "progress_runtime_audit": "a0c46f5bd6e4a1f7a3b5185cc57a85b22ed66243e207698214bf186fdd1b01c2",
+    "reference_manifest": "10bdfd3aca8c1ef0b741c9f4ce64d8ed4351a48196446983001d8633a3fec183"
+  },
+  "source_runs": {
+    "branch_candidates": "exp4_e4_2_branch_candidates_20260814",
+    "condition_d_gate": "exp4_e4_2_condition_d_reconciled_20260814",
+    "joint_limit_audit": "exp2_r5_q_smoke_20260814T012633",
+    "legacy_exp3": "exp3_t6_full_20260814T022200",
+    "progress_audit": "exp4_e4_0_1_runtime_audit_geom_20260814",
+    "reference": "exp4_e4_3_heldout_refs_20260814"
+  },
+  "topk_integer_mapping": {
+    "n": 12,
+    "rule": "ceil(k*n), exact EXP3 convention",
+    "top10": 2,
+    "top20": 3,
+    "top30": 4
+  },
+  "uniform_null": {
+    "top10_mass": 0.16666666666666666,
+    "top20_mass": 0.25,
+    "top30_mass": 0.3333333333333333
+  },
+  "variance_decomposition": "hierarchical method-of-moments ANOVA for task/demo/progress-bin/direction/sign/residual if mixed-effects unavailable"
+}

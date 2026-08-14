@@ -1,0 +1,1074 @@
+{
+  "bowl": {
+    "features": [
+      "gripper_to_bowl_distance_m",
+      "bowl_lift_m",
+      "bowl_to_plate_planar_distance_m",
+      "bowl_bottom_minus_plate_top_m",
+      "gripper_opening_l1",
+      "exact_on_predicate"
+    ],
+    "geometry": "runtime union AABB of active collision primitives",
+    "phase_order": [
+      "reach",
+      "grasp_lift",
+      "transport",
+      "place_release"
+    ],
+    "thresholds": {
+      "lift_m": 0.02,
+      "on_planar_m": 0.03,
+      "transport_planar_m": 0.05,
+      "vertical_scale_m": 0.03
+    }
+  },
+  "drawer": {
+    "joint": "wooden_cabinet_1_middle_level",
+    "predicate": "q < -0.14",
+    "raw": "(q(t)-q(0))/(q(T)-q(0))"
+  },
+  "frozen_at_utc": "2026-08-14T07:58:25.253383+00:00",
+  "manifest_name": "progress_channel_schema",
+  "outcome_blind": true,
+  "outcome_blind_declaration": "No EXP4 q-intervention outcome existed or was read when this manifest was frozen.",
+  "project_git_sha": "33e7075c14ebc29de04ae13e301c7aa5dd0fd8cd",
+  "reference_only": true,
+  "runtime_identifier_audit": [
+    {
+      "bddl_file": "C:\\Users\\Guoji\\Documents\\ChatGPT\\Decision-Sparse Latent Reinforcement Learning\\third_party\\LIBERO\\libero\\libero\\bddl_files\\libero_goal\\open_the_middle_drawer_of_the_cabinet.bddl",
+      "dataset_demo_count": 50,
+      "dataset_relative_path": "libero_goal/open_the_middle_drawer_of_the_cabinet_demo.hdf5",
+      "heldout_indices_available": true,
+      "progress": {
+        "kind": "articulation",
+        "object": "wooden_cabinet_1",
+        "predicate_comparison": "qpos < -0.14",
+        "predicate_threshold": -0.14,
+        "resolved_joint": {
+          "initial_qpos": 0.0,
+          "joint_id": 14,
+          "joint_name": "wooden_cabinet_1_middle_level",
+          "joint_range": [
+            -0.16,
+            0.01
+          ],
+          "joint_type": 2,
+          "qpos_address": 38
+        },
+        "site_joint_names": [
+          "wooden_cabinet_1_middle_level"
+        ],
+        "site_parent_name": "wooden_cabinet_1",
+        "site_state": "wooden_cabinet_1_middle_region",
+        "source_chain": "Open -> SiteObjectState.is_open -> WoodenCabinet.is_open",
+        "task": "open_the_middle_drawer_of_the_cabinet"
+      },
+      "runtime_probe_episode": "demo_3",
+      "suite": "libero_goal",
+      "task": "open_the_middle_drawer_of_the_cabinet",
+      "task_id": 0
+    },
+    {
+      "bddl_file": "C:\\Users\\Guoji\\Documents\\ChatGPT\\Decision-Sparse Latent Reinforcement Learning\\third_party\\LIBERO\\libero\\libero\\bddl_files\\libero_goal\\turn_on_the_stove.bddl",
+      "dataset_demo_count": 50,
+      "dataset_relative_path": "libero_goal/turn_on_the_stove_demo.hdf5",
+      "heldout_indices_available": true,
+      "progress": {
+        "kind": "articulation",
+        "object": "flat_stove_1",
+        "object_joint_names": [
+          "flat_stove_1_button"
+        ],
+        "predicate_comparison": "qpos >= 0.5",
+        "predicate_threshold": 0.5,
+        "resolved_joint": {
+          "initial_qpos": 0.0,
+          "joint_id": 16,
+          "joint_name": "flat_stove_1_button",
+          "joint_range": [
+            -0.005,
+            2.1
+          ],
+          "joint_type": 3,
+          "qpos_address": 40
+        },
+        "source_chain": "TurnOn -> ObjectState.turn_on -> FlatStove.turn_on",
+        "task": "turn_on_the_stove"
+      },
+      "runtime_probe_episode": "demo_3",
+      "suite": "libero_goal",
+      "task": "turn_on_the_stove",
+      "task_id": 7
+    },
+    {
+      "bddl_file": "C:\\Users\\Guoji\\Documents\\ChatGPT\\Decision-Sparse Latent Reinforcement Learning\\third_party\\LIBERO\\libero\\libero\\bddl_files\\libero_goal\\put_the_bowl_on_the_plate.bddl",
+      "dataset_demo_count": 50,
+      "dataset_relative_path": "libero_goal/put_the_bowl_on_the_plate_demo.hdf5",
+      "heldout_indices_available": true,
+      "progress": {
+        "bowl": "akita_black_bowl_1",
+        "bowl_runtime": {
+          "body_id": 23,
+          "body_name": "akita_black_bowl_1_main",
+          "collision_geoms": [
+            {
+              "geom_id": 85,
+              "geom_name": "akita_black_bowl_1_g1",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.13468672758857958,
+                0.0005726598759415165,
+                0.9075479386755378
+              ],
+              "world_vertical_half_extent": 0.006411281616145639,
+              "world_z_max": 0.9139592202916835,
+              "world_z_min": 0.9011366570593922
+            },
+            {
+              "geom_id": 86,
+              "geom_name": "akita_black_bowl_1_g2",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.13124673088356387,
+                -0.014017337459560655,
+                0.907748189566973
+              ],
+              "world_vertical_half_extent": 0.0064859797275268714,
+              "world_z_max": 0.9142341692944999,
+              "world_z_min": 0.9012622098394462
+            },
+            {
+              "geom_id": 87,
+              "geom_name": "akita_black_bowl_1_g3",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.12215673352355959,
+                -0.025377335264156253,
+                0.9079084951336216
+              ],
+              "world_vertical_half_extent": 0.006570613948415384,
+              "world_z_max": 0.914479109082037,
+              "world_z_min": 0.9013378811852062
+            },
+            {
+              "geom_id": 88,
+              "geom_name": "akita_black_bowl_1_g4",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.10900673500885859,
+                -0.03185733394829023,
+                0.9079988063565335
+              ],
+              "world_vertical_half_extent": 0.006651257020763239,
+              "world_z_max": 0.9146500633772967,
+              "world_z_min": 0.9013475493357703
+            },
+            {
+              "geom_id": 89,
+              "geom_name": "akita_black_bowl_1_g5",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.09472673500762109,
+                -0.03219733380444004,
+                0.9079990563070897
+              ],
+              "world_vertical_half_extent": 0.006651300286589364,
+              "world_z_max": 0.914650356593679,
+              "world_z_min": 0.9013477560205003
+            },
+            {
+              "geom_id": 90,
+              "geom_name": "akita_black_bowl_1_g6",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.08117673506820425,
+                -0.026247333668485272,
+                0.9079992110392853
+              ],
+              "world_vertical_half_extent": 0.006651583115044199,
+              "world_z_max": 0.9146507941543295,
+              "world_z_min": 0.9013476279242411
+            },
+            {
+              "geom_id": 91,
+              "geom_name": "akita_black_bowl_1_g7",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.07143673518139043,
+                -0.014897333571369275,
+                0.9079992293032669
+              ],
+              "world_vertical_half_extent": 0.00665167864867385,
+              "world_z_max": 0.9146509079519408,
+              "world_z_min": 0.901347550654593
+            },
+            {
+              "geom_id": 92,
+              "geom_name": "akita_black_bowl_1_g8",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.06761673532333698,
+                -0.0005373335341364462,
+                0.907999106238514
+              ],
+              "world_vertical_half_extent": 0.006651779043702901,
+              "world_z_max": 0.9146508852822169,
+              "world_z_min": 0.901347327194811
+            },
+            {
+              "geom_id": 93,
+              "geom_name": "akita_black_bowl_1_g9",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.07044673546784533,
+                0.014182666436089902,
+                0.907998864124721
+              ],
+              "world_vertical_half_extent": 0.006651705373292699,
+              "world_z_max": 0.9146505694980137,
+              "world_z_min": 0.9013471587514282
+            },
+            {
+              "geom_id": 94,
+              "geom_name": "akita_black_bowl_1_g10",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.07906673558196152,
+                0.02590266634826145,
+                0.9079985619061577
+              ],
+              "world_vertical_half_extent": 0.006651478857310709,
+              "world_z_max": 0.9146500407634683,
+              "world_z_min": 0.901347083048847
+            },
+            {
+              "geom_id": 95,
+              "geom_name": "akita_black_bowl_1_g11",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.09197673564887436,
+                0.03289266621763483,
+                0.9079982481060626
+              ],
+              "world_vertical_half_extent": 0.006651649705557052,
+              "world_z_max": 0.9146498978116196,
+              "world_z_min": 0.9013465984005055
+            },
+            {
+              "geom_id": 96,
+              "geom_name": "akita_black_bowl_1_g12",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.09197673564887436,
+                0.03289266621763483,
+                0.9079982481060626
+              ],
+              "world_vertical_half_extent": 0.006651649705557052,
+              "world_z_max": 0.9146498978116196,
+              "world_z_min": 0.9013465984005055
+            },
+            {
+              "geom_id": 97,
+              "geom_name": "akita_black_bowl_1_g13",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.10129673565990265,
+                0.034152666123659754,
+                0.9079980713294232
+              ],
+              "world_vertical_half_extent": 0.006651332251479573,
+              "world_z_max": 0.9146494035809029,
+              "world_z_min": 0.9013467390779436
+            },
+            {
+              "geom_id": 98,
+              "geom_name": "akita_black_bowl_1_g14",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.11518673562713216,
+                0.031032665984036277,
+                0.9079978735578448
+              ],
+              "world_vertical_half_extent": 0.006651523654642234,
+              "world_z_max": 0.9146493972124871,
+              "world_z_min": 0.9013463499032025
+            },
+            {
+              "geom_id": 99,
+              "geom_name": "akita_black_bowl_1_g15",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.1266967355387906,
+                0.022232665868873503,
+                0.9079977913519327
+              ],
+              "world_vertical_half_extent": 0.006651490000744124,
+              "world_z_max": 0.9146492813526769,
+              "world_z_min": 0.9013463013511885
+            },
+            {
+              "geom_id": 100,
+              "geom_name": "akita_black_bowl_1_g16",
+              "geom_size": [
+                0.00071,
+                0.00992,
+                0.01187
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.13249673543957655,
+                0.012242665811321699,
+                0.9079978229445409
+              ],
+              "world_vertical_half_extent": 0.00665119263527369,
+              "world_z_max": 0.9146490155798146,
+              "world_z_min": 0.9013466303092672
+            },
+            {
+              "geom_id": 101,
+              "geom_name": "akita_black_bowl_1_g17",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.14819714497466402,
+                0.0005729788509201269,
+                0.931827706424675
+              ],
+              "world_vertical_half_extent": 0.018461643253712183,
+              "world_z_max": 0.9502893496783872,
+              "world_z_min": 0.9133660631709629
+            },
+            {
+              "geom_id": 102,
+              "geom_name": "akita_black_bowl_1_g18",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.14492714480639443,
+                -0.016567021114665754,
+                0.9318279879082988
+              ],
+              "world_vertical_half_extent": 0.018461720198720343,
+              "world_z_max": 0.9502897081070192,
+              "world_z_min": 0.9133662677095784
+            },
+            {
+              "geom_id": 103,
+              "geom_name": "akita_black_bowl_1_g19",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.13590714466496673,
+                -0.031067021022568597,
+                0.9318283335405336
+              ],
+              "world_vertical_half_extent": 0.018461736543402725,
+              "world_z_max": 0.9502900700839364,
+              "world_z_min": 0.9133665969971309
+            },
+            {
+              "geom_id": 104,
+              "geom_name": "akita_black_bowl_1_g20",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.12215714456460466,
+                -0.041467020883187426,
+                0.9318287065982342
+              ],
+              "world_vertical_half_extent": 0.01846200558683277,
+              "world_z_max": 0.950290712185067,
+              "world_z_min": 0.9133667010114015
+            },
+            {
+              "geom_id": 105,
+              "geom_name": "akita_black_bowl_1_g21",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.10567714452027337,
+                -0.046217020716799076,
+                0.9318290523285884
+              ],
+              "world_vertical_half_extent": 0.018461953206097774,
+              "world_z_max": 0.9502910055346862,
+              "world_z_min": 0.9133670991224906
+            },
+            {
+              "geom_id": 106,
+              "geom_name": "akita_black_bowl_1_g22",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.0890371445359251,
+                -0.04487702054932527,
+                0.9318293207688192
+              ],
+              "world_vertical_half_extent": 0.01846173085470307,
+              "world_z_max": 0.9502910516235222,
+              "world_z_min": 0.9133675899141162
+            },
+            {
+              "geom_id": 107,
+              "geom_name": "akita_black_bowl_1_g23",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.07356714461008344,
+                -0.03757702039414986,
+                0.9318294907639963
+              ],
+              "world_vertical_half_extent": 0.018461806688891854,
+              "world_z_max": 0.9502912974528882,
+              "world_z_min": 0.9133676840751045
+            },
+            {
+              "geom_id": 108,
+              "geom_name": "akita_black_bowl_1_g24",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.06161714473482009,
+                -0.02508702027487433,
+                0.9318295320362587
+              ],
+              "world_vertical_half_extent": 0.018461776358582357,
+              "world_z_max": 0.9502913083948411,
+              "world_z_min": 0.9133677556776764
+            },
+            {
+              "geom_id": 109,
+              "geom_name": "akita_black_bowl_1_g25",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.055057144889970724,
+                -0.009427020210157906,
+                0.9318294389879378
+              ],
+              "world_vertical_half_extent": 0.018461803395164723,
+              "world_z_max": 0.9502912423831025,
+              "world_z_min": 0.9133676355927731
+            },
+            {
+              "geom_id": 110,
+              "geom_name": "akita_black_bowl_1_g26",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.054477145058218435,
+                0.007652979794208382,
+                0.9318292244767507
+              ],
+              "world_vertical_half_extent": 0.01846207826824743,
+              "world_z_max": 0.9502913027449981,
+              "world_z_min": 0.9133671462085032
+            },
+            {
+              "geom_id": 111,
+              "geom_name": "akita_black_bowl_1_g27",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.06009714521757515,
+                0.023922979736201413,
+                0.9318289140295614
+              ],
+              "world_vertical_half_extent": 0.018462039380931487,
+              "world_z_max": 0.9502909534104929,
+              "world_z_min": 0.9133668746486299
+            },
+            {
+              "geom_id": 112,
+              "geom_name": "akita_black_bowl_1_g28",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.0710471453445401,
+                0.036982979624790656,
+                0.9318285541453051
+              ],
+              "world_vertical_half_extent": 0.018461960195600067,
+              "world_z_max": 0.9502905143409052,
+              "world_z_min": 0.913366593949705
+            },
+            {
+              "geom_id": 113,
+              "geom_name": "akita_black_bowl_1_g29",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.0863271454253788,
+                0.045422979470169385,
+                0.931828180546167
+              ],
+              "world_vertical_half_extent": 0.018461883308848907,
+              "world_z_max": 0.9502900638550159,
+              "world_z_min": 0.9133662972373181
+            },
+            {
+              "geom_id": 114,
+              "geom_name": "akita_black_bowl_1_g30",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.10292714544586615,
+                0.04775297930278147,
+                0.9318278645589005
+              ],
+              "world_vertical_half_extent": 0.018461869344449378,
+              "world_z_max": 0.9502897339033499,
+              "world_z_min": 0.9133659952144512
+            },
+            {
+              "geom_id": 115,
+              "geom_name": "akita_black_bowl_1_g31",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.10292714544586615,
+                0.04775297930278147,
+                0.9318278645589005
+              ],
+              "world_vertical_half_extent": 0.018461869344449378,
+              "world_z_max": 0.9502897339033499,
+              "world_z_min": 0.9133659952144512
+            },
+            {
+              "geom_id": 116,
+              "geom_name": "akita_black_bowl_1_g32",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.11939714540729938,
+                0.04408297913722105,
+                0.9318276296641688
+              ],
+              "world_vertical_half_extent": 0.018461868577167168,
+              "world_z_max": 0.9502894982413359,
+              "world_z_min": 0.9133657610870016
+            },
+            {
+              "geom_id": 117,
+              "geom_name": "akita_black_bowl_1_g33",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.13352714531414023,
+                0.034832978995709855,
+                0.931827508333183
+              ],
+              "world_vertical_half_extent": 0.018461695431756193,
+              "world_z_max": 0.9502892037649392,
+              "world_z_min": 0.9133658129014267
+            },
+            {
+              "geom_id": 118,
+              "geom_name": "akita_black_bowl_1_g34",
+              "geom_size": [
+                0.00128,
+                0.00934,
+                0.01875
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.1434171451798624,
+                0.021342978897267963,
+                0.9318275156165421
+              ],
+              "world_vertical_half_extent": 0.018461869131066466,
+              "world_z_max": 0.9502893847476086,
+              "world_z_min": 0.9133656464854756
+            },
+            {
+              "geom_id": 119,
+              "geom_name": "akita_black_bowl_1_g35",
+              "geom_size": [
+                0.00125,
+                0.00444,
+                0.01872
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.1469971450797949,
+                0.011232978862085224,
+                0.9318275869494655
+              ],
+              "world_vertical_half_extent": 0.018424975752300357,
+              "world_z_max": 0.950252562701766,
+              "world_z_min": 0.9134026111971651
+            },
+            {
+              "geom_id": 120,
+              "geom_name": "akita_black_bowl_1_g36",
+              "geom_size": [
+                0.00258,
+                0.01547,
+                0.01617
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.10032663785964191,
+                0.0006725916157432129,
+                0.902328528031918
+              ],
+              "world_vertical_half_extent": 0.002580478459824843,
+              "world_z_max": 0.9049090064917429,
+              "world_z_min": 0.8997480495720931
+            },
+            {
+              "geom_id": 121,
+              "geom_name": "akita_black_bowl_1_g37",
+              "geom_size": [
+                0.00258,
+                0.00431,
+                0.01617
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.08086663786251728,
+                0.0006725918117343462,
+                0.902328862561242
+              ],
+              "world_vertical_half_extent": 0.002580286612586602,
+              "world_z_max": 0.9049091491738286,
+              "world_z_min": 0.8997485759486554
+            },
+            {
+              "geom_id": 122,
+              "geom_name": "akita_black_bowl_1_g38",
+              "geom_size": [
+                0.00258,
+                0.00495,
+                0.01547
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.10123663803879493,
+                0.018882591605005394,
+                0.9023282730551739
+              ],
+              "world_vertical_half_extent": 0.002580330995822998,
+              "world_z_max": 0.9049086040509969,
+              "world_z_min": 0.8997479420593509
+            },
+            {
+              "geom_id": 123,
+              "geom_name": "akita_black_bowl_1_g39",
+              "geom_size": [
+                0.00258,
+                0.00453,
+                0.01547
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.1011166376813207,
+                -0.01742740839064999,
+                0.9023287523388948
+              ],
+              "world_vertical_half_extent": 0.002580325475780148,
+              "world_z_max": 0.9049090778146749,
+              "world_z_min": 0.8997484268631146
+            },
+            {
+              "geom_id": 124,
+              "geom_name": "akita_black_bowl_1_g40",
+              "geom_size": [
+                0.00258,
+                0.00741,
+                0.01617
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.11597663785732948,
+                0.0006725914581244442,
+                0.9023282589988285
+              ],
+              "world_vertical_half_extent": 0.0025803399034861133,
+              "world_z_max": 0.9049085989023147,
+              "world_z_min": 0.8997479190953424
+            }
+          ],
+          "extent_method": "union AABB of active group-0 collision primitives transformed by runtime geom_xmat",
+          "object_name": "akita_black_bowl_1",
+          "world_z_max": 0.9502913083948411,
+          "world_z_min": 0.8997479190953424
+        },
+        "kind": "placement",
+        "plate": "plate_1",
+        "plate_runtime": {
+          "body_id": 26,
+          "body_name": "plate_1_main",
+          "collision_geoms": [
+            {
+              "geom_id": 152,
+              "geom_name": "plate_1_g1",
+              "geom_size": [
+                0.00222,
+                0.02851,
+                0.03057
+              ],
+              "geom_type": 6,
+              "world_position": [
+                0.0359192693729076,
+                -0.021667920416299634,
+                0.9054445976604555
+              ],
+              "world_vertical_half_extent": 0.0029482830066341467,
+              "world_z_max": 0.9083928806670897,
+              "world_z_min": 0.9024963146538213
+            },
+            {
+              "geom_id": 153,
+              "geom_name": "plate_1_g2",
+              "geom_size": [
+                0.00254,
+                0.01913,
+                0.02851
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.012360676954862398,
+                -0.02166774142603882,
+                0.909275274174547
+              ],
+              "world_vertical_half_extent": 0.009471827117347667,
+              "world_z_max": 0.9187471012918946,
+              "world_z_min": 0.8998034470571994
+            },
+            {
+              "geom_id": 154,
+              "geom_name": "plate_1_g3",
+              "geom_size": [
+                0.00254,
+                0.01913,
+                0.02851
+              ],
+              "geom_type": 6,
+              "world_position": [
+                -0.012360676954862398,
+                -0.02166774142603882,
+                0.909275274174547
+              ],
+              "world_vertical_half_extent": 0.009471827117347667,
+              "world_z_max": 0.9187471012918946,
+              "world_z_min": 0.8998034470571994
+            },
+            {
+              "geom_id": 155,
+              "geom_name": "plate_1_g4",
+              "geom_size": [
+                0.00254,
+                0.01913,
+                0.02851
+              ],
+              "geom_type": 6,
+              "world_position": [
+                8.933341781954679e-05,
+                0.010702254547058247,
+                0.9092737179635915
+              ],
+              "world_vertical_half_extent": 0.009471462076006564,
+              "world_z_max": 0.918745180039598,
+              "world_z_min": 0.8998022558875849
+            },
+            {
+              "geom_id": 156,
+              "geom_name": "plate_1_g5",
+              "geom_size": [
+                0.00254,
+                0.01913,
+                0.02851
+              ],
+              "geom_type": 6,
+              "world_position": [
+                0.03277933848138136,
+                0.02651224403664231,
+                0.9092725850277165
+              ],
+              "world_vertical_half_extent": 0.009471371828693342,
+              "world_z_max": 0.9187439568564097,
+              "world_z_min": 0.8998012131990232
+            },
+            {
+              "geom_id": 157,
+              "geom_name": "plate_1_g6",
+              "geom_size": [
+                0.00254,
+                0.01913,
+                0.02851
+              ],
+              "geom_type": 6,
+              "world_position": [
+                0.06743933476042063,
+                0.014912232918678048,
+                0.9092725945199663
+              ],
+              "world_vertical_half_extent": 0.009472967942562445,
+              "world_z_max": 0.9187455624625288,
+              "world_z_min": 0.8997996265774039
+            },
+            {
+              "geom_id": 158,
+              "geom_name": "plate_1_g7",
+              "geom_size": [
+                0.00254,
+                0.01913,
+                0.02851
+              ],
+              "geom_type": 6,
+              "world_position": [
+                0.0841493237727596,
+                -0.01936777241528777,
+                0.9092738236606753
+              ],
+              "world_vertical_half_extent": 0.009473674139317751,
+              "world_z_max": 0.9187474977999931,
+              "world_z_min": 0.8998001495213576
+            },
+            {
+              "geom_id": 159,
+              "geom_name": "plate_1_g8",
+              "geom_size": [
+                0.00254,
+                0.01913,
+                0.02851
+              ],
+              "geom_type": 6,
+              "world_position": [
+                0.07083931235219584,
+                -0.055007768109279175,
+                0.9092755315066072
+              ],
+              "world_vertical_half_extent": 0.009474291364686225,
+              "world_z_max": 0.9187498228712935,
+              "world_z_min": 0.899801240141921
+            },
+            {
+              "geom_id": 160,
+              "geom_name": "plate_1_g9",
+              "geom_size": [
+                0.00254,
+                0.01913,
+                0.02851
+              ],
+              "geom_type": 6,
+              "world_position": [
+                0.03721930757074687,
+                -0.06993775730106329,
+                0.9092766399100229
+              ],
+              "world_vertical_half_extent": 0.009473976484725472,
+              "world_z_max": 0.9187506163947484,
+              "world_z_min": 0.8998026634252975
+            },
+            {
+              "geom_id": 161,
+              "geom_name": "plate_1_g10",
+              "geom_size": [
+                0.00254,
+                0.01913,
+                0.02851
+              ],
+              "geom_type": 6,
+              "world_position": [
+                0.0020593120128344425,
+                -0.05608774602461047,
+                0.9092765413797054
+              ],
+              "world_vertical_half_extent": 0.009472949608109049,
+              "world_z_max": 0.9187494909878144,
+              "world_z_min": 0.8998035917715963
+            }
+          ],
+          "extent_method": "union AABB of active group-0 collision primitives transformed by runtime geom_xmat",
+          "object_name": "plate_1",
+          "world_z_max": 0.9187506163947484,
+          "world_z_min": 0.8997996265774039
+        },
+        "predicate_geometry": {
+          "contact_required": true,
+          "planar_distance_max_m": 0.03,
+          "vertical": "plate body z <= bowl body z"
+        },
+        "source_chain": "On -> plate ObjectState.check_ontop(bowl)",
+        "task": "put_the_bowl_on_the_plate"
+      },
+      "runtime_probe_episode": "demo_3",
+      "suite": "libero_goal",
+      "task": "put_the_bowl_on_the_plate",
+      "task_id": 8
+    }
+  ],
+  "schema_version": 1,
+  "source_file_sha256": {
+    "branch_candidates": "f5daf76f0a5e5540ef93bb94399f4e43974d4c733a3fbbf0d05729ced6f6969b",
+    "condition_d_gate": "6ca9e8fc827aac1aca4b4476829afb00015771585012b4f639b0e914513351da",
+    "exp3_normalization": "906ca20e409a2878e1bbe0b39a6d46c00009d35b7d7a2e6b64a36ea222cdaa12",
+    "exp4_config": "02eb4da555a8d25241fb8ba4c75adef774ae22cfd84696c1e85e66fd25b7ba47",
+    "joint_limits": "591f94f4b356ac186701b1dc4beff6ee6d7fc1329975e3a14c78b9d001e8f92f",
+    "progress_runtime_audit": "a0c46f5bd6e4a1f7a3b5185cc57a85b22ed66243e207698214bf186fdd1b01c2",
+    "reference_manifest": "10bdfd3aca8c1ef0b741c9f4ce64d8ed4351a48196446983001d8633a3fec183"
+  },
+  "source_runs": {
+    "branch_candidates": "exp4_e4_2_branch_candidates_20260814",
+    "condition_d_gate": "exp4_e4_2_condition_d_reconciled_20260814",
+    "joint_limit_audit": "exp2_r5_q_smoke_20260814T012633",
+    "legacy_exp3": "exp3_t6_full_20260814T022200",
+    "progress_audit": "exp4_e4_0_1_runtime_audit_geom_20260814",
+    "reference": "exp4_e4_3_heldout_refs_20260814"
+  },
+  "stored_variants": [
+    "raw_unclipped",
+    "clipped_0_1",
+    "monotonicity_audit"
+  ],
+  "stove": {
+    "joint": "flat_stove_1_button",
+    "predicate": "q >= 0.5",
+    "raw": "(q(t)-q(0))/(q(T)-q(0))"
+  }
+}

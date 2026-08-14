@@ -1,0 +1,41 @@
+{
+  "branch_primary": "S_RMS = sqrt(mean(S_j^2)) over exactly seven orthonormal basis directions",
+  "direction_pair": {
+    "A_j": "abs(E_plus-E_minus)/(E_plus+E_minus+1e-15)",
+    "S_j": "(E_plus + E_minus)/2",
+    "numerical_epsilon": 1e-15
+  },
+  "frozen_at_utc": "2026-08-14T07:58:25.253383+00:00",
+  "heldout_random_excluded_from_primary": true,
+  "historical_exp3_metric": "median across all 16 EXP4 direction/sign intervention effects, reported only as a comparator",
+  "manifest_name": "primary_metric_spec",
+  "meaningful_effect_threshold": 0.01,
+  "outcome_blind": true,
+  "outcome_blind_declaration": "No EXP4 q-intervention outcome existed or was read when this manifest was frozen.",
+  "per_intervention_effect": "exact EXP3 equal-weight six-component per-step score averaged over every remaining step",
+  "project_git_sha": "33e7075c14ebc29de04ae13e301c7aa5dd0fd8cd",
+  "remaining_horizon": [
+    "mean primary",
+    "remaining steps",
+    "normalized remaining horizon",
+    "fixed 20-step diagnostic window"
+  ],
+  "schema_version": 1,
+  "source_file_sha256": {
+    "branch_candidates": "f5daf76f0a5e5540ef93bb94399f4e43974d4c733a3fbbf0d05729ced6f6969b",
+    "condition_d_gate": "6ca9e8fc827aac1aca4b4476829afb00015771585012b4f639b0e914513351da",
+    "exp3_normalization": "906ca20e409a2878e1bbe0b39a6d46c00009d35b7d7a2e6b64a36ea222cdaa12",
+    "exp4_config": "02eb4da555a8d25241fb8ba4c75adef774ae22cfd84696c1e85e66fd25b7ba47",
+    "joint_limits": "591f94f4b356ac186701b1dc4beff6ee6d7fc1329975e3a14c78b9d001e8f92f",
+    "progress_runtime_audit": "a0c46f5bd6e4a1f7a3b5185cc57a85b22ed66243e207698214bf186fdd1b01c2",
+    "reference_manifest": "10bdfd3aca8c1ef0b741c9f4ce64d8ed4351a48196446983001d8633a3fec183"
+  },
+  "source_runs": {
+    "branch_candidates": "exp4_e4_2_branch_candidates_20260814",
+    "condition_d_gate": "exp4_e4_2_condition_d_reconciled_20260814",
+    "joint_limit_audit": "exp2_r5_q_smoke_20260814T012633",
+    "legacy_exp3": "exp3_t6_full_20260814T022200",
+    "progress_audit": "exp4_e4_0_1_runtime_audit_geom_20260814",
+    "reference": "exp4_e4_3_heldout_refs_20260814"
+  }
+}

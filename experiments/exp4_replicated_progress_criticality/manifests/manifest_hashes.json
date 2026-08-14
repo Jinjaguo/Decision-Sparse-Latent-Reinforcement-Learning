@@ -1,0 +1,41 @@
+{
+  "frozen_at_utc": "2026-08-14T07:58:25.253383+00:00",
+  "manifest_name": "manifest_hashes",
+  "manifests": {
+    "branch_manifest.json": "ffca7adc1efa5661fdbfdf8f20b0953f00e13417304f449bbefaf3b3b658d19c",
+    "direction_basis_manifest.json": "a3ab3e040c7b8f5ba7e93282470633a4f6543f739e07149a99e3a42e60d1f2ff",
+    "effect_channel_schema.json": "33424e358dde0fda2369f60e4313127e44aa60eed394bcfe8169be11b707642f",
+    "effect_normalization.json": "fdb3581a8067d77210a01806c13b6ada95141daf944eb649dedeaceea6c12671",
+    "event_manifest.json": "e4a4b3178cc866642bffdb1e939eb8b2c6a9beaa5bc342362cf6a65e2d07d4da",
+    "gpu_analysis_spec.json": "6c89c2315efa6567ea12e6a106f59e5e7d721eae1eafddf5a52dd46d2087b3b8",
+    "operator_analysis_spec.json": "672ad28ba96603525e9ed16e6854a63414b0c8bc42411a3624ff198dc930cb17",
+    "primary_metric_spec.json": "c4484d7d71edfec9eb7373c791e3f912236e8eccec7e6f5d1086b26844647b14",
+    "progress_alignment_spec.json": "2f714af31c4da57b6fa5e8bbbd030ef17f6215ad5cf53f62f64df4ab4b29c945",
+    "progress_channel_schema.json": "7d7e44d18697db8ba777381f65ff5eadd146f1ddb0254433e6e30921c6e16883",
+    "reference_validation_manifest.json": "92aaae252a876f66fda5cba7c49af05bfa025a89802ce61266d82e191d159dfd",
+    "scientific_decision_rule.json": "5b144503860b5871fe11e61a2fb5ae52a4bcc7df47884392d04ea5e23409d073",
+    "statistical_analysis_plan.json": "0e90243b1a2bf69cbccbe8e8689202263b600e4331216d7269ca48307ed96fb4",
+    "task_demo_manifest.json": "28cef9dcbd34a1922074ab014da6f5844e4806307e7d0fd8face2a19a0cb621e"
+  },
+  "outcome_blind": true,
+  "outcome_blind_declaration": "No EXP4 q-intervention outcome existed or was read when this manifest was frozen.",
+  "project_git_sha": "33e7075c14ebc29de04ae13e301c7aa5dd0fd8cd",
+  "schema_version": 1,
+  "source_file_sha256": {
+    "branch_candidates": "f5daf76f0a5e5540ef93bb94399f4e43974d4c733a3fbbf0d05729ced6f6969b",
+    "condition_d_gate": "6ca9e8fc827aac1aca4b4476829afb00015771585012b4f639b0e914513351da",
+    "exp3_normalization": "906ca20e409a2878e1bbe0b39a6d46c00009d35b7d7a2e6b64a36ea222cdaa12",
+    "exp4_config": "02eb4da555a8d25241fb8ba4c75adef774ae22cfd84696c1e85e66fd25b7ba47",
+    "joint_limits": "591f94f4b356ac186701b1dc4beff6ee6d7fc1329975e3a14c78b9d001e8f92f",
+    "progress_runtime_audit": "a0c46f5bd6e4a1f7a3b5185cc57a85b22ed66243e207698214bf186fdd1b01c2",
+    "reference_manifest": "10bdfd3aca8c1ef0b741c9f4ce64d8ed4351a48196446983001d8633a3fec183"
+  },
+  "source_runs": {
+    "branch_candidates": "exp4_e4_2_branch_candidates_20260814",
+    "condition_d_gate": "exp4_e4_2_condition_d_reconciled_20260814",
+    "joint_limit_audit": "exp2_r5_q_smoke_20260814T012633",
+    "legacy_exp3": "exp3_t6_full_20260814T022200",
+    "progress_audit": "exp4_e4_0_1_runtime_audit_geom_20260814",
+    "reference": "exp4_e4_3_heldout_refs_20260814"
+  }
+}

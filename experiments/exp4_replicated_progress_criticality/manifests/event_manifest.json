@@ -1,0 +1,598 @@
+{
+  "adjustment": "remaining horizon + early/middle/late phase + demo fixed effects; within-demo permutation; BH FDR 0.05",
+  "events": [
+    {
+      "action_index": 85,
+      "episode": "demo_3",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.6538461538461539,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": null,
+      "episode": "demo_3",
+      "event_type": "gripper_sign_change",
+      "normalized_time": null,
+      "physical_progress": null,
+      "present": false,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": 120,
+      "episode": "demo_3",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.9230769230769231,
+      "physical_progress": 0.8801936127883571,
+      "present": true,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": 103,
+      "episode": "demo_4",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.7357142857142858,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": null,
+      "episode": "demo_4",
+      "event_type": "gripper_sign_change",
+      "normalized_time": null,
+      "physical_progress": null,
+      "present": false,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": 130,
+      "episode": "demo_4",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.9285714285714286,
+      "physical_progress": 0.8832692782172413,
+      "present": true,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": 91,
+      "episode": "demo_5",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.6594202898550725,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": null,
+      "episode": "demo_5",
+      "event_type": "gripper_sign_change",
+      "normalized_time": null,
+      "physical_progress": null,
+      "present": false,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": 128,
+      "episode": "demo_5",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.927536231884058,
+      "physical_progress": 0.8839140522400972,
+      "present": true,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": 72,
+      "episode": "demo_6",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.6,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": null,
+      "episode": "demo_6",
+      "event_type": "gripper_sign_change",
+      "normalized_time": null,
+      "physical_progress": null,
+      "present": false,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": 111,
+      "episode": "demo_6",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.925,
+      "physical_progress": 0.9107943722396719,
+      "present": true,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": 99,
+      "episode": "demo_7",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.7071428571428572,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": null,
+      "episode": "demo_7",
+      "event_type": "gripper_sign_change",
+      "normalized_time": null,
+      "physical_progress": null,
+      "present": false,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": 130,
+      "episode": "demo_7",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.9285714285714286,
+      "physical_progress": 0.9032431970272978,
+      "present": true,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": 75,
+      "episode": "demo_8",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.6048387096774194,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": null,
+      "episode": "demo_8",
+      "event_type": "gripper_sign_change",
+      "normalized_time": null,
+      "physical_progress": null,
+      "present": false,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": 114,
+      "episode": "demo_8",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.9193548387096774,
+      "physical_progress": 0.8947067080846585,
+      "present": true,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": 107,
+      "episode": "demo_9",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.6815286624203821,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": null,
+      "episode": "demo_9",
+      "event_type": "gripper_sign_change",
+      "normalized_time": null,
+      "physical_progress": null,
+      "present": false,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": 147,
+      "episode": "demo_9",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.9363057324840764,
+      "physical_progress": 0.8871400809532827,
+      "present": true,
+      "task": "open_the_middle_drawer_of_the_cabinet"
+    },
+    {
+      "action_index": 57,
+      "episode": "demo_3",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.6705882352941176,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 37,
+      "episode": "demo_3",
+      "event_type": "gripper_sign_change",
+      "normalized_time": 0.43529411764705883,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 75,
+      "episode": "demo_3",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.8823529411764706,
+      "physical_progress": 0.5999318745997042,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 55,
+      "episode": "demo_4",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.5978260869565217,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 50,
+      "episode": "demo_4",
+      "event_type": "gripper_sign_change",
+      "normalized_time": 0.5434782608695652,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 82,
+      "episode": "demo_4",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.8913043478260869,
+      "physical_progress": 0.5914859086705231,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 49,
+      "episode": "demo_5",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.5384615384615384,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 48,
+      "episode": "demo_5",
+      "event_type": "gripper_sign_change",
+      "normalized_time": 0.5274725274725275,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 81,
+      "episode": "demo_5",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.8901098901098901,
+      "physical_progress": 0.6019720071155634,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 52,
+      "episode": "demo_6",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.5591397849462365,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 44,
+      "episode": "demo_6",
+      "event_type": "gripper_sign_change",
+      "normalized_time": 0.4731182795698925,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 83,
+      "episode": "demo_6",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.8924731182795699,
+      "physical_progress": 0.6185596744647308,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 59,
+      "episode": "demo_7",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.6210526315789474,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 51,
+      "episode": "demo_7",
+      "event_type": "gripper_sign_change",
+      "normalized_time": 0.5368421052631579,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 85,
+      "episode": "demo_7",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.8947368421052632,
+      "physical_progress": 0.5894323463019023,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 46,
+      "episode": "demo_8",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.5411764705882353,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 45,
+      "episode": "demo_8",
+      "event_type": "gripper_sign_change",
+      "normalized_time": 0.5294117647058824,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 75,
+      "episode": "demo_8",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.8823529411764706,
+      "physical_progress": 0.6262027036851385,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 58,
+      "episode": "demo_9",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.7631578947368421,
+      "physical_progress": 0.22434974627466983,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 44,
+      "episode": "demo_9",
+      "event_type": "gripper_sign_change",
+      "normalized_time": 0.5789473684210527,
+      "physical_progress": 0.0,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 66,
+      "episode": "demo_9",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.868421052631579,
+      "physical_progress": 0.5800141818882671,
+      "present": true,
+      "task": "turn_on_the_stove"
+    },
+    {
+      "action_index": 41,
+      "episode": "demo_3",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.44086021505376344,
+      "physical_progress": 0.2499215209197905,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 32,
+      "episode": "demo_3",
+      "event_type": "gripper_sign_change",
+      "normalized_time": 0.34408602150537637,
+      "physical_progress": 0.22202449011273392,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 72,
+      "episode": "demo_3",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.7741935483870968,
+      "physical_progress": 1.0,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 37,
+      "episode": "demo_4",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.46835443037974683,
+      "physical_progress": 0.2544845290787063,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 31,
+      "episode": "demo_4",
+      "event_type": "gripper_sign_change",
+      "normalized_time": 0.3924050632911392,
+      "physical_progress": 0.2285807914161716,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 69,
+      "episode": "demo_4",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.8734177215189873,
+      "physical_progress": 1.0,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 43,
+      "episode": "demo_5",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.48863636363636365,
+      "physical_progress": 0.25641558819635124,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 35,
+      "episode": "demo_5",
+      "event_type": "gripper_sign_change",
+      "normalized_time": 0.3977272727272727,
+      "physical_progress": 0.2486081449141912,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 67,
+      "episode": "demo_5",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.7613636363636364,
+      "physical_progress": 1.0,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 51,
+      "episode": "demo_6",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.49038461538461536,
+      "physical_progress": 0.2556405263568621,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 43,
+      "episode": "demo_6",
+      "event_type": "gripper_sign_change",
+      "normalized_time": 0.41346153846153844,
+      "physical_progress": 0.22757304796169783,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 86,
+      "episode": "demo_6",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.8269230769230769,
+      "physical_progress": 1.0,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 51,
+      "episode": "demo_7",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.5604395604395604,
+      "physical_progress": 0.2581315392988432,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 42,
+      "episode": "demo_7",
+      "event_type": "gripper_sign_change",
+      "normalized_time": 0.46153846153846156,
+      "physical_progress": 0.2470170861184754,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 80,
+      "episode": "demo_7",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.8791208791208791,
+      "physical_progress": 1.0,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 41,
+      "episode": "demo_8",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.4939759036144578,
+      "physical_progress": 0.25,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 33,
+      "episode": "demo_8",
+      "event_type": "gripper_sign_change",
+      "normalized_time": 0.39759036144578314,
+      "physical_progress": 0.23641868495320437,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 72,
+      "episode": "demo_8",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.8674698795180723,
+      "physical_progress": 1.0,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 46,
+      "episode": "demo_9",
+      "event_type": "contact_count_change",
+      "normalized_time": 0.5168539325842697,
+      "physical_progress": 0.2561071121442047,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 38,
+      "episode": "demo_9",
+      "event_type": "gripper_sign_change",
+      "normalized_time": 0.42696629213483145,
+      "physical_progress": 0.23768845439262057,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    },
+    {
+      "action_index": 79,
+      "episode": "demo_9",
+      "event_type": "task_predicate_first_true",
+      "normalized_time": 0.8876404494382022,
+      "physical_progress": 1.0,
+      "present": true,
+      "task": "put_the_bowl_on_the_plate"
+    }
+  ],
+  "frozen_at_utc": "2026-08-14T07:58:25.253383+00:00",
+  "manifest_name": "event_manifest",
+  "outcome_blind": true,
+  "outcome_blind_declaration": "No EXP4 q-intervention outcome existed or was read when this manifest was frozen.",
+  "progress_window_radius": 0.075,
+  "project_git_sha": "33e7075c14ebc29de04ae13e301c7aa5dd0fd8cd",
+  "schema_version": 1,
+  "secondary_only": true,
+  "source_file_sha256": {
+    "branch_candidates": "f5daf76f0a5e5540ef93bb94399f4e43974d4c733a3fbbf0d05729ced6f6969b",
+    "condition_d_gate": "6ca9e8fc827aac1aca4b4476829afb00015771585012b4f639b0e914513351da",
+    "exp3_normalization": "906ca20e409a2878e1bbe0b39a6d46c00009d35b7d7a2e6b64a36ea222cdaa12",
+    "exp4_config": "02eb4da555a8d25241fb8ba4c75adef774ae22cfd84696c1e85e66fd25b7ba47",
+    "joint_limits": "591f94f4b356ac186701b1dc4beff6ee6d7fc1329975e3a14c78b9d001e8f92f",
+    "progress_runtime_audit": "a0c46f5bd6e4a1f7a3b5185cc57a85b22ed66243e207698214bf186fdd1b01c2",
+    "reference_manifest": "10bdfd3aca8c1ef0b741c9f4ce64d8ed4351a48196446983001d8633a3fec183"
+  },
+  "source_runs": {
+    "branch_candidates": "exp4_e4_2_branch_candidates_20260814",
+    "condition_d_gate": "exp4_e4_2_condition_d_reconciled_20260814",
+    "joint_limit_audit": "exp2_r5_q_smoke_20260814T012633",
+    "legacy_exp3": "exp3_t6_full_20260814T022200",
+    "progress_audit": "exp4_e4_0_1_runtime_audit_geom_20260814",
+    "reference": "exp4_e4_3_heldout_refs_20260814"
+  },
+  "time_window_radius": 0.075
+}
