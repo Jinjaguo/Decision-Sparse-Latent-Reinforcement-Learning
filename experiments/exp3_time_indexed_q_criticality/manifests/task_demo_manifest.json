@@ -1,0 +1,120 @@
+{
+  "frozen_at_utc": "2026-08-14T06:16:23.646369+00:00",
+  "manifest_name": "task_demo_manifest",
+  "outcome_blind": true,
+  "project_git_sha": "ad63a15eb18cd722deef7e334e302de338364fe1",
+  "schema_version": 1,
+  "source_file_sha256": {
+    "branch_manifest": "609ea421dadb2b19d8a5a70d99eae755e7e105ef2de3ec9e3a836a15059ae087",
+    "exp3_config": "b0c087f0d38a98af4d9e3e570260a128405737c4c34079c6e7b88194292c0327",
+    "joint_limits": "591f94f4b356ac186701b1dc4beff6ee6d7fc1329975e3a14c78b9d001e8f92f",
+    "reference_manifest": "d4c39b5ea3966547dc4eda238c6399200b6aef00063db2e0194affc6d7fc4b0e",
+    "t1_metrics": "fd0d5f07b8daef36ac9ac5db208f5c533adc3c9be4e0d5196f7d33e9b2e5a3ea"
+  },
+  "source_runs": {
+    "joint_limit_audit": "exp2_r5_q_smoke_20260814T012633",
+    "reference": "exp2_r2_gripper_refs_20260814T011336",
+    "t1_condition_d": "exp3_t1_condition_d_20260814T020613"
+  },
+  "tasks": [
+    {
+      "boundaries_sha256": "936c3c74693988f986bbbbab942c2d8932497f8c8bd1565acdee9a07c64fb863",
+      "branch_count": 12,
+      "episode": "demo_0",
+      "reference_relative_directory": "artifacts/references/open_the_middle_drawer_of_the_cabinet/demo_0",
+      "suite": "libero_goal",
+      "task": "open_the_middle_drawer_of_the_cabinet",
+      "task_id": 0,
+      "trajectory_length": 138,
+      "trajectory_states_sha256": "8e06e5883f2b9bf9a822e26d29ef03d82d4045b8968a9a6205d11a7cf3f4d5de"
+    },
+    {
+      "boundaries_sha256": "3d8bfeaa26ada0f9d95ff756cfb4b4e5ae87f6089b34f1ea8ff5b59c10472b40",
+      "branch_count": 12,
+      "episode": "demo_1",
+      "reference_relative_directory": "artifacts/references/open_the_middle_drawer_of_the_cabinet/demo_1",
+      "suite": "libero_goal",
+      "task": "open_the_middle_drawer_of_the_cabinet",
+      "task_id": 0,
+      "trajectory_length": 138,
+      "trajectory_states_sha256": "778852aba394aa0f181a4a91132970bb82ac41341a971cd087ed5640195f507b"
+    },
+    {
+      "boundaries_sha256": "9341a5663afe43c8fc65c4ac04b671c0cbb3b19ae4e5ccefa58624bab663aaea",
+      "branch_count": 12,
+      "episode": "demo_2",
+      "reference_relative_directory": "artifacts/references/open_the_middle_drawer_of_the_cabinet/demo_2",
+      "suite": "libero_goal",
+      "task": "open_the_middle_drawer_of_the_cabinet",
+      "task_id": 0,
+      "trajectory_length": 151,
+      "trajectory_states_sha256": "e1d7a0ce350907a149935d307657deca499179022c6652513102a427b79152c0"
+    },
+    {
+      "boundaries_sha256": "093783a4613654f1c9da9791dd8903df58b6a0f3aa6dd6b00875bd39ed7c8f71",
+      "branch_count": 12,
+      "episode": "demo_0",
+      "reference_relative_directory": "artifacts/references/turn_on_the_stove/demo_0",
+      "suite": "libero_goal",
+      "task": "turn_on_the_stove",
+      "task_id": 7,
+      "trajectory_length": 80,
+      "trajectory_states_sha256": "0627f0e7756aeaaf3d662c06934dc497551dc958aa6bbc89f2c379dbb941bc5d"
+    },
+    {
+      "boundaries_sha256": "f422d33cbdd06e27eb4ef4a54b14fa947346032d02bff06986c0a75208281958",
+      "branch_count": 12,
+      "episode": "demo_1",
+      "reference_relative_directory": "artifacts/references/turn_on_the_stove/demo_1",
+      "suite": "libero_goal",
+      "task": "turn_on_the_stove",
+      "task_id": 7,
+      "trajectory_length": 96,
+      "trajectory_states_sha256": "aed91b5b3719a40a35858e6c7294fe38d4a243847ab871f4a07488a042ae9d6e"
+    },
+    {
+      "boundaries_sha256": "c7b93410bf514075d205d876b42ee728bc85c568636306fdc73112b5b1731fa8",
+      "branch_count": 12,
+      "episode": "demo_2",
+      "reference_relative_directory": "artifacts/references/turn_on_the_stove/demo_2",
+      "suite": "libero_goal",
+      "task": "turn_on_the_stove",
+      "task_id": 7,
+      "trajectory_length": 89,
+      "trajectory_states_sha256": "17284f3b4f663687ce60ec0ba9a97b35a838df1ed4a855e67bda02e80bf8e182"
+    },
+    {
+      "boundaries_sha256": "806a384558da03dcc5af911c22ac7a2568f036bd391a5e17eaf4800c57429c55",
+      "branch_count": 12,
+      "episode": "demo_0",
+      "reference_relative_directory": "artifacts/references/put_the_bowl_on_the_plate/demo_0",
+      "suite": "libero_goal",
+      "task": "put_the_bowl_on_the_plate",
+      "task_id": 8,
+      "trajectory_length": 90,
+      "trajectory_states_sha256": "ce6edf0f85d480c34da0adde23ac457bb8ac228623cd5eff808fe082781571bb"
+    },
+    {
+      "boundaries_sha256": "baeb7d4b47be59fb5752ec2bd37827e7f6148b938431b0aced78c6459b53851a",
+      "branch_count": 12,
+      "episode": "demo_1",
+      "reference_relative_directory": "artifacts/references/put_the_bowl_on_the_plate/demo_1",
+      "suite": "libero_goal",
+      "task": "put_the_bowl_on_the_plate",
+      "task_id": 8,
+      "trajectory_length": 88,
+      "trajectory_states_sha256": "f8c8320499fcab30aff7f4d516fff59b6c828cba535ac40ad6d600ece3cdd7fe"
+    },
+    {
+      "boundaries_sha256": "81ecc57d2d407b937b039efe612913bd11cb66dff0bc52bce59f797ff53820b3",
+      "branch_count": 12,
+      "episode": "demo_2",
+      "reference_relative_directory": "artifacts/references/put_the_bowl_on_the_plate/demo_2",
+      "suite": "libero_goal",
+      "task": "put_the_bowl_on_the_plate",
+      "task_id": 8,
+      "trajectory_length": 92,
+      "trajectory_states_sha256": "352c4bf15c805ce5c21c080d3b1d57aa015399968a5aea312aee738c9dd35357"
+    }
+  ]
+}

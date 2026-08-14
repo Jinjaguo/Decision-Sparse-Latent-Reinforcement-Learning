@@ -1,0 +1,55 @@
+{
+  "all_zero_convention": {
+    "flag": "all_zero=true",
+    "gini": 0,
+    "normalized_entropy": 1,
+    "top_mass": 0
+  },
+  "branch_aggregation": "median across 8; also report mean/P25/P75/min/max/fraction above 0.01",
+  "cross_demo_alignment": "Spearman correlation on the ten frozen temporal-quantile branches ordered by nominal quantile; event branches excluded",
+  "event_enrichment": "demo-stratified ratio of mean branch primary inside versus outside each frozen event window; permute branch times within demo",
+  "frozen_at_utc": "2026-08-14T06:16:23.646369+00:00",
+  "hierarchical_bootstrap": "resample 3 tasks, then 3 demos within selected task, then 4 directions and 2 signs within branch; PCG64 seed 830031; 4000 resamples",
+  "inference_unit": "demonstration",
+  "leave_one_demo_out": "repeat pooled concentration and temporal-rank summaries omitting each of 9 demonstrations",
+  "manifest_name": "statistical_analysis_plan",
+  "multiple_comparisons": "primary decision uses preregistered top20 statistic only; secondary p-values use Benjamini-Hochberg FDR 0.05",
+  "outcome_blind": true,
+  "outcome_relevance": "Spearman across branches for terminal object effect and predicate-divergence fraction; success flips reported descriptively",
+  "permutation": "shuffle branch-time labels within demo and direction/sign labels within branch; PCG64 seed 830032; 4000 resamples",
+  "project_git_sha": "ad63a15eb18cd722deef7e334e302de338364fe1",
+  "schema_version": 1,
+  "sensitivity": [
+    "mean rather than median across eight",
+    "top10/top30",
+    "remaining-horizon maximum as secondary",
+    "quantile-only curves"
+  ],
+  "source_file_sha256": {
+    "branch_manifest": "609ea421dadb2b19d8a5a70d99eae755e7e105ef2de3ec9e3a836a15059ae087",
+    "exp3_config": "b0c087f0d38a98af4d9e3e570260a128405737c4c34079c6e7b88194292c0327",
+    "joint_limits": "591f94f4b356ac186701b1dc4beff6ee6d7fc1329975e3a14c78b9d001e8f92f",
+    "reference_manifest": "d4c39b5ea3966547dc4eda238c6399200b6aef00063db2e0194affc6d7fc4b0e",
+    "t1_metrics": "fd0d5f07b8daef36ac9ac5db208f5c533adc3c9be4e0d5196f7d33e9b2e5a3ea"
+  },
+  "source_runs": {
+    "joint_limit_audit": "exp2_r5_q_smoke_20260814T012633",
+    "reference": "exp2_r2_gripper_refs_20260814T011336",
+    "t1_condition_d": "exp3_t1_condition_d_20260814T020613"
+  },
+  "topk_integer_mapping": {
+    "n": 12,
+    "rule": "ceil(k*n)",
+    "top10": 2,
+    "top20": 3,
+    "top30": 4
+  },
+  "uniform_null": {
+    "gini": 0,
+    "normalized_entropy": 1,
+    "top10_mass": 0.16666666666666666,
+    "top20_mass": 0.25,
+    "top30_mass": 0.3333333333333333
+  },
+  "within_demo_direction_sign_robustness": "median pairwise Spearman correlation among eight 12-point curves; stable if >=0.5"
+}

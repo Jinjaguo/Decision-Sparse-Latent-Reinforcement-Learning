@@ -1,0 +1,127 @@
+{
+  "arm_state": {
+    "joint_names": [
+      "robot0_joint1",
+      "robot0_joint2",
+      "robot0_joint3",
+      "robot0_joint4",
+      "robot0_joint5",
+      "robot0_joint6",
+      "robot0_joint7"
+    ],
+    "qpos_indexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "channels": [
+    {
+      "name": "arm_q_l2",
+      "role": "primary_component",
+      "shape": 7
+    },
+    {
+      "name": "arm_qvel_l2",
+      "role": "primary_component",
+      "shape": 7
+    },
+    {
+      "name": "eef_position_l2",
+      "role": "primary_component",
+      "shape": 3
+    },
+    {
+      "name": "eef_orientation_geodesic",
+      "role": "primary_component",
+      "units": "radian"
+    },
+    {
+      "name": "task_object_position_l2",
+      "role": "primary_component"
+    },
+    {
+      "name": "task_object_orientation_geodesic_mean",
+      "role": "primary_component",
+      "units": "radian"
+    },
+    {
+      "name": "contact_pair_symmetric_difference_count",
+      "role": "secondary"
+    },
+    {
+      "name": "raw_contact_count_difference",
+      "role": "secondary"
+    },
+    {
+      "name": "task_predicate_divergence",
+      "role": "secondary"
+    },
+    {
+      "name": "terminal_success_flip",
+      "role": "secondary"
+    },
+    {
+      "name": "integration_state_l2",
+      "role": "diagnostic_only"
+    }
+  ],
+  "contact_source": "all active sim.data.contact pairs with geom IDs and names",
+  "eef_source": "env.robots[0].eef_site_id -> sim.data.site_xpos/site_xmat",
+  "frozen_at_utc": "2026-08-14T06:16:23.646369+00:00",
+  "manifest_name": "effect_channel_schema",
+  "outcome_blind": true,
+  "predicate_source": "env.check_success(), exactly the parsed BDDL conjunction",
+  "project_git_sha": "ad63a15eb18cd722deef7e334e302de338364fe1",
+  "schema_version": 1,
+  "source_file_sha256": {
+    "branch_manifest": "609ea421dadb2b19d8a5a70d99eae755e7e105ef2de3ec9e3a836a15059ae087",
+    "exp3_config": "b0c087f0d38a98af4d9e3e570260a128405737c4c34079c6e7b88194292c0327",
+    "joint_limits": "591f94f4b356ac186701b1dc4beff6ee6d7fc1329975e3a14c78b9d001e8f92f",
+    "reference_manifest": "d4c39b5ea3966547dc4eda238c6399200b6aef00063db2e0194affc6d7fc4b0e",
+    "t1_metrics": "fd0d5f07b8daef36ac9ac5db208f5c533adc3c9be4e0d5196f7d33e9b2e5a3ea"
+  },
+  "source_runs": {
+    "joint_limit_audit": "exp2_r5_q_smoke_20260814T012633",
+    "reference": "exp2_r2_gripper_refs_20260814T011336",
+    "t1_condition_d": "exp3_t1_condition_d_20260814T020613"
+  },
+  "task_object_audit": {
+    "open_the_middle_drawer_of_the_cabinet": {
+      "bddl_goal": [
+        "open",
+        "wooden_cabinet_1_middle_region"
+      ],
+      "bodies": [
+        "wooden_cabinet_1_cabinet_middle"
+      ],
+      "predicate_source": "Open.__call__ -> SiteObjectState.is_open -> WoodenCabinet.is_open"
+    },
+    "put_the_bowl_on_the_plate": {
+      "bddl_goal": [
+        "on",
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "bodies": [
+        "akita_black_bowl_1_main",
+        "plate_1_main"
+      ],
+      "predicate_source": "On.__call__ -> plate ObjectState.check_ontop(bowl)"
+    },
+    "turn_on_the_stove": {
+      "bddl_goal": [
+        "turnon",
+        "flat_stove_1"
+      ],
+      "bodies": [
+        "flat_stove_1_button"
+      ],
+      "predicate_source": "TurnOn.__call__ -> ObjectState.turn_on -> FlatStove.turn_on"
+    }
+  }
+}

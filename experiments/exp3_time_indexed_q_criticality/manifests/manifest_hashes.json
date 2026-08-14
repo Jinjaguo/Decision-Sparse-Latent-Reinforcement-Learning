@@ -1,0 +1,30 @@
+{
+  "frozen_at_utc": "2026-08-14T06:16:23.646369+00:00",
+  "manifest_name": "manifest_hashes",
+  "manifests": {
+    "branch_manifest.json": "686761a062f211fd0223c06550b03ad5ff74cc3e282f935b05f92794fd1d4502",
+    "direction_manifest.json": "570c4c127e159a9a789187f0fe284bdcb2cc42cbb7366613837c96b3e5bf390f",
+    "effect_channel_schema.json": "e7ed017c012f6f3d5418a1597bc48bda692f3be025c40e94ec1ee8550283c8c8",
+    "effect_normalization.json": "906ca20e409a2878e1bbe0b39a6d46c00009d35b7d7a2e6b64a36ea222cdaa12",
+    "event_manifest.json": "6fb4d87d2e270eb8033b4ec553e85e6e36b98d943038ef6cecef6a25c9da565c",
+    "primary_metric_spec.json": "05df556491bd6cd3d626189ebfbca57cbb6526f2cb7780720e066923bca2ef3d",
+    "scientific_decision_rule.json": "4ea56a7ad1b5860bcd4c09690f59ca48b0f81ecfd9de4da3ff18bcf59c8cd8d0",
+    "statistical_analysis_plan.json": "22375c893db5e1d1d51084dcc628e1046dd52683b98e5069f2eca01b8ca4955d",
+    "task_demo_manifest.json": "edcebd1940ed916dc3e44014f57a0dae25493e5ca3ebfbf97a48cb728b0713bb"
+  },
+  "outcome_blind": true,
+  "project_git_sha": "ad63a15eb18cd722deef7e334e302de338364fe1",
+  "schema_version": 1,
+  "source_file_sha256": {
+    "branch_manifest": "609ea421dadb2b19d8a5a70d99eae755e7e105ef2de3ec9e3a836a15059ae087",
+    "exp3_config": "b0c087f0d38a98af4d9e3e570260a128405737c4c34079c6e7b88194292c0327",
+    "joint_limits": "591f94f4b356ac186701b1dc4beff6ee6d7fc1329975e3a14c78b9d001e8f92f",
+    "reference_manifest": "d4c39b5ea3966547dc4eda238c6399200b6aef00063db2e0194affc6d7fc4b0e",
+    "t1_metrics": "fd0d5f07b8daef36ac9ac5db208f5c533adc3c9be4e0d5196f7d33e9b2e5a3ea"
+  },
+  "source_runs": {
+    "joint_limit_audit": "exp2_r5_q_smoke_20260814T012633",
+    "reference": "exp2_r2_gripper_refs_20260814T011336",
+    "t1_condition_d": "exp3_t1_condition_d_20260814T020613"
+  }
+}

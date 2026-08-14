@@ -1,0 +1,57 @@
+{
+  "binary_and_count_channels_not_normalized": [
+    "contact_pair_symmetric_difference_count",
+    "raw_contact_count_difference",
+    "task_predicate_divergence",
+    "terminal_success_flip"
+  ],
+  "continuous_denominators": {
+    "arm_q_l2": {
+      "derivation": "L2 norm of audited Panda joint ranges",
+      "value": 13.037036319654863
+    },
+    "arm_qvel_l2": {
+      "derivation": "P95 reference finite-difference q speed at 20 Hz; 1 rad/s stability floor",
+      "value": 1.2249549461461373
+    },
+    "eef_orientation_geodesic": {
+      "derivation": "physical SO(3) maximum",
+      "value": 3.141592653589793
+    },
+    "eef_position_l2": {
+      "derivation": "reference EEF workspace bounding-box diagonal; 5 cm stability floor",
+      "value": 0.6928091503897607
+    },
+    "task_object_orientation_geodesic_mean": {
+      "derivation": "physical quaternion maximum",
+      "value": 3.141592653589793
+    },
+    "task_object_position_l2": {
+      "derivation": "reference target-body bounding-box diagonal; 1 cm stability floor",
+      "value_by_task": {
+        "open_the_middle_drawer_of_the_cabinet": 0.16955249822687665,
+        "put_the_bowl_on_the_plate": 0.21082983988875573,
+        "turn_on_the_stove": 0.016546450737242712
+      }
+    }
+  },
+  "frozen_at_utc": "2026-08-14T06:16:23.646369+00:00",
+  "manifest_name": "effect_normalization",
+  "outcome_blind": true,
+  "project_git_sha": "ad63a15eb18cd722deef7e334e302de338364fe1",
+  "reference_only": true,
+  "schema_version": 1,
+  "source_file_sha256": {
+    "branch_manifest": "609ea421dadb2b19d8a5a70d99eae755e7e105ef2de3ec9e3a836a15059ae087",
+    "exp3_config": "b0c087f0d38a98af4d9e3e570260a128405737c4c34079c6e7b88194292c0327",
+    "joint_limits": "591f94f4b356ac186701b1dc4beff6ee6d7fc1329975e3a14c78b9d001e8f92f",
+    "reference_manifest": "d4c39b5ea3966547dc4eda238c6399200b6aef00063db2e0194affc6d7fc4b0e",
+    "t1_metrics": "fd0d5f07b8daef36ac9ac5db208f5c533adc3c9be4e0d5196f7d33e9b2e5a3ea"
+  },
+  "source_runs": {
+    "joint_limit_audit": "exp2_r5_q_smoke_20260814T012633",
+    "reference": "exp2_r2_gripper_refs_20260814T011336",
+    "t1_condition_d": "exp3_t1_condition_d_20260814T020613"
+  },
+  "zero_noise_rule": "report raw matched-zero distributions; continuous exact-zero gate is <=1e-12 integration L2"
+}

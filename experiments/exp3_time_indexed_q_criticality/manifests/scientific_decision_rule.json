@@ -1,0 +1,47 @@
+{
+  "broad_sensitivity": {
+    "rule": "demo-median top20_mass <0.40 and >=80% of branches have >=50% of their eight interventions above 0.01"
+  },
+  "frozen_at_utc": "2026-08-14T06:16:23.646369+00:00",
+  "manifest_name": "scientific_decision_rule",
+  "no_support": {
+    "rule": "none of strong, partial, broad, or saturation conditions hold"
+  },
+  "outcome_blind": true,
+  "partial_support": {
+    "rule": "not strong, but demo-median top20_mass >=0.40 and hierarchical CI lower >0.25, or replicated rank agreement >=0.50 in exactly one task"
+  },
+  "priority": [
+    "strong_support",
+    "partial_support",
+    "saturation_flag",
+    "broad_sensitivity",
+    "no_support"
+  ],
+  "project_git_sha": "ad63a15eb18cd722deef7e334e302de338364fe1",
+  "saturation_flag": {
+    "rule": ">=95% of interventions exceed 0.01 and demo-median top20_mass <0.40"
+  },
+  "schema_version": 1,
+  "source_file_sha256": {
+    "branch_manifest": "609ea421dadb2b19d8a5a70d99eae755e7e105ef2de3ec9e3a836a15059ae087",
+    "exp3_config": "b0c087f0d38a98af4d9e3e570260a128405737c4c34079c6e7b88194292c0327",
+    "joint_limits": "591f94f4b356ac186701b1dc4beff6ee6d7fc1329975e3a14c78b9d001e8f92f",
+    "reference_manifest": "d4c39b5ea3966547dc4eda238c6399200b6aef00063db2e0194affc6d7fc4b0e",
+    "t1_metrics": "fd0d5f07b8daef36ac9ac5db208f5c533adc3c9be4e0d5196f7d33e9b2e5a3ea"
+  },
+  "source_runs": {
+    "joint_limit_audit": "exp2_r5_q_smoke_20260814T012633",
+    "reference": "exp2_r2_gripper_refs_20260814T011336",
+    "t1_condition_d": "exp3_t1_condition_d_20260814T020613"
+  },
+  "strong_support": {
+    "all_required": [
+      "demo-median top20_mass >= 0.50",
+      "hierarchical 95% CI lower bound for demo-median top20_mass > 0.25 uniform null",
+      "at least 2 of 3 tasks have median cross-demo Spearman >= 0.50",
+      "at least 6 of 9 demos have direction/sign robustness >= 0.50",
+      "all leave-one-demo-out pooled top20_mass estimates >= 0.45"
+    ]
+  }
+}

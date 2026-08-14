@@ -1,6 +1,7 @@
 import sys
 import unittest
 from pathlib import Path
+import json
 
 import numpy as np
 
@@ -49,7 +50,20 @@ class Exp3CriticalityTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             aggregate_interventions(range(7))
 
+    def test_frozen_pcg64_directions_are_exactly_reproducible(self):
+        path = REPOSITORY_ROOT / "experiments/exp3_time_indexed_q_criticality/manifests/direction_manifest.json"
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+        self.assertEqual(432, manifest["direction_count"])
+        self.assertEqual(864, manifest["signed_intervention_count"])
+        for row in manifest["directions"]:
+            seed = np.random.SeedSequence(manifest["master_seed_uint64"], spawn_key=tuple(row["spawn_key"]))
+            raw = np.random.Generator(np.random.PCG64(seed)).standard_normal(7)
+            unit = raw / np.linalg.norm(raw)
+            self.assertTrue(np.array_equal(raw, np.asarray(row["raw_direction"])))
+            self.assertTrue(np.array_equal(unit, np.asarray(row["unit_direction"])))
+            delta = np.asarray(row["unsigned_delta_q"])
+            self.assertTrue(np.allclose(delta, 0.005 * np.asarray([5.7946, 3.5256, 5.7946, 3.002, 5.7946, 3.77, 5.7946]) * unit))
+
 
 if __name__ == "__main__":
     unittest.main()
-
