@@ -16,7 +16,7 @@ from decision_sparse_rl.metrics.exp8 import (
     upper_tail,
 )
 from scripts.exp8.contact_frame import _surface_pair
-from scripts.exp8.analyze_formal import float_stack
+from scripts.exp8.analyze_formal import float_array, float_stack
 
 
 def test_tangent_gauge_is_deterministic_and_right_handed():
@@ -105,3 +105,12 @@ def test_float_stack_converts_nested_arrow_style_objects():
     result = float_stack(nested)
     assert result.dtype == np.float64
     assert np.array_equal(result, [[1.0, 2.0], [3.0, 4.0]])
+
+
+def test_float_array_converts_object_rows_from_nested_parquet_cells():
+    cell = np.empty(2, dtype=object)
+    cell[0] = np.array([1.0, 2.0])
+    cell[1] = np.array([3.0, 4.0])
+    result = float_array(cell)
+    assert result.dtype == np.float64
+    assert result.shape == (2, 2)

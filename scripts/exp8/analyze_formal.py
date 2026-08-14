@@ -29,9 +29,17 @@ def write(rows, path):
     pq.write_table(pa.Table.from_pylist(rows), path, compression="zstd")
 
 
+def float_array(value):
+    """Materialize an Arrow/Pandas nested cell as a dense float64 array."""
+    array = np.asarray(value)
+    if array.dtype == object and array.ndim == 1 and len(array) and np.asarray(array[0]).ndim:
+        return np.stack([np.asarray(item, dtype=np.float64) for item in array])
+    return np.asarray(value, dtype=np.float64)
+
+
 def float_stack(values):
     """Materialize Arrow/Pandas nested values as a dense float64 matrix."""
-    return np.stack([np.asarray(value, dtype=np.float64) for value in values])
+    return np.stack([float_array(value) for value in values])
 
 
 def features(row, groups):
@@ -67,7 +75,7 @@ def ridge(train_x, train_y, test_x, alpha):
 
 
 def top1_from_operator(operator):
-    _, _, right = np.linalg.svd(np.asarray(operator), full_matrices=False)
+    _, _, right = np.linalg.svd(float_array(operator), full_matrices=False)
     return right[0]
 
 
@@ -123,7 +131,7 @@ def choose_parameters(train, groups, alpha_grid, bandwidth_grid, model):
             ytrain = float_stack(inner_train.operator_flat)
             predicted = krr(xtrain, ytrain, xtest, alpha, bandwidth) if model == "krr" else ridge(xtrain, ytrain, xtest, alpha)
             for prediction, actual in zip(predicted, inner_test.operator_matrix):
-                scores.append(operator_similarity(prediction.reshape(np.asarray(actual).shape), actual))
+                scores.append(operator_similarity(prediction.reshape(float_array(actual).shape), actual))
         scored.append((float(np.mean(scores)) if scores else -1, alpha, bandwidth))
     return max(scored, key=lambda row: (row[0], row[1], -1 if row[2] is None else row[2]))[1:]
 
@@ -148,7 +156,7 @@ def crossfit_operators(data, groups, grids, fixed_parameters=None, conditional=T
             primary_prediction = krr(primary_train, targets, primary_test, primary_alpha, bandwidth)
             baseline_prediction = ridge(baseline_train, targets, baseline_test, baseline_alpha)
             for index, row in enumerate(test.itertuples()):
-                actual = np.asarray(row.operator_matrix, dtype=np.float64); shape = actual.shape
+                actual = float_array(row.operator_matrix); shape = actual.shape
                 primary_operator = primary_prediction[index].reshape(shape); baseline_operator = baseline_prediction[index].reshape(shape)
                 pool = train
                 time_row = pool.iloc[np.argmin(np.abs(pool.normalized_time.to_numpy() - row.normalized_time))]
@@ -158,9 +166,9 @@ def crossfit_operators(data, groups, grids, fixed_parameters=None, conditional=T
                     mode_similarity = 0.0
                 else:
                     same_row = same.iloc[np.argmin(np.abs(same.normalized_time.to_numpy() - row.normalized_time))]
-                    mode_similarity = operator_similarity(np.asarray(same_row.operator_matrix), actual)
-                time_similarity = operator_similarity(np.asarray(time_row.operator_matrix), actual)
-                progress_similarity = operator_similarity(np.asarray(progress_row.operator_matrix), actual)
+                    mode_similarity = operator_similarity(float_array(same_row.operator_matrix), actual)
+                time_similarity = operator_similarity(float_array(time_row.operator_matrix), actual)
+                progress_similarity = operator_similarity(float_array(progress_row.operator_matrix), actual)
                 baseline_b_similarity = operator_similarity(baseline_operator, actual)
                 primary_similarity = operator_similarity(primary_operator, actual)
                 best = max(mode_similarity, time_similarity, progress_similarity, baseline_b_similarity)
@@ -212,7 +220,7 @@ def main() -> int:
     folds = pd.DataFrame(json.loads((args.manifest_dir / "crossfit_manifest.json").read_text(encoding="utf-8"))["assignments"])
     grids = json.loads((args.manifest_dir / "hyperparameter_grid.json").read_text(encoding="utf-8"))
     data = matrices.merge(operators, on=["task", "episode", "branch_time", "radius_fraction", "radius_label", "horizon"]).merge(branch_features, on=["task", "episode", "branch_time"]).merge(folds, on=["task", "episode"])
-    data["operator_flat"] = data.operator_matrix.map(lambda value: np.asarray(value, dtype=np.float64).reshape(-1))
+    data["operator_flat"] = data.operator_matrix.map(lambda value: float_array(value).reshape(-1))
     groups = ["physical_group", "nearest_points", "normal_tangent_frame", "signed_gap", "relative_velocity", "contact_age", "force", "action_projection", "eef_object_relative_pose", "physical_state"]
     smallest = min(data.radius_fraction)
     primary_data = data[(data.horizon == "1") & (data.radius_fraction == smallest)].copy()
@@ -225,7 +233,7 @@ def main() -> int:
     for row in cross.itertuples():
         key = (row.task, row.episode, row.branch_time)
         if key not in held_map: continue
-        actual_row = held_map[key]; predicted = np.asarray(row.predicted_operator, dtype=np.float64) @ np.asarray(actual_row.unit_direction, dtype=np.float64); actual = np.asarray(actual_row.actual_vector, dtype=np.float64)
+        actual_row = held_map[key]; predicted = float_array(row.predicted_operator) @ float_array(actual_row.unit_direction); actual = float_array(actual_row.actual_vector)
         error = float(np.linalg.norm(predicted - actual) / (np.linalg.norm(actual) + 1e-12))
         held_rows.append({"task": row.task, "episode": row.episode, "branch_time": row.branch_time, "predicted_vector": predicted.tolist(), "actual_vector": actual.tolist(), "predicted_norm": float(np.linalg.norm(predicted)), "actual_norm": float(np.linalg.norm(actual)), "vector_relative_error": error})
     held_frame = pd.DataFrame(held_rows); demo_held = held_frame.groupby(["task", "episode"]).apply(lambda group: pd.Series({"rho": float(spearmanr(group.predicted_norm, group.actual_norm).statistic) if len(group) > 1 else 0.0, "median_error": float(group.vector_relative_error.median())})).reset_index(); tails = upper_tail(held_frame.vector_relative_error); heldout_by_task = {task: {"demo_median_rho": float(group.rho.median()), "demo_median_vector_error": float(group.median_error.median()), **upper_tail(held_frame.loc[held_frame.task == task, "vector_relative_error"])} for task, group in demo_held.groupby("task")}
