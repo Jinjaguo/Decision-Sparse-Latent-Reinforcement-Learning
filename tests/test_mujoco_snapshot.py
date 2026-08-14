@@ -2,6 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 import sys
+import copy
 
 import mujoco
 import numpy as np
@@ -52,6 +53,13 @@ class MujocoSnapshotTest(unittest.TestCase):
             mujoco.mj_step(sim.model, sim.data)
             outputs.append(capture(sim, "integration").values)
         self.assertTrue(np.array_equal(outputs[0], outputs[1]))
+
+    def test_runtime_supports_independent_full_mjdata_copy(self):
+        sim = _RawSim()
+        cloned = copy.deepcopy(sim.data)
+        self.assertIsNot(cloned, sim.data)
+        sim.data.qpos[0] = 1.0
+        self.assertEqual(0.0, float(cloned.qpos[0]))
 
 
 if __name__ == "__main__":

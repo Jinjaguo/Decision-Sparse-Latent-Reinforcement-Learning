@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import contextlib
+import copy
 import importlib.metadata
 import io
 import json
@@ -33,12 +34,13 @@ from decision_sparse_rl.logging.run_directory import create_run_directory, write
 from decision_sparse_rl.utils.environment_audit import git_record  # noqa: E402
 
 
-CONDITIONS = (
+FORMAL_CONDITIONS = (
     ("A_LEGACY", "legacy", False),
     ("B_FULLPHYSICS", "fullphysics", False),
     ("C_INTEGRATION", "integration", False),
     ("D_INTEGRATION_CONTROLLER_ROBOT", "integration", True),
 )
+E_CONDITION = ("E_FULL_MJDATA_CONTROLLER_ROBOT", "integration", True)
 
 
 def parse_args() -> argparse.Namespace:
@@ -53,6 +55,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--branches", type=Path, default=REPOSITORY_ROOT / "experiments/exp2_simulator_reconciliation/manifests/branch_times_reconciliation.json")
     parser.add_argument("--gate-config", type=Path, default=REPOSITORY_ROOT / "experiments/exp2_simulator_reconciliation/configs/zero_twin_gate.json")
     parser.add_argument("--repeats", type=int, default=3)
+    parser.add_argument("--condition-e-only", action="store_true")
     return parser.parse_args()
 
 
@@ -97,6 +100,11 @@ def _restore_condition(env: Any, kind: str, values: np.ndarray, controller_path:
     mujoco_snapshot.restore(env.sim, snapshot)
     if restore_controller:
         controller_snapshot.restore(env, controller_snapshot.deserialize(controller_path))
+
+
+def _restore_full_data(env: Any, full_data: Any, runtime_state: Dict[str, Any]) -> None:
+    env.sim.data._data = copy.deepcopy(full_data)
+    controller_snapshot.restore(env, runtime_state)
 
 
 def _run_continuation(env: Any, actions: np.ndarray, branch: int) -> Tuple[List[Dict[str, Any]], bool]:
@@ -201,10 +209,10 @@ def _phase(normalized_time: float) -> str:
     return "early" if normalized_time < 1 / 3 else ("middle" if normalized_time < 2 / 3 else "late")
 
 
-def _summarize(step_rows: List[Dict[str, Any]], pair_rows: List[Dict[str, Any]], gate_config: Dict[str, Any]) -> Dict[str, Any]:
+def _summarize(step_rows: List[Dict[str, Any]], pair_rows: List[Dict[str, Any]], gate_config: Dict[str, Any], conditions: Sequence[Tuple[str, str, bool]]) -> Dict[str, Any]:
     thresholds = gate_config["thresholds"]
     summaries = {}
-    for condition, _, _ in CONDITIONS:
+    for condition, _, _ in conditions:
         condition_steps = [row for row in step_rows if row["condition"] == condition]
         condition_pairs = [row for row in pair_rows if row["condition"] == condition]
         integration = [row["integration_l2"] for row in condition_steps]
@@ -234,13 +242,16 @@ def _summarize(step_rows: List[Dict[str, Any]], pair_rows: List[Dict[str, Any]],
             "no_systematic_stratum_spikes": no_spikes,
         }
         summaries[condition] = {"passed": all(criteria.values()), "criteria": criteria, "comparison_count": len(condition_pairs), "step_count": len(condition_steps), "metrics": metric_summary, "integration_by_task": by_task, "strata": strata}
-    selected = "C_INTEGRATION" if summaries["C_INTEGRATION"]["passed"] else ("D_INTEGRATION_CONTROLLER_ROBOT" if summaries["D_INTEGRATION_CONTROLLER_ROBOT"]["passed"] else None)
+    if conditions == (E_CONDITION,):
+        selected = E_CONDITION[0] if summaries[E_CONDITION[0]]["passed"] else None
+    else:
+        selected = "C_INTEGRATION" if summaries["C_INTEGRATION"]["passed"] else ("D_INTEGRATION_CONTROLLER_ROBOT" if summaries["D_INTEGRATION_CONTROLLER_ROBOT"]["passed"] else None)
     return {"conditions": summaries, "selected_condition": selected, "passed": selected is not None}
 
 
-def _plots(step_rows: List[Dict[str, Any]], plot_dir: Path) -> None:
+def _plots(step_rows: List[Dict[str, Any]], plot_dir: Path, conditions: Sequence[Tuple[str, str, bool]]) -> None:
     plot_dir.mkdir(parents=True, exist_ok=True)
-    labels = [condition for condition, _, _ in CONDITIONS]
+    labels = [condition for condition, _, _ in conditions]
     data = [[row["integration_l2"] for row in step_rows if row["condition"] == condition] for condition in labels]
     plt.figure(figsize=(9, 5)); plt.boxplot(data, labels=labels, showfliers=False); plt.yscale("symlog", linthresh=1e-15); plt.ylabel("Integration-state L2"); plt.xticks(rotation=20); plt.tight_layout(); plt.savefig(plot_dir / "restore_condition_comparison.png", dpi=160); plt.close()
     plt.figure(figsize=(8, 5))
@@ -269,13 +280,14 @@ def main() -> int:
     args = parse_args()
     if args.repeats < 3:
         raise ValueError("formal gate requires at least three repeats")
+    active_conditions = (E_CONDITION,) if args.condition_e_only else FORMAL_CONDITIONS
     run_dir = create_run_directory(args.run_root, args.run_id)
     command = shlex.join([sys.executable, *sys.argv])
     captured_stdout, captured_stderr = io.StringIO(), io.StringIO()
     reference_run = args.reference_run.resolve()
     branch_manifest = json.loads(args.branches.read_text(encoding="utf-8"))
     gate_config = json.loads(args.gate_config.read_text(encoding="utf-8"))
-    config = {"run_id": args.run_id, "stage": "R4_zero_twins", "reference_run": str(reference_run), "branches": str(args.branches.resolve()), "gate_config": str(args.gate_config.resolve()), "repeats": args.repeats, "conditions": [item[0] for item in CONDITIONS]}
+    config = {"run_id": args.run_id, "stage": "R4_condition_E_diagnostic" if args.condition_e_only else "R4_zero_twins", "reference_run": str(reference_run), "branches": str(args.branches.resolve()), "gate_config": str(args.gate_config.resolve()), "repeats": args.repeats, "conditions": [item[0] for item in active_conditions], "condition_e_mechanism": "copy.deepcopy(mujoco.MjData) plus explicit controller/robot state" if args.condition_e_only else None}
     environment = {"python": sys.version, "executable": sys.executable, "numpy": np.__version__, "mujoco": importlib.metadata.version("mujoco"), "robosuite": importlib.metadata.version("robosuite"), "pyarrow": pa.__version__}
     git_state = {"project": git_record(REPOSITORY_ROOT), "libero": git_record(args.libero_root), "robosuite_source": git_record(REPOSITORY_ROOT / "third_party/robosuite-src")}
     env = None
@@ -302,7 +314,7 @@ def main() -> int:
                 with np.load(reference_directory / "trajectory_states.npz", allow_pickle=False) as archive:
                     actions = np.asarray(archive["actions"], dtype=np.float64)
                     reference_states = {kind: np.asarray(archive[kind]).copy() for kind in ("legacy", "fullphysics", "integration")}
-                for condition, kind, restores_controller in CONDITIONS:
+                for condition, kind, restores_controller in active_conditions:
                     for branch_record in trajectory["branches"]:
                         branch = int(branch_record["action_index"])
                         controller_path = reference_directory / f"controller_{branch:04d}.npz"
@@ -313,16 +325,26 @@ def main() -> int:
                             prefix_integration_error = float(np.linalg.norm(mujoco_snapshot.capture(env.sim, "integration").values - reference_states["integration"][branch]))
                             prefix_legacy_error = float(np.linalg.norm(mujoco_snapshot.capture(env.sim, "legacy").values - reference_states["legacy"][branch]))
                             prefix_errors.append({"task": task["name"], "episode": trajectory["episode"], "condition": condition, "branch_time": branch, "repeat": repeat, "integration_l2": prefix_integration_error, "legacy_l2": prefix_legacy_error})
-                            _restore_condition(env, kind, reference_states[kind][branch], controller_path, restores_controller)
-                            twin_a, _ = _run_continuation(env, actions, branch)
-                            _restore_condition(env, kind, reference_states[kind][branch], controller_path, restores_controller)
-                            twin_b, _ = _run_continuation(env, actions, branch)
+                            if condition == E_CONDITION[0]:
+                                _restore_condition(env, "integration", reference_states["integration"][branch], controller_path, True)
+                                env.sim.forward()
+                                full_data = copy.deepcopy(env.sim.data._data)
+                                full_runtime = controller_snapshot.capture(env)
+                                _restore_full_data(env, full_data, full_runtime)
+                                twin_a, _ = _run_continuation(env, actions, branch)
+                                _restore_full_data(env, full_data, full_runtime)
+                                twin_b, _ = _run_continuation(env, actions, branch)
+                            else:
+                                _restore_condition(env, kind, reference_states[kind][branch], controller_path, restores_controller)
+                                twin_a, _ = _run_continuation(env, actions, branch)
+                                _restore_condition(env, kind, reference_states[kind][branch], controller_path, restores_controller)
+                                twin_b, _ = _run_continuation(env, actions, branch)
                             identity = {"condition": condition, "task": task["name"], "episode": trajectory["episode"], "branch_time": branch, "branch_normalized_time": float(branch_record["normalized_time"]), "branch_kind": branch_record["kind"], "branch_contact_event": branch_record["kind"] == "first_maximum_contact_count_change", "phase": _phase(float(branch_record["normalized_time"])), "repeat": repeat}
                             rows, pair = _compare_pair(twin_a, twin_b, identity=identity, component_rows=component_rows)
                             step_rows.extend(rows); pair_rows.append(pair)
                     print(json.dumps({"condition": condition, "task": task["name"], "episode": trajectory["episode"], "pairs_completed": len(trajectory["branches"]) * args.repeats}, sort_keys=True))
                 env.close(); env = None
-            summary = _summarize(step_rows, pair_rows, gate_config)
+            summary = _summarize(step_rows, pair_rows, gate_config, active_conditions)
             artifacts = run_dir / "artifacts"
             pq.write_table(pa.Table.from_pylist(step_rows), artifacts / "zero_twin_comparisons.parquet", compression="zstd")
             pq.write_table(pa.Table.from_pylist(component_rows), artifacts / "component_errors.parquet", compression="zstd")
@@ -331,8 +353,8 @@ def main() -> int:
             write_json(artifacts / "prefix_replay_errors.json", prefix_errors)
             failures = sorted((row for row in pair_rows if row["maximum_integration_l2"] > 0 or not row["final_success_agreement"]), key=lambda row: row["maximum_integration_l2"], reverse=True)[:100]
             write_json(artifacts / "failure_examples.json", failures)
-            _plots(step_rows, artifacts / "plots")
-            metrics = {"run_id": args.run_id, "status": "completed", "gate": summary, "pair_count": len(pair_rows), "step_count": len(step_rows), "component_row_count": len(component_rows), "maximum_prefix_replay_integration_l2": max(row["integration_l2"] for row in prefix_errors), "maximum_prefix_replay_legacy_l2": max(row["legacy_l2"] for row in prefix_errors), "r5_legally_reached": bool(summary["passed"])}
+            _plots(step_rows, artifacts / "plots", active_conditions)
+            metrics = {"run_id": args.run_id, "status": "completed", "gate": summary, "pair_count": len(pair_rows), "step_count": len(step_rows), "component_row_count": len(component_rows), "maximum_prefix_replay_integration_l2": max(row["integration_l2"] for row in prefix_errors), "maximum_prefix_replay_legacy_l2": max(row["legacy_l2"] for row in prefix_errors), "condition_e_diagnostic": bool(args.condition_e_only), "r5_legally_reached": bool(summary["passed"] and not args.condition_e_only)}
             print(json.dumps({"gate": summary, "pair_count": len(pair_rows)}, sort_keys=True))
         write_run_record(run_dir, config=config, command=command, environment=environment, git_state=git_state, stdout=captured_stdout.getvalue(), stderr=captured_stderr.getvalue(), metrics=metrics)
         return 0 if metrics["gate"]["passed"] else 2
