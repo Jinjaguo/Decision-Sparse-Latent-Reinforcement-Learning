@@ -1,0 +1,22 @@
+{
+  "locked_before_analysis": true,
+  "raw_run_id": "exp8_s11_formal_raw_locked_r1_20260814",
+  "sha256": {
+    "interventions.parquet": "31cd1ff86a9196c83d0c7312e4c1013fa80671db28ebf793e091a376d6540c9a",
+    "per_step_effects.parquet": "58c293bd7cf6f389f2e221b1ff28efdd6c269a13148c0f66645877b1d58dd8c3",
+    "zero_controls.parquet": "1c0353e49323e18f11114345e83e4ae15038fbeb5533fa87828406bd13dbaaff",
+    "zero_reference_steps.parquet": "a99212b5dd4d52a27dc67e1e39b33b3b2329fd37d926a2722a9027a01fa29279"
+  },
+  "source_metrics_sha256": {
+    "exp8_s10_formal_shard_00_20260814": "02bcb737657dbae8def57d112503e257a4a83903c554c4db69b692126ae2e30f",
+    "exp8_s10_formal_shard_01_20260814": "19175ee506b95d4a3a93c854ea9d426f0622bed5816f4ff9a23621beb9bdde3a",
+    "exp8_s10_formal_shard_02_20260814": "ac524958bf4c107cb8fb9777a055fdc79133e610a4e655884d5de0f8b4e6408f",
+    "exp8_s10_formal_shard_03_20260814": "36debf2218ab92dbfe5c3b85a7841f7dcbffa4c7525d9e948ab151f3105397f0",
+    "exp8_s10_formal_shard_04_20260814": "aabc1bc1d8b6d5d1424197fdcf8e6734cff347a4042fc8e45f8aeddaf240bc45",
+    "exp8_s10_formal_shard_05_20260814": "54199cc7f68dbc6129b5f6d1d8a010bee0e1d255c9079b916d7e7eed775d8252",
+    "exp8_s10_formal_shard_06_20260814": "7afdb77b590600781cd79db428ff3fbb241d001796d3b9247d517bbdf7e0c8b4",
+    "exp8_s10_formal_shard_07_20260814": "1a72998f066808fbaedaff467bf1d94d2ab2764efba3c3a7dc3d2c721b53c155",
+    "exp8_s10_formal_shard_08_20260814": "1f8422cd5539e5c6587e1129beb37cbc61981e79eab43dfbd60085aa3944e70d",
+    "exp8_s10_formal_shard_09_20260814": "4292cab470ae85c08951d2fa7abc54b9c9d1283f619b89a77f86c884bbdf7882"
+  }
+}
