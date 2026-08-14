@@ -19,8 +19,8 @@
   "rounding": "Python round(q * (T - 1)) converted to int",
   "schema_version": 1,
   "selection_is_q_outcome_blind": true,
-  "source_reference_manifest": "C:\\Users\\Guoji\\Documents\\ChatGPT\\Decision-Sparse Latent Reinforcement Learning\\runs\\exp2_r2_clean_refs_20260814T001619\\artifacts\\reference_snapshots_manifest.json",
-  "source_reference_run_id": "exp2_r2_clean_refs_20260814T001619",
+  "source_reference_manifest": "C:\\Users\\Guoji\\Documents\\ChatGPT\\Decision-Sparse Latent Reinforcement Learning\\runs\\exp2_r2_canonical_refs_20260814T001905\\artifacts\\reference_snapshots_manifest.json",
+  "source_reference_run_id": "exp2_r2_canonical_refs_20260814T001905",
   "trajectories": [
     {
       "branches": [
@@ -229,7 +229,7 @@
         },
         {
           "action_index": 103,
-          "contact_count": 37,
+          "contact_count": 40,
           "gripper_command": -1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.7518248175182481,
@@ -239,7 +239,7 @@
         },
         {
           "action_index": 116,
-          "contact_count": 40,
+          "contact_count": 38,
           "gripper_command": -1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.8467153284671532,
@@ -249,7 +249,7 @@
         },
         {
           "action_index": 130,
-          "contact_count": 39,
+          "contact_count": 37,
           "gripper_command": -1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.948905109489051,
@@ -270,16 +270,16 @@
           "target": 68
         },
         {
-          "action_index": 105,
-          "contact_count": 42,
+          "action_index": 96,
+          "contact_count": 40,
           "event_valid": true,
           "fallback_rule": null,
           "gripper_command": -1.0,
           "invalid_reason": null,
           "kind": "first_maximum_contact_count_change",
-          "normalized_time": 0.7664233576642335,
+          "normalized_time": 0.7007299270072993,
           "replacement_offset": 0,
-          "target": 105
+          "target": 96
         }
       ],
       "episode": "demo_1",
@@ -352,7 +352,7 @@
         },
         {
           "action_index": 98,
-          "contact_count": 38,
+          "contact_count": 37,
           "gripper_command": -1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.6533333333333333,
@@ -362,7 +362,7 @@
         },
         {
           "action_index": 112,
-          "contact_count": 40,
+          "contact_count": 41,
           "gripper_command": -1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.7466666666666667,
@@ -372,7 +372,7 @@
         },
         {
           "action_index": 128,
-          "contact_count": 38,
+          "contact_count": 39,
           "gripper_command": -1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.8533333333333334,
@@ -382,7 +382,7 @@
         },
         {
           "action_index": 142,
-          "contact_count": 38,
+          "contact_count": 39,
           "gripper_command": -1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.9466666666666667,
@@ -403,16 +403,16 @@
           "target": 75
         },
         {
-          "action_index": 83,
-          "contact_count": 40,
+          "action_index": 97,
+          "contact_count": 41,
           "event_valid": true,
           "fallback_rule": null,
           "gripper_command": -1.0,
           "invalid_reason": null,
           "kind": "first_maximum_contact_count_change",
-          "normalized_time": 0.5533333333333333,
-          "replacement_offset": 0,
-          "target": 83
+          "normalized_time": 0.6466666666666666,
+          "replacement_offset": -1,
+          "target": 98
         }
       ],
       "episode": "demo_2",
@@ -485,7 +485,7 @@
         },
         {
           "action_index": 51,
-          "contact_count": 40,
+          "contact_count": 42,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.6455696202531646,
@@ -515,7 +515,7 @@
         },
         {
           "action_index": 75,
-          "contact_count": 38,
+          "contact_count": 39,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.9493670886075949,
@@ -525,7 +525,7 @@
         },
         {
           "action_index": 41,
-          "contact_count": 40,
+          "contact_count": 43,
           "event_valid": true,
           "fallback_rule": null,
           "gripper_command": 1.0,
@@ -618,7 +618,7 @@
         },
         {
           "action_index": 62,
-          "contact_count": 39,
+          "contact_count": 38,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.6526315789473685,
@@ -628,7 +628,7 @@
         },
         {
           "action_index": 71,
-          "contact_count": 40,
+          "contact_count": 41,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.7473684210526316,
@@ -741,7 +741,7 @@
         },
         {
           "action_index": 48,
-          "contact_count": 38,
+          "contact_count": 39,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.5454545454545454,
@@ -751,7 +751,7 @@
         },
         {
           "action_index": 57,
-          "contact_count": 40,
+          "contact_count": 41,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.6477272727272727,
@@ -761,7 +761,7 @@
         },
         {
           "action_index": 66,
-          "contact_count": 39,
+          "contact_count": 37,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.75,
@@ -802,16 +802,16 @@
           "target": 40
         },
         {
-          "action_index": 56,
-          "contact_count": 37,
+          "action_index": 55,
+          "contact_count": 42,
           "event_valid": true,
           "fallback_rule": null,
           "gripper_command": 1.0,
           "invalid_reason": null,
           "kind": "first_maximum_contact_count_change",
-          "normalized_time": 0.6363636363636364,
-          "replacement_offset": -1,
-          "target": 57
+          "normalized_time": 0.625,
+          "replacement_offset": 0,
+          "target": 55
         }
       ],
       "episode": "demo_2",
@@ -864,7 +864,7 @@
         },
         {
           "action_index": 40,
-          "contact_count": 18,
+          "contact_count": 19,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.449438202247191,
@@ -894,7 +894,7 @@
         },
         {
           "action_index": 67,
-          "contact_count": 21,
+          "contact_count": 20,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.7528089887640449,
@@ -904,7 +904,7 @@
         },
         {
           "action_index": 76,
-          "contact_count": 20,
+          "contact_count": 21,
           "gripper_command": -1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.8539325842696629,
@@ -936,7 +936,7 @@
         },
         {
           "action_index": 68,
-          "contact_count": 12,
+          "contact_count": 10,
           "event_valid": true,
           "fallback_rule": null,
           "gripper_command": 1.0,
@@ -997,7 +997,7 @@
         },
         {
           "action_index": 39,
-          "contact_count": 40,
+          "contact_count": 37,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.4482758620689655,
@@ -1007,7 +1007,7 @@
         },
         {
           "action_index": 48,
-          "contact_count": 22,
+          "contact_count": 23,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.5517241379310345,
@@ -1017,7 +1017,7 @@
         },
         {
           "action_index": 57,
-          "contact_count": 22,
+          "contact_count": 26,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.6551724137931034,
@@ -1027,7 +1027,7 @@
         },
         {
           "action_index": 65,
-          "contact_count": 23,
+          "contact_count": 26,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.7471264367816092,
@@ -1037,7 +1037,7 @@
         },
         {
           "action_index": 74,
-          "contact_count": 25,
+          "contact_count": 24,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.8505747126436781,
@@ -1047,7 +1047,7 @@
         },
         {
           "action_index": 83,
-          "contact_count": 20,
+          "contact_count": 21,
           "gripper_command": -1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.9540229885057471,
@@ -1068,16 +1068,16 @@
           "target": 36
         },
         {
-          "action_index": 77,
+          "action_index": 44,
           "contact_count": 28,
           "event_valid": true,
           "fallback_rule": null,
           "gripper_command": 1.0,
           "invalid_reason": null,
           "kind": "first_maximum_contact_count_change",
-          "normalized_time": 0.8850574712643678,
+          "normalized_time": 0.5057471264367817,
           "replacement_offset": 0,
-          "target": 77
+          "target": 44
         }
       ],
       "episode": "demo_1",
@@ -1130,7 +1130,7 @@
         },
         {
           "action_index": 41,
-          "contact_count": 33,
+          "contact_count": 31,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.45054945054945056,
@@ -1140,7 +1140,7 @@
         },
         {
           "action_index": 50,
-          "contact_count": 20,
+          "contact_count": 19,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.5494505494505495,
@@ -1180,7 +1180,7 @@
         },
         {
           "action_index": 86,
-          "contact_count": 24,
+          "contact_count": 29,
           "gripper_command": 1.0,
           "kind": "temporal_quantile",
           "normalized_time": 0.945054945054945,
@@ -1201,16 +1201,16 @@
           "target": 36
         },
         {
-          "action_index": 48,
-          "contact_count": 20,
+          "action_index": 89,
+          "contact_count": 37,
           "event_valid": true,
           "fallback_rule": null,
-          "gripper_command": 1.0,
+          "gripper_command": -1.0,
           "invalid_reason": null,
           "kind": "first_maximum_contact_count_change",
-          "normalized_time": 0.5274725274725275,
+          "normalized_time": 0.978021978021978,
           "replacement_offset": 0,
-          "target": 48
+          "target": 89
         }
       ],
       "episode": "demo_2",
