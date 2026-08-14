@@ -39,7 +39,9 @@ def write_libero_config(
 def import_benchmark_from_source(libero_root: Path, config_directory: Path) -> Any:
     """Import the benchmark API from the exact checkout and assert its source path."""
 
-    import_root = (libero_root / "libero").resolve()
+    # The checkout uses an implicit outer ``libero`` namespace directory. The
+    # repository root, not that namespace directory, must therefore be on sys.path.
+    import_root = libero_root.resolve()
     os.environ["LIBERO_CONFIG_PATH"] = str(config_directory.resolve())
     sys.path.insert(0, str(import_root))
     benchmark = importlib.import_module("libero.libero.benchmark")

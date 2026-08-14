@@ -191,7 +191,7 @@ def build_environment_audit(
         "libero_source": {
             "version": parse_setup_version(libero_root / "setup.py"),
             "setup_file": str((libero_root / "setup.py").resolve()),
-            "python_import_root": str((libero_root / "libero").resolve()),
+            "python_import_root": str(libero_root.resolve()),
         },
         "robosuite_source_git": git_record(robosuite_source_root),
         "runtime": {

@@ -10,6 +10,7 @@ import json
 from pathlib import Path
 import shlex
 import sys
+import traceback
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
@@ -51,12 +52,45 @@ def main() -> int:
     if args.manifest.exists():
         raise FileExistsError(f"refusing to overwrite task manifest: {args.manifest}")
     run_dir = create_run_directory(args.run_root, args.run_id)
+    run_config = {
+        "run_id": args.run_id,
+        "stage": "E1_task_enumeration",
+        "libero_root": str(args.libero_root.resolve()),
+        "dataset_root": str(args.dataset_root.resolve()),
+        "manifest": str(args.manifest.resolve()),
+    }
+    command = shlex.join([sys.executable, *sys.argv])
+    environment = {"python": sys.version, "executable": sys.executable}
+    project_git = git_record(REPOSITORY_ROOT)
+    libero_git = git_record(args.libero_root)
     config_directory = run_dir / "artifacts" / "libero_config"
-    config_file = write_libero_config(config_directory, args.libero_root, args.dataset_root)
     captured = io.StringIO()
-    with contextlib.redirect_stdout(captured):
-        benchmark = import_benchmark_from_source(args.libero_root, config_directory)
-        suites, suite_errors = enumerate_registered_benchmarks(benchmark)
+    try:
+        config_file = write_libero_config(config_directory, args.libero_root, args.dataset_root)
+        with contextlib.redirect_stdout(captured):
+            benchmark = import_benchmark_from_source(args.libero_root, config_directory)
+            suites, suite_errors = enumerate_registered_benchmarks(benchmark)
+    except Exception as exc:
+        error_text = traceback.format_exc()
+        failure = {
+            "run_id": args.run_id,
+            "status": "failed",
+            "exception_type": type(exc).__name__,
+            "exception": str(exc),
+        }
+        write_run_record(
+            run_dir,
+            config=run_config,
+            command=command,
+            environment=environment,
+            git_state={"project": project_git, "libero": libero_git},
+            metrics=failure,
+            stdout=captured.getvalue(),
+            stderr=error_text,
+        )
+        print(error_text, file=sys.stderr, end="")
+        print(f"run_dir={run_dir}", file=sys.stderr)
+        return 1
     task_count = sum(suite["task_count"] for suite in suites.values())
     manifest = {
         "source": {
@@ -80,19 +114,11 @@ def main() -> int:
         "manifest": str(args.manifest.resolve()),
     }
     stdout = captured.getvalue() + json.dumps(summary, indent=2, sort_keys=True) + "\n"
-    project_git = git_record(REPOSITORY_ROOT)
-    libero_git = git_record(args.libero_root)
     write_run_record(
         run_dir,
-        config={
-            "run_id": args.run_id,
-            "stage": "E1_task_enumeration",
-            "libero_root": str(args.libero_root.resolve()),
-            "dataset_root": str(args.dataset_root.resolve()),
-            "manifest": str(args.manifest.resolve()),
-        },
-        command=shlex.join([sys.executable, *sys.argv]),
-        environment={"python": sys.version, "executable": sys.executable},
+        config=run_config,
+        command=command,
+        environment=environment,
         git_state={"project": project_git, "libero": libero_git},
         metrics=summary,
         stdout=stdout,
