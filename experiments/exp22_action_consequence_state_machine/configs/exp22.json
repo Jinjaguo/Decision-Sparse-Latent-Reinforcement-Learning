@@ -1,5 +1,8 @@
 {
   "primary_selection": "calibration_only",
+  "frozen_primary": "F3_diverse_periodic_cycle",
+  "calibration_run": "exp22_s1_calibration_consequence_fsm_r2_20260815",
+  "calibration_safe_success_rate": 0.875,
   "default_max_steps": 140,
   "candidate_max_steps": [220, 240, 260, 280],
   "route_count": 9,
