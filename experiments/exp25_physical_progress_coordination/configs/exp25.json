@@ -1,0 +1,12 @@
+{
+  "frozen_primary": "U0_physical_progress_primary",
+  "drawer_progress": "negative current middle-drawer joint qpos",
+  "drawer_modes": ["goal consequence", "smooth", "response alignment", "medoid"],
+  "confirmation_episodes": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "confirmation_branch_count": 120,
+  "unique_denominator_required": 120,
+  "action_library": "exp8_s2_independent_refs_20260814",
+  "target_future_access": false,
+  "maximum_steps": 320,
+  "utility_gates_unchanged": true
+}

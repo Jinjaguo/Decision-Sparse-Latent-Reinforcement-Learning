@@ -78,3 +78,15 @@ def test_exp24_primary_dispatches_distinct_task_controls():
     assert "force_guard" not in controls["put_the_bowl_on_the_plate"]
     assert controls["turn_on_the_stove"]["force_guard"] == "scale"
     assert len(EXP24_ROUTES) == 9
+
+
+def test_exp25_primary_uses_physical_drawer_stall():
+    from scripts.exp15.run_recovery_stage import EXP25_ROUTES
+
+    primary = next(route for route in EXP25_ROUTES if route["route"] == "U0_physical_progress_primary")
+    drawer = primary["task_controls"]["open_the_middle_drawer_of_the_cabinet"]
+    assert drawer["physical_stall_window"] == 20
+    assert drawer["minimum_physical_gain"] > 0
+    assert drawer["force_guard"] == "retract"
+    assert len(drawer["modes"]) == 4
+    assert len(EXP25_ROUTES) == 9

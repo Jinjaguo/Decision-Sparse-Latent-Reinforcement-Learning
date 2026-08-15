@@ -116,6 +116,25 @@ EXP24_ROUTES=[
     {"route":"T6_drawer_goal_retarget","modes":["C4_smooth_low"],"task_controls":{"open_the_middle_drawer_of_the_cabinet":{"modes":["C6_goal_retarget","C0_goal_consequence","C4_smooth_low"],"stall_window":20,"minimum_progress_gain":0.02,"minimum_dwell":25,"maximum_dwell":75,"force_guard":"retract","guard_fraction":0.70,"guard_gain":1.0},"put_the_bowl_on_the_plate":BOWL_STABLE,"turn_on_the_stove":STOVE_SOFT},"max_steps":320},
     {"route":"T7_drawer_medoid_goal","modes":["C4_smooth_low"],"task_controls":{"open_the_middle_drawer_of_the_cabinet":{"modes":["C5_conservative_medoid","C0_goal_consequence","C2_response_alignment"],"stall_window":24,"minimum_progress_gain":0.02,"minimum_dwell":25,"maximum_dwell":80,"force_guard":"retract","guard_fraction":0.70,"guard_gain":1.0},"put_the_bowl_on_the_plate":BOWL_STABLE,"turn_on_the_stove":STOVE_SOFT},"max_steps":320},
 ]
+
+
+def drawer_control(modes,window=20,dwell=25,maximum=75,retreat=True):
+    value={"modes":modes,"physical_stall_window":window,"minimum_physical_gain":0.003,"minimum_dwell":dwell,"maximum_dwell":maximum}
+    if retreat:value.update({"force_guard":"retract","guard_fraction":0.70,"guard_gain":1.0})
+    return value
+
+
+EXP25_ROUTES=[
+    {"route":"D_physical_chunk","view":"physical","k":1,"replan":10,"monotone":False,"advance":0,"retarget":0.0,"aggregate":"nearest","smooth":0.0,"max_steps":140},
+    {"route":"U0_physical_progress_primary","modes":["C4_smooth_low"],"task_controls":{"open_the_middle_drawer_of_the_cabinet":drawer_control(["C0_goal_consequence","C4_smooth_low","C2_response_alignment","C5_conservative_medoid"]),"put_the_bowl_on_the_plate":BOWL_STABLE,"turn_on_the_stove":STOVE_SOFT},"max_steps":320},
+    {"route":"U1_physical_smooth_first","modes":["C4_smooth_low"],"task_controls":{"open_the_middle_drawer_of_the_cabinet":drawer_control(["C4_smooth_low","C0_goal_consequence","C2_response_alignment","C5_conservative_medoid"]),"put_the_bowl_on_the_plate":BOWL_STABLE,"turn_on_the_stove":STOVE_SOFT},"max_steps":320},
+    {"route":"U2_physical_response_first","modes":["C4_smooth_low"],"task_controls":{"open_the_middle_drawer_of_the_cabinet":drawer_control(["C2_response_alignment","C0_goal_consequence","C4_smooth_low","C5_conservative_medoid"]),"put_the_bowl_on_the_plate":BOWL_STABLE,"turn_on_the_stove":STOVE_SOFT},"max_steps":320},
+    {"route":"U3_physical_medoid_first","modes":["C4_smooth_low"],"task_controls":{"open_the_middle_drawer_of_the_cabinet":drawer_control(["C5_conservative_medoid","C0_goal_consequence","C4_smooth_low","C2_response_alignment"]),"put_the_bowl_on_the_plate":BOWL_STABLE,"turn_on_the_stove":STOVE_SOFT},"max_steps":320},
+    {"route":"U4_physical_retarget","modes":["C4_smooth_low"],"task_controls":{"open_the_middle_drawer_of_the_cabinet":drawer_control(["C6_goal_retarget","C0_goal_consequence","C4_smooth_low","C2_response_alignment"]),"put_the_bowl_on_the_plate":BOWL_STABLE,"turn_on_the_stove":STOVE_SOFT},"max_steps":320},
+    {"route":"U5_physical_fast_switch","modes":["C4_smooth_low"],"task_controls":{"open_the_middle_drawer_of_the_cabinet":drawer_control(["C0_goal_consequence","C4_smooth_low","C2_response_alignment","C5_conservative_medoid"],12,18,55),"put_the_bowl_on_the_plate":BOWL_STABLE,"turn_on_the_stove":STOVE_SOFT},"max_steps":320},
+    {"route":"U6_physical_slow_switch","modes":["C4_smooth_low"],"task_controls":{"open_the_middle_drawer_of_the_cabinet":drawer_control(["C0_goal_consequence","C4_smooth_low","C2_response_alignment","C5_conservative_medoid"],30,35,95),"put_the_bowl_on_the_plate":BOWL_STABLE,"turn_on_the_stove":STOVE_SOFT},"max_steps":320},
+    {"route":"U7_retrieval_progress_control","modes":["C4_smooth_low"],"task_controls":{"open_the_middle_drawer_of_the_cabinet":DRAWER_GOAL,"put_the_bowl_on_the_plate":BOWL_STABLE,"turn_on_the_stove":STOVE_SOFT},"max_steps":320},
+]
 VIEW={"physical":np.r_[0:3,9:15],"object":np.r_[3:15],"full":np.r_[0:26]}
 
 
@@ -215,13 +234,21 @@ def estimate_progress(state,library,exclude_episode=None,k=9):
     return float(np.median([library["rows"][int(i)]["progress"] for i in selected]))
 
 
+def task_physical_progress(env,task,obs):
+    if task=="open_the_middle_drawer_of_the_cabinet":
+        address=env.sim.model.get_joint_qpos_addr("wooden_cabinet_1_middle_level");return -float(env.sim.data.qpos[address])
+    if task=="turn_on_the_stove":
+        address=env.sim.model.get_joint_qpos_addr("flat_stove_1_button");return abs(float(env.sim.data.qpos[address]))
+    pos=np.asarray(obs["object_positions"],float);return -float(np.linalg.norm(pos[0]-pos[1]))
+
+
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--run-id",required=True);p.add_argument("--stage",choices=("calibration","formal"),required=True);p.add_argument("--reference-run",type=Path,required=True);p.add_argument("--branch-manifest",type=Path,required=True);p.add_argument("--training-run",type=Path,default=Path("runs/exp8_s2_independent_refs_20260814"));p.add_argument("--authorization",type=Path);p.add_argument("--route-set",choices=("exp15","exp16","exp17","exp21","exp22","exp23","exp24"),default="exp15");p.add_argument("--safety-envelope",type=Path);p.add_argument("--maximum-steps",type=int,default=80);p.add_argument("--exclude-target-demo",action="store_true")
+    p=argparse.ArgumentParser();p.add_argument("--run-id",required=True);p.add_argument("--stage",choices=("calibration","formal"),required=True);p.add_argument("--reference-run",type=Path,required=True);p.add_argument("--branch-manifest",type=Path,required=True);p.add_argument("--training-run",type=Path,default=Path("runs/exp8_s2_independent_refs_20260814"));p.add_argument("--authorization",type=Path);p.add_argument("--route-set",choices=("exp15","exp16","exp17","exp21","exp22","exp23","exp24","exp25"),default="exp15");p.add_argument("--safety-envelope",type=Path);p.add_argument("--maximum-steps",type=int,default=80);p.add_argument("--exclude-target-demo",action="store_true")
     args=p.parse_args();out=ROOT/"runs"/args.run_id
     if out.exists():raise FileExistsError(f"immutable run exists: {out}")
     artifacts,manifests=out/"artifacts",out/"manifests";artifacts.mkdir(parents=True);manifests.mkdir();started=datetime.now(timezone.utc).isoformat();stdout=io.StringIO();stderr=io.StringIO();env=None
     try:
-        training=(ROOT/args.training_run).resolve();library=build_library(training);branches=json.loads((ROOT/args.branch_manifest).read_text());routes={"exp15":ROUTES,"exp16":EXP16_ROUTES,"exp17":EXP17_ROUTES,"exp21":EXP21_ROUTES,"exp22":EXP22_ROUTES,"exp23":EXP23_ROUTES,"exp24":EXP24_ROUTES}[args.route_set];safety_envelope=json.loads((ROOT/args.safety_envelope).read_text()) if args.safety_envelope else None
+        training=(ROOT/args.training_run).resolve();library=build_library(training);branches=json.loads((ROOT/args.branch_manifest).read_text());routes={"exp15":ROUTES,"exp16":EXP16_ROUTES,"exp17":EXP17_ROUTES,"exp21":EXP21_ROUTES,"exp22":EXP22_ROUTES,"exp23":EXP23_ROUTES,"exp24":EXP24_ROUTES,"exp25":EXP25_ROUTES}[args.route_set];safety_envelope=json.loads((ROOT/args.safety_envelope).read_text()) if args.safety_envelope else None
         if args.authorization:
             allowed=set(json.loads((ROOT/args.authorization).read_text())["authorized_routes"]);routes=[x for x in routes if x["route"] in allowed or x["route"]=="D_physical_chunk"]
         protocol={"stage":args.stage,"route_set":args.route_set,"routes":routes,"default_route":"D_physical_chunk","training_run":training.name,"training_hash":sha(training/"artifacts/reference_snapshots_manifest.json"),"target_future_candidate_access":False,"expert_path_isolated":True,"exclude_target_demo_from_neighbors_and_scale":args.exclude_target_demo,"maximum_rollout_steps":args.maximum_steps,"safety_envelope":str(args.safety_envelope) if args.safety_envelope else None,"frozen_before_outcomes":True}
@@ -235,7 +262,7 @@ def main():
             for (task,episode),demo_branches in grouped.items():
                 task_def=selected[task];source=task_source_record(task_manifest,task_def["suite"],task_def["task_id"]);env=wrapper.ControlEnv(**environment_kwargs(Path(source["bddl_file_path"])))
                 load_episode(env,dataset_path=ROOT/"data"/task_def["demonstration_relative_path"],episode_index=int(episode.split("_")[-1]),robosuite_package_root=robosuite_root,libero_assets_root=assets_root)
-                ref_dir=(ROOT/args.reference_run)/demo_branches[0]["reference_directory"]
+                ref_root=ROOT/demo_branches[0].get("reference_run",str(args.reference_run));ref_dir=ref_root/demo_branches[0]["reference_directory"]
                 with np.load(ref_dir/"trajectory_states.npz",allow_pickle=False) as z:target_actions=np.asarray(z["actions"],float);integrations=np.asarray(z["integration"],float)
                 body_ids=[int(env.sim.model.body_name2id(name)) for name in channel_schema["task_object_audit"][task]["bodies"]]
                 for branch in demo_branches:
@@ -244,7 +271,7 @@ def main():
                     restore_d(env,integrations[t],controller);expert_rows=engine.rollout(env,target_actions,t,None,body_ids,contact_schema,task);experts.append({"branch_id":branch["branch_id"],"task":task,"success":bool(expert_rows[-1]["predicate"]),"steps":len(expert_rows)})
                     for spec in routes:
                         control={**spec,**spec.get("task_controls",{}).get(task,{})}
-                        restore_d(env,integrations[t],controller);obs=engine.observation(env,body_ids,contact_schema,task);memory={};pending=None;requested=None;retrieved=[];clip_count=0;action_count=0;safety=False;success=bool(obs["predicate"]);route_steps=[];exceedance_count=0;absolute_200=False;active_stage=-1;mode_index=0;mode_switches=0;mode_started=0;progress_history=[];retrieval_progress=0.0;guard_events=0;previous_action=None;estimated_progress=estimate_progress(runtime_state(obs),library[task],episode if args.exclude_target_demo else None)
+                        restore_d(env,integrations[t],controller);obs=engine.observation(env,body_ids,contact_schema,task);memory={};pending=None;requested=None;retrieved=[];clip_count=0;action_count=0;safety=False;success=bool(obs["predicate"]);route_steps=[];exceedance_count=0;absolute_200=False;active_stage=-1;mode_index=0;mode_switches=0;mode_started=0;progress_history=[];physical_history=[];retrieval_progress=0.0;guard_events=0;previous_action=None;estimated_progress=estimate_progress(runtime_state(obs),library[task],episode if args.exclude_target_demo else None)
                         threshold=float(safety_envelope["tasks"][task]["primary_threshold_n"]) if safety_envelope else 200.;required=int(safety_envelope["tasks"][task]["consecutive_exceedances_to_stop"]) if safety_envelope else 1
                         route_limit=int(control.get("max_steps",args.maximum_steps))
                         for offset in range(route_limit):
@@ -268,7 +295,7 @@ def main():
                                 else:action[:6]=0.;pending=None
                             action[:6]=np.clip(action[:6],-1,1);clip_count+=clip;action_count+=1;previous_action=action.copy()
                             env.step(action);obs=engine.observation(env,body_ids,contact_schema,task);force=float(np.linalg.norm(obs["ee_force"])) if obs["force_valid"] else float("nan");absolute_200=absolute_200 or bool(np.isfinite(force) and force>200);exceedance_count=exceedance_count+1 if np.isfinite(force) and force>threshold else 0;safety=bool(exceedance_count>=required or (np.isfinite(force) and force>1000));success=bool(obs["predicate"])
-                            route_steps.append({"branch_id":branch["branch_id"],"task":task,"episode":episode,"route":spec["route"],"offset":offset,"coordination_mode":active.get("selection",active.get("aggregate","distance")),"mode_index":mode_index,"estimated_initial_progress":estimated_progress,"retrieval_progress":retrieval_progress,"force_guarded":guarded,"requested_action":req.tolist(),"executed_action":action.tolist(),"clipped":clip,"retrieved_indices":retrieved,"eef_position":obs["eef_position"].tolist(),"object_positions":obs["object_positions"].tolist(),"predicate":success,"contact_mode_json":obs["contact_mode_json"],"ee_force":obs["ee_force"].tolist(),"force_valid":obs["force_valid"],"safety_stop":safety})
+                            physical=task_physical_progress(env,task,obs);physical_history.append((offset,physical));route_steps.append({"branch_id":branch["branch_id"],"task":task,"episode":episode,"route":spec["route"],"offset":offset,"coordination_mode":active.get("selection",active.get("aggregate","distance")),"mode_index":mode_index,"estimated_initial_progress":estimated_progress,"retrieval_progress":retrieval_progress,"physical_progress":physical,"force_guarded":guarded,"requested_action":req.tolist(),"executed_action":action.tolist(),"clipped":clip,"retrieved_indices":retrieved,"eef_position":obs["eef_position"].tolist(),"object_positions":obs["object_positions"].tolist(),"predicate":success,"contact_mode_json":obs["contact_mode_json"],"ee_force":obs["ee_force"].tolist(),"force_valid":obs["force_valid"],"safety_stop":safety})
                             if safety:break
                             if "modes" in control and not success:
                                 mode_names=control.get("task_modes",{}).get(task,control["modes"])
@@ -279,6 +306,9 @@ def main():
                                 window=int(control.get("stall_window",0));recent=[v for step,v in progress_history if step>=offset-window+1]
                                 if window and dwell>=int(control.get("minimum_dwell",window)) and len(recent)>=max(4,window//2):
                                     half=len(recent)//2;gain=max(recent[half:])-max(recent[:half]);switch=switch or gain<float(control.get("minimum_progress_gain",0.0))
+                                physical_window=int(control.get("physical_stall_window",0));physical_recent=[v for step,v in physical_history if step>=offset-physical_window+1]
+                                if physical_window and dwell>=int(control.get("minimum_dwell",physical_window)) and len(physical_recent)>=max(4,physical_window//2):
+                                    half=len(physical_recent)//2;gain=max(physical_recent[half:])-max(physical_recent[:half]);switch=switch or gain<float(control.get("minimum_physical_gain",0.0))
                                 switch=switch or bool(np.isfinite(force) and force>.8*threshold and dwell>=int(control.get("minimum_dwell",1)))
                                 if switch and mode_index+1<len(mode_names):mode_index+=1;mode_switches+=1;mode_started=offset+1;active_stage=-1;progress_history=[]
                         steps.extend(route_steps);summaries.append({"branch_id":branch["branch_id"],"task":task,"episode":episode,"route":spec["route"],"success":success,"safety_stop":safety,"absolute_200_exceeded":absolute_200,"steps":len(route_steps),"mode_switches":mode_switches,"guard_events":guard_events,"estimated_initial_progress":estimated_progress,"final_mode_index":mode_index,"clipped_action_fraction":clip_count/max(1,action_count),"all_states_finite":all(np.all(np.isfinite(x["eef_position"])) for x in route_steps),"terminal_contact_mode_json":obs["contact_mode_json"],"terminal_object_positions":obs["object_positions"].tolist()})
