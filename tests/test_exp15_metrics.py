@@ -54,3 +54,15 @@ def test_exp22_routes_are_target_independent_and_structurally_diverse():
     assert len(adaptive) >= 4
     assert all(route["max_steps"] <= 280 for route in EXP22_ROUTES)
     assert all("target_future" not in route for route in EXP22_ROUTES)
+
+
+def test_exp23_routes_include_guard_and_phase_controls():
+    from scripts.exp15.run_recovery_stage import EXP23_ROUTES
+
+    assert len(EXP23_ROUTES) == 9
+    guarded = [route for route in EXP23_ROUTES if route.get("force_guard")]
+    assert len(guarded) >= 6
+    assert {route["force_guard"] for route in guarded} == {"retract", "scale"}
+    assert any("progress_bands" in route for route in EXP23_ROUTES)
+    assert any(route["route"].startswith("P7_unguarded") for route in EXP23_ROUTES)
+    assert all(route["max_steps"] <= 300 for route in EXP23_ROUTES)

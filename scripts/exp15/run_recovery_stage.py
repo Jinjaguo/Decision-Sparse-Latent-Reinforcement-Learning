@@ -90,6 +90,17 @@ EXP22_ROUTES=[
     {"route":"F3_diverse_periodic_cycle","modes":["C4_smooth_low","C0_goal_consequence","C2_response_alignment","C5_conservative_medoid"],"maximum_dwell":55,"minimum_dwell":30,"max_steps":280},
     {"route":"F4_task_specialized_fsm","modes":["C0_goal_consequence","C1_progress_consequence","C4_smooth_low"],"task_modes":{"open_the_middle_drawer_of_the_cabinet":["C1_progress_consequence","C3_short_persistent","C0_goal_consequence"],"put_the_bowl_on_the_plate":["C4_smooth_low","C0_goal_consequence"],"turn_on_the_stove":["C4_smooth_low","C2_response_alignment","C0_goal_consequence","C1_progress_consequence"]},"stall_window":22,"minimum_progress_gain":0.020,"minimum_dwell":25,"maximum_dwell":70,"max_steps":280},
 ]
+EXP23_ROUTES=[
+    {"route":"D_physical_chunk","view":"physical","k":1,"replan":10,"monotone":False,"advance":0,"retarget":0.0,"aggregate":"nearest","smooth":0.0,"max_steps":140},
+    {"route":"P0_guarded_diverse","modes":["C4_smooth_low","C0_goal_consequence","C2_response_alignment","C5_conservative_medoid"],"maximum_dwell":55,"minimum_dwell":25,"max_steps":300,"force_guard":"retract","guard_fraction":0.70,"guard_gain":1.0},
+    {"route":"P1_guarded_goal","modes":["C0_goal_consequence","C4_smooth_low","C2_response_alignment"],"stall_window":22,"minimum_progress_gain":0.02,"minimum_dwell":25,"maximum_dwell":85,"max_steps":280,"force_guard":"retract","guard_fraction":0.70,"guard_gain":1.0},
+    {"route":"P2_guarded_smooth_response","modes":["C4_smooth_low","C2_response_alignment","C1_progress_consequence","C0_goal_consequence"],"stall_window":20,"minimum_progress_gain":0.02,"minimum_dwell":22,"maximum_dwell":70,"max_steps":300,"force_guard":"retract","guard_fraction":0.75,"guard_gain":0.75},
+    {"route":"P3_phase_risk_arbitration","modes":["C4_smooth_low","C0_goal_consequence","C2_response_alignment","C5_conservative_medoid"],"progress_bands":{"turn_on_the_stove":[{"minimum":0.65,"modes":["C4_smooth_low","C2_response_alignment","C1_progress_consequence"]},{"minimum":0.45,"modes":["C0_goal_consequence","C4_smooth_low","C2_response_alignment"]}],"put_the_bowl_on_the_plate":[{"minimum":0.0,"modes":["C4_smooth_low","C0_goal_consequence"]}]},"stall_window":22,"minimum_progress_gain":0.02,"minimum_dwell":25,"maximum_dwell":75,"max_steps":300,"force_guard":"retract","guard_fraction":0.70,"guard_gain":1.0},
+    {"route":"P4_guarded_task_portfolio","modes":["C0_goal_consequence","C1_progress_consequence","C4_smooth_low"],"task_modes":{"open_the_middle_drawer_of_the_cabinet":["C4_smooth_low","C0_goal_consequence","C2_response_alignment","C5_conservative_medoid"],"put_the_bowl_on_the_plate":["C4_smooth_low","C0_goal_consequence"],"turn_on_the_stove":["C0_goal_consequence","C4_smooth_low","C2_response_alignment","C1_progress_consequence"]},"stall_window":24,"minimum_progress_gain":0.02,"minimum_dwell":25,"maximum_dwell":65,"max_steps":300,"force_guard":"retract","guard_fraction":0.75,"guard_gain":1.0},
+    {"route":"P5_soft_force_scaling","modes":["C4_smooth_low","C0_goal_consequence","C2_response_alignment","C5_conservative_medoid"],"maximum_dwell":55,"minimum_dwell":25,"max_steps":300,"force_guard":"scale","guard_fraction":0.55,"guard_scale":0.25},
+    {"route":"P6_progress_stall_guard","modes":["C0_goal_consequence","C1_progress_consequence","C4_smooth_low","C2_response_alignment"],"stall_window":18,"minimum_progress_gain":0.015,"minimum_dwell":20,"maximum_dwell":70,"max_steps":300,"force_guard":"retract","guard_fraction":0.65,"guard_gain":0.5},
+    {"route":"P7_unguarded_phase_control","modes":["C4_smooth_low","C0_goal_consequence","C2_response_alignment","C5_conservative_medoid"],"progress_bands":{"turn_on_the_stove":[{"minimum":0.65,"modes":["C4_smooth_low","C2_response_alignment","C1_progress_consequence"]},{"minimum":0.45,"modes":["C0_goal_consequence","C4_smooth_low","C2_response_alignment"]}]},"stall_window":22,"minimum_progress_gain":0.02,"minimum_dwell":25,"maximum_dwell":75,"max_steps":300},
+]
 VIEW={"physical":np.r_[0:3,9:15],"object":np.r_[3:15],"full":np.r_[0:26]}
 
 
@@ -184,13 +195,18 @@ def runtime_state(obs):
     return {"eef":np.asarray(obs["eef_position"]),"pos":np.asarray(obs["object_positions"]),"quat":np.asarray(obs["object_quaternions"]),"feature":feature(np.asarray(obs["eef_position"]),obs["object_positions"],obs["object_quaternions"],obs["contact_mode_json"])}
 
 
+def estimate_progress(state,library,exclude_episode=None,k=9):
+    matrix=library["matrix"][:,VIEW["full"]];query=state["feature"][VIEW["full"]];pool=np.flatnonzero(library["episodes"]!=exclude_episode) if exclude_episode else np.arange(len(matrix));distance=standardized_distance(query,matrix,matrix[pool].std(0));selected=pool[np.argsort(distance[pool],kind="stable")[:k]]
+    return float(np.median([library["rows"][int(i)]["progress"] for i in selected]))
+
+
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--run-id",required=True);p.add_argument("--stage",choices=("calibration","formal"),required=True);p.add_argument("--reference-run",type=Path,required=True);p.add_argument("--branch-manifest",type=Path,required=True);p.add_argument("--training-run",type=Path,default=Path("runs/exp8_s2_independent_refs_20260814"));p.add_argument("--authorization",type=Path);p.add_argument("--route-set",choices=("exp15","exp16","exp17","exp21","exp22"),default="exp15");p.add_argument("--safety-envelope",type=Path);p.add_argument("--maximum-steps",type=int,default=80);p.add_argument("--exclude-target-demo",action="store_true")
+    p=argparse.ArgumentParser();p.add_argument("--run-id",required=True);p.add_argument("--stage",choices=("calibration","formal"),required=True);p.add_argument("--reference-run",type=Path,required=True);p.add_argument("--branch-manifest",type=Path,required=True);p.add_argument("--training-run",type=Path,default=Path("runs/exp8_s2_independent_refs_20260814"));p.add_argument("--authorization",type=Path);p.add_argument("--route-set",choices=("exp15","exp16","exp17","exp21","exp22","exp23"),default="exp15");p.add_argument("--safety-envelope",type=Path);p.add_argument("--maximum-steps",type=int,default=80);p.add_argument("--exclude-target-demo",action="store_true")
     args=p.parse_args();out=ROOT/"runs"/args.run_id
     if out.exists():raise FileExistsError(f"immutable run exists: {out}")
     artifacts,manifests=out/"artifacts",out/"manifests";artifacts.mkdir(parents=True);manifests.mkdir();started=datetime.now(timezone.utc).isoformat();stdout=io.StringIO();stderr=io.StringIO();env=None
     try:
-        training=(ROOT/args.training_run).resolve();library=build_library(training);branches=json.loads((ROOT/args.branch_manifest).read_text());routes={"exp15":ROUTES,"exp16":EXP16_ROUTES,"exp17":EXP17_ROUTES,"exp21":EXP21_ROUTES,"exp22":EXP22_ROUTES}[args.route_set];safety_envelope=json.loads((ROOT/args.safety_envelope).read_text()) if args.safety_envelope else None
+        training=(ROOT/args.training_run).resolve();library=build_library(training);branches=json.loads((ROOT/args.branch_manifest).read_text());routes={"exp15":ROUTES,"exp16":EXP16_ROUTES,"exp17":EXP17_ROUTES,"exp21":EXP21_ROUTES,"exp22":EXP22_ROUTES,"exp23":EXP23_ROUTES}[args.route_set];safety_envelope=json.loads((ROOT/args.safety_envelope).read_text()) if args.safety_envelope else None
         if args.authorization:
             allowed=set(json.loads((ROOT/args.authorization).read_text())["authorized_routes"]);routes=[x for x in routes if x["route"] in allowed or x["route"]=="D_physical_chunk"]
         protocol={"stage":args.stage,"route_set":args.route_set,"routes":routes,"default_route":"D_physical_chunk","training_run":training.name,"training_hash":sha(training/"artifacts/reference_snapshots_manifest.json"),"target_future_candidate_access":False,"expert_path_isolated":True,"exclude_target_demo_from_neighbors_and_scale":args.exclude_target_demo,"maximum_rollout_steps":args.maximum_steps,"safety_envelope":str(args.safety_envelope) if args.safety_envelope else None,"frozen_before_outcomes":True}
@@ -212,31 +228,44 @@ def main():
                     # Isolated evaluation-only expert path. It is never passed to choose_chunk.
                     restore_d(env,integrations[t],controller);expert_rows=engine.rollout(env,target_actions,t,None,body_ids,contact_schema,task);experts.append({"branch_id":branch["branch_id"],"task":task,"success":bool(expert_rows[-1]["predicate"]),"steps":len(expert_rows)})
                     for spec in routes:
-                        restore_d(env,integrations[t],controller);obs=engine.observation(env,body_ids,contact_schema,task);memory={};pending=None;requested=None;retrieved=[];clip_count=0;action_count=0;safety=False;success=bool(obs["predicate"]);route_steps=[];exceedance_count=0;absolute_200=False;active_stage=-1;mode_index=0;mode_switches=0;mode_started=0;progress_history=[];retrieval_progress=0.0
+                        restore_d(env,integrations[t],controller);obs=engine.observation(env,body_ids,contact_schema,task);memory={};pending=None;requested=None;retrieved=[];clip_count=0;action_count=0;safety=False;success=bool(obs["predicate"]);route_steps=[];exceedance_count=0;absolute_200=False;active_stage=-1;mode_index=0;mode_switches=0;mode_started=0;progress_history=[];retrieval_progress=0.0;guard_events=0;previous_action=None;estimated_progress=estimate_progress(runtime_state(obs),library[task],episode if args.exclude_target_demo else None)
+                        threshold=float(safety_envelope["tasks"][task]["primary_threshold_n"]) if safety_envelope else 200.;required=int(safety_envelope["tasks"][task]["consecutive_exceedances_to_stop"]) if safety_envelope else 1
                         route_limit=int(spec.get("max_steps",args.maximum_steps))
                         for offset in range(route_limit):
                             if success:break
                             stage=sum(offset>=x for x in spec.get("switch_steps",[]));stage_start=0 if stage==0 else spec["switch_steps"][stage-1]
                             if "stages" in spec:active=EXP17_BASE[spec["stages"][stage]]
                             elif "modes" in spec:
-                                mode_names=spec.get("task_modes",{}).get(task,spec["modes"]);active=EXP22_MODES[mode_names[min(mode_index,len(mode_names)-1)]];stage=mode_index;stage_start=mode_started
+                                mode_names=spec.get("task_modes",{}).get(task,spec["modes"])
+                                for band in spec.get("progress_bands",{}).get(task,[]):
+                                    if estimated_progress>=float(band["minimum"]):mode_names=band["modes"];break
+                                active=EXP22_MODES[mode_names[min(mode_index,len(mode_names)-1)]];stage=mode_index;stage_start=mode_started
                             else:active=spec
                             if stage!=active_stage:memory={};pending=None;active_stage=stage
                             if pending is None or (offset-stage_start)%active["replan"]==0:
                                 requested,pending,retrieved,retrieval_progress=choose_chunk(active,runtime_state(obs),library[task],memory,episode if args.exclude_target_demo else None);progress_history.append((offset,retrieval_progress))
-                            local=(offset-stage_start)%active["replan"];action=pending[min(local,len(pending)-1)];req=requested[min(local,len(requested)-1)];clip=bool(np.any(np.abs(req[:6]-action[:6])>1e-12));clip_count+=clip;action_count+=1
-                            env.step(action);obs=engine.observation(env,body_ids,contact_schema,task);force=float(np.linalg.norm(obs["ee_force"])) if obs["force_valid"] else float("nan");absolute_200=absolute_200 or bool(np.isfinite(force) and force>200);threshold=float(safety_envelope["tasks"][task]["primary_threshold_n"]) if safety_envelope else 200.;required=int(safety_envelope["tasks"][task]["consecutive_exceedances_to_stop"]) if safety_envelope else 1;exceedance_count=exceedance_count+1 if np.isfinite(force) and force>threshold else 0;safety=bool(exceedance_count>=required or (np.isfinite(force) and force>1000));success=bool(obs["predicate"])
-                            route_steps.append({"branch_id":branch["branch_id"],"task":task,"episode":episode,"route":spec["route"],"offset":offset,"coordination_mode":active.get("selection",active.get("aggregate","distance")),"mode_index":mode_index,"retrieval_progress":retrieval_progress,"requested_action":req.tolist(),"executed_action":action.tolist(),"clipped":clip,"retrieved_indices":retrieved,"eef_position":obs["eef_position"].tolist(),"object_positions":obs["object_positions"].tolist(),"predicate":success,"contact_mode_json":obs["contact_mode_json"],"ee_force":obs["ee_force"].tolist(),"force_valid":obs["force_valid"],"safety_stop":safety})
+                            local=(offset-stage_start)%active["replan"];action=pending[min(local,len(pending)-1)].copy();req=requested[min(local,len(requested)-1)];clip=bool(np.any(np.abs(req[:6]-action[:6])>1e-12));guarded=False;pre_force=float(np.linalg.norm(obs["ee_force"])) if obs["force_valid"] else float("nan")
+                            if spec.get("force_guard") and np.isfinite(pre_force) and pre_force>float(spec.get("guard_fraction",.7))*threshold:
+                                guarded=True;guard_events+=1
+                                if spec["force_guard"]=="retract" and previous_action is not None:action[:6]=-float(spec.get("guard_gain",1.0))*previous_action[:6]
+                                elif spec["force_guard"]=="scale":action[:6]*=float(spec.get("guard_scale",.25))
+                                else:action[:6]=0.;pending=None
+                            action[:6]=np.clip(action[:6],-1,1);clip_count+=clip;action_count+=1;previous_action=action.copy()
+                            env.step(action);obs=engine.observation(env,body_ids,contact_schema,task);force=float(np.linalg.norm(obs["ee_force"])) if obs["force_valid"] else float("nan");absolute_200=absolute_200 or bool(np.isfinite(force) and force>200);exceedance_count=exceedance_count+1 if np.isfinite(force) and force>threshold else 0;safety=bool(exceedance_count>=required or (np.isfinite(force) and force>1000));success=bool(obs["predicate"])
+                            route_steps.append({"branch_id":branch["branch_id"],"task":task,"episode":episode,"route":spec["route"],"offset":offset,"coordination_mode":active.get("selection",active.get("aggregate","distance")),"mode_index":mode_index,"estimated_initial_progress":estimated_progress,"retrieval_progress":retrieval_progress,"force_guarded":guarded,"requested_action":req.tolist(),"executed_action":action.tolist(),"clipped":clip,"retrieved_indices":retrieved,"eef_position":obs["eef_position"].tolist(),"object_positions":obs["object_positions"].tolist(),"predicate":success,"contact_mode_json":obs["contact_mode_json"],"ee_force":obs["ee_force"].tolist(),"force_valid":obs["force_valid"],"safety_stop":safety})
                             if safety:break
                             if "modes" in spec and not success:
-                                mode_names=spec.get("task_modes",{}).get(task,spec["modes"]);dwell=offset-mode_started+1;switch=False
+                                mode_names=spec.get("task_modes",{}).get(task,spec["modes"])
+                                for band in spec.get("progress_bands",{}).get(task,[]):
+                                    if estimated_progress>=float(band["minimum"]):mode_names=band["modes"];break
+                                dwell=offset-mode_started+1;switch=guarded
                                 if dwell>=int(spec.get("maximum_dwell",10**9)):switch=True
                                 window=int(spec.get("stall_window",0));recent=[v for step,v in progress_history if step>=offset-window+1]
                                 if window and dwell>=int(spec.get("minimum_dwell",window)) and len(recent)>=max(4,window//2):
                                     half=len(recent)//2;gain=max(recent[half:])-max(recent[:half]);switch=switch or gain<float(spec.get("minimum_progress_gain",0.0))
                                 switch=switch or bool(np.isfinite(force) and force>.8*threshold and dwell>=int(spec.get("minimum_dwell",1)))
                                 if switch and mode_index+1<len(mode_names):mode_index+=1;mode_switches+=1;mode_started=offset+1;active_stage=-1;progress_history=[]
-                        steps.extend(route_steps);summaries.append({"branch_id":branch["branch_id"],"task":task,"episode":episode,"route":spec["route"],"success":success,"safety_stop":safety,"absolute_200_exceeded":absolute_200,"steps":len(route_steps),"mode_switches":mode_switches,"final_mode_index":mode_index,"clipped_action_fraction":clip_count/max(1,action_count),"all_states_finite":all(np.all(np.isfinite(x["eef_position"])) for x in route_steps),"terminal_contact_mode_json":obs["contact_mode_json"],"terminal_object_positions":obs["object_positions"].tolist()})
+                        steps.extend(route_steps);summaries.append({"branch_id":branch["branch_id"],"task":task,"episode":episode,"route":spec["route"],"success":success,"safety_stop":safety,"absolute_200_exceeded":absolute_200,"steps":len(route_steps),"mode_switches":mode_switches,"guard_events":guard_events,"estimated_initial_progress":estimated_progress,"final_mode_index":mode_index,"clipped_action_fraction":clip_count/max(1,action_count),"all_states_finite":all(np.all(np.isfinite(x["eef_position"])) for x in route_steps),"terminal_contact_mode_json":obs["contact_mode_json"],"terminal_object_positions":obs["object_positions"].tolist()})
                     print(json.dumps({"branch":branch["branch_id"],"policies":len(routes),"summaries":len(summaries)},sort_keys=True))
                 env.close();env=None
         parquet(artifacts/"candidate_summaries.parquet",summaries);parquet(artifacts/"per_step.parquet",steps);parquet(artifacts/"expert_upper_bound.parquet",experts)

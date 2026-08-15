@@ -1,0 +1,10 @@
+{
+  "calibration_demos": [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42],
+  "confirmation_demos": [50, 51, 52, 53, 54, 55, 56],
+  "confirmation_frozen_before_outcomes": true,
+  "route_count": 9,
+  "maximum_steps": 300,
+  "target_future_access": false,
+  "safety_envelope": "exp16_s0_expert_safety_audit_20260815",
+  "utility_gates_unchanged": true
+}
