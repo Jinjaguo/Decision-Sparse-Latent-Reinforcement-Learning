@@ -1,0 +1,12 @@
+{
+  "frozen_primary": "U7_retrieval_progress_control",
+  "source_selection_run": "exp25_s4_confirmation_analysis_20260815",
+  "confirmation_episodes": [28, 29],
+  "confirmation_branch_count": 24,
+  "unique_denominator_required": 24,
+  "structure_changes_from_exp25_u7": false,
+  "pooled_gate_required": true,
+  "target_future_access": false,
+  "maximum_steps": 320,
+  "utility_gates_unchanged": true
+}
