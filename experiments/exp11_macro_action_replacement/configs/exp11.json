@@ -1,0 +1,16 @@
+{
+  "chunk_lengths_audited": [5, 10, 20],
+  "calibration_chunk_length": 10,
+  "formal_chunk_length": 10,
+  "continuous_amplitudes_calibration": [0.05, 0.1],
+  "continuous_amplitudes_formal": [0.1],
+  "signs": [-1, 1],
+  "calibration_episodes": [41, 42],
+  "formal_episodes": [43, 44, 45, 46, 47, 48, 49],
+  "branches_per_demo": 4,
+  "full_confirmation_floor_per_task": 8,
+  "formal_status": "availability-limited pilot",
+  "max_formal_families": 3,
+  "pathwise_conformal_target": 0.9,
+  "complete_demo_isolation": true
+}

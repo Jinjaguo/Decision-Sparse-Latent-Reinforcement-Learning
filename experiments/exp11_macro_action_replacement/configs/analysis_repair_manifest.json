@@ -1,0 +1,28 @@
+{
+  "repair": "three-seed neural replication",
+  "reason": "EXP11 protocol section 45 requires three frozen seeds; r1/r2 used one seed per outer fold",
+  "frozen_before_repair_run": true,
+  "seeds": [111012, 111013, 111014],
+  "aggregation": "equal arithmetic mean of three predictions",
+  "selection": "none",
+  "models": ["P-D_GRU", "P-E_graph_MLP"],
+  "unchanged": [
+    "raw data",
+    "formal cohort",
+    "complete-demo folds",
+    "features",
+    "targets",
+    "training epochs",
+    "route gates",
+    "statistical plan"
+  ],
+  "determinism": {
+    "torch_deterministic_algorithms": true,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false
+  },
+  "supersedes_for_final_route_numbers": [
+    "exp11_s2_formal_analysis_r1_20260814",
+    "exp11_s2_formal_analysis_r2_20260814"
+  ]
+}
