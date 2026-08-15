@@ -29,6 +29,7 @@ from decision_sparse_rl.metrics.exp12 import (
     pairwise_accuracy,
     pairwise_preferences,
     regret,
+    require_absent,
     sha256_file,
     top1_accuracy,
 )
@@ -49,8 +50,7 @@ def dump(path: Path, value) -> None:
 
 
 def write_once(path: Path, rows: list[dict]) -> None:
-    if path.exists():
-        raise FileExistsError(f"prediction lock already exists: {path}")
+    require_absent(path)
     if not rows:
         raise RuntimeError(f"refusing empty prediction lock: {path}")
     pq.write_table(pa.Table.from_pylist(rows), path, compression="zstd")
@@ -370,6 +370,14 @@ def main() -> int:
     best_regret = [-x["regret"] for x in best_records]
     nominal_regret = [-x["regret"] for x in nominal_records]
     regret_ci = bootstrap_difference(best_regret, nominal_regret, [x["demo_key"] for x in best_records])
+    abstaining_metric = next(x for x in route_metrics if x["route"] == "abstaining")
+    all_metric = next(x for x in route_metrics if x["route"] == "all_consequences")
+    uncertainty_strictly_useful = (
+        abstaining_metric["catastrophic_selection_rate"] < all_metric["catastrophic_selection_rate"]
+        or abstaining_metric["p90_regret"] < all_metric["p90_regret"]
+    ) and abstaining_metric["fallback_rate"] < .5
+    opportunity_count = int(sum(x["opportunity"] for x in best_records))
+    consequence_has_utility = best["opportunity_capture"] > 0 or best["top1_accuracy"] > nominal_metric["top1_accuracy"]
     axes = {
         "contact_prediction": "supported" if min(x["contact_mae"] for x in encoding_metrics) < .2 else "unsupported",
         "motion_prediction": "supported" if min(x["motion_mae"] for x in encoding_metrics) < .2 else "unsupported",
@@ -377,8 +385,8 @@ def main() -> int:
         "pairwise_ranking": "supported" if best["pairwise_accuracy"] >= .65 else "unsupported",
         "setwise_ranking": "supported" if best["top1_accuracy"] > max(nominal_metric["top1_accuracy"], random_metric["top1_accuracy"]) else "unsupported",
         "tail_safety": "supported" if best["catastrophic_selection_rate"] <= single_best["catastrophic_selection_rate"] and best["p95_regret"] <= single_best["p95_regret"] else "unsupported",
-        "uncertainty_calibration": "supported" if next(x for x in route_metrics if x["route"] == "abstaining")["catastrophic_selection_rate"] <= next(x for x in route_metrics if x["route"] == "all_consequences")["catastrophic_selection_rate"] else "inconclusive",
-        "consequence_sufficiency_vs_richer_future": "supported" if best["p90_regret"] <= richer_metric["p90_regret"] and best["top1_accuracy"] >= richer_metric["top1_accuracy"] else "unsupported",
+        "uncertainty_calibration": "supported" if uncertainty_strictly_useful else "inconclusive",
+        "consequence_sufficiency_vs_richer_future": "supported" if consequence_has_utility and best["p90_regret"] <= richer_metric["p90_regret"] and best["top1_accuracy"] >= richer_metric["top1_accuracy"] else "inconclusive" if best["p90_regret"] <= richer_metric["p90_regret"] else "unsupported",
     }
     offline_promising = axes["pairwise_ranking"] == "supported" and axes["setwise_ranking"] == "supported" and best["p90_regret"] < single_best["p90_regret"]
     decision = {
@@ -391,7 +399,7 @@ def main() -> int:
         "uncertainty_useful": axes["uncertainty_calibration"] == "supported",
         "tail_problem_remaining": best["catastrophic_selection_rate"] > 0 or best["p95_regret"] > .1,
         "richer_future_baseline_status": {"route_metrics": richer_metric, "future_mae": rich_future_mae, "predicted_outputs": int(future.shape[1])},
-        "oracle_opportunity": {"groups": int(sum(x["opportunity"] for x in best_records)), "total_groups": len(best_records), "tasks_with_opportunity": sorted(set(x["task"] for x in best_records if x["opportunity"]))},
+        "oracle_opportunity": {"groups": opportunity_count, "total_groups": len(best_records), "tasks_with_opportunity": sorted(set(x["task"] for x in best_records if x["opportunity"]))},
         "regret_improvement_vs_nominal_demo_ci": regret_ci,
         "axes": axes,
         "recommended_next_module": "candidate_generation_diversity" if sum(x["opportunity"] for x in best_records) < .3 * len(best_records) else "ranking_tail_or_closed_loop",

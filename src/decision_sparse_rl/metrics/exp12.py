@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 from collections import defaultdict
+from pathlib import Path
 from typing import Iterable, Mapping, Sequence
 
 import numpy as np
@@ -125,3 +126,7 @@ def sha256_file(path) -> str:
             digest.update(block)
     return digest.hexdigest()
 
+
+def require_absent(path) -> None:
+    if Path(path).exists():
+        raise FileExistsError(f"write-once output already exists: {path}")

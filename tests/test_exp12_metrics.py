@@ -14,6 +14,8 @@ from decision_sparse_rl.metrics.exp12 import (
     pairwise_accuracy,
     pairwise_preferences,
     regret,
+    require_absent,
+    sha256_file,
     top1_accuracy,
     validate_demo_isolation,
 )
@@ -61,3 +63,17 @@ def test_nominal_opportunity_and_abstention():
 def test_whole_demo_split_isolation():
     assert validate_demo_isolation([{"demo_key": "a", "fold": 0}, {"demo_key": "b", "fold": 1}])
     assert not validate_demo_isolation([{"demo_key": "a", "fold": 0}, {"demo_key": "a", "fold": 1}])
+
+
+def test_prediction_write_once_and_hash_lock(tmp_path):
+    target = tmp_path / "prediction.lock"
+    require_absent(target)
+    target.write_bytes(b"first")
+    first = sha256_file(target)
+    try:
+        require_absent(target)
+        assert False, "existing prediction lock was accepted"
+    except FileExistsError:
+        pass
+    target.write_bytes(b"second")
+    assert sha256_file(target) != first
