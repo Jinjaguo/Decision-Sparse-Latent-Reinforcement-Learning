@@ -1,0 +1,15 @@
+{
+  "candidate_run": "exp17_s3_formal_recovery_20260815",
+  "folds": 5,
+  "group_unit": "complete task-demo",
+  "ridge_l2": 10.0,
+  "knn_k": 5,
+  "primary_selector": "conservative_ensemble",
+  "ensemble_weights": {"phase_route": 0.3333333333, "ridge": 0.3333333333, "context_knn": 0.3333333333},
+  "abstain_success_threshold": 0.50,
+  "utility": "p_success - p_safety + 0.10 * p_fast",
+  "target_future_or_post_action_inputs": false,
+  "success_improvement_points": 0.10,
+  "demand_recovery_gate": 0.60,
+  "oracle_headroom_capture_gate": 0.75
+}
