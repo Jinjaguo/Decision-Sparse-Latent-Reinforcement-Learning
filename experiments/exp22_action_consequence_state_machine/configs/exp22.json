@@ -1,0 +1,10 @@
+{
+  "primary_selection": "calibration_only",
+  "default_max_steps": 140,
+  "candidate_max_steps": [220, 240, 260, 280],
+  "route_count": 9,
+  "mechanisms": ["goal_consequence", "progress_consequence", "response_alignment", "stall_fsm", "periodic_portfolio", "task_specialization"],
+  "target_future_access": false,
+  "safety_envelope": "exp16_s0_expert_safety_audit_20260815",
+  "utility_gates_unchanged": true
+}

@@ -38,3 +38,19 @@ def test_recovery_metrics_separates_demand_and_availability():
     result=recovery_metrics(rows,"default")
     assert result=={"group_count":2,"safe_candidate_availability":1.0,"decision_demand_rate":.5,"demand_recovery_rate":1.0}
 
+
+def test_exp22_routes_are_target_independent_and_structurally_diverse():
+    from scripts.exp15.run_recovery_stage import EXP22_MODES, EXP22_ROUTES
+
+    assert EXP22_ROUTES[0]["route"] == "D_physical_chunk"
+    assert len(EXP22_ROUTES) == 9
+    assert {mode.get("selection", "distance") for mode in EXP22_MODES.values()} >= {
+        "distance",
+        "goal_effect",
+        "progress",
+        "response",
+    }
+    adaptive = [route for route in EXP22_ROUTES if "modes" in route]
+    assert len(adaptive) >= 4
+    assert all(route["max_steps"] <= 280 for route in EXP22_ROUTES)
+    assert all("target_future" not in route for route in EXP22_ROUTES)
