@@ -1,0 +1,18 @@
+{
+  "expert_force_quantile": 0.995,
+  "expert_force_margin": 1.10,
+  "minimum_primary_threshold_n": 200.0,
+  "absolute_emergency_ceiling_n": 1000.0,
+  "consecutive_exceedances_to_stop": 3,
+  "maximum_rollout_steps": 80,
+  "route_set": "exp16",
+  "target_future_candidate_access": false,
+  "recovery_gates": {
+    "safe_availability": 0.70,
+    "task_availability": 0.60,
+    "minimum_tasks": 2,
+    "decision_demand": 0.30,
+    "demand_recovery": 0.60,
+    "valid_candidates": 0.90
+  }
+}
