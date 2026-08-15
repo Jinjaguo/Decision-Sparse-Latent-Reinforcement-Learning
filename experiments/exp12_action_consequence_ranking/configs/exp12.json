@@ -1,0 +1,17 @@
+{
+  "source_replacement_run": "exp11_s2_formal_replacements_r1_20260814",
+  "source_reference_run": "exp11_s2_formal_refs_20260814",
+  "source_fidelity_run": "exp11_s2_formal_fidelity_reaudit_r1_20260814",
+  "folds": 5,
+  "history_length": 5,
+  "action_chunk_length": 10,
+  "future_horizon": 20,
+  "pair_tie_tolerance": 0.05,
+  "opportunity_minimum_gap": 0.05,
+  "seeds": [121201, 121202, 121203],
+  "primary_requires_task_family_fidelity": true,
+  "include_nominal_candidate": true,
+  "pathwise_coverage_target": 0.9,
+  "complete_demo_isolation": true
+}
+

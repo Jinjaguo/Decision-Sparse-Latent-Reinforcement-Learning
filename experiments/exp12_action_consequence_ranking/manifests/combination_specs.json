@@ -1,0 +1,15 @@
+{
+  "contact_only": "predicted R2",
+  "motion_only": "predicted R3",
+  "outcome_only": "predicted R1",
+  "contact_motion": "R2 + R3",
+  "contact_outcome": "R2 + 4*R1",
+  "motion_outcome": "R3 + 4*R1",
+  "all_consequences": "R2 + R3 + 4*R1",
+  "hard_filter_motion": "filter low outcome/contact probability, rank survivors by motion",
+  "learned_small": "calibration-demo ridge on predicted consequence card only",
+  "pairwise_comparator": "within-state Bradley-Terry comparator",
+  "lexicographic": "outcome, then contact, then motion",
+  "all_plus_uncertainty": "all-consequence score minus calibrated uncertainty",
+  "abstaining": "fallback to nominal when selected uncertainty exceeds calibration quantile"
+}

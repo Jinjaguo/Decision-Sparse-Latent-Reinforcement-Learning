@@ -1,0 +1,10 @@
+{
+  "E1_raw_compact": "task/phase/time, arm q, gripper, EEF pose, candidate action chunk",
+  "E2_object_centric": "task/phase/time, EEF, padded task-object poses and relative positions, candidate action chunk",
+  "E3_contact_aware": "E2 plus reference contact count and task/gripper/support contact flags",
+  "E4_short_history": "E3 plus five-step reference physical history",
+  "E5_separate_specialists": "independently regularized contact, motion, and outcome predictors",
+  "E6_shared_small": "small shared MLP with consequence heads",
+  "RICH20": "20-step EEF, task-object, coarse-contact and predicate future output"
+}
+

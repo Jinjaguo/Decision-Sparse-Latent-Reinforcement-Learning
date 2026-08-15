@@ -1,0 +1,15 @@
+{
+  "frozen_before_formal_model_scoring": true,
+  "R1_terminal_outcome": "1 for terminal task predicate success; 0 otherwise",
+  "R2_contact_preservation": "1 - EXP11 H20 coarse-regime change fraction relative to the successful reference",
+  "R3_motion_goal": {
+    "drawer": "projection of terminal middle-drawer body displacement onto the successful reference displacement, normalized by reference terminal displacement",
+    "stove": "terminal button rotation from initial, normalized by the successful reference terminal rotation",
+    "bowl": "one minus terminal bowl-to-plate planar distance normalized by the initial distance"
+  },
+  "R4_composite": "4 * R1 + R2 + clipped(R3,-1,1.5)",
+  "catastrophic": "terminal failure OR R2 < 0.5 OR R3 < 0",
+  "pair_tie_tolerance": 0.05,
+  "note": "R2 is a successful-reference preservation proxy; it is not equivalent to universal contact safety. R4 is evaluation-only ground truth."
+}
+

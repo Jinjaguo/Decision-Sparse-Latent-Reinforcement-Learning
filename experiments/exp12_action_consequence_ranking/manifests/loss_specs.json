@@ -1,0 +1,8 @@
+{
+  "L1_independent": "ridge/Brier-style independent consequence losses",
+  "L2_pairwise": "Bradley-Terry logistic preference on within-state feature differences",
+  "L3_listwise": "within-set rank-target regression",
+  "L4_tail_aware": "weighted regression emphasizing catastrophic candidates and large oracle gaps",
+  "L5_calibration": "nested-demo residual calibration and abstention threshold"
+}
+
