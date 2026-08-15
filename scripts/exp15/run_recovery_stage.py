@@ -132,7 +132,7 @@ def main():
     try:
         training=(ROOT/args.training_run).resolve();library=build_library(training);branches=json.loads((ROOT/args.branch_manifest).read_text());routes=ROUTES if args.route_set=="exp15" else EXP16_ROUTES;safety_envelope=json.loads((ROOT/args.safety_envelope).read_text()) if args.safety_envelope else None
         if args.authorization:
-            allowed=set(json.loads((ROOT/args.authorization).read_text())["authorized_routes"]);routes=[x for x in ROUTES if x["route"] in allowed or x["route"]=="D_physical_chunk"]
+            allowed=set(json.loads((ROOT/args.authorization).read_text())["authorized_routes"]);routes=[x for x in routes if x["route"] in allowed or x["route"]=="D_physical_chunk"]
         protocol={"stage":args.stage,"route_set":args.route_set,"routes":routes,"default_route":"D_physical_chunk","training_run":training.name,"training_hash":sha(training/"artifacts/reference_snapshots_manifest.json"),"target_future_candidate_access":False,"expert_path_isolated":True,"maximum_rollout_steps":80,"safety_envelope":str(args.safety_envelope) if args.safety_envelope else None,"frozen_before_outcomes":True}
         dump(manifests/"recovery_protocol.json",protocol);dump(manifests/"branch_manifest.json",branches);dump(manifests/"preoutcome_hashes.json",{"protocol":sha(manifests/"recovery_protocol.json"),"branches":sha(manifests/"branch_manifest.json")})
         selection,task_manifest=load_selection(ROOT/"experiments/exp1_decision_sparsity/manifests/selected_tasks_pilot.json",ROOT/"experiments/exp1_decision_sparsity/manifests/tasks.json");selected={x["name"]:x for x in selection["tasks"]};wrapper,robosuite_root,assets_root=bootstrap_runtime(ROOT/"third_party/LIBERO",ROOT/"data",artifacts/"libero_config")
