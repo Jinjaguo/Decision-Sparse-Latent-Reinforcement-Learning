@@ -1,0 +1,6 @@
+{
+  "new_cohort_authorized_only_if": "one non-oracle model passes risk, H1/H3 response, and uncertainty gates simultaneously",
+  "failure_action": "write feasibility-failure report and stop before cohort audit or simulation",
+  "failure_classification": "action_conditioning_insufficient",
+  "stage_a_is_confirmation": false
+}

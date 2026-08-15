@@ -1,0 +1,6 @@
+{
+  "continuous_primary": "task-specific duration-normalized mean signed physical response: 26 dimensions for Drawer/Stove and 32 for Bowl, following EXP8's frozen 3*n task-object channel rule",
+  "additional_stage_a": ["signed_gap_delta", "normal_velocity_delta"],
+  "uncertainty": "diagonal Gaussian for linear families; 3-component diagonal Gaussian mixture for neural families",
+  "proper_score": "multivariate energy score with 32 or 48 frozen-seed draws"
+}

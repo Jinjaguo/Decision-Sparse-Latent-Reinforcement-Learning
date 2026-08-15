@@ -1,0 +1,6 @@
+{
+  "baseline_b": "EXP5-style 57-dimensional state/contact descriptor plus signed intervention/action projection; logistic event head and ridge Gaussian response",
+  "factorized": "Baseline-B event probabilities appended to a separate ridge Gaussian response model",
+  "test_event_labels_as_inputs": false,
+  "teacher_forcing": "diagnostic only; not used in Stage A primary comparison"
+}

@@ -1,0 +1,7 @@
+{
+  "graph_mixture": {"encoder": [128, 96], "components": 3, "distribution": "diagonal Gaussian mixture", "parameter_cap": 500000},
+  "temporal_sequence_mixture": {"history_gru": 48, "action_gru": 24, "encoder": [96, 80], "components": 3, "distribution": "diagonal Gaussian mixture", "parameter_cap": 500000},
+  "joint_heads": ["three horizon-specific mode-preservation logits", "three horizon-specific response mixtures"],
+  "seeds": [190901, 190902, 190903],
+  "seed_policy": "equal-weight ensemble; no cherry-picking"
+}

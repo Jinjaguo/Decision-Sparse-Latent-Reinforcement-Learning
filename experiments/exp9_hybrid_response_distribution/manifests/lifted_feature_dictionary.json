@@ -1,0 +1,7 @@
+{
+  "base": "standardized Baseline-B hybrid input",
+  "quadratic": "squares of first 24 state features",
+  "interactions": "outer product of first 8 state and first 8 action/intervention features",
+  "deterministic": true,
+  "post_test_changes_forbidden": true
+}

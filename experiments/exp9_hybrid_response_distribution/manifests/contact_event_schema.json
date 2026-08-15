@@ -1,0 +1,6 @@
+{
+  "primary_stage_a_event": "exact relevant named-pair mode preserved through horizon",
+  "additional_events": ["named_pair_add", "named_pair_drop", "physical_group_add", "physical_group_drop", "first_contact_change_time"],
+  "horizons": [1, 3, 5, 10, "remaining"],
+  "pair_group_source": "EXP8 frozen contact_identity_schema.json"
+}

@@ -1,0 +1,6 @@
+{
+  "history_length": 5,
+  "alignment": "reference boundaries ending at the pre-action branch boundary",
+  "padding": "repeat earliest available state with explicit zero validity mask",
+  "outcome_fields_forbidden": true
+}

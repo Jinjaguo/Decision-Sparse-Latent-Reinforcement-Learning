@@ -1,0 +1,8 @@
+{
+  "source_assignments": "EXP8 frozen crossfit_manifest.json",
+  "unit": "entire demonstration",
+  "outer_folds_per_task": 5,
+  "heldout_direction_in_training": false,
+  "training_only": ["normalization", "event threshold", "response scale", "residual uncertainty"],
+  "test_prediction_write_once": true
+}

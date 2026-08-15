@@ -1,0 +1,7 @@
+{
+  "chunk_length": 5,
+  "action_dimension": 7,
+  "alignment": "trajectory actions beginning at branch_time",
+  "terminal_padding": "right zeros with explicit validity mask",
+  "learned_macro_action": false
+}
