@@ -1,0 +1,10 @@
+{
+  "primary_maximum_steps": 140,
+  "sensitivity_steps": [80, 100, 120, 140, 160],
+  "route_set": "exp17",
+  "default_route": "D_physical_chunk",
+  "safety_envelope_run": "exp16_s0_expert_safety_audit_20260815",
+  "target_future_candidate_access": false,
+  "formal_maximum_routes": 8,
+  "unchanged_recovery_gates": true
+}

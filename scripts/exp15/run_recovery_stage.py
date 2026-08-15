@@ -48,6 +48,17 @@ EXP16_ROUTES=[
     {"route":"S7_smooth_weighted","view":"full","k":5,"replan":1,"monotone":False,"advance":0,"retarget":0.0,"aggregate":"weighted","smooth":0.5},
     {"route":"S8_contact_smooth","view":"full","k":3,"replan":2,"monotone":True,"advance":2,"retarget":0.0,"aggregate":"weighted","smooth":0.35},
 ]
+EXP17_ROUTES=[
+    {"route":"D_physical_chunk","view":"physical","k":1,"replan":10,"monotone":False,"advance":0,"retarget":0.0,"aggregate":"nearest","smooth":0.0},
+    {"route":"H1_weighted_k3","view":"full","k":3,"replan":1,"monotone":False,"advance":0,"retarget":0.0,"aggregate":"weighted","smooth":0.0},
+    {"route":"H1_weighted_k9","view":"full","k":9,"replan":1,"monotone":False,"advance":0,"retarget":0.0,"aggregate":"weighted","smooth":0.0},
+    {"route":"H2_median_k9","view":"full","k":9,"replan":1,"monotone":False,"advance":0,"retarget":0.0,"aggregate":"median","smooth":0.0},
+    {"route":"H2_medoid_k9","view":"full","k":9,"replan":1,"monotone":False,"advance":0,"retarget":0.0,"aggregate":"medoid","smooth":0.0},
+    {"route":"H3_smooth_low","view":"full","k":5,"replan":1,"monotone":False,"advance":0,"retarget":0.0,"aggregate":"weighted","smooth":0.25},
+    {"route":"H3_smooth_high","view":"full","k":5,"replan":1,"monotone":False,"advance":0,"retarget":0.0,"aggregate":"weighted","smooth":0.75},
+    {"route":"H4_progress_persistent","view":"full","k":3,"replan":2,"monotone":True,"advance":2,"retarget":0.0,"aggregate":"weighted","smooth":0.25},
+    {"route":"H5_short_chunk","view":"full","k":1,"replan":2,"monotone":True,"advance":2,"retarget":0.0,"aggregate":"nearest","smooth":0.0},
+]
 VIEW={"physical":np.r_[0:3,9:15],"object":np.r_[3:15],"full":np.r_[0:26]}
 
 
@@ -125,15 +136,15 @@ def runtime_state(obs):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--run-id",required=True);p.add_argument("--stage",choices=("calibration","formal"),required=True);p.add_argument("--reference-run",type=Path,required=True);p.add_argument("--branch-manifest",type=Path,required=True);p.add_argument("--training-run",type=Path,default=Path("runs/exp8_s2_independent_refs_20260814"));p.add_argument("--authorization",type=Path);p.add_argument("--route-set",choices=("exp15","exp16"),default="exp15");p.add_argument("--safety-envelope",type=Path)
+    p=argparse.ArgumentParser();p.add_argument("--run-id",required=True);p.add_argument("--stage",choices=("calibration","formal"),required=True);p.add_argument("--reference-run",type=Path,required=True);p.add_argument("--branch-manifest",type=Path,required=True);p.add_argument("--training-run",type=Path,default=Path("runs/exp8_s2_independent_refs_20260814"));p.add_argument("--authorization",type=Path);p.add_argument("--route-set",choices=("exp15","exp16","exp17"),default="exp15");p.add_argument("--safety-envelope",type=Path);p.add_argument("--maximum-steps",type=int,default=80)
     args=p.parse_args();out=ROOT/"runs"/args.run_id
     if out.exists():raise FileExistsError(f"immutable run exists: {out}")
     artifacts,manifests=out/"artifacts",out/"manifests";artifacts.mkdir(parents=True);manifests.mkdir();started=datetime.now(timezone.utc).isoformat();stdout=io.StringIO();stderr=io.StringIO();env=None
     try:
-        training=(ROOT/args.training_run).resolve();library=build_library(training);branches=json.loads((ROOT/args.branch_manifest).read_text());routes=ROUTES if args.route_set=="exp15" else EXP16_ROUTES;safety_envelope=json.loads((ROOT/args.safety_envelope).read_text()) if args.safety_envelope else None
+        training=(ROOT/args.training_run).resolve();library=build_library(training);branches=json.loads((ROOT/args.branch_manifest).read_text());routes={"exp15":ROUTES,"exp16":EXP16_ROUTES,"exp17":EXP17_ROUTES}[args.route_set];safety_envelope=json.loads((ROOT/args.safety_envelope).read_text()) if args.safety_envelope else None
         if args.authorization:
             allowed=set(json.loads((ROOT/args.authorization).read_text())["authorized_routes"]);routes=[x for x in routes if x["route"] in allowed or x["route"]=="D_physical_chunk"]
-        protocol={"stage":args.stage,"route_set":args.route_set,"routes":routes,"default_route":"D_physical_chunk","training_run":training.name,"training_hash":sha(training/"artifacts/reference_snapshots_manifest.json"),"target_future_candidate_access":False,"expert_path_isolated":True,"maximum_rollout_steps":80,"safety_envelope":str(args.safety_envelope) if args.safety_envelope else None,"frozen_before_outcomes":True}
+        protocol={"stage":args.stage,"route_set":args.route_set,"routes":routes,"default_route":"D_physical_chunk","training_run":training.name,"training_hash":sha(training/"artifacts/reference_snapshots_manifest.json"),"target_future_candidate_access":False,"expert_path_isolated":True,"maximum_rollout_steps":args.maximum_steps,"safety_envelope":str(args.safety_envelope) if args.safety_envelope else None,"frozen_before_outcomes":True}
         dump(manifests/"recovery_protocol.json",protocol);dump(manifests/"branch_manifest.json",branches);dump(manifests/"preoutcome_hashes.json",{"protocol":sha(manifests/"recovery_protocol.json"),"branches":sha(manifests/"branch_manifest.json")})
         selection,task_manifest=load_selection(ROOT/"experiments/exp1_decision_sparsity/manifests/selected_tasks_pilot.json",ROOT/"experiments/exp1_decision_sparsity/manifests/tasks.json");selected={x["name"]:x for x in selection["tasks"]};wrapper,robosuite_root,assets_root=bootstrap_runtime(ROOT/"third_party/LIBERO",ROOT/"data",artifacts/"libero_config")
         channel_schema=json.loads((ROOT/"experiments/exp3_time_indexed_q_criticality/manifests/effect_channel_schema.json").read_text());contact_schema=load_schema(ROOT/"experiments/exp7_contact_mode_conditioned/manifests/contact_mode_schema.json")
@@ -153,7 +164,7 @@ def main():
                     restore_d(env,integrations[t],controller);expert_rows=engine.rollout(env,target_actions,t,None,body_ids,contact_schema,task);experts.append({"branch_id":branch["branch_id"],"task":task,"success":bool(expert_rows[-1]["predicate"]),"steps":len(expert_rows)})
                     for spec in routes:
                         restore_d(env,integrations[t],controller);obs=engine.observation(env,body_ids,contact_schema,task);memory={};pending=None;requested=None;retrieved=[];clip_count=0;action_count=0;safety=False;success=bool(obs["predicate"]);route_steps=[];exceedance_count=0;absolute_200=False
-                        for offset in range(80):
+                        for offset in range(args.maximum_steps):
                             if success:break
                             if pending is None or offset%spec["replan"]==0:
                                 requested,pending,retrieved=choose_chunk(spec,runtime_state(obs),library[task],memory)
