@@ -1,0 +1,10 @@
+{
+  "primary": "Q1_default_to_k9",
+  "default_max_steps": 140,
+  "coordinator_max_steps": 200,
+  "switch_steps": [50, 70, 90, 110],
+  "route_count": 9,
+  "target_future_access": false,
+  "safety_envelope": "exp16_s0_expert_safety_audit_20260815",
+  "utility_gates_unchanged": true
+}
