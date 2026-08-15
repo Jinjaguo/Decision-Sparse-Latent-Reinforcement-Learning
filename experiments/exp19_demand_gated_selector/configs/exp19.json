@@ -1,0 +1,10 @@
+{
+  "primary": "demand_gated_k3_t040_m005",
+  "neighbor_counts": [1, 3, 5, 7, 11],
+  "demand_thresholds": [0.3, 0.4, 0.5, 0.6],
+  "rescue_margins": [0.0, 0.05, 0.1],
+  "distance": "standardized pre-action branch context",
+  "retrieval_unit": "complete branch outcome vector",
+  "crossfit_unit": "complete task-demo",
+  "target_future_or_post_action_inputs": false
+}
