@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse,json,sys
 from collections import defaultdict
 from pathlib import Path
-import pyarrow as pq
+import pyarrow.parquet as pq
 
 ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/"src"))
 from decision_sparse_rl.metrics.exp18 import selector_metrics
