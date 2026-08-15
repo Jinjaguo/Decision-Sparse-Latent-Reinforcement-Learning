@@ -10,7 +10,7 @@ import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT))
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT));sys.path.insert(0,str(ROOT/"src"))
 from decision_sparse_rl.envs.libero_runtime import bootstrap_runtime,environment_kwargs,load_episode,load_selection,task_source_record
 from scripts.exp3.run_criticality import restore_d
 from scripts.exp7.contact_geometry import load_schema
