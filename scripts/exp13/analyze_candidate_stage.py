@@ -50,6 +50,7 @@ def main() -> int:
     parser.add_argument("--candidate-run", type=Path, required=True)
     parser.add_argument("--reference-run", type=Path, required=True)
     parser.add_argument("--plan-run", type=Path)
+    parser.add_argument("--max-authorized", type=int, default=4)
     parser.add_argument("--stage", choices=("calibration", "formal"), required=True)
     args = parser.parse_args()
     out = ROOT / "runs" / args.run_id
@@ -88,10 +89,10 @@ def main() -> int:
         family_metrics.append({"task":task,"generator_family":family,"candidate_count":len(values),"group_count":len(by_branch),"clipped_chunk_fraction":clipped,"success_rate":success,"opportunity_rate":opp,"diversity":diversity,"mean_macro_effect":float(np.mean([x["macro_effect_h10"] for x in values])),"authorized":authorize_family(clipped,success,opp,diversity)})
     for task in TASKS:
         eligible=[x for x in family_metrics if x["task"]==task and x["authorized"]]
-        eligible=sorted(eligible,key=lambda x:(x["opportunity_rate"],x["success_rate"],x["diversity"]),reverse=True)[:4]
+        eligible=sorted(eligible,key=lambda x:(x["opportunity_rate"],x["success_rate"],x["diversity"]),reverse=True)[:args.max_authorized]
         authorized_by_task[task]=[x["generator_family"] for x in eligible]
     write_pq(artifacts/"family_metrics.parquet",family_metrics)
-    authorization={"stage":args.stage,"authorized_by_task":authorized_by_task,"maximum_per_task":4,"rules":{"clipped_chunk_fraction_max":.10,"success_rate_min":.80,"opportunity_rate":"strictly positive","diversity_min":.02},"calibration_only":args.stage=="calibration"}
+    authorization={"stage":args.stage,"authorized_by_task":authorized_by_task,"maximum_per_task":args.max_authorized,"rules":{"clipped_chunk_fraction_max":.10,"success_rate_min":.80,"opportunity_rate":"strictly positive","diversity_min":.02},"calibration_only":args.stage=="calibration"}
     dump(artifacts/"family_authorization.json",authorization)
     if args.plan_run:
         branch_path = ROOT/args.plan_run/"artifacts/branch_manifest.json"
