@@ -1,0 +1,14 @@
+{
+  "chunk_length": 10,
+  "osc_translation_scale_m": 0.05,
+  "routes": ["T1_lookahead", "T2_waypoint", "T3_object_frame", "T4_retarget", "T5_inverse", "T6_skill", "T7_guided", "T8_composed"],
+  "calibration_episodes": [41, 42],
+  "formal_episodes": [43, 44, 45, 46, 47, 48, 49],
+  "maximum_authorized_routes_per_task": 5,
+  "maximum_formal_candidates_per_branch": 16,
+  "opportunity_gap": 0.05,
+  "success_overall_opportunity_rate": 0.30,
+  "success_task_opportunity_rate": 0.20,
+  "success_task_count": 2,
+  "minimum_valid_candidate_fraction": 0.90
+}
