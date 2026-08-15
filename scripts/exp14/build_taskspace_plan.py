@@ -149,13 +149,20 @@ def main() -> int:
     plan=[];support=defaultdict(lambda:defaultdict(int))
     for branch in branches:
         task,episode,t=branch["task"],branch["episode"],int(branch["branch_time"]);ref,candidates=candidate_pool(task,episode,t,cache[(task,episode)],training_cache)
-        chosen=[];counts=defaultdict(int);seen=set();permitted=set(authorization[task])
+        chosen=[];counts=defaultdict(int);seen=set();permitted=set(authorization[task]);by_route=defaultdict(list)
         for route,source,desired in candidates:
             if route not in permitted:continue
             digest=hashlib.sha256(np.round(desired,10).tobytes()).hexdigest()
             if digest in seen:continue
-            if args.stage=="formal" and (len(chosen)>=16 or counts[route]>=4):continue
-            seen.add(digest);counts[route]+=1;chosen.append((route,source,desired));support[task][route]+=1
+            seen.add(digest);by_route[route].append((route,source,desired))
+        if args.stage=="formal":
+            ordered=[route for route in authorization[task] if route in by_route]
+            for rank in range(4):
+                for route in ordered:
+                    if rank < len(by_route[route]) and len(chosen) < 16:chosen.append(by_route[route][rank])
+        else:
+            for route in ROUTES:chosen.extend(by_route[route])
+        for route,_,_ in chosen:counts[route]+=1;support[task][route]+=1
         for route,source,desired in chosen:
             plan.append({"branch_id":branch["branch_id"],"family":"I-A_analytic","generator_family":route,"basis_family":route,"candidate_source":source,"mode_index":counts[route],"channel":-1,"chunk_length":len(desired),"amplitude":1.0,"sign":1,"basis":(desired-ref).tolist()})
     for i,row in enumerate(plan):row["intervention_id"]=f"exp14_{args.stage}|r{i:05d}"
