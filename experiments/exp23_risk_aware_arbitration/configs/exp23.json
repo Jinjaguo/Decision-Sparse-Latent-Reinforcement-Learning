@@ -1,6 +1,9 @@
 {
   "calibration_demos": [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42],
-  "confirmation_demos": [50, 51, 52, 53, 54, 55, 56],
+  "unavailable_prospective_demos": [50, 51, 52, 53, 54, 55, 56],
+  "confirmation_demos": [21, 22, 23, 24, 25, 26, 27],
+  "confirmation_reference_run": "exp7_s2_independent_refs_20260814",
+  "replacement_reason": "dataset indexes stop before demo_50; ordered common available cohort frozen before EXP23 candidate outcomes",
   "confirmation_frozen_before_outcomes": true,
   "route_count": 9,
   "maximum_steps": 300,

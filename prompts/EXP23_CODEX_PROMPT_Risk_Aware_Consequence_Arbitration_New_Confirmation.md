@@ -6,7 +6,7 @@ EXP22 achieved 82.14% safe success and exactly 60% demand recovery, missing the 
 
 ## Cohorts and leakage boundary
 
-Use demos 30–40 plus 41–42 for expanded calibration and mechanism selection. Before inspecting any candidate outcomes, freeze demos 50–56 as a new confirmation cohort, generate same-runtime corrected snapshots, and select four reference-only landmarks per demo. Target-demo future actions and expert suffixes are evaluation-only. Exclude the target demo from retrieval neighbors and feature scaling whenever it overlaps the independent library.
+Use demos 30–40 plus 41–42 for expanded calibration and mechanism selection. The prospectively named demos 50–56 were audited before candidate execution and found outside the dataset's available index range. Replace them, before inspecting any EXP23 candidate outcomes, with the ordered common available cohort demos 21–27. These 21 trajectories already pass the EXP7 same-runtime reference gate, have no overlap with the demos 30–40 action library, and have not supplied EXP15–22 recovery outcomes. Select four reference-only landmarks per demo. Target-demo future actions and expert suffixes are evaluation-only. Exclude the target demo from retrieval neighbors and feature scaling whenever it overlaps the independent library.
 
 ## Required mechanism portfolio
 
@@ -25,7 +25,6 @@ Calibration may compare guard fractions, retract gains, scaling factors, mechani
 
 ## Success rule
 
-On untouched demos 50–56, the frozen primary must improve safe success by at least 10 points over the 140-step default, recover at least 60% of default-demand branches, capture at least 75% of candidate-oracle headroom, not worsen safety-stop rate, and be non-inferior in at least two tasks. Use a confirmation-set oracle only for evaluation, report EXP17/EXP22 transfer separately, and audit all source hashes and target-future isolation.
+On untouched recovery outcomes from demos 21–27, the frozen primary must improve safe success by at least 10 points over the 140-step default, recover at least 60% of default-demand branches, capture at least 75% of candidate-oracle headroom, not worsen safety-stop rate, and be non-inferior in at least two tasks. Use a confirmation-set oracle only for evaluation, report EXP17/EXP22 transfer separately, and audit all source hashes and target-future isolation.
 
 If unsuccessful, write EXP23 evidence and continue to a broad EXP24 experiment. Stop only on success or after EXP62.
-
