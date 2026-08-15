@@ -49,6 +49,7 @@ def main() -> int:
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--candidate-run", type=Path, required=True)
     parser.add_argument("--reference-run", type=Path, required=True)
+    parser.add_argument("--plan-run", type=Path)
     parser.add_argument("--stage", choices=("calibration", "formal"), required=True)
     args = parser.parse_args()
     out = ROOT / "runs" / args.run_id
@@ -72,7 +73,8 @@ def main() -> int:
         pos=np.asarray(terminal["task_object_positions"],float);quat=np.asarray(terminal["task_object_quaternions"],float)
         motion=motion_quality(task,initial_pos,initial_quat,pos,quat,reference_pos,reference_quat)
         contact=1-float(summary["regime_change_fraction_h20"]);outcome=float(summary["terminal_perturbed_success"]);composite=4*outcome+contact+float(np.clip(motion,-1,1.5))
-        rows.append({"candidate_id":summary["intervention_id"],"branch_id":summary["branch_id"],"task":task,"episode":episode,"generator_family":summary["generator_family"],"candidate_source":summary["candidate_source"],"clipped_chunk":bool(summary["clipped_chunk"]),"all_states_finite":bool(summary["all_states_finite"]),"outcome_quality":outcome,"contact_quality":contact,"motion_quality":motion,"composite_quality":composite,"nominal_quality":nominal_quality[(task,episode)],"improves_nominal":bool(composite>nominal_quality[(task,episode)]+.05),"macro_effect_h10":float(summary["macro_effect_h10"])})
+        fidelity_valid = bool(summary["all_states_finite"]) and not bool(summary["clipped_chunk"])
+        rows.append({"candidate_id":summary["intervention_id"],"branch_id":summary["branch_id"],"task":task,"episode":episode,"generator_family":summary["generator_family"],"candidate_source":summary["candidate_source"],"clipped_chunk":bool(summary["clipped_chunk"]),"all_states_finite":bool(summary["all_states_finite"]),"fidelity_valid":fidelity_valid,"outcome_quality":outcome,"contact_quality":contact,"motion_quality":motion,"composite_quality":composite,"nominal_quality":nominal_quality[(task,episode)],"improves_nominal":bool(fidelity_valid and composite>nominal_quality[(task,episode)]+.05),"macro_effect_h10":float(summary["macro_effect_h10"])})
     write_pq(artifacts/"candidate_quality.parquet",rows)
     grouped=defaultdict(list)
     for row in rows: grouped[(row["task"],row["generator_family"])].append(row)
@@ -91,14 +93,28 @@ def main() -> int:
     write_pq(artifacts/"family_metrics.parquet",family_metrics)
     authorization={"stage":args.stage,"authorized_by_task":authorized_by_task,"maximum_per_task":4,"rules":{"clipped_chunk_fraction_max":.10,"success_rate_min":.80,"opportunity_rate":"strictly positive","diversity_min":.02},"calibration_only":args.stage=="calibration"}
     dump(artifacts/"family_authorization.json",authorization)
-    all_groups=defaultdict(list)
+    if args.plan_run:
+        branch_path = ROOT/args.plan_run/"artifacts/branch_manifest.json"
+        branch_records = json.loads(branch_path.read_text())
+    else:
+        branch_records = list({x["branch_id"]: {"branch_id":x["branch_id"],"task":x["task"]} for x in summaries}.values())
+    branch_info = {x["branch_id"]: x for x in branch_records}
+    all_groups={branch_id: [] for branch_id in branch_info}
     for row in rows:all_groups[row["branch_id"]].append(row)
-    opportunity=[{"branch_id":key,"task":values[0]["task"],"opportunity":any(x["improves_nominal"] for x in values),"gap":max(x["composite_quality"]-x["nominal_quality"] for x in values),"best_family":max(values,key=lambda x:x["composite_quality"])["generator_family"]} for key,values in all_groups.items()]
+    opportunity=[]
+    for key, values in all_groups.items():
+        task = branch_info[key]["task"]
+        valid = [x for x in values if x["fidelity_valid"]]
+        opportunity.append({"branch_id":key,"task":task,"opportunity":any(x["improves_nominal"] for x in valid),"gap":max([0.0]+[x["composite_quality"]-x["nominal_quality"] for x in valid]),"best_family":max(valid,key=lambda x:x["composite_quality"])["generator_family"] if valid else "nominal_no_authorized_candidate"})
     write_pq(artifacts/"opportunity_by_group.parquet",opportunity)
     labels=[f"{x['task'][:6]}:{x['generator_family'][1:3]}" for x in family_metrics];values=[x["opportunity_rate"] for x in family_metrics]
     fig,ax=plt.subplots(figsize=(14,5));ax.bar(range(len(values)),values);ax.set_xticks(range(len(values)),labels,rotation=70);ax.set(title="Candidate opportunity by task and family",ylabel="group opportunity rate");fig.tight_layout();fig.savefig(plots/"family_opportunity.png",dpi=160);plt.close(fig)
     task_opp={task:float(np.mean([x["opportunity"] for x in opportunity if x["task"]==task])) for task in TASKS}
-    metrics={"status":"completed","stage":args.stage,"candidate_count":len(rows),"group_count":len(all_groups),"overall_opportunity_rate":float(np.mean([x["opportunity"] for x in opportunity])),"task_opportunity_rate":task_opp,"authorized_by_task":authorized_by_task,"family_metrics":family_metrics}
+    gaps=np.asarray([x["gap"] for x in opportunity],float)
+    valid_fraction=float(np.mean([x["fidelity_valid"] for x in rows])) if rows else 0.0
+    terminal_failure=float(np.mean([not x["outcome_quality"] for x in rows])) if rows else 0.0
+    catastrophic=float(np.mean([(not x["outcome_quality"]) and x["contact_quality"] < .5 for x in rows])) if rows else 0.0
+    metrics={"status":"completed","stage":args.stage,"candidate_count":len(rows),"group_count":len(all_groups),"valid_candidate_fraction":valid_fraction,"terminal_failure_rate":terminal_failure,"catastrophic_contact_rate":catastrophic,"overall_opportunity_rate":float(np.mean([x["opportunity"] for x in opportunity])),"median_oracle_improvement_gap":float(np.median(gaps)),"p90_oracle_improvement_gap":float(np.quantile(gaps,.9)),"task_opportunity_rate":task_opp,"authorized_by_task":authorized_by_task,"family_metrics":family_metrics}
     dump(out/"metrics.json",metrics);print(json.dumps(metrics,indent=2));return 0
 
 
