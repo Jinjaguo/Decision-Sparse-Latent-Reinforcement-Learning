@@ -1,0 +1,10 @@
+{
+  "G1_multichannel": "DCT/pulse modes on three reference-derived arm channels",
+  "G2_temporal": "index shifts plus speed-up/slow-down with exact gripper signs",
+  "G3_residual": "leave-demo-out task-phase residual modes",
+  "G4_library": "same-task cross-demo nearest-context action chunks",
+  "G5_progress": "reference-only task-progress regression directions",
+  "G6_guided": "EXP12-training consequence score selects a diverse finite candidate pool",
+  "G7_gripper": "advance/delay actual sign transitions only",
+  "G8_composed": "at most two individually bounded low-amplitude edits"
+}

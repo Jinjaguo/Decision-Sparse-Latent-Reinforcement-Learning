@@ -1,0 +1,18 @@
+{
+  "calibration_reference_run": "exp11_s1_calibration_refs_20260814",
+  "formal_reference_run": "exp11_s2_formal_refs_20260814",
+  "training_reference_run": "exp8_s2_independent_refs_20260814",
+  "chunk_length": 10,
+  "calibration_families": ["G1_multichannel", "G2_temporal", "G3_residual", "G4_library", "G5_progress", "G6_guided", "G7_gripper", "G8_composed"],
+  "maximum_authorized_families_per_task": 4,
+  "maximum_formal_candidates_per_branch": 12,
+  "clipped_chunk_fraction_max": 0.1,
+  "minimum_success_rate": 0.8,
+  "minimum_diversity": 0.02,
+  "opportunity_gap": 0.05,
+  "success_overall_opportunity_rate": 0.3,
+  "success_task_opportunity_rate": 0.2,
+  "success_task_count": 2,
+  "minimum_valid_candidate_fraction": 0.9
+}
+
