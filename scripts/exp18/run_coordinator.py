@@ -60,7 +60,7 @@ def main():
         if key not in first or row["offset"]<first[key]["offset"]:first[key]=row
     rows=[]
     for row in summaries:
-        task=row["task"];route=row["route"];action=np.asarray(first[(row["branch_id"],route)]["requested_action"],float);base=context[row["branch_id"]];x=np.r_[base,one(ROUTES.index(route),len(ROUTES)),action,np.linalg.norm(action[:6]),np.mean(np.abs(action[:6]))]
+        task=row["task"];route=row["route"];initial=first.get((row["branch_id"],route));action=np.asarray(initial["requested_action"],float) if initial else np.zeros(7);base=context[row["branch_id"]];x=np.r_[base,one(ROUTES.index(route),len(ROUTES)),action,np.linalg.norm(action[:6]),np.mean(np.abs(action[:6])),float(initial is None)]
         rows.append({**row,"demo_key":f"{task}|{row['episode']}","branch_rank":rank[row["branch_id"]],"safe_success":bool(row["success"] and not row["safety_stop"]),"fast":float(row["success"])*(1-min(row["steps"],140)/140),"x":x.tolist()})
     pq.write_table(pa.Table.from_pylist(rows),artifacts/"selector_dataset.parquet",compression="zstd")
     demos=sorted(set(x["demo_key"] for x in rows));fold={demo:i%5 for i,demo in enumerate(demos)};dump(manifests/"folds.json",fold);dump(manifests/"input_audit.json",{"allowed":["current boundary state","route identity","first requested action"],"forbidden":["target future actions","post-action state","realized outcome","realized steps"],"target_future_or_post_action_inputs":False,"complete_demo_folds":True,"primary_selector":"conservative_ensemble"})
