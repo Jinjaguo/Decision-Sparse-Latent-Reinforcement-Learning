@@ -1,0 +1,16 @@
+{
+  "dataset_run": "exp10_a0_phase_macro_dataset_r2_20260814",
+  "model_run": "exp10_a1_a6_multiroute_models_r1_20260814",
+  "folds": 5,
+  "fold_unit": "complete demonstration",
+  "fit_direction_roles": ["basis"],
+  "evaluation_direction_roles": ["basis", "heldout_random"],
+  "neural_seeds": [101001, 101002, 101003],
+  "horizons": [5, 10],
+  "history_scales": [1, 5, 10, "phase_history"],
+  "action_chunk_scales": [5, 10, 20, "phase_to_next_landmark_capped_20"],
+  "tracks": ["A", "B", "C", "D", "E", "F"],
+  "maximum_stage_b_routes": 3,
+  "prediction_write_once": true,
+  "stage_b_authorized": false
+}
