@@ -66,3 +66,15 @@ def test_exp23_routes_include_guard_and_phase_controls():
     assert any("progress_bands" in route for route in EXP23_ROUTES)
     assert any(route["route"].startswith("P7_unguarded") for route in EXP23_ROUTES)
     assert all(route["max_steps"] <= 300 for route in EXP23_ROUTES)
+
+
+def test_exp24_primary_dispatches_distinct_task_controls():
+    from scripts.exp15.run_recovery_stage import EXP24_ROUTES
+
+    primary = next(route for route in EXP24_ROUTES if route["route"] == "T0_task_modular_primary")
+    controls = primary["task_controls"]
+    assert len(controls) == 3
+    assert controls["open_the_middle_drawer_of_the_cabinet"]["force_guard"] == "retract"
+    assert "force_guard" not in controls["put_the_bowl_on_the_plate"]
+    assert controls["turn_on_the_stove"]["force_guard"] == "scale"
+    assert len(EXP24_ROUTES) == 9

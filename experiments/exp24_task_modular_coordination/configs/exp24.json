@@ -1,0 +1,13 @@
+{
+  "frozen_primary": "T0_task_modular_primary",
+  "drawer_module": "guarded goal -> smooth -> response",
+  "bowl_module": "stable smooth -> goal",
+  "stove_module": "confirmed soft-force diverse portfolio",
+  "confirmation_reference_run": "exp5_s4_confirmatory_refs_amended_20260814",
+  "confirmation_demo_count": 30,
+  "confirmation_branch_count": 120,
+  "action_library": "exp8_s2_independent_refs_20260814",
+  "target_future_access": false,
+  "maximum_steps": 320,
+  "utility_gates_unchanged": true
+}
