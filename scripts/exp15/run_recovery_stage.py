@@ -79,6 +79,7 @@ EXP22_MODES={
     "C4_smooth_low":{"view":"full","k":5,"replan":1,"monotone":False,"advance":0,"retarget":0.0,"aggregate":"weighted","smooth":0.25,"selection":"distance"},
     "C5_conservative_medoid":{"view":"full","k":9,"replan":1,"monotone":False,"advance":0,"retarget":0.0,"aggregate":"medoid","smooth":0.0,"selection":"distance"},
     "C6_goal_retarget":{"view":"full","k":5,"replan":1,"monotone":True,"advance":1,"retarget":0.20,"aggregate":"weighted","smooth":0.10,"selection":"goal_effect","search_k":48,"consequence_weight":0.70},
+    "C7_physical_default":{"view":"physical","k":1,"replan":10,"monotone":False,"advance":0,"retarget":0.0,"aggregate":"nearest","smooth":0.0,"selection":"distance"},
 }
 EXP22_ROUTES=[
     {"route":"D_physical_chunk","view":"physical","k":1,"replan":10,"monotone":False,"advance":0,"retarget":0.0,"aggregate":"nearest","smooth":0.0,"max_steps":140},
@@ -134,6 +135,21 @@ EXP25_ROUTES=[
     {"route":"U5_physical_fast_switch","modes":["C4_smooth_low"],"task_controls":{"open_the_middle_drawer_of_the_cabinet":drawer_control(["C0_goal_consequence","C4_smooth_low","C2_response_alignment","C5_conservative_medoid"],12,18,55),"put_the_bowl_on_the_plate":BOWL_STABLE,"turn_on_the_stove":STOVE_SOFT},"max_steps":320},
     {"route":"U6_physical_slow_switch","modes":["C4_smooth_low"],"task_controls":{"open_the_middle_drawer_of_the_cabinet":drawer_control(["C0_goal_consequence","C4_smooth_low","C2_response_alignment","C5_conservative_medoid"],30,35,95),"put_the_bowl_on_the_plate":BOWL_STABLE,"turn_on_the_stove":STOVE_SOFT},"max_steps":320},
     {"route":"U7_retrieval_progress_control","modes":["C4_smooth_low"],"task_controls":{"open_the_middle_drawer_of_the_cabinet":DRAWER_GOAL,"put_the_bowl_on_the_plate":BOWL_STABLE,"turn_on_the_stove":STOVE_SOFT},"max_steps":320},
+]
+def task_modular_stove(route,stove,max_steps=320):
+    return {"route":route,"modes":["C4_smooth_low"],"task_controls":{"open_the_middle_drawer_of_the_cabinet":DRAWER_GOAL,"put_the_bowl_on_the_plate":BOWL_STABLE,"turn_on_the_stove":stove},"max_steps":max_steps}
+
+
+EXP27_ROUTES=[
+    {"route":"D_physical_chunk","view":"physical","k":1,"replan":10,"monotone":False,"advance":0,"retarget":0.0,"aggregate":"nearest","smooth":0.0,"max_steps":140},
+    task_modular_stove("V0_default70_soft_goal",{"modes":["C7_physical_default","C4_smooth_low","C0_goal_consequence","C2_response_alignment"],"maximum_dwell":70,"minimum_dwell":35,"force_guard":"scale","guard_fraction":0.55,"guard_scale":0.25}),
+    task_modular_stove("V1_default110_soft_goal",{"modes":["C7_physical_default","C4_smooth_low","C0_goal_consequence"],"maximum_dwell":110,"minimum_dwell":55,"force_guard":"scale","guard_fraction":0.55,"guard_scale":0.25}),
+    task_modular_stove("V2_soft_diverse_control",STOVE_SOFT),
+    task_modular_stove("V3_goal_guarded_stove",{"modes":["C0_goal_consequence","C4_smooth_low","C2_response_alignment"],"stall_window":22,"minimum_progress_gain":0.02,"minimum_dwell":25,"maximum_dwell":85,"force_guard":"retract","guard_fraction":0.70,"guard_gain":1.0}),
+    task_modular_stove("V4_response_soft_goal",{"modes":["C2_response_alignment","C4_smooth_low","C0_goal_consequence","C1_progress_consequence"],"stall_window":20,"minimum_progress_gain":0.02,"minimum_dwell":22,"maximum_dwell":70,"force_guard":"retract","guard_fraction":0.75,"guard_gain":0.75}),
+    task_modular_stove("V5_phase_risk_stove",{"modes":["C4_smooth_low","C0_goal_consequence","C2_response_alignment"],"progress_bands":{"turn_on_the_stove":[{"minimum":0.65,"modes":["C4_smooth_low","C2_response_alignment","C1_progress_consequence"]},{"minimum":0.45,"modes":["C0_goal_consequence","C4_smooth_low","C2_response_alignment"]}]},"stall_window":22,"minimum_progress_gain":0.02,"minimum_dwell":25,"maximum_dwell":75,"force_guard":"retract","guard_fraction":0.70,"guard_gain":1.0}),
+    task_modular_stove("V6_soft_default_goal",{"modes":["C4_smooth_low","C7_physical_default","C0_goal_consequence","C2_response_alignment"],"maximum_dwell":65,"minimum_dwell":30,"force_guard":"scale","guard_fraction":0.55,"guard_scale":0.25}),
+    task_modular_stove("V7_medoid_goal_soft",{"modes":["C5_conservative_medoid","C0_goal_consequence","C4_smooth_low","C2_response_alignment"],"stall_window":24,"minimum_progress_gain":0.02,"minimum_dwell":25,"maximum_dwell":80,"force_guard":"retract","guard_fraction":0.70,"guard_gain":1.0}),
 ]
 VIEW={"physical":np.r_[0:3,9:15],"object":np.r_[3:15],"full":np.r_[0:26]}
 
@@ -243,12 +259,12 @@ def task_physical_progress(env,task,obs):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--run-id",required=True);p.add_argument("--stage",choices=("calibration","formal"),required=True);p.add_argument("--reference-run",type=Path,required=True);p.add_argument("--branch-manifest",type=Path,required=True);p.add_argument("--training-run",type=Path,default=Path("runs/exp8_s2_independent_refs_20260814"));p.add_argument("--authorization",type=Path);p.add_argument("--route-set",choices=("exp15","exp16","exp17","exp21","exp22","exp23","exp24","exp25"),default="exp15");p.add_argument("--safety-envelope",type=Path);p.add_argument("--maximum-steps",type=int,default=80);p.add_argument("--exclude-target-demo",action="store_true")
+    p=argparse.ArgumentParser();p.add_argument("--run-id",required=True);p.add_argument("--stage",choices=("calibration","formal"),required=True);p.add_argument("--reference-run",type=Path,required=True);p.add_argument("--branch-manifest",type=Path,required=True);p.add_argument("--training-run",type=Path,default=Path("runs/exp8_s2_independent_refs_20260814"));p.add_argument("--authorization",type=Path);p.add_argument("--route-set",choices=("exp15","exp16","exp17","exp21","exp22","exp23","exp24","exp25","exp27"),default="exp15");p.add_argument("--safety-envelope",type=Path);p.add_argument("--maximum-steps",type=int,default=80);p.add_argument("--exclude-target-demo",action="store_true")
     args=p.parse_args();out=ROOT/"runs"/args.run_id
     if out.exists():raise FileExistsError(f"immutable run exists: {out}")
     artifacts,manifests=out/"artifacts",out/"manifests";artifacts.mkdir(parents=True);manifests.mkdir();started=datetime.now(timezone.utc).isoformat();stdout=io.StringIO();stderr=io.StringIO();env=None
     try:
-        training=(ROOT/args.training_run).resolve();library=build_library(training);branches=json.loads((ROOT/args.branch_manifest).read_text());routes={"exp15":ROUTES,"exp16":EXP16_ROUTES,"exp17":EXP17_ROUTES,"exp21":EXP21_ROUTES,"exp22":EXP22_ROUTES,"exp23":EXP23_ROUTES,"exp24":EXP24_ROUTES,"exp25":EXP25_ROUTES}[args.route_set];safety_envelope=json.loads((ROOT/args.safety_envelope).read_text()) if args.safety_envelope else None
+        training=(ROOT/args.training_run).resolve();library=build_library(training);branches=json.loads((ROOT/args.branch_manifest).read_text());routes={"exp15":ROUTES,"exp16":EXP16_ROUTES,"exp17":EXP17_ROUTES,"exp21":EXP21_ROUTES,"exp22":EXP22_ROUTES,"exp23":EXP23_ROUTES,"exp24":EXP24_ROUTES,"exp25":EXP25_ROUTES,"exp27":EXP27_ROUTES}[args.route_set];safety_envelope=json.loads((ROOT/args.safety_envelope).read_text()) if args.safety_envelope else None
         if args.authorization:
             allowed=set(json.loads((ROOT/args.authorization).read_text())["authorized_routes"]);routes=[x for x in routes if x["route"] in allowed or x["route"]=="D_physical_chunk"]
         protocol={"stage":args.stage,"route_set":args.route_set,"routes":routes,"default_route":"D_physical_chunk","training_run":training.name,"training_hash":sha(training/"artifacts/reference_snapshots_manifest.json"),"target_future_candidate_access":False,"expert_path_isolated":True,"exclude_target_demo_from_neighbors_and_scale":args.exclude_target_demo,"maximum_rollout_steps":args.maximum_steps,"safety_envelope":str(args.safety_envelope) if args.safety_envelope else None,"frozen_before_outcomes":True}

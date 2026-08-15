@@ -1,0 +1,12 @@
+{
+  "primary_selection": "calibration_only",
+  "calibration_episodes": [28, 29],
+  "formal_episodes": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "formal_quantiles": [0.28, 0.68],
+  "formal_branch_count": 60,
+  "disjoint_from_exp25_required": true,
+  "route_count": 9,
+  "target_future_access": false,
+  "maximum_steps": 320,
+  "utility_gates_unchanged": true
+}

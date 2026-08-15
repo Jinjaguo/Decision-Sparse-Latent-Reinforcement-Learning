@@ -90,3 +90,16 @@ def test_exp25_primary_uses_physical_drawer_stall():
     assert drawer["force_guard"] == "retract"
     assert len(drawer["modes"]) == 4
     assert len(EXP25_ROUTES) == 9
+
+
+def test_exp27_restores_diverse_stove_cascades():
+    from scripts.exp15.run_recovery_stage import EXP27_ROUTES
+
+    names = {route["route"] for route in EXP27_ROUTES}
+    assert {"V0_default70_soft_goal", "V1_default110_soft_goal", "V2_soft_diverse_control"} <= names
+    stove_orders = {
+        tuple(route.get("task_controls", {}).get("turn_on_the_stove", {}).get("modes", []))
+        for route in EXP27_ROUTES[1:]
+    }
+    assert len(stove_orders) >= 6
+    assert len(EXP27_ROUTES) == 9
