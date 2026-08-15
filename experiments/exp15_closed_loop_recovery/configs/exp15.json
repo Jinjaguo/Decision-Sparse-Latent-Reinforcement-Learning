@@ -1,0 +1,19 @@
+{
+  "training_reference_run": "exp8_s2_independent_refs_20260814",
+  "chunk_length": 10,
+  "maximum_rollout_steps": 80,
+  "force_safety_stop_n": 200.0,
+  "routes": [
+    "D_physical_chunk", "R1_object_feedback", "R1_contact_feedback",
+    "R2_monotone_feedback", "R2_monotone_chunk", "R3_weighted_feedback",
+    "R4_retarget_low", "R4_retarget_high", "R7_conservative"
+  ],
+  "default_route": "D_physical_chunk",
+  "formal_maximum_routes": 8,
+  "safe_availability_gate": 0.70,
+  "task_safe_availability_gate": 0.60,
+  "task_count_gate": 2,
+  "decision_demand_gate": 0.30,
+  "demand_recovery_gate": 0.60,
+  "valid_chunk_gate": 0.90
+}
