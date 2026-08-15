@@ -107,8 +107,8 @@ def build_library(training_run:Path,k=10):
     return libraries
 
 
-def choose_chunk(spec,state,library,memory):
-    cols=VIEW[spec["view"]];matrix=library["matrix"][:,cols];query=state["feature"][cols];distance=standardized_distance(query,matrix,library["scale"][cols]);pool=np.arange(len(matrix))
+def choose_chunk(spec,state,library,memory,exclude_episode=None):
+    cols=VIEW[spec["view"]];matrix=library["matrix"][:,cols];query=state["feature"][cols];pool=np.flatnonzero(library["episodes"]!=exclude_episode) if exclude_episode else np.arange(len(matrix));scale=matrix[pool].std(0);distance=standardized_distance(query,matrix,scale)
     if spec["monotone"] and memory.get("episode") is not None:
         constrained=monotone_window(library["episodes"],library["indexes"],memory["episode"],memory["index"],30)
         if len(constrained):pool=constrained
@@ -136,7 +136,7 @@ def runtime_state(obs):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--run-id",required=True);p.add_argument("--stage",choices=("calibration","formal"),required=True);p.add_argument("--reference-run",type=Path,required=True);p.add_argument("--branch-manifest",type=Path,required=True);p.add_argument("--training-run",type=Path,default=Path("runs/exp8_s2_independent_refs_20260814"));p.add_argument("--authorization",type=Path);p.add_argument("--route-set",choices=("exp15","exp16","exp17"),default="exp15");p.add_argument("--safety-envelope",type=Path);p.add_argument("--maximum-steps",type=int,default=80)
+    p=argparse.ArgumentParser();p.add_argument("--run-id",required=True);p.add_argument("--stage",choices=("calibration","formal"),required=True);p.add_argument("--reference-run",type=Path,required=True);p.add_argument("--branch-manifest",type=Path,required=True);p.add_argument("--training-run",type=Path,default=Path("runs/exp8_s2_independent_refs_20260814"));p.add_argument("--authorization",type=Path);p.add_argument("--route-set",choices=("exp15","exp16","exp17"),default="exp15");p.add_argument("--safety-envelope",type=Path);p.add_argument("--maximum-steps",type=int,default=80);p.add_argument("--exclude-target-demo",action="store_true")
     args=p.parse_args();out=ROOT/"runs"/args.run_id
     if out.exists():raise FileExistsError(f"immutable run exists: {out}")
     artifacts,manifests=out/"artifacts",out/"manifests";artifacts.mkdir(parents=True);manifests.mkdir();started=datetime.now(timezone.utc).isoformat();stdout=io.StringIO();stderr=io.StringIO();env=None
@@ -144,7 +144,7 @@ def main():
         training=(ROOT/args.training_run).resolve();library=build_library(training);branches=json.loads((ROOT/args.branch_manifest).read_text());routes={"exp15":ROUTES,"exp16":EXP16_ROUTES,"exp17":EXP17_ROUTES}[args.route_set];safety_envelope=json.loads((ROOT/args.safety_envelope).read_text()) if args.safety_envelope else None
         if args.authorization:
             allowed=set(json.loads((ROOT/args.authorization).read_text())["authorized_routes"]);routes=[x for x in routes if x["route"] in allowed or x["route"]=="D_physical_chunk"]
-        protocol={"stage":args.stage,"route_set":args.route_set,"routes":routes,"default_route":"D_physical_chunk","training_run":training.name,"training_hash":sha(training/"artifacts/reference_snapshots_manifest.json"),"target_future_candidate_access":False,"expert_path_isolated":True,"maximum_rollout_steps":args.maximum_steps,"safety_envelope":str(args.safety_envelope) if args.safety_envelope else None,"frozen_before_outcomes":True}
+        protocol={"stage":args.stage,"route_set":args.route_set,"routes":routes,"default_route":"D_physical_chunk","training_run":training.name,"training_hash":sha(training/"artifacts/reference_snapshots_manifest.json"),"target_future_candidate_access":False,"expert_path_isolated":True,"exclude_target_demo_from_neighbors_and_scale":args.exclude_target_demo,"maximum_rollout_steps":args.maximum_steps,"safety_envelope":str(args.safety_envelope) if args.safety_envelope else None,"frozen_before_outcomes":True}
         dump(manifests/"recovery_protocol.json",protocol);dump(manifests/"branch_manifest.json",branches);dump(manifests/"preoutcome_hashes.json",{"protocol":sha(manifests/"recovery_protocol.json"),"branches":sha(manifests/"branch_manifest.json")})
         selection,task_manifest=load_selection(ROOT/"experiments/exp1_decision_sparsity/manifests/selected_tasks_pilot.json",ROOT/"experiments/exp1_decision_sparsity/manifests/tasks.json");selected={x["name"]:x for x in selection["tasks"]};wrapper,robosuite_root,assets_root=bootstrap_runtime(ROOT/"third_party/LIBERO",ROOT/"data",artifacts/"libero_config")
         channel_schema=json.loads((ROOT/"experiments/exp3_time_indexed_q_criticality/manifests/effect_channel_schema.json").read_text());contact_schema=load_schema(ROOT/"experiments/exp7_contact_mode_conditioned/manifests/contact_mode_schema.json")
@@ -167,7 +167,7 @@ def main():
                         for offset in range(args.maximum_steps):
                             if success:break
                             if pending is None or offset%spec["replan"]==0:
-                                requested,pending,retrieved=choose_chunk(spec,runtime_state(obs),library[task],memory)
+                                requested,pending,retrieved=choose_chunk(spec,runtime_state(obs),library[task],memory,episode if args.exclude_target_demo else None)
                             local=offset%spec["replan"];action=pending[min(local,len(pending)-1)];req=requested[min(local,len(requested)-1)];clip=bool(np.any(np.abs(req[:6]-action[:6])>1e-12));clip_count+=clip;action_count+=1
                             env.step(action);obs=engine.observation(env,body_ids,contact_schema,task);force=float(np.linalg.norm(obs["ee_force"])) if obs["force_valid"] else float("nan");absolute_200=absolute_200 or bool(np.isfinite(force) and force>200);threshold=float(safety_envelope["tasks"][task]["primary_threshold_n"]) if safety_envelope else 200.;required=int(safety_envelope["tasks"][task]["consecutive_exceedances_to_stop"]) if safety_envelope else 1;exceedance_count=exceedance_count+1 if np.isfinite(force) and force>threshold else 0;safety=bool(exceedance_count>=required or (np.isfinite(force) and force>1000));success=bool(obs["predicate"])
                             route_steps.append({"branch_id":branch["branch_id"],"task":task,"episode":episode,"route":spec["route"],"offset":offset,"requested_action":req.tolist(),"executed_action":action.tolist(),"clipped":clip,"retrieved_indices":retrieved,"eef_position":obs["eef_position"].tolist(),"object_positions":obs["object_positions"].tolist(),"predicate":success,"contact_mode_json":obs["contact_mode_json"],"ee_force":obs["ee_force"].tolist(),"force_valid":obs["force_valid"],"safety_stop":safety})

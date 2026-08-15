@@ -1,0 +1,11 @@
+{
+  "training_reference_run": "exp8_s2_independent_refs_20260814",
+  "branches_per_demo": 4,
+  "expected_branch_count": 120,
+  "route_set": "exp17",
+  "route_count": 8,
+  "maximum_steps": 140,
+  "exclude_target_demo_from_neighbors": true,
+  "exclude_target_demo_from_feature_scale": true,
+  "formal_outcomes_used_for_training_or_tuning": false
+}
