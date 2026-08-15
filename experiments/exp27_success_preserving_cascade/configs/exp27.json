@@ -1,5 +1,9 @@
 {
   "primary_selection": "calibration_only",
+  "frozen_primary": "V0_default70_soft_goal",
+  "calibration_run": "exp27_s1_stove_cascade_calibration_20260815",
+  "calibration_safe_success_rate": 0.875,
+  "calibration_safety_stop_rate": 0.041666666666666664,
   "calibration_episodes": [28, 29],
   "formal_episodes": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   "formal_quantiles": [0.28, 0.68],
