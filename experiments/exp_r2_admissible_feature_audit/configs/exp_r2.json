@@ -1,0 +1,8 @@
+{
+  "experiment": "EXP_R2",
+  "question": "Does the EXP_R1 artifact contain sufficient admissible pre-action context for matched selector baselines?",
+  "source_benchmark_run": "runs/exp_r1_s1_same_state_benchmark_20260816_r2",
+  "models_fitted": false,
+  "post_action_inputs_forbidden": true,
+  "next_action": "instrument pre-action candidate context and zero-step success state records before EXP_R3 matched baselines"
+}

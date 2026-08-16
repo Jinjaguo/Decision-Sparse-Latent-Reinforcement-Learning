@@ -1,0 +1,17 @@
+{
+  "experiment": "EXP_R6",
+  "input_run": "runs/exp_r3_s1_instrumented_candidate_matrix_20260816_r4",
+  "output_run": "runs/exp_r6_s1_factorized_ablations_20260816_r1",
+  "folds": "demo_0..demo_9 leave-one-demo-out",
+  "variants": [
+    "scalar_full",
+    "factorized_full",
+    "factorized_no_route",
+    "factorized_no_action",
+    "success_only",
+    "safety_only"
+  ],
+  "device": "cuda_if_available",
+  "post_action_input_fields": [],
+  "seed": 20260816
+}

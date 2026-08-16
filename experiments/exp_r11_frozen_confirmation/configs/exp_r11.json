@@ -1,0 +1,15 @@
+{
+  "experiment": "EXP_R11",
+  "development_run": "runs/exp_r3_s1_instrumented_candidate_matrix_20260816_r4",
+  "frozen_selector_run": "runs/exp_r11_s0_frozen_factorized_selector_20260816_r2",
+  "confirmation_branch_manifest": "runs/exp26_s0_confirmation_branches_28_29_20260815/artifacts/branch_manifest.json",
+  "confirmation_matrix_run": "runs/exp_r11_s2_confirmation_matrix_20260816_r2",
+  "evaluation_run": "runs/exp_r11_s3_frozen_selector_evaluation_20260816_r1",
+  "confirmation_episodes": [28, 29],
+  "confirmation_branches": 24,
+  "candidates": 216,
+  "zero_gate_required": true,
+  "threshold_tuned_on_confirmation": false,
+  "target_future_access": false,
+  "frozen_model_state_sha256": "f381828cb910cd902f6f5219310502e1f170e60f1545d087fbd51a9c7c984235"
+}

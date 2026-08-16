@@ -1,0 +1,25 @@
+{
+  "experiment": "EXP_R4",
+  "input_run": "runs/exp_r3_s1_instrumented_candidate_matrix_20260816_r4",
+  "output_run": "runs/exp_r4_s1_offline_factorized_baselines_20260816_r3",
+  "device": "cuda_if_available",
+  "split": {
+    "train": "demo_0..demo_5",
+    "validation": "demo_6..demo_7",
+    "test": "demo_8..demo_9"
+  },
+  "baselines": [
+    "retrieval_only",
+    "scalar_success_and_not_safety",
+    "factorized_success_and_safety_heads"
+  ],
+  "metrics": [
+    "tie_aware_top1_utility",
+    "tie_aware_top3_utility",
+    "mean_average_precision",
+    "branch_bootstrap_95_percent_interval"
+  ],
+  "post_action_input_fields": [],
+  "target_demo_excluded": true,
+  "seed": 20260816
+}

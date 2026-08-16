@@ -1,0 +1,15 @@
+{
+  "experiment": "EXP_R1",
+  "question": "Are the EXP27 route candidates represented as a valid same-state counterfactual ranking benchmark with exact expert definitions and no post-action selector leakage?",
+  "source_formal_run": "runs/exp27_s3_formal_new_time_cascade_20260815",
+  "source_analysis_run": "runs/exp27_s4_formal_analysis_20260815",
+  "source_audit_run": "runs/exp27_s5_final_audit_20260815",
+  "candidate_count_per_state": 7,
+  "branch_count": 60,
+  "label_order": ["safe_success", "not_safety_stop", "success"],
+  "ties": "equal label keys remain ties; steps are descriptive and do not break label ties",
+  "selector_training": false,
+  "new_rollouts": 0,
+  "independent_confirmation": false,
+  "next_stage_authorized": "matched retrieval-only, scalar verifier, and factorized consequence baselines after benchmark review"
+}

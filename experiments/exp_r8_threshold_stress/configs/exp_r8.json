@@ -1,0 +1,8 @@
+{
+  "experiment": "EXP_R8",
+  "input_run": "runs/exp_r5_s1_leave_one_demo_out_20260816_r2",
+  "output_run": "runs/exp_r8_s1_threshold_stress_20260816_r1",
+  "thresholds": [0.3, 0.5, 0.7, 0.9],
+  "threshold_selected_from_heldout": false,
+  "untouched_confirmation_opened": false
+}

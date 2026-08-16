@@ -1,0 +1,8 @@
+{
+  "experiment": "EXP_R9",
+  "r5_run": "runs/exp_r5_s1_leave_one_demo_out_20260816_r2",
+  "r6_run": "runs/exp_r6_s1_factorized_ablations_20260816_r1",
+  "output_run": "runs/exp_r9_s1_safety_ranking_diagnostic_20260816_r1",
+  "threshold_tuning": false,
+  "metrics": ["unsafe_average_precision", "mean_unsafe_rank", "top1_unsafe_hit_rate"]
+}

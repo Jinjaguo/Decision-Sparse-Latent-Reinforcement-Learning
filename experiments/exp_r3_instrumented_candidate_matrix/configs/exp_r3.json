@@ -1,0 +1,21 @@
+{
+  "experiment": "EXP_R3",
+  "question": "Can each corrected-D branch expose an admissible pre-action state and explicit factorized-action candidate before outcome measurement?",
+  "formal_run": "runs/exp_r3_s1_instrumented_candidate_matrix_20260816_r4",
+  "calibration_run": "runs/exp_r3_s1_calibration_20260816_r4",
+  "source_branch_manifest": "runs/exp27_s3_formal_new_time_cascade_20260815/manifests/branch_manifest.json",
+  "routes": 9,
+  "branches": 60,
+  "candidates": 540,
+  "matched_zero_controls": 60,
+  "pre_outcome_post_action_labels": false,
+  "target_future_candidate_access": false,
+  "target_future_used_for_zero_audit_only": true,
+  "checkpoint_policy": "one atomic JSON checkpoint after each branch",
+  "validity": {
+    "zero_gate_passed": true,
+    "pre_outcome_hashes_unique": true,
+    "complete_candidate_matrix": true,
+    "unsafe_and_zero_step_rows_retained": true
+  }
+}

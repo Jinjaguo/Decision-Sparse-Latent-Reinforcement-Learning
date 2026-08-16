@@ -1,0 +1,8 @@
+{
+  "experiment": "EXP_R10",
+  "r3_run": "runs/exp_r3_s1_instrumented_candidate_matrix_20260816_r4",
+  "r6_run": "runs/exp_r6_s1_factorized_ablations_20260816_r1",
+  "output_run": "runs/exp_r10_s1_route_complementarity_20260816_r1",
+  "route_prior_fitted": false,
+  "untouched_confirmation_opened": false
+}

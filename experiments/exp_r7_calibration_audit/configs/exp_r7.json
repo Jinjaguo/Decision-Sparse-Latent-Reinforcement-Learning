@@ -1,0 +1,10 @@
+{
+  "experiment": "EXP_R7",
+  "input_run": "runs/exp_r5_s1_leave_one_demo_out_20260816_r2",
+  "output_run": "runs/exp_r7_s1_calibration_audit_20260816_r2",
+  "fixed_threshold": 0.5,
+  "threshold_selected_from_heldout": false,
+  "metrics": ["brier", "ece_10_bins", "precision", "recall"],
+  "post_action_input_fields": [],
+  "untouched_confirmation_opened": false
+}

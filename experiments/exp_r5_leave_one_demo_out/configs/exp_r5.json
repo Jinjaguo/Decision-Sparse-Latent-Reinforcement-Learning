@@ -1,0 +1,17 @@
+{
+  "experiment": "EXP_R5",
+  "input_run": "runs/exp_r3_s1_instrumented_candidate_matrix_20260816_r4",
+  "output_run": "runs/exp_r5_s1_leave_one_demo_out_20260816_r2",
+  "folds": "demo_0..demo_9, one held out across all tasks",
+  "fit_excludes_held_out_demo": true,
+  "normalization_excludes_held_out_demo": true,
+  "device": "cuda_if_available",
+  "metrics": [
+    "tie_aware_top1_utility",
+    "tie_aware_top3_utility",
+    "mean_average_precision",
+    "branch_bootstrap_95_percent_interval"
+  ],
+  "post_action_input_fields": [],
+  "seed": 20260816
+}
